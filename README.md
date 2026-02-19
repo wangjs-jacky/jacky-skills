@@ -18,6 +18,23 @@
 - 标准化启动和结束流程
 - 严格的验证和文档规范
 
+### github-repo-publish
+
+将本地代码仓库一键发布到 GitHub，自动处理 README、About 信息、Release 发布等。
+
+**触发场景**：
+- "发布到 GitHub"
+- "push 到远端"
+- "创建 GitHub 仓库"
+- "release extension"
+
+**核心特性**：
+- 最小化交互（最多一次确认仓库名）
+- 自动生成中英双语 README
+- 自动设置 About 信息（description、topics）
+- VSCode 插件自动打包 .vsix 并发布到 Release
+- 智能处理远程仓库已存在等边缘情况
+
 ## 如何使用
 
 将技能克隆到你的 Claude Code skills 目录：
