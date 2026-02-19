@@ -70,45 +70,76 @@ CLEANED_NAME=$(echo "$PACKAGE_NAME" | sed 's/^@[\w-]*\//')
 
 **交互限制：最多一次交互确认仓库名。**
 
-### 2. 检查并生成 README.md
+### 2. 检查并生成 README 文件
+
+**重要：使用两个独立的 README 文件，而不是合并。**
 
 ```bash
 # 检查 README 是否存在
 if [ ! -f README.md ]; then
-    # 读取仓库代码，生成中英双语 README
-    # 必须包含：项目名称、简介、安装方法、使用说明
+    # 生成 README.md（英文版）
+    # 生成 README_CN.md（中文版）
 fi
 ```
 
-**README 必须是中英双语格式：**
+**文件结构：**
+
+```
+project/
+├── README.md      # 英文版（主文件）
+└── README_CN.md   # 中文版
+```
+
+**README.md（英文版）模板：**
 
 ```markdown
 # Project Name
 
-[English](#english) | [中文](#chinese)
+Brief description in English.
 
-<a name="english"></a>
-## English
+[中文文档](./README_CN.md)
 
-Brief description...
-
-### Installation
+## Features
 ...
 
-### Usage
+## Installation
 ...
 
-<a name="chinese"></a>
-## 中文
-
-简介...
-
-### 安装
+## Usage
 ...
 
-### 使用
-...
+## License
+
+MIT
 ```
+
+**README_CN.md（中文版）模板：**
+
+```markdown
+# 项目名称
+
+中文简介。
+
+[English](./README.md)
+
+## 功能特性
+...
+
+## 安装
+...
+
+## 使用方法
+...
+
+## 许可证
+
+MIT
+```
+
+**注意事项：**
+- 两个文件互相链接
+- README.md 是主文件（GitHub 默认显示）
+- README_CN.md 是中文补充
 
 ### 3. 初始化 Git（如需要）
 
@@ -124,12 +155,19 @@ fi
 ### 4. 创建远程仓库并推送
 
 ```bash
-# 配置代理（全局配置要求）
+# 尝试配置代理（可能失败）
 git config --global http.proxy http://127.0.0.1:7890
 git config --global https.proxy http://127.0.0.1:7890
 
 # 创建仓库并推送
 gh repo create $REPO_NAME --public --source=. --push --description "$DESCRIPTION"
+
+# 如果代理失败，取消代理后重试
+if [ $? -ne 0 ]; then
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
+    git push -u origin main
+fi
 
 # 完成后取消代理
 git config --global --unset http.proxy
@@ -138,15 +176,19 @@ git config --global --unset https.proxy
 
 ### 5. 设置 About 信息
 
-根据代码内容自动总结：
-- Description：从 package.json description 或代码功能总结
-- Topics：从 package.json keywords 或技术栈提取
+**重要：Description 使用中文。**
 
 ```bash
-gh repo edit --description "$DESCRIPTION"
-# 如需设置 topics
-gh repo edit --add-topic "$TOPIC1,$TOPIC2"
+# 设置中文描述
+gh repo edit --description "中文描述，简要说明项目功能"
+
+# 设置 topics（英文）
+gh repo edit --add-topic "nodejs,typescript,cli-tool"
 ```
+
+**Description 来源优先级：**
+1. package.json 的 description（翻译成中文）
+2. 从代码功能总结（用中文描述）
 
 ### 6. 特殊项目处理
 
@@ -194,7 +236,7 @@ fi
 | 步骤 | 命令 |
 |------|------|
 | 创建仓库 | `gh repo create $NAME --public --source=. --push` |
-| 设置描述 | `gh repo edit --description "$DESC"` |
+| 设置描述 | `gh repo edit --description "$中文描述"` |
 | 创建 Release | `gh release create $TAG --title "$TITLE" "*.vsix"` |
 | 打 tag | `git tag $TAG && git push origin $TAG` |
 
@@ -207,12 +249,14 @@ fi
 | `repository already exists` | 远程仓库已存在 | 直接推送更新或使用 `gh repo edit` |
 | `.vsix already exists` | 重复打包 | 删除旧的 .vsix 文件 |
 | `origin already exists` | 本地已配置远程 | 检查 `git remote -v`，直接 push |
+| `Failed to connect to proxy` | 代理未启动 | 取消代理后直接推送 |
 
 ## 禁止事项
 
 - **不要多次交互**：最多一次确认仓库名
 - **不要询问 README**：没有就自动生成
-- **不要询问 About**：自动从代码总结
+- **不要询问 About**：自动从代码总结，使用中文
+- **不要合并中英文 README**：创建两个独立文件
 - **不要忽略 Release**：VSCode 插件必须发布到 Release
 - **不要提交 .vsix 到仓库**：只发布到 Release，添加到 .gitignore
 - **不要在远程已存在时报错**：智能处理，直接推送更新
@@ -221,12 +265,12 @@ fi
 
 - [ ] 检查远程仓库是否已存在（`git remote -v`）
 - [ ] 确认仓库名（最多一次交互）
-- [ ] 检查/生成中英双语 README.md
+- [ ] 检查/生成 README.md（英文）和 README_CN.md（中文）
 - [ ] 检查/补充 .gitignore
 - [ ] 初始化 git（如需要）
-- [ ] 配置代理
+- [ ] 配置代理（可选，失败时跳过）
 - [ ] 创建远程仓库并推送
-- [ ] 设置 About 描述和 topics
+- [ ] 设置 About 描述（中文）和 topics（英文）
 - [ ] 检测 VSCode 插件 → 打包 → 打 tag → 创建 Release
 - [ ] 取消代理
 
@@ -254,11 +298,10 @@ digraph github_publish {
         style=dashed;
         get_name [label="获取仓库名\n(package.json > 目录名)"];
         check_readme [label="README 存在?" shape=diamond];
-        gen_readme [label="生成中英双语 README"];
+        gen_readme [label="生成 README.md + README_CN.md\n(两个独立文件)"];
         init_git [label="git init (如需要)"];
-        set_proxy [label="配置代理"];
         create_repo [label="gh repo create --push"];
-        set_about [label="gh repo edit\n设置 About"];
+        set_about [label="gh repo edit\n设置 About (中文描述)"];
     }
 
     vscode_check [label="VSCode 插件?" shape=diamond];
@@ -276,7 +319,7 @@ digraph github_publish {
     check_readme -> init_git [label="是"];
     gen_readme -> init_git;
 
-    init_git -> set_proxy -> create_repo -> set_about -> vscode_check;
+    init_git -> create_repo -> set_about -> vscode_check;
     vscode_check -> release_flow [label="是"];
     vscode_check -> done [label="否"];
     release_flow -> done;
