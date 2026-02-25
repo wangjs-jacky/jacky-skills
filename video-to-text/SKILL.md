@@ -76,8 +76,14 @@ node bin/video2text.cjs <command> [options]
 ### extract - 提取视频文案
 
 ```bash
-# 基础用法
+# 基础用法（默认 SRT 格式，带时间戳）
 video2text extract <视频URL>
+
+# 只要纯文本（不带时间戳）
+video2text extract <URL> -f txt
+
+# Markdown 格式（带时间轴）
+video2text extract <URL> -f md
 
 # 指定格式和输出目录
 video2text extract <URL> -f <txt|srt|vtt|md> -o <输出目录>
@@ -109,7 +115,7 @@ video2text serve -p 8080
 
 | 选项 | 简写 | 默认值 | 说明 |
 |------|------|--------|------|
-| `--format` | `-f` | txt | 输出格式 (txt/srt/vtt/md) |
+| `--format` | `-f` | srt | 输出格式 (txt/srt/vtt/md)，默认带时间戳 |
 | `--output` | `-o` | ./output | 输出目录 |
 | `--model` | `-m` | base | Whisper 模型 |
 | `--keep` | `-k` | false | 保留临时文件 |
@@ -128,16 +134,15 @@ video2text serve -p 3000
 # API 调用
 curl -X POST http://localhost:3000/api/extract \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://v.douyin.com/xxx/", "format": "txt"}'
+  -d '{"url": "https://v.douyin.com/xxx/", "format": "srt"}'
 ```
 
 ## 输出格式
 
-### TXT（纯文本）
+### TXT（纯文本，无时间戳）
 
 ```
-[00:00] 这是第一句话
-[00:03] 这是第二句话
+这是第一句话 这是第二句话
 ```
 
 ### SRT（字幕）
@@ -164,14 +169,22 @@ WEBVTT
 这是第二句话
 ```
 
-### Markdown
+### Markdown（带时间轴）
 
 ```markdown
 # 视频文案
 
-## [00:00] 这是第一句话
+> 时长: 60秒
+> 语言: zh
 
-## [00:03] 这是第二句话
+## 文案内容
+
+这是第一句话 这是第二句话
+
+## 时间轴
+
+- **0:00** 这是第一句话
+- **0:03** 这是第二句话
 ```
 
 ## 输出目录结构
