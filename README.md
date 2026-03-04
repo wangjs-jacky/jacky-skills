@@ -48,45 +48,44 @@
 
 ## 快速开始
 
-### 方式一：一键安装（推荐）
+### 方式一：通过插件安装（官方推荐）
 
-在新电脑上执行一条命令即可完成所有安装：
+使用 Claude Code 的 `/plugin` 命令安装：
+
+```bash
+# 第一步：添加市场
+/plugin marketplace add wangjs-jacky/jacky-skills
+
+# 第二步：安装插件
+/plugin install jacky-skills@jacky-skills
+
+# 第三步：验证安装
+/plugin list
+```
+
+安装完成后，所有 skills 立即可用！
+
+### 方式二：一键脚本安装
+
+在新电脑上执行一条命令：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/wangjs-jacky/jacky-skills/main/install.sh | bash
 ```
 
-这个脚本会自动：
-- 安装 `j-skills` CLI 工具
-- 克隆仓库到 `~/jacky-github/jacky-skills`
-- 链接所有 skills 到全局注册表
-- 全局安装所有 skills
-
-### 方式二：手动安装
+### 方式三：手动安装
 
 ```bash
-# 1. 安装 j-skills
+# 1. 安装 j-skills CLI
 npm install -g j-skills
 
 # 2. 克隆仓库
 git clone https://github.com/wangjs-jacky/jacky-skills.git
 cd jacky-skills
 
-# 3. 链接所有 skills
+# 3. 链接并安装
 j-skills link --all
-
-# 4. 安装需要的 skill 到全局
 j-skills install <skill-name> -g
-```
-
-### 方式三：复制到 skills 目录
-
-```bash
-# 克隆仓库
-git clone https://github.com/wangjs-jacky/jacky-skills.git
-
-# 复制需要的 skill 到 Claude Code skills 目录
-cp -r jacky-skills/<skill-name> ~/.claude/skills/
 ```
 
 ---
@@ -95,6 +94,9 @@ cp -r jacky-skills/<skill-name> ~/.claude/skills/
 
 ```
 jacky-skills/
+├── .claude-plugin/            # Claude Code 插件配置
+│   ├── plugin.json            # 插件清单
+│   └── marketplace.json       # 市场配置
 ├── install.sh                 # 一键安装脚本
 ├── CLAUDE.md                  # 项目配置
 ├── bilibili-to-obsidian/      # B站字幕提取到Obsidian
@@ -106,6 +108,7 @@ jacky-skills/
 ├── claude-monitor/            # Claude Code监控
 ├── agent-browser-troubleshooting/  # agent-browser故障排查
 ├── tauri-troubleshooting/     # Tauri故障排查
+├── config-obsidian/           # Obsidian同步配置
 ├── creator-skills/            # Skill创建工具
 ├── j-skills/                  # Skills管理CLI
 └── link-all-skills/           # 批量链接工具

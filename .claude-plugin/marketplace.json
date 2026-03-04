@@ -1,0 +1,38 @@
+{
+  "name": "jacky-skills",
+  "owner": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com"
+  },
+  "metadata": {
+    "description": "Jacky 的 Claude Code 技能集合"
+  },
+  "plugins": [
+    {
+      "name": "jacky-skills",
+      "source": "./",
+      "description": "视频处理、开发工具、监控调试等实用技能",
+      "author": {
+        "name": "Jacky Wang"
+      },
+      "homepage": "https://github.com/wangjs-jacky/jacky-skills",
+      "repository": "https://github.com/wangjs-jacky/jacky-skills",
+      "license": "MIT",
+      "keywords": [
+        "bilibili",
+        "obsidian",
+        "video",
+        "github",
+        "automation",
+        "chinese"
+      ],
+      "category": "productivity",
+      "tags": [
+        "bilibili",
+        "obsidian",
+        "video",
+        "github"
+      ]
+    }
+  ]
+}

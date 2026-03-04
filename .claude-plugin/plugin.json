@@ -1,0 +1,37 @@
+{
+  "name": "jacky-skills",
+  "version": "1.0.0",
+  "description": "Jacky 的 Claude Code 技能集合 - 视频处理、开发工具、监控调试等实用技能",
+  "author": {
+    "name": "Jacky Wang",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "bilibili",
+    "obsidian",
+    "video",
+    "github",
+    "automation",
+    "chinese"
+  ],
+  "skills": [
+    "./bilibili-to-obsidian/",
+    "./bilibili-batch/",
+    "./video-to-text/",
+    "./github-repo-publish/",
+    "./long-running-agent/",
+    "./claude-monitor/",
+    "./agent-browser-troubleshooting/",
+    "./tauri-troubleshooting/",
+    "./fix-neat-video/",
+    "./config-obsidian/",
+    "./creator-skills/",
+    "./j-skills/",
+    "./link-all-skills/"
+  ]
+}
