@@ -48,7 +48,21 @@
 
 ## 快速开始
 
-### 方式一：使用 j-skills 工具（推荐）
+### 方式一：一键安装（推荐）
+
+在新电脑上执行一条命令即可完成所有安装：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/wangjs-jacky/jacky-skills/main/install.sh | bash
+```
+
+这个脚本会自动：
+- 安装 `j-skills` CLI 工具
+- 克隆仓库到 `~/jacky-github/jacky-skills`
+- 链接所有 skills 到全局注册表
+- 全局安装所有 skills
+
+### 方式二：手动安装
 
 ```bash
 # 1. 安装 j-skills
@@ -65,7 +79,7 @@ j-skills link --all
 j-skills install <skill-name> -g
 ```
 
-### 方式二：手动安装
+### 方式三：复制到 skills 目录
 
 ```bash
 # 克隆仓库
@@ -75,23 +89,17 @@ git clone https://github.com/wangjs-jacky/jacky-skills.git
 cp -r jacky-skills/<skill-name> ~/.claude/skills/
 ```
 
-### 方式三：直接在 skills 目录克隆
-
-```bash
-cd ~/.claude/skills/
-git clone https://github.com/wangjs-jacky/jacky-skills.git
-```
-
 ---
 
 ## 目录结构
 
 ```
 jacky-skills/
+├── install.sh                 # 一键安装脚本
+├── CLAUDE.md                  # 项目配置
 ├── bilibili-to-obsidian/      # B站字幕提取到Obsidian
 ├── bilibili-batch/            # B站批量提取
 ├── video-to-text/             # 视频转文字
-├── m3u8-dl/                   # M3U8视频下载
 ├── fix-neat-video/            # 修复Neat Download视频
 ├── github-repo-publish/       # GitHub仓库发布
 ├── long-running-agent/        # 跨会话开发Agent
