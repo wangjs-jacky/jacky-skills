@@ -22,24 +22,13 @@ triggers:
 /ma "你的问题"
 ```
 
-## 执行流程
+## 执行流程概述
 
-### 1. 并行执行阶段
+1. **并行执行**：同时启动 2 个 Worker Agent
+2. **裁判合并**：分析并合并最佳结果
+3. **输出结果**：展示综合答案 + 来源标注
 
-同时启动多个 Worker Agent：
-
-- **Agent 1 (Claude)**: 使用默认提示词回答
-- **Agent 2 (Codex)**: 使用不同视角/风格回答
-
-### 2. 裁判合并阶段
-
-裁判 Agent 会：
-1. 分析每个回答的优缺点
-2. 提取最佳部分
-3. 合并成完整答案
-4. 标注信息来源
-
-### 3. 输出格式
+## 输出格式
 
 ```markdown
 ## 综合答案
@@ -72,10 +61,10 @@ triggers:
 
 ## 配置
 
-可在 `config.md` 中自定义：
-- `default_agents`: 默认参与的 Agent 数量
-- `timeout`: 超时时间（秒）
-- `show_original`: 是否默认展示原始回答
+当前 Skill 使用默认配置。未来版本可能支持以下自定义选项：
+- Worker 数量（默认 2）
+- 超时时间（默认 120 秒）
+- 是否展示原始回答（默认 false）
 
 ## Claude 执行指令
 
@@ -87,43 +76,54 @@ triggers:
 
 ### 步骤 2: 并行调用 Worker Agents
 
-**重要：** 必须在**单条消息**中同时发起多个 Task 调用！
+**重要：** 必须在**单条消息**中同时发起多个 Task tool 调用！
 
-使用 Task tool，subagent_type 选择 `general-purpose`：
+**调用格式示例：**
 
-**Worker 1 (标准视角)：**
+在单条 assistant 消息中，包含多个 Task tool 调用：
+
+```xml
+<function_calls>
+<invoke name="Task">
+ <parameter name="subagent_type">general-purpose</parameter>
+ <parameter name="description">Worker 1: 标准视角</parameter>
+ <parameter name="prompt">请回答以下问题：...</parameter>
+</invoke>
+<invoke name="Task">
+ <parameter name="subagent_type">general-purpose</parameter>
+ <parameter name="description">Worker 2: 替代视角</parameter>
+ <parameter name="prompt">请从不同角度分析...</parameter>
+</invoke>
+</function_calls>
 ```
-Task:
+
+**Worker 1 配置：**
 - subagent_type: "general-purpose"
-- description: "Worker 1: 标准视角分析"
-- prompt: |
-    请回答以下问题：
+- description: "Worker 1: 标准视角"
+- prompt 内容:
+  请回答以下问题：
 
-    {{question}}
+  {{question}}
 
-    要求：
-    1. 提供完整、准确的回答
-    2. 如果涉及代码，给出可运行的示例
-    3. 如果不确定，明确说明
-    4. 保持回答结构清晰
-```
+  要求：
+  1. 提供完整、准确的回答
+  2. 如果涉及代码，给出可运行的示例
+  3. 如果不确定，明确说明
+  4. 保持回答结构清晰
 
-**Worker 2 (替代视角)：**
-```
-Task:
+**Worker 2 配置：**
 - subagent_type: "general-purpose"
-- description: "Worker 2: 替代视角分析"
-- prompt: |
-    请从**不同角度**分析以下问题：
+- description: "Worker 2: 替代视角"
+- prompt 内容:
+  请从**不同角度**分析以下问题：
 
-    {{question}}
+  {{question}}
 
-    要求：
-    1. 尝试从不同于常规的视角分析问题
-    2. 考虑边界情况和潜在风险
-    3. 如果涉及代码，思考可能的优化或替代方案
-    4. 指出可能被忽略的细节
-```
+  要求：
+  1. 尝试从不同于常规的视角分析问题
+  2. 考虑边界情况和潜在风险
+  3. 如果涉及代码，思考可能的优化或替代方案
+  4. 指出可能被忽略的细节
 
 ### 步骤 3: 等待所有 Worker 完成
 
@@ -137,66 +137,24 @@ Task:
 
 ### 步骤 4: 调用裁判 Agent
 
-使用 Task tool 调用裁判：
+使用 Task tool 调用裁判进行结果合并。
 
-```
-Task:
+**参数配置：**
 - subagent_type: "general-purpose"
 - description: "裁判 Agent 合并结果"
-- prompt: |
-    你是裁判 Agent。请综合以下多个 AI 的回答，给出最佳答案。
+- prompt: 详见下方内容
 
-    === Agent 1 (标准视角) 回答 ===
-    {{agent_1_response}}
+**Prompt 内容说明：**
 
-    === Agent 2 (替代视角) 回答 ===
-    {{agent_2_response}}
+裁判 Agent 的 prompt 应包含以下部分：
 
-    请按以下步骤处理：
-
-    ## 1. 分析阶段
-
-    对每个回答评估：
-    - 准确性：信息是否正确
-    - 完整性：是否覆盖所有要点
-    - 实用性：建议是否可执行
-    - 独特性：是否有独特见解
-
-    ## 2. 综合阶段
-
-    - 提取每个回答的最佳部分
-    - 解决冲突信息（说明选择理由）
-    - 补充遗漏的关键信息
-    - 统一风格和格式
-
-    ## 3. 输出阶段
-
-    按以下格式输出最终答案：
-
-    ## 综合答案
-
-    [合并后的最终答案，结构清晰，内容完整]
-
-    ---
-    ### 📌 来源标注
-
-    | 要点 | 来源 | 说明 |
-    |------|------|------|
-    | xxx | Agent 1 | 原因 |
-    | yyy | Agent 2 | 原因 |
-    | 综合 | Judge | 整合/补充 |
-
-    <details>
-    <summary>📄 查看各 Agent 原始回答</summary>
-
-    ### Agent 1 (标准视角) 回答
-    {{agent_1_response}}
-
-    ### Agent 2 (替代视角) 回答
-    {{agent_2_response}}
-
-    </details>
-```
+1. **角色定义**：你是裁判 Agent，负责综合多个 AI 的回答
+2. **输入数据**：两个 Worker 的回答（{{agent_1_response}} 和 {{agent_2_response}}）
+3. **处理流程**：
+   - 分析阶段：评估准确性、完整性、实用性、独特性
+   - 综合阶段：提取最佳部分、解决冲突、补充遗漏
+   - 输出阶段：按指定格式输出最终答案
+4. **输出格式**：综合答案 + 来源标注表格 + 原始回答折叠区
 
 ### 步骤 5: 输出最终结果
 
