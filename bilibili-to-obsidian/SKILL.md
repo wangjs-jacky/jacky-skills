@@ -7,6 +7,22 @@ description: 从 B 站视频提取字幕并整理到 Obsidian 仓库。当用户
 
 从 B 站视频自动提取字幕，整理到 Obsidian 仓库，支持按作者分类、嵌入视频、归纳总结。
 
+## 配置检查
+
+> **执行前必读**：本 skill 需要使用 Obsidian 仓库路径。
+
+**执行以下检查步骤**：
+
+1. 首先检查全局 CLAUDE.md 中是否定义了 `OBSIDIAN_REPO` 配置变量
+2. 如果未定义，使用 `AskUserQuestion` 工具询问用户：
+   ```
+   请提供您的 Obsidian 仓库路径：
+   ```
+3. 将用户提供的路径保存为 `$OBSIDIAN_REPO` 变量供后续使用
+
+**配置变量**：
+- `$OBSIDIAN_REPO`: Obsidian 仓库根目录（如 `/Users/xxx/Documents/ObsidianVault`）
+
 ## 触发场景
 
 - 用户想从 B 站视频提取字幕保存到 Obsidian
@@ -26,7 +42,7 @@ description: 从 B 站视频提取字幕并整理到 Obsidian 仓库。当用户
 
 ### 路径配置
 
-- **Obsidian 仓库**: `/Users/jiashengwang/jacky-github/jacky-obsidian`
+- **Obsidian 仓库**: `$OBSIDIAN_REPO`（从全局配置或用户输入获取）
 - **B 站内容目录**: `00-Inbox/B站`（自动创建）
 
 ## 目录结构
@@ -66,10 +82,10 @@ video2text extract "<B站视频URL>" -f srt -o /tmp/bilibili-output
 
 ```bash
 # 创建 B 站主目录（在 00-Inbox 下）
-mkdir -p "/Users/jiashengwang/jacky-github/jacky-obsidian/00-Inbox/B站"
+mkdir -p "$OBSIDIAN_REPO/00-Inbox/B站"
 
 # 创建作者子目录
-mkdir -p "/Users/jiashengwang/jacky-github/jacky-obsidian/00-Inbox/B站/[作者名]"
+mkdir -p "$OBSIDIAN_REPO/00-Inbox/B站/[作者名]"
 ```
 
 ### 步骤 4：生成原文笔记

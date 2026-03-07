@@ -1,6 +1,27 @@
+---
+name: bilibili-batch
+description: 从 B 站 UP 主空间批量提取视频字幕到 Obsidian，支持按播放量/收藏数/发布时间排序。
+---
+
 # Bilibili Batch - B 站视频批量提取
 
 从 B 站 UP 主空间批量提取视频字幕到 Obsidian，支持按播放量/收藏数/发布时间排序。
+
+## 配置检查
+
+> **执行前必读**：本 skill 需要使用 Obsidian 仓库路径。
+
+**执行以下检查步骤**：
+
+1. 首先检查全局 CLAUDE.md 中是否定义了 `OBSIDIAN_REPO` 配置变量
+2. 如果未定义，使用 `AskUserQuestion` 工具询问用户：
+   ```
+   请提供您的 Obsidian 仓库路径：
+   ```
+3. 将用户提供的路径保存为 `$OBSIDIAN_REPO` 变量供后续使用
+
+**配置变量**：
+- `$OBSIDIAN_REPO`: Obsidian 仓库根目录（如 `/Users/xxx/Documents/ObsidianVault`）
 
 ## 触发场景
 
@@ -20,7 +41,7 @@
 
 ### 路径配置
 
-- **Obsidian 仓库**: `/Users/jiashengwang/jacky-github/jacky-obsidian`
+- **Obsidian 仓库**: `$OBSIDIAN_REPO`（从全局配置或用户输入获取）
 - **B 站内容目录**: `00-Inbox/B站`（自动创建）
 
 ## 使用方式
@@ -37,17 +58,14 @@ https://space.bilibili.com/316568752
 ### 方式二：直接运行 CLI
 
 ```bash
-# 进入 skill 目录
-cd /Users/jiashengwang/jacky-github/jacky-skills/bilibili-batch
-
 # 提取 UP 主 Top 10 视频
 ./bin/cli.js top https://space.bilibili.com/316568752 \
   --limit 10 \
-  --output /Users/jiashengwang/jacky-github/jacky-obsidian/00-Inbox/B站
+  --output "$OBSIDIAN_REPO/00-Inbox/B站"
 
 # 批量处理 URL 列表文件
 ./bin/cli.js file /path/to/urls.txt \
-  --output /Users/jiashengwang/jacky-github/jacky-obsidian/00-Inbox/B站
+  --output "$OBSIDIAN_REPO/00-Inbox/B站"
 ```
 
 ## CLI 命令

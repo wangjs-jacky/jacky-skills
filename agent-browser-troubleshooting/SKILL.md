@@ -139,13 +139,23 @@ npx playwright install chromium
 
 ### 2.2 解决方案：干净环境运行
 
-**方法 A：使用 env -i（推荐）**
+**方法 A：临时清除代理变量**
+
+```bash
+unset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY
+export NO_PROXY=localhost,127.0.0.1
+agent-browser <command>
+```
+
+**方法 B：使用 env -i（手动指定 PATH）**
 
 ```bash
 env -i HOME="$HOME" USER="$USER" \
-  PATH="/Users/jiashengwang/.nvm/versions/node/v24.9.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" \
+  PATH="$PATH" \
   agent-browser <command>
 ```
+
+> **注意**：`$PATH` 会自动继承系统的 PATH 变量，无需手动指定 Node 路径。
 
 **方法 B：临时清除代理变量**
 

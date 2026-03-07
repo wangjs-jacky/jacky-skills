@@ -5,34 +5,173 @@
     "email": "wangjs.jacky@gmail.com"
   },
   "metadata": {
-    "description": "Jacky 的 Claude Code 技能集合"
+    "description": "Jacky 的 Claude Code 技能集合 - 视频处理、开发工具、监控调试等实用技能",
+    "version": "1.0.0",
+    "homepage": "https://github.com/wangjs-jacky/jacky-skills",
+    "repository": "https://github.com/wangjs-jacky/jacky-skills"
   },
   "plugins": [
     {
-      "name": "jacky-skills",
+      "name": "bilibili-to-obsidian",
+      "description": "从 B 站视频提取字幕并整理到 Obsidian 仓库。当用户需要从 B 站视频提取文案、保存字幕到 Obsidian、按作者分类整理 B 站内容时触发。",
+      "version": "1.0.0",
       "source": "./",
-      "description": "视频处理、开发工具、监控调试等实用技能",
-      "author": {
-        "name": "Jacky Wang"
-      },
-      "homepage": "https://github.com/wangjs-jacky/jacky-skills",
-      "repository": "https://github.com/wangjs-jacky/jacky-skills",
-      "license": "MIT",
-      "keywords": [
-        "bilibili",
-        "obsidian",
-        "video",
-        "github",
-        "automation",
-        "chinese"
-      ],
+      "skills": ["./bilibili-to-obsidian"],
       "category": "productivity",
-      "tags": [
-        "bilibili",
-        "obsidian",
-        "video",
-        "github"
-      ]
+      "keywords": ["bilibili", "obsidian", "video", "subtitle", "extraction", "chinese"]
+    },
+    {
+      "name": "bilibili-batch",
+      "description": "批量处理 B 站视频下载和整理",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./bilibili-batch"],
+      "category": "productivity",
+      "keywords": ["bilibili", "batch", "video", "download"]
+    },
+    {
+      "name": "video-to-text",
+      "description": "从视频平台提取文案的 CLI 工具。当用户需要从视频链接提取文字内容、生成字幕、转录语音时触发。支持抖音等平台。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./video-to-text"],
+      "category": "utilities",
+      "keywords": ["video", "transcription", "subtitle", "douyin", "chinese"]
+    },
+    {
+      "name": "m3u8-dl",
+      "description": "使用 m3u8-dl 下载 M3U8/HLS 视频流。当用户需要下载视频、提供 m3u8 链接、或提到视频下载时触发。支持 AES-128 解密、代理、时长限制。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./m3u8-dl"],
+      "category": "utilities",
+      "keywords": ["m3u8", "hls", "video-download", "streaming", "aes-128"]
+    },
+    {
+      "name": "fix-neat-video",
+      "description": "修复 Neat Download 下载的分段视频文件。当用户需要处理 .mp4.ts 文件、修复无法完整播放的视频、或提到 Neat Download 下载的视频问题时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./fix-neat-video"],
+      "category": "utilities",
+      "keywords": ["video", "repair", "neat-download", "mp4-ts"]
+    },
+    {
+      "name": "config-obsidian",
+      "description": "配置 Obsidian 同步环境。当用户想要配置 Obsidian 同步、设置 Remotely Save 后台触发、配置 Obsidian REST API 等时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./config-obsidian"],
+      "category": "developer-tools",
+      "keywords": ["obsidian", "sync", "remotely-save", "rest-api"]
+    },
+    {
+      "name": "ob-summary",
+      "description": "Obsidian 知识库概览总结。当用户想了解 Obsidian 仓库的内容结构、查找特定主题的笔记、或需要知识库概览时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./ob-summary"],
+      "category": "developer-tools",
+      "keywords": ["obsidian", "summary", "knowledge-base", "vault"]
+    },
+    {
+      "name": "github-repo-publish",
+      "description": "将本地代码仓库发布到 GitHub。当用户需要创建远程仓库、推送代码、生成 README、设置 about 信息、或发布打包产物（如 VSCode 插件）时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./github-repo-publish"],
+      "category": "developer-tools",
+      "keywords": ["github", "publish", "repository", "vsix", "release"]
+    },
+    {
+      "name": "claude-monitor",
+      "description": "Claude Code Monitor - 监控所有 Claude Code 会话状态。当用户想查看 Claude Code 在做什么、是否在运行、卡住了时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./claude-monitor"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "monitor", "session", "status"]
+    },
+    {
+      "name": "long-running-agent",
+      "description": "长时间运行 Agent 会话管理。当用户开始跨会话开发项目，或使用 Memory Bank 结构时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./long-running-agent"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "long-running", "memory-bank", "session"]
+    },
+    {
+      "name": "creator-skills",
+      "description": "用于创建和管理自定义 skills。当用户想要创建新 skill、管理 skills 目录、或初始化 skills 工作区时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./creator-skills"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "skills", "create", "manage"]
+    },
+    {
+      "name": "link-all-skills",
+      "description": "将当前项目下所有 skills 链接到全局注册表。触发于链接所有 skills、link all skills、批量链接等请求。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./link-all-skills"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "skills", "link", "batch"]
+    },
+    {
+      "name": "j-skills",
+      "description": "CLI tool for managing Agent Skills - link, install, and manage skills across 35+ coding agent environments.",
+      "version": "0.2.0",
+      "source": "./",
+      "skills": ["./j-skills"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "cli", "skills", "management"]
+    },
+    {
+      "name": "agent-browser-troubleshooting",
+      "description": "使用 agent-browser 遇到问题时的故障排查指南。当 agent-browser 命令失败、浏览器无法启动、连接超时、或页面操作异常时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./agent-browser-troubleshooting"],
+      "category": "developer-tools",
+      "keywords": ["agent-browser", "troubleshooting", "debug", "browser"]
+    },
+    {
+      "name": "tauri-troubleshooting",
+      "description": "Tauri v2 开发中常见问题的故障排查指南。当遇到 Tauri 插件权限、命令调用、配置错误等问题时触发。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./tauri-troubleshooting"],
+      "category": "developer-tools",
+      "keywords": ["tauri", "v2", "troubleshooting", "rust", "desktop"]
+    },
+    {
+      "name": "skill-researcher",
+      "description": "研究 Claude Code Skills 的元技能。当用户想要研究、对比、分析 GitHub 上的 Skills 项目时使用。支持搜索热门项目、下载翻译、生成对比报告。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./skill-researcher"],
+      "category": "developer-tools",
+      "keywords": ["claude-code", "skills", "research", "analysis"]
+    },
+    {
+      "name": "multi-agent",
+      "description": "多 Agent 协作，并行调用多个 AI 模型并合并最佳结果。适用于需要高质量答案、代码审查、风险对冲的场景。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./multi-agent"],
+      "category": "developer-tools",
+      "keywords": ["multi-agent", "parallel", "collaboration", "review"]
+    },
+    {
+      "name": "web-to-tauri-migration-loop",
+      "description": "Web 到 Tauri v2 迁移工作流。支持 contract-first 架构、双传输适配器、fail-fast 运行时检查、基于循环的质量门控。",
+      "version": "1.0.0",
+      "source": "./",
+      "skills": ["./web-to-tauri-migration-loop"],
+      "category": "developer-tools",
+      "keywords": ["tauri", "migration", "web", "desktop", "ralph-loop"]
     }
   ]
 }

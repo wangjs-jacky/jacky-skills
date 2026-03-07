@@ -4,6 +4,7 @@
   "description": "Jacky 的 Claude Code 技能集合 - 视频处理、开发工具、监控调试等实用技能",
   "author": {
     "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
     "url": "https://github.com/wangjs-jacky"
   },
   "homepage": "https://github.com/wangjs-jacky/jacky-skills",
@@ -23,15 +24,20 @@
     "./bilibili-to-obsidian/",
     "./bilibili-batch/",
     "./video-to-text/",
+    "./m3u8-dl/",
     "./github-repo-publish/",
-    "./long-running-agent/",
     "./claude-monitor/",
+    "./long-running-agent/",
+    "./config-obsidian/",
+    "./ob-summary/",
+    "./creator-skills/",
+    "./link-all-skills/",
+    "./j-skills/",
     "./agent-browser-troubleshooting/",
     "./tauri-troubleshooting/",
     "./fix-neat-video/",
-    "./config-obsidian/",
-    "./creator-skills/",
-    "./j-skills/",
-    "./link-all-skills/"
+    "./skill-researcher/",
+    "./multi-agent/",
+    "./web-to-tauri-migration-loop/"
   ]
 }
