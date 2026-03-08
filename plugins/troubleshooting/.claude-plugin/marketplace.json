@@ -1,0 +1,14 @@
+{
+  "name": "jacky-monitoring-tools",
+  "displayName": "Jacky Monitoring Tools",
+  "description": "监控调试工具集 - Claude Code 监控、故障排查",
+  "icon": "🔍",
+  "plugins": [
+    {
+      "name": "monitoring-tools",
+      "displayName": "Monitoring Tools",
+      "description": "监控调试工具集",
+      "path": "."
+    }
+  ]
+}

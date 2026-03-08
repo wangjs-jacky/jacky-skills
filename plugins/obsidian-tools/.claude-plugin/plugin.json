@@ -1,0 +1,24 @@
+{
+  "name": "obsidian-tools",
+  "version": "1.0.0",
+  "description": "Obsidian 工具集 - 笔记同步、知识库管理",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/obsidian-tools",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "obsidian",
+    "notes",
+    "sync",
+    "knowledge"
+  ],
+  "skills": [
+    "./config-obsidian/",
+    "./ob-summary/"
+  ]
+}

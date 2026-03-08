@@ -1,0 +1,26 @@
+{
+  "name": "dev-tools",
+  "version": "1.0.0",
+  "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建等",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/dev-tools",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "github",
+    "development",
+    "skills",
+    "automation"
+  ],
+  "skills": [
+    "./github-repo-publish/",
+    "./long-running-agent/",
+    "./creator-skills/",
+    "./skill-researcher/"
+  ]
+}

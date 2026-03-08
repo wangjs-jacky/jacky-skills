@@ -1,0 +1,14 @@
+{
+  "name": "jacky-skills-mgmt",
+  "displayName": "Jacky Skills Management",
+  "description": "Skills 管理工具 - 链接、安装、批量管理",
+  "icon": "📦",
+  "plugins": [
+    {
+      "name": "skills-mgmt",
+      "displayName": "Skills Management",
+      "description": "Skills 管理工具",
+      "path": "."
+    }
+  ]
+}

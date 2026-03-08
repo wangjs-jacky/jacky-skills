@@ -1,0 +1,14 @@
+{
+  "name": "jacky-advanced-tools",
+  "displayName": "Jacky Advanced Tools",
+  "description": "高级工具集 - 多 Agent 协作、Web 到 Tauri 迁移",
+  "icon": "🚀",
+  "plugins": [
+    {
+      "name": "advanced-tools",
+      "displayName": "Advanced Tools",
+      "description": "高级工具集",
+      "path": "."
+    }
+  ]
+}

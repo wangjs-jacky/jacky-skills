@@ -1,0 +1,14 @@
+{
+  "name": "jacky-dev-tools",
+  "displayName": "Jacky Dev Tools",
+  "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建",
+  "icon": "🛠️",
+  "plugins": [
+    {
+      "name": "dev-tools",
+      "displayName": "Dev Tools",
+      "description": "开发工具集",
+      "path": "."
+    }
+  ]
+}

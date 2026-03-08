@@ -1,0 +1,24 @@
+{
+  "name": "skills-mgmt",
+  "version": "1.0.0",
+  "description": "Skills 管理工具 - 链接、安装、批量管理",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/skills-mgmt",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "management",
+    "cli",
+    "j-skills"
+  ],
+  "skills": [
+    "./skills/j-skills/",
+    "./skills/link-all-skills/"
+  ]
+}

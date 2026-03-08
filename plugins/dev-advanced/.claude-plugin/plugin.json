@@ -1,0 +1,24 @@
+{
+  "name": "advanced-tools",
+  "version": "1.0.0",
+  "description": "高级工具集 - 多 Agent 协作、Web 到 Tauri 迁移",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/advanced-tools",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "multi-agent",
+    "tauri",
+    "migration",
+    "advanced"
+  ],
+  "skills": [
+    "./skills/multi-agent/",
+    "./skills/web-to-tauri-migration-loop/"
+  ]
+}

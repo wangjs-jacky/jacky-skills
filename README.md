@@ -3,90 +3,135 @@
 [![Stars](https://img.shields.io/github/stars/wangjs-jacky/jacky-skills?style=flat)](https://github.com/wangjs-jacky/jacky-skills/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Claude Code](https://img.shields.io/badge/-Claude%20Code-8A2BE2?logo=claude&logoColor=white)
-![Markdown](https://img.shields.io/badge/-Markdown-000000?logo=markdown&logoColor=white)
 
-**实用的 Claude Code 技能集合，提升 AI 辅助开发效率。**
+**实用的 Claude Code 技能集合，模块化设计，按需安装。**
 
 ---
 
-## 技能列表
+## Plugin 模块
 
-### 视频处理
+本项目采用**多 Plugin 架构**，每个 Plugin 包含一组相关 Skills，可独立安装和启用。
 
-| 技能 | 触发场景 | 说明 |
-|------|----------|------|
-| [bilibili-to-obsidian](./bilibili-to-obsidian) | B站视频提取字幕、保存到Obsidian | 从B站视频提取文案并整理到Obsidian，支持按作者分类 |
-| [bilibili-batch](./bilibili-batch) | 批量提取UP主视频、Top N视频 | 从B站UP主空间批量提取视频字幕，支持按播放量/收藏数排序 |
-| [video-to-text](./video-to-text) | 从视频提取文字、生成字幕 | 从视频平台提取文案（支持抖音等） |
-| [m3u8-dl](./m3u8-dl) | 下载视频、m3u8链接 | 下载M3U8/HLS视频流，支持AES-128解密、代理、时长限制 |
-| [fix-neat-video](./fix-neat-video) | 修复.mp4.ts文件、Neat Download问题 | 修复Neat Download下载的分段视频文件 |
-
-### 开发工具
-
-| 技能 | 触发场景 | 说明 |
-|------|----------|------|
-| [github-repo-publish](./github-repo-publish) | 发布到GitHub、push到远端、release extension | 一键发布仓库到GitHub，自动处理README、About、Release |
-| [long-running-agent](./long-running-agent) | continue development、resume work | 跨会话开发项目的Agent行为规范，支持Memory Bank |
-| [creator-skills](./creator-skills) | 创建新skill、管理skills目录 | 创建自定义skill并通过j-skills工具管理 |
-
-### 监控与调试
-
-| 技能 | 触发场景 | 说明 |
-|------|----------|------|
-| [claude-monitor](./claude-monitor) | Claude Code在做什么、监控会话状态 | 监控所有Claude Code会话，悬浮窗通知等待输入 |
-| [agent-browser-troubleshooting](./agent-browser-troubleshooting) | agent-browser失败、浏览器无法启动 | agent-browser故障排查指南 |
-| [tauri-troubleshooting](./tauri-troubleshooting) | Tauri插件权限、命令调用失败 | Tauri v2开发中常见问题的故障排查 |
-
-### 工具集成
-
-| 技能 | 触发场景 | 说明 |
-|------|----------|------|
-| [j-skills](./j-skills) | 管理skills、链接本地skills | Agent Skills管理CLI工具，支持35+个AI编码助手 |
-| [link-all-skills](./link-all-skills) | 链接所有skills、批量链接 | 将项目下所有skills链接到全局注册表 |
+| Plugin | 图标 | 说明 | 包含 Skills |
+|--------|------|------|-------------|
+| [video-processing](./plugins/video-processing) | 🎬 | 视频处理 | bilibili-to-obsidian, bilibili-batch, video-to-text, m3u8-dl, fix-neat-video |
+| [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, long-running-agent, creator-skills, skill-researcher |
+| [obsidian-tools](./plugins/obsidian-tools) | 📝 | Obsidian 工具 | config-obsidian, ob-summary |
+| [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | agent-browser-troubleshooting, tauri-troubleshooting |
+| [skills-management](./plugins/skills-management) | 📦 | Skills 管理 | j-skills, link-all-skills |
+| [dev-advanced](./plugins/dev-advanced) | 🚀 | 高级开发 | multi-agent, web-to-tauri-migration-loop |
 
 ---
 
 ## 快速开始
 
-### 方式一：通过插件安装（官方推荐）
-
-使用 Claude Code 的 `/plugin` 命令安装：
+### 方式一：按需安装单个 Plugin（推荐）
 
 ```bash
-# 第一步：添加市场
+# 安装视频处理工具
+npx skills add wangjs-jacky/jacky-skills/plugins/video-processing
+
+# 安装开发工具
+npx skills add wangjs-jacky/jacky-skills/plugins/dev-tools
+
+# 安装 Obsidian 工具
+npx skills add wangjs-jacky/jacky-skills/plugins/obsidian-tools
+```
+
+### 方式二：通过 Claude Code 插件市场安装
+
+```bash
+# 添加市场
 /plugin marketplace add wangjs-jacky/jacky-skills
 
-# 第二步：安装插件
-/plugin install jacky-skills@jacky-skills
+# 安装单个 Plugin
+/plugin install video-processing@jacky-skills
+/plugin install dev-tools@jacky-skills
 
-# 第三步：验证安装
-/plugin list
+# 启用/禁用
+/plugin enable video-processing@jacky-skills
+/plugin disable dev-tools@jacky-skills
 ```
 
-安装完成后，所有 skills 立即可用！
+### 方式三：配置文件控制
 
-### 方式二：一键脚本安装
+在 `settings.json` 中启用/禁用 Plugin：
 
-在新电脑上执行一条命令：
+```json
+{
+  "enabledPlugins": {
+    "video-processing@jacky-skills": true,
+    "dev-tools@jacky-skills": true,
+    "obsidian-tools@jacky-skills": false,
+    "troubleshooting@jacky-skills": true,
+    "skills-management@jacky-skills": true,
+    "dev-advanced@jacky-skills": false
+  }
+}
+```
+
+### 方式四：从 skills.sh 安装
+
+[![skills.sh](https://img.shields.io/badge/skills.sh-Open%20Skills%20Ecosystem-blue)](https://skills.sh)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wangjs-jacky/jacky-skills/main/install.sh | bash
+# 交互式安装
+npx skills add
+
+# 安装特定 Plugin
+npx skills add wangjs-jacky/jacky-skills/plugins/video-processing
 ```
 
-### 方式三：手动安装
+---
 
-```bash
-# 1. 安装 j-skills CLI
-npm install -g j-skills
+## Skills 详情
 
-# 2. 克隆仓库
-git clone https://github.com/wangjs-jacky/jacky-skills.git
-cd jacky-skills
+### 🎬 Video Processing
 
-# 3. 链接并安装
-j-skills link --all
-j-skills install <skill-name> -g
-```
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| bilibili-to-obsidian | B站视频提取字幕 | 从B站视频提取文案并整理到Obsidian |
+| bilibili-batch | 批量提取UP主视频 | 从B站UP主空间批量提取视频字幕 |
+| video-to-text | 从视频提取文字 | 从视频平台提取文案（支持抖音等） |
+| m3u8-dl | 下载视频、m3u8链接 | 下载M3U8/HLS视频流 |
+| fix-neat-video | 修复.mp4.ts文件 | 修复Neat Download下载的分段视频 |
+
+### 🛠️ Dev Tools
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| github-repo-publish | 发布到GitHub | 一键发布仓库到GitHub |
+| long-running-agent | continue development | 跨会话开发项目 |
+| creator-skills | 创建新skill | 创建自定义skill |
+| skill-researcher | 研究skills | 研究、对比、分析Skills项目 |
+
+### 📝 Obsidian Tools
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| config-obsidian | 配置Obsidian同步 | 配置Obsidian同步环境 |
+| ob-summary | Obsidian概览 | 知识库概览总结 |
+
+### 🔍 Troubleshooting
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| agent-browser-troubleshooting | agent-browser失败 | agent-browser故障排查 |
+| tauri-troubleshooting | Tauri插件权限 | Tauri v2故障排查 |
+
+### 📦 Skills Management
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| j-skills | 管理skills | Agent Skills管理CLI工具 |
+| link-all-skills | 链接所有skills | 将所有skills链接到全局注册表 |
+
+### 🚀 Dev Advanced
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| multi-agent | 多Agent协作 | 并行调用多个AI模型 |
+| web-to-tauri-migration-loop | Web到Tauri迁移 | Web到Tauri v2迁移工作流 |
 
 ---
 
@@ -94,77 +139,32 @@ j-skills install <skill-name> -g
 
 ```
 jacky-skills/
-├── .claude-plugin/            # Claude Code 插件配置
-│   ├── plugin.json            # 插件清单
-│   └── marketplace.json       # 市场配置
-├── install.sh                 # 一键安装脚本
-├── CLAUDE.md                  # 项目配置
-├── bilibili-to-obsidian/      # B站字幕提取到Obsidian
-├── bilibili-batch/            # B站批量提取
-├── video-to-text/             # 视频转文字
-├── fix-neat-video/            # 修复Neat Download视频
-├── github-repo-publish/       # GitHub仓库发布
-├── long-running-agent/        # 跨会话开发Agent
-├── claude-monitor/            # Claude Code监控
-├── agent-browser-troubleshooting/  # agent-browser故障排查
-├── tauri-troubleshooting/     # Tauri故障排查
-├── config-obsidian/           # Obsidian同步配置
-├── creator-skills/            # Skill创建工具
-├── j-skills/                  # Skills管理CLI
-└── link-all-skills/           # 批量链接工具
+├── .claude-plugin/           # 根插件配置
+│   ├── plugin.json           # 元插件清单
+│   └── marketplace.json      # 市场配置
+├── plugins/                  # 子插件目录
+│   ├── video-processing/     # 视频处理
+│   │   ├── .claude-plugin/
+│   │   │   ├── plugin.json
+│   │   │   └── marketplace.json
+│   │   └── skills/
+│   ├── dev-tools/            # 开发工具
+│   ├── obsidian-tools/       # Obsidian工具
+│   ├── troubleshooting/      # 故障排查
+│   ├── skills-management/    # Skills管理
+│   └── dev-advanced/         # 高级开发
+├── install.sh                # 一键安装脚本
+├── CLAUDE.md                 # 项目配置
+└── README.md                 # 本文件
 ```
-
----
-
-## Skill 开发规范
-
-每个 skill 包含一个 `SKILL.md` 文件：
-
-```markdown
----
-name: skill-name
-description: 触发条件和用途描述
-argument-hint: <可选参数提示>  # 可选
----
-
-# Skill Name
-
-技能的详细说明和行为规范...
-```
-
-### 创建新 Skill
-
-```bash
-# 使用 creator-skills skill
-/creator-skills
-
-# 或手动创建
-mkdir my-new-skill
-# 创建 SKILL.md 文件...
-j-skills link my-new-skill
-j-skills install my-new-skill -g
-```
-
----
-
-## 常用命令
-
-| 操作 | 命令 |
-|------|------|
-| 链接所有 skills | `j-skills link --all` |
-| 链接单个 skill | `j-skills link <skill-name>` |
-| 全局安装 | `j-skills install <name> -g` |
-| 列出已链接 | `j-skills link --list` |
-| 列出已安装 | `j-skills list --all` |
-| 卸载 | `j-skills uninstall <name> -g` |
 
 ---
 
 ## 相关链接
 
 - **GitHub**: https://github.com/wangjs-jacky/jacky-skills
+- **skills.sh**: https://skills.sh (Open Agent Skills Ecosystem)
 - **npm Organization**: [@wangjs-jacky](https://www.npmjs.com/org/wangjs-jacky)
-- **j-skills CLI**: [jacky-skills-package](https://github.com/wangjs-jacky/jacky-skills-package)
 
 ---
 

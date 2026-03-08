@@ -1,0 +1,14 @@
+{
+  "name": "jacky-video-tools",
+  "displayName": "Jacky Video Tools",
+  "description": "视频处理工具集 - B站字幕提取、视频下载、格式转换",
+  "icon": "🎬",
+  "plugins": [
+    {
+      "name": "video-tools",
+      "displayName": "Video Tools",
+      "description": "视频处理工具集",
+      "path": "."
+    }
+  ]
+}

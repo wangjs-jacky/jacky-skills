@@ -1,0 +1,14 @@
+{
+  "name": "jacky-obsidian-tools",
+  "displayName": "Jacky Obsidian Tools",
+  "description": "Obsidian 工具集 - 笔记同步、知识库管理",
+  "icon": "📝",
+  "plugins": [
+    {
+      "name": "obsidian-tools",
+      "displayName": "Obsidian Tools",
+      "description": "Obsidian 工具集",
+      "path": "."
+    }
+  ]
+}

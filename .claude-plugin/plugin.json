@@ -1,7 +1,7 @@
 {
   "name": "jacky-skills",
-  "version": "1.0.0",
-  "description": "Jacky 的 Claude Code 技能集合 - 视频处理、开发工具、监控调试等实用技能",
+  "version": "2.0.0",
+  "description": "Jacky 的 Claude Code 技能集合 - 模块化 Plugin 架构",
   "author": {
     "name": "Jacky Wang",
     "email": "wangjs.jacky@gmail.com",
@@ -13,31 +13,20 @@
   "keywords": [
     "claude-code",
     "skills",
-    "bilibili",
-    "obsidian",
+    "plugins",
     "video",
+    "obsidian",
     "github",
     "automation",
     "chinese"
   ],
-  "skills": [
-    "./bilibili-to-obsidian/",
-    "./bilibili-batch/",
-    "./video-to-text/",
-    "./m3u8-dl/",
-    "./github-repo-publish/",
-    "./claude-monitor/",
-    "./long-running-agent/",
-    "./config-obsidian/",
-    "./ob-summary/",
-    "./creator-skills/",
-    "./link-all-skills/",
-    "./j-skills/",
-    "./agent-browser-troubleshooting/",
-    "./tauri-troubleshooting/",
-    "./fix-neat-video/",
-    "./skill-researcher/",
-    "./multi-agent/",
-    "./web-to-tauri-migration-loop/"
+  "notes": "此文件为元插件配置。推荐安装具体的子插件以获得更好的模块化体验。",
+  "subPlugins": [
+    "plugins/video-tools",
+    "plugins/dev-tools",
+    "plugins/obsidian-tools",
+    "plugins/monitoring-tools",
+    "plugins/skills-mgmt",
+    "plugins/advanced-tools"
   ]
 }
