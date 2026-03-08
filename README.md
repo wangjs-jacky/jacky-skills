@@ -25,16 +25,17 @@
 
 ## 快速开始
 
-### 方式一：按需安装单个 Plugin（推荐）
+### 方式一：从 skills.sh 安装（推荐）
+
+[![skills.sh](https://img.shields.io/badge/skills.sh-Open%20Skills%20Ecosystem-blue)](https://skills.sh)
 
 ```bash
-# 安装视频处理工具
+# 交互式安装
+npx skills add
+
+# 安装特定 Plugin
 npx skills add wangjs-jacky/jacky-skills/plugins/video-processing
-
-# 安装开发工具
 npx skills add wangjs-jacky/jacky-skills/plugins/dev-tools
-
-# 安装 Obsidian 工具
 npx skills add wangjs-jacky/jacky-skills/plugins/obsidian-tools
 ```
 
@@ -48,16 +49,69 @@ npx skills add wangjs-jacky/jacky-skills/plugins/obsidian-tools
 /plugin install video-processing@jacky-skills
 /plugin install dev-tools@jacky-skills
 
-# 启用/禁用
+# 启用/禁用 Plugin（命令会自动修改 settings.json）
 /plugin enable video-processing@jacky-skills
 /plugin disable dev-tools@jacky-skills
 ```
 
-### 方式三：配置文件控制
+### 方式三：本地开发模式（j-skills）
 
-在 `settings.json` 中启用/禁用 Plugin：
+适合需要修改 skills 源码的开发者，使用软链接实现热更新。
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/wangjs-jacky/jacky-skills.git
+cd jacky-skills
+
+# 2. 安装 j-skills CLI
+npm install -g j-skills
+
+# 3. 链接所有 skills 到全局注册表
+j-skills link --all
+
+# 4. 安装到 Claude Code（全局）
+j-skills install video-processing -g
+
+# 常用命令
+j-skills link --list      # 查看已链接
+j-skills list --all       # 查看已安装
+j-skills uninstall <name> -g  # 卸载
+```
+
+---
+
+## 安装方式对比
+
+| 方式 | 工具 | 适用场景 | 特点 |
+|------|------|----------|------|
+| **skills.sh** | `npx skills add` | 跨 Agent 使用 | 一键安装，支持 35+ Agent |
+| **/plugin** | Claude Code 命令 | 仅 Claude Code | 官方原生支持，操作简单 |
+| **j-skills** | CLI 工具 | 本地开发修改 | 软链接热更新，修改即生效 |
+
+---
+
+## 配置说明
+
+### 配置文件位置
+
+`/plugin enable` 和 `/plugin disable` 命令会自动修改 `settings.json` 中的 `enabledPlugins` 字段。
+
+| 作用范围 | 文件路径 | 说明 |
+|----------|----------|------|
+| **全局** | `~/.claude/settings.json` | 所有项目生效 |
+| **项目共享** | `.claude/settings.json` | 当前项目生效，提交到 git |
+| **项目本地** | `.claude/settings.local.json` | 当前项目生效，不提交 git |
+
+### 优先级
+
+```
+项目本地 > 项目共享 > 全局
+```
+
+### 手动配置示例
 
 ```json
+// ~/.claude/settings.json 或 .claude/settings.json
 {
   "enabledPlugins": {
     "video-processing@jacky-skills": true,
@@ -70,17 +124,59 @@ npx skills add wangjs-jacky/jacky-skills/plugins/obsidian-tools
 }
 ```
 
-### 方式四：从 skills.sh 安装
-
-[![skills.sh](https://img.shields.io/badge/skills.sh-Open%20Skills%20Ecosystem-blue)](https://skills.sh)
+### 验证配置
 
 ```bash
-# 交互式安装
-npx skills add
+# 查看当前生效的配置和 Plugin 状态
+/status
 
-# 安装特定 Plugin
-npx skills add wangjs-jacky/jacky-skills/plugins/video-processing
+# 查看已安装的 Plugin
+/plugin list
 ```
+
+---
+
+## 版本管理
+
+### 更新到最新版本
+
+```bash
+# skills.sh 方式 - 检查更新
+npx skills check
+
+# skills.sh 方式 - 更新所有已安装的 skills
+npx skills update
+
+# /plugin 方式 - 更新特定 Plugin
+/plugin update video-processing@jacky-skills
+
+# j-skills 方式 - 拉取最新代码
+cd jacky-skills && git pull
+j-skills link --all
+```
+
+### 安装特定版本
+
+```bash
+# skills.sh 方式 - 指定 Git ref（branch/tag/commit）
+npx skills add wangjs-jacky/jacky-skills/plugins/video-processing@v1.0.0
+npx skills add wangjs-jacky/jacky-skills/plugins/video-processing@main
+npx skills add wangjs-jacky/jacky-skills/plugins/video-processing@abc123
+
+# j-skills 方式 - 切换到特定版本
+cd jacky-skills
+git checkout v1.0.0
+j-skills link --all
+j-skills install video-processing -g
+```
+
+### 版本管理对比
+
+| 方式 | 更新命令 | 安装特定版本 |
+|------|----------|--------------|
+| **skills.sh** | `npx skills update` | `@<ref>` 后缀，如 `@v1.0.0` |
+| **/plugin** | `/plugin update <name>` | 暂不支持 |
+| **j-skills** | `git pull` + `link --all` | `git checkout <ref>` |
 
 ---
 
