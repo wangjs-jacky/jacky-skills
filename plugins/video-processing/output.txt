@@ -1,0 +1,58 @@
+npm warn Unknown user config "home". This will stop working in the next major version of npm.
+[1mGlobal Skills[0m
+
+[1mJacky Skills[0m
+  [36magent-browser-troubleshooting[0m [38;5;102m~/.agents/skills/agent-browser-troubleshooting[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mbilibili-batch[0m [38;5;102m~/.agents/skills/bilibili-batch[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mbilibili-to-obsidian[0m [38;5;102m~/.agents/skills/bilibili-to-obsidian[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mclaude-monitor[0m [38;5;102m~/.agents/skills/claude-monitor[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mconfig-obsidian[0m [38;5;102m~/.agents/skills/config-obsidian[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mcreator-skills[0m [38;5;102m~/.agents/skills/creator-skills[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mfix-neat-video[0m [38;5;102m~/.agents/skills/fix-neat-video[0m
+    [38;5;102mAgents:[0m Cline
+  [36mgithub-repo-publish[0m [38;5;102m~/.agents/skills/github-repo-publish[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mj-skills[0m [38;5;102m~/.agents/skills/j-skills[0m
+    [38;5;102mAgents:[0m Claude Code, Cline, Cursor
+  [36mlink-all-skills[0m [38;5;102m~/.agents/skills/link-all-skills[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mlong-running-agent[0m [38;5;102m~/.agents/skills/long-running-agent[0m
+    [38;5;102mAgents:[0m Claude Code, Cline, Cursor
+  [36mmulti-agent[0m [38;5;102m~/.agents/skills/multi-agent[0m
+    [38;5;102mAgents:[0m Cline
+  [36mob-summary[0m [38;5;102m~/.agents/skills/ob-summary[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mskill-researcher[0m [38;5;102m~/.agents/skills/skill-researcher[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mtauri-troubleshooting[0m [38;5;102m~/.agents/skills/tauri-troubleshooting[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mvideo-to-text[0m [38;5;102m~/.agents/skills/video-to-text[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mweb-to-tauri-migration-loop[0m [38;5;102m~/.agents/skills/web-to-tauri-migration-loop[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+
+[1mGeneral[0m
+  [36magent-browser[0m [38;5;102m~/.agents/skills/agent-browser[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mfind-skills[0m [38;5;102m~/.agents/skills/find-skills[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mtauri-v2[0m [38;5;102m~/.agents/skills/tauri-v2[0m
+    [38;5;102mAgents:[0m Claude Code, Cline
+  [36mvercel-composition-patterns[0m [38;5;102m~/.agents/skills/vercel-composition-patterns[0m
+    [38;5;102mAgents:[0m Claude Code, OpenClaw, Cline, CodeBuddy, Codex +29 more
+  [36mvercel-react-best-practices[0m [38;5;102m~/.agents/skills/vercel-react-best-practices[0m
+    [38;5;102mAgents:[0m Claude Code, OpenClaw, Cline, CodeBuddy, Codex +29 more
+  [36mvercel-react-native-skills[0m [38;5;102m~/.agents/skills/vercel-react-native-skills[0m
+    [38;5;102mAgents:[0m Claude Code, OpenClaw, Cline, CodeBuddy, Codex +29 more
+  [36mvideo-fix[0m [38;5;102m~/.agents/skills/video-fix[0m
+    [38;5;102mAgents:[0m Cline
+  [36mweb-design-guidelines[0m [38;5;102m~/.agents/skills/web-design-guidelines[0m
+    [38;5;102mAgents:[0m Claude Code, OpenClaw, Cline, CodeBuddy, Codex +29 more
+  [36marticle-to-demo[0m [38;5;102m~/.claude/skills/article-to-demo[0m
+    [38;5;102mAgents:[0m Claude Code
