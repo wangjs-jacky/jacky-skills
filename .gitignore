@@ -1,2 +1,5 @@
-、# 忽略 m3u8-dl 目录
+# 忽略 m3u8-dl 目录
 m3u8-dl/
+
+# 忽略用户词汇库数据文件
+plugins/language-skills/**/vocabulary.json

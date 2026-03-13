@@ -17,6 +17,7 @@
 | [video-processing](./plugins/video-processing) | 🎬 | 视频处理 | bilibili-to-obsidian, bilibili-batch, video-to-text, m3u8-dl, fix-neat-video |
 | [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, long-running-agent, creator-skills, skill-researcher |
 | [obsidian-tools](./plugins/obsidian-tools) | 📝 | Obsidian 工具 | config-obsidian, ob-summary |
+| [language-skills](./plugins/language-skills) | 🗣️ | 语言技能 | spoken-english-coach |
 | [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | agent-browser-troubleshooting, tauri-troubleshooting |
 | [skills-management](./plugins/skills-management) | 📦 | Skills 管理 | j-skills, link-all-skills |
 | [dev-advanced](./plugins/dev-advanced) | 🚀 | 高级开发 | multi-agent, web-to-tauri-migration-loop |
@@ -208,6 +209,12 @@ j-skills install video-processing -g
 | config-obsidian | 配置Obsidian同步 | 配置Obsidian同步环境 |
 | ob-summary | Obsidian概览 | 知识库概览总结 |
 
+### 🗣️ Language Skills
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| spoken-english-coach | 英语口语表达 | 英语口语表达教练，建立个性化表达库 |
+
 ### 🔍 Troubleshooting
 
 | Skill | 触发场景 | 说明 |
@@ -246,6 +253,7 @@ jacky-skills/
 │   │   └── skills/
 │   ├── dev-tools/            # 开发工具
 │   ├── obsidian-tools/       # Obsidian工具
+│   ├── language-skills/      # 语言技能
 │   ├── troubleshooting/      # 故障排查
 │   ├── skills-management/    # Skills管理
 │   └── dev-advanced/         # 高级开发
