@@ -1,0 +1,261 @@
+/* Claude Code Monitor - Terminal Noir Theme */
+
+:root {
+  --color-bg: #0a0a0b;
+  --color-bg-elevated: #131316;
+  --color-bg-hover: #1a1a1d;
+  --color-text: #e5e5e7;
+  --color-text-muted: #6b6b76;
+  --color-primary: #00ff88;
+  --color-primary-dim: rgba(0, 255, 136, 0.15);
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-success: #00ff88;
+  --color-error: #ff4757;
+  --color-warning: #ffb800;
+  --color-blue: #00d4ff;
+  --color-purple: #bf5af2;
+  --color-yellow: #ffd60a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.session-id {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Buttons */
+.btn {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-primary);
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex;
+  gap: 24px;
+  padding: 16px;
+  background: var(--color-bg-elevated);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  flex: 1;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.filter-select {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Timeline */
+.timeline {
+  background: var(--color-bg-elevated);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.2s;
+}
+
+.event-item:hover {
+  background: var(--color-bg-hover);
+}
+
+.event-item:last-child {
+  border-bottom: none;
+}
+
+.event-time {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.event-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.event-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-name {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.event-detail {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-duration {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.event-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.event-status.success {
+  background: var(--color-success);
+}
+
+.event-status.error {
+  background: var(--color-error);
+}
+
+/* Tool Colors */
+.tool-read { color: var(--color-blue); }
+.tool-write { color: var(--color-success); }
+.tool-edit { color: var(--color-warning); }
+.tool-bash { color: var(--color-yellow); }
+.tool-grep { color: var(--color-blue); }
+.tool-skill { color: var(--color-purple); }
+.tool-agent { color: var(--color-purple); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stats-bar {
+    flex-wrap: wrap;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+}

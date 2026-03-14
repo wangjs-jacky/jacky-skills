@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Monitor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>🖥️ Claude Code Monitor</h1>
+        <span class="session-id" id="sessionId">Session: --</span>
+      </div>
+      <div class="header-right">
+        <button class="btn" id="refreshBtn">🔄 刷新</button>
+        <button class="btn" id="openFileBtn">📁 打开日志</button>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value" id="eventCount">0</span>
+        <span class="stat-label">events</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="totalDuration">0s</span>
+        <span class="stat-label">duration</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="toolCount">0</span>
+        <span class="stat-label">tools</span>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <input type="text" class="filter-input" id="filterInput" placeholder="过滤工具名称...">
+      <select class="filter-select" id="statusFilter">
+        <option value="all">全部状态</option>
+        <option value="success">成功</option>
+        <option value="error">错误</option>
+      </select>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline" id="timeline">
+      <div class="empty-state">
+        <p>暂无事件数据</p>
+        <p>请先使用 /monitor-on 启用监控</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
