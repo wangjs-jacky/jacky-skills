@@ -1,0 +1,6 @@
+# Benchmark 测试结果（生成的翻译文件）
+benchmark-results/parallel/
+benchmark-results/single/
+
+# 保留报告文件
+!benchmark-results/BENCHMARK-REPORT.md

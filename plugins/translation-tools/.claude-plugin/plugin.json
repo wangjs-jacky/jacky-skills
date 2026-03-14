@@ -1,0 +1,28 @@
+{
+  "name": "translation-tools",
+  "version": "1.0.0",
+  "description": "低成本翻译工具集 - 使用 haiku 模型进行高效翻译，支持单文件和多文件并行处理",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/translation-tools",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "translation",
+    "parallel",
+    "haiku",
+    "cost-efficient",
+    "i18n",
+    "localization"
+  ],
+  "agents": [
+    "./agents/translation-worker.md"
+  ],
+  "skills": [
+    "./skills/parallel-translation/"
+  ]
+}

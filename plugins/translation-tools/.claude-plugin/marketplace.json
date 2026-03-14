@@ -1,0 +1,14 @@
+{
+  "name": "jacky-translation-tools",
+  "displayName": "Jacky Translation Tools",
+  "description": "低成本翻译工具集 - 使用 haiku 模型进行高效翻译",
+  "icon": "🌐",
+  "plugins": [
+    {
+      "name": "translation-tools",
+      "displayName": "Translation Tools",
+      "description": "翻译工具集 - 单文件/多文件并行翻译",
+      "path": "."
+    }
+  ]
+}
