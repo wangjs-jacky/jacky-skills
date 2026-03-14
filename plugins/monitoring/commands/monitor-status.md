@@ -1,11 +1,12 @@
 ---
 description: 查看 Claude Code 监控状态
+allowed-tools: ["Bash"]
 ---
 
 # 查看监控状态
 
-```!
-# 加载核心库并显示状态
-source "${CLAUDE_PLUGIN_ROOT}/lib/core.sh"
-show_status
+执行以下命令查看监控状态：
+
+```bash
+source /Users/jiashengwang/jacky-github/jacky-skills/plugins/monitoring/lib/core.sh && show_status
 ```
