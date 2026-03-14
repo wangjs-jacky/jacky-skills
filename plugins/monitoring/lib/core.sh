@@ -5,12 +5,12 @@
 set -euo pipefail
 
 # ============================================================================
-# 常量定义
+# 常量定义（允许环境变量覆盖）
 # ============================================================================
-MONITOR_DIR="${HOME}/.claude/monitor"
-STATUS_FILE="${MONITOR_DIR}/status.json"
-CONFIG_FILE="${MONITOR_DIR}/config.json"
-SESSIONS_DIR="${MONITOR_DIR}/sessions"
+MONITOR_DIR="${MONITOR_DIR:-${HOME}/.claude/monitor}"
+STATUS_FILE="${STATUS_FILE:-${MONITOR_DIR}/status.json}"
+CONFIG_FILE="${CONFIG_FILE:-${MONITOR_DIR}/config.json}"
+SESSIONS_DIR="${SESSIONS_DIR:-${MONITOR_DIR}/sessions}"
 
 # ============================================================================
 # 状态管理函数
