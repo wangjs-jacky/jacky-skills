@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# PostToolUse hook - 记录工具调用结束
+
+set -euo pipefail
+
+# 确定插件根目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+# 加载核心库
+source "${PLUGIN_ROOT}/lib/core.sh"
+
+# 检查监控是否启用
+if ! is_monitor_enabled; then
+  exit 0
+fi
+
+# 从 stdin 读取工具调用结果
+if [[ -t 0 ]]; then
+  # 无 stdin 输入，直接退出
+  exit 0
+fi
+
+TOOL_RESULT=$(cat)
+
+# 记录事件并计算耗时
+record_post_event "$TOOL_RESULT"
+
+exit 0
