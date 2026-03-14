@@ -1,0 +1,29 @@
+{
+  "name": "monitoring",
+  "version": "1.0.0",
+  "description": "Claude Code Monitor - 监控工具调用、性能分析、Skills 调试",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/monitoring",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "monitor",
+    "debugging",
+    "profiling",
+    "hooks"
+  ],
+  "skills": [
+    "./skills/claude-monitor/"
+  ],
+  "commands": [
+    "./commands/monitor.md",
+    "./commands/monitor-on.md",
+    "./commands/monitor-off.md",
+    "./commands/monitor-status.md"
+  ]
+}
