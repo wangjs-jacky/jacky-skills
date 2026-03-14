@@ -1,5 +1,4 @@
 ---
-name: monitor-status
 description: 查看 Claude Code 监控状态
 ---
 

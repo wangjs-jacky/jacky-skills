@@ -1,5 +1,4 @@
 ---
-name: monitor
 description: 监控 Claude Code 运行状态 - 查看工具调用、性能分析
 ---
 

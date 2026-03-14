@@ -1,5 +1,4 @@
 ---
-name: monitor-on
 description: 启用 Claude Code 监控
 ---
 

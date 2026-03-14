@@ -1,5 +1,4 @@
 ---
-name: monitor-off
 description: 禁用 Claude Code 监控
 ---
 

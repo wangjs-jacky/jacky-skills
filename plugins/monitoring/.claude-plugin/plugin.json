@@ -16,14 +16,5 @@
     "debugging",
     "profiling",
     "hooks"
-  ],
-  "skills": [
-    "./skills/claude-monitor/"
-  ],
-  "commands": [
-    "./commands/monitor.md",
-    "./commands/monitor-on.md",
-    "./commands/monitor-off.md",
-    "./commands/monitor-status.md"
   ]
 }
