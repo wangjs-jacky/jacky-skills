@@ -104,10 +104,22 @@ fi
 
 **进度提示：**
 ```
-✓ 克隆仓库到 {TARGET_DIR}
+✓ 创建目标目录 {TARGET_DIR}
+✓ 克隆仓库到 {TARGET_DIR}/{repo_name}/
 ✓ 删除 .git 目录
-✓ 创建 .notes/ 目录
+✓ 创建 notes/ 目录
 ✓ 初始化 Git 仓库
+```
+
+**目录结构：**
+```
+{repo}-study/           # 学习项目根目录
+├── CLAUDE.md           # 学习配置（由 AI 生成）
+├── README.md           # 学习项目说明（由 AI 生成）
+├── notes/              # 学习笔记
+└── {repo}/             # 原始仓库（子目录）
+    ├── README.md       # 原始 README
+    └── ... (原始代码)
 ```
 
 ### 第五步：翻译文档
@@ -309,9 +321,10 @@ cd {TARGET_DIR}
 用户: /learn-repo https://github.com/ruvnet/ruflo
 
 AI: 正在初始化 ruflo 学习项目...
-    ✓ 克隆仓库到 ~/jacky-github/ruflo-study
+    ✓ 创建目标目录 ~/jacky-github/ruflo-study
+    ✓ 克隆仓库到 ~/jacky-github/ruflo-study/ruflo/
     ✓ 删除 .git 目录
-    ✓ 创建 .notes/ 目录
+    ✓ 创建 notes/ 目录
     ✓ 初始化 Git 仓库
     ✓ 翻译文档（使用 parallel-translation）
     ✓ 分析仓库内容
@@ -345,7 +358,8 @@ AI: 正在初始化 get-shit-done 学习项目...
 │ 输出:                                               │
 │   {GITHUB_PROJECTS_DIR}/{repo}-study/              │
 │   ├── CLAUDE.md       # 定制化学习指南              │
-│   ├── .notes/         # 学习笔记目录                │
-│   └── {源码}          # 仓库代码                    │
+│   ├── README.md       # 学习项目说明                │
+│   ├── notes/          # 学习笔记目录                │
+│   └── {repo}/         # 原始仓库代码                │
 └─────────────────────────────────────────────────────┘
 ```

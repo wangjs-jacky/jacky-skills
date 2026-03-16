@@ -1,89 +1,90 @@
 ---
 name: parallel-translation
-description: "智能翻译调度器：自动判断单文件/多文件，使用 haiku 模型低成本翻译。触发词：翻译、translate、多文件翻译、仓库翻译、中文翻译"
+description: 智能翻译调度器：自动判断单文件/多文件，使用 haiku 模型低成本翻译。触发词：翻译、translate、多文件翻译、仓库翻译、中文翻译
 ---
 
-# Parallel Translation - 智能翻译调度器
+<role>
+你是一个智能翻译调度器。你分析用户的翻译需求，自动选择最优策略，并调度 translation-worker agents 执行翻译任务。
+</role>
 
-## 概述
+<purpose>
+使用 haiku 模型的低成本翻译方案，自动适配单文件/多文件场景，通过并行执行最大化效率。
+</purpose>
 
-**使用 haiku 模型的低成本翻译方案，自动适配单文件/多文件场景。**
+<philosophy>
+**为什么使用子代理：**
+- 翻译任务独立性强，每个文件可以独立翻译
+- 子代理有独立上下文，不会互相污染
+- 并行执行，速度快
+- 使用 haiku 模型，成本比 sonnet/opus 低 12-60 倍
 
-```
-┌─────────────────────────────────────────────────────┐
-│              parallel-translation (入口)             │
-│  1. 分析输入（单文件 vs 多文件）                       │
-│  2. 选择策略（单 agent vs 并行 agents）               │
-│  3. 调度 translation-worker agents                   │
-│  4. 汇总结果                                         │
-└─────────────────────────────────────────────────────┘
-```
+**成本对比：**
+| 方案 | 模型 | 成本/1M tokens |
+|------|------|----------------|
+| 单一 opus | opus | ~$15 |
+| 单一 sonnet | sonnet | ~$3 |
+| **本方案** | **haiku** | **~$0.25** |
 
-## 触发条件
+**节省：60x 相比 opus，12x 相比 sonnet**
+</philosophy>
 
-**触发此 skill：**
-- 用户说"翻译这个文件/仓库/目录"
-- 用户需要将内容翻译为中文
-- 涉及多个文件的翻译任务
-- 成本敏感的翻译场景
+<process>
 
----
-
-## 执行步骤
-
-### 第一步：分析输入类型
-
-根据用户提供的内容，判断翻译目标：
+<step name="analyze_input" priority="first">
+分析用户输入，判断翻译目标：
 
 | 输入类型 | 判断条件 | 执行策略 |
 |---------|---------|---------|
-| **单文件** | 用户提供单个文件路径 | 跳到 [策略 A](#策略-a单文件翻译) |
-| **多文件/目录** | 用户提供目录或多个文件 | 跳到 [策略 B](#策略-b多文件并行翻译) |
+| **单文件** | 用户提供单个文件路径 | 跳到 single_file_strategy |
+| **多文件/目录** | 用户提供目录或多个文件 | 跳到 multi_file_strategy |
 
----
+提取关键信息：
+- 源文件路径或目录
+- 目标语言（默认中文）
+- 是否有特殊要求（保持格式、术语表等）
+</step>
 
-### 策略 A：单文件翻译
-
+<step name="single_file_strategy">
 **适用场景**：用户只提供一个文件路径
 
-**执行步骤**：
+从用户输入中提取文件路径，确定输出位置：
+- 输出路径规则：同目录添加 `.zh-CN` 后缀
+- `README.md` → `README.zh-CN.md`
 
-1. **确认文件路径**：从用户输入中提取文件路径
-2. **确定输出路径**：默认在同目录添加 `.zh-CN` 后缀（如 `README.md` → `README.zh-CN.md`）
-3. **启动单个 agent**：
+启动单个 translation-worker agent：
 
 ```
-使用 Agent 工具，参数如下：
-- subagent_type: "translation-worker"
-- model: "haiku"
-- description: "翻译文件 [文件名]"
-- prompt: |
-    翻译任务：
+Task(
+  subagent_type="translation-worker",
+  model="haiku",
+  description="翻译文件 {文件名}",
+  prompt="翻译任务：
 
-    **文件路径**: [提取的文件路径]
-    **输出位置**: [输出路径]
+**文件路径**: {提取的文件路径}
+**输出位置**: {输出路径}
 
-    请读取文件，翻译为中文，写入输出位置。
+请读取文件，翻译为中文，写入输出位置。
+
+要求：
+- 保持原有 Markdown 格式
+- 代码块内的内容不翻译
+- frontmatter 只翻译 value，不翻译 key
+- 返回确认信息，不要返回翻译内容"
+)
 ```
 
-4. **等待完成**，输出结果报告
+等待 agent 完成，继续到 generate_report。
+</step>
 
----
-
-### 策略 B：多文件并行翻译
-
+<step name="multi_file_strategy">
 **适用场景**：用户提供目录或多个文件
-
-**执行步骤**：
-
-#### 1. 扫描目标文件
 
 使用 Glob 工具扫描目录：
 
-```
-Glob 工具参数：
-- pattern: "**/*.{md,txt,rst,adoc}"
-- path: [用户指定的目录]
+```bash
+# 扫描目标目录
+Glob pattern: "**/*.{md,txt,rst,adoc}"
+Glob path: {用户指定的目录}
 ```
 
 **过滤规则**：
@@ -91,8 +92,7 @@ Glob 工具参数：
 - 排除 `.git/**`
 - 排除 `dist/**`, `build/**`
 - 排除已存在的翻译文件 `*.zh-CN.md`
-
-#### 2. 分组
+- 排除 `*.min.*`
 
 根据文件数量决定分组策略：
 
@@ -105,62 +105,139 @@ Glob 工具参数：
 
 **分组方法**：将文件列表按每组指定数量拆分
 
-#### 3. 并行启动 agents
+继续到 spawn_parallel_agents。
+</step>
 
-**关键：在同一个响应中发起多个 Agent 调用，实现并行执行**
+<step name="spawn_parallel_agents">
+启动多个并行 translation-worker agents。
 
-为每个分组发起一个 Agent 调用：
+Use Task tool with `subagent_type="translation-worker"`, `model="haiku"`, and `run_in_background=true` for parallel execution.
+
+**CRITICAL:** 所有 Task 调用必须在同一条响应中发起，才能并行执行。
+
+**Agent 1: 第 1 组**
 
 ```
-Agent 调用 1:
-- subagent_type: "translation-worker"
-- model: "haiku"
-- description: "翻译组 1/[总组数]"
-- prompt: |
-    翻译任务（第 1 组，共 [N] 组）：
+Task(
+  subagent_type="translation-worker",
+  model="haiku",
+  run_in_background=true,
+  description="翻译组 1/{总组数}",
+  prompt="翻译任务（第 1 组，共 {N} 组）：
 
-    **文件列表**:
-    - [文件1路径]
-    - [文件2路径]
-    - [文件3路径]
+**文件列表**:
+- {file1_path}
+- {file2_path}
+- {file3_path}
 
-    请逐个读取、翻译、写入。
+请逐个读取、翻译、写入。输出文件添加 .zh-CN 后缀。
 
-Agent 调用 2:
-- subagent_type: "translation-worker"
-- model: "haiku"
-- description: "翻译组 2/[总组数]"
-- prompt: |
-    翻译任务（第 2 组，共 [N] 组）：
-    ...
-
-Agent 调用 3:
-... (如有更多分组)
+要求：
+- 保持原有格式
+- 代码块不翻译
+- 完成后返回确认信息，格式：
+  ## 翻译完成
+  - file1.zh-CN.md (N 行)
+  - file2.zh-CN.md (N 行)"
+)
 ```
 
-**注意**：所有 Agent 调用必须在同一条响应中发起，才能并行执行
+**Agent 2: 第 2 组**
 
-#### 4. 汇总结果
+```
+Task(
+  subagent_type="translation-worker",
+  model="haiku",
+  run_in_background=true,
+  description="翻译组 2/{总组数}",
+  prompt="翻译任务（第 2 组，共 {N} 组）：
 
-所有 agent 完成后，输出汇总报告：
+**文件列表**:
+- {file4_path}
+- {file5_path}
+- {file6_path}
 
-```markdown
+请逐个读取、翻译、写入。输出文件添加 .zh-CN 后缀。
+
+要求：
+- 保持原有格式
+- 代码块不翻译
+- 完成后返回确认信息"
+)
+```
+
+**Agent 3: 第 3 组**（如有更多分组）
+
+```
+Task(
+  subagent_type="translation-worker",
+  model="haiku",
+  run_in_background=true,
+  description="翻译组 3/{总组数}",
+  prompt="翻译任务（第 3 组，共 {N} 组）：..."
+)
+```
+
+记录每个 Task 返回的 task_id：task_id_1, task_id_2, task_id_3...
+
+继续到 collect_results。
+</step>
+
+<step name="collect_results">
+等待所有 agents 完成并获取结果。
+
+使用 TaskOutput 工具获取每个任务的结果：
+
+```
+TaskOutput(task_id="{task_id_1}", block=true)
+TaskOutput(task_id="{task_id_2}", block=true)
+TaskOutput(task_id="{task_id_3}", block=true)
+```
+
+**收集每个 agent 的返回信息**：
+- 成功：记录翻译的文件和行数
+- 失败：记录失败的文件和原因
+
+继续到 generate_report。
+</step>
+
+<step name="generate_report">
+输出汇总报告：
+
+```
 ## 翻译完成报告
 
 | 指标 | 值 |
 |------|-----|
-| 总文件数 | N |
-| 成功翻译 | N |
+| 总文件数 | {N} |
+| 成功翻译 | {N} |
+| 失败 | {N} |
 | 使用模型 | haiku |
-| 并行 agents | N |
+| 并行 agents | {N} |
 
-**输出位置**: [目录路径]
-```
+**成功翻译的文件**:
+- {file1.zh-CN.md} ({N} 行)
+- {file2.zh-CN.md} ({N} 行)
+- ...
+
+**失败的文件**（如有）:
+- {fileX.md}: {失败原因}
 
 ---
 
-## 文件过滤规则
+## ▶ 下一步
 
+- 查看翻译结果：`cat {file1.zh-CN.md}`
+- 修改翻译：直接编辑 `.zh-CN.md` 文件
+- 重新翻译失败文件：告诉我具体文件名
+```
+
+End workflow.
+</step>
+
+</process>
+
+<file_filter>
 **包含的文件类型：**
 - `.md` - Markdown 文档
 - `.txt` - 纯文本
@@ -171,66 +248,11 @@ Agent 调用 3:
 - `node_modules/`
 - `.git/`
 - `dist/`, `build/`
-- `*.min.js`
+- `*.min.*`
 - 已存在的翻译文件（如 `*.zh-CN.md`）
+</file_filter>
 
----
-
-## 成本优势
-
-| 方案 | 模型 | 成本/1M tokens |
-|------|------|----------------|
-| 单一 opus | opus | ~$15 |
-| 单一 sonnet | sonnet | ~$3 |
-| **本方案** | **haiku** | **~$0.25** |
-
-**节省：60x 相比 opus，12x 相比 sonnet**
-
----
-
-## 使用示例
-
-### 示例 1：翻译单个文件
-
-```
-用户: 翻译 README.md 为中文
-```
-
-**执行流程**：
-1. 识别为单文件 → 使用策略 A
-2. 调用 1 个 translation-worker agent
-3. 输出 README.zh-CN.md
-
-### 示例 2：翻译整个 docs 目录
-
-```
-用户: 把 docs/ 目录下的所有 md 文件翻译成中文
-```
-
-**执行流程**：
-1. 识别为目录 → 使用策略 B
-2. 扫描 docs/ 目录，假设发现 12 个 .md 文件
-3. 分为 3 组，每组 4 个文件
-4. 在同一响应中并行启动 3 个 translation-worker agents
-5. 汇总结果
-
-### 示例 3：翻译仓库文档
-
-```
-用户: 翻译这个仓库的所有文档
-```
-
-**执行流程**：
-1. 识别为目录 → 使用策略 B
-2. 扫描仓库，过滤出文档文件
-3. 按目录分组
-4. 并行翻译
-5. 保持原有目录结构
-
----
-
-## 常见错误
-
+<anti_patterns>
 ### ❌ 错误 1：主会话做翻译
 
 **错误做法**：在主会话中直接翻译大段文字
@@ -239,9 +261,22 @@ Agent 调用 3:
 
 ### ❌ 错误 2：串行处理多文件
 
-**错误做法**：等一个 agent 完成后再启动下一个
+**错误做法**：等一个 Task 完成后再启动下一个
 
-**正确做法**：在同一条响应中发起所有 Agent 调用，实现并行执行
+```
+Task(...)  // 等待完成
+Task(...)  // 再启动下一个
+```
+
+**正确做法**：在同一条响应中发起所有 Task 调用
+
+```
+// 同一条响应中：
+Task(run_in_background=true, ...)
+Task(run_in_background=true, ...)
+Task(run_in_background=true, ...)
+// 同时启动，并行执行
+```
 
 ### ❌ 错误 3：使用昂贵模型
 
@@ -249,13 +284,25 @@ Agent 调用 3:
 
 **正确做法**：翻译工作始终使用 haiku 模型
 
----
+### ❌ 错误 4：TaskOutput 遗漏
 
-## 性能基准测试
+**错误做法**：启动后台 Task 后不获取结果
 
-> **详细报告**: [BENCHMARK-REPORT.md](../../benchmark-results/BENCHMARK-REPORT.md)
+**正确做法**：每个 run_in_background=true 的 Task 都要用 TaskOutput 获取结果
+</anti_patterns>
 
-当用户询问翻译效果、性能对比时，请阅读上述基准测试报告。
+<success_criteria>
+- [ ] 正确识别单文件/多文件场景
+- [ ] 单文件：启动 1 个 Task
+- [ ] 多文件：按分组策略启动多个并行 Tasks
+- [ ] 所有 Tasks 使用 haiku 模型
+- [ ] 多个 Task 调用在同一响应中发起
+- [ ] 使用 TaskOutput 获取所有任务结果
+- [ ] 输出完整的翻译报告
+</success_criteria>
+
+<benchmark>
+> **详细报告**: benchmark-results/BENCHMARK-REPORT.md
 
 ### 核心结论
 
@@ -266,21 +313,28 @@ Agent 调用 3:
 | **质量** | 良好 | 更自然 |
 
 **并行方案优势**: 速度快 46%，成本低 80%
+</benchmark>
 
----
-
-## 快速参考卡
-
+<quick_reference>
 ```
-┌─────────────────────────────────────────────────────┐
-│                  并行翻译速查表                       │
-├─────────────────────────────────────────────────────┤
-│ 单文件     → 1 个 agent (haiku)                     │
-│ 多文件     → 分组 + 并行 agents (haiku)              │
-│                                                     │
-│ 关键：                                               │
-│ • subagent_type: "translation-worker"              │
-│ • model: "haiku"                                   │
-│ • 多个 Agent 调用在同一响应中发起                    │
-└─────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                  并行翻译速查表                               │
+├─────────────────────────────────────────────────────────────┤
+│ 单文件 → 1 个 Task (haiku)                                  │
+│ 多文件 → 分组 + 并行 Tasks (haiku)                          │
+│                                                              │
+│ Task 参数：                                                  │
+│ • subagent_type: "translation-worker"                       │
+│ • model: "haiku"                                            │
+│ • run_in_background: true (多文件时)                        │
+│ • prompt: "翻译任务..."                                      │
+│                                                              │
+│ 获取结果：                                                   │
+│ • TaskOutput(task_id="{id}", block=true)                    │
+│                                                              │
+│ 关键：多个 Task 调用必须在同一响应中发起                       │
+└─────────────────────────────────────────────────────────────┘
 ```
+
+Task = Agent 工具的别名，用于启动子代理执行任务
+</quick_reference>
