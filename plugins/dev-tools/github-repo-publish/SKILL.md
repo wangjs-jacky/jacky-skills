@@ -156,8 +156,8 @@ fi
 
 ```bash
 # 尝试配置代理（可能失败）
-git config --global http.proxy http://127.0.0.1:7890
-git config --global https.proxy http://127.0.0.1:7890
+git config --global http.proxy http://127.0.0.1:10888
+git config --global https.proxy http://127.0.0.1:10888
 
 # 创建仓库并推送
 gh repo create $REPO_NAME --public --source=. --push --description "$DESCRIPTION"
