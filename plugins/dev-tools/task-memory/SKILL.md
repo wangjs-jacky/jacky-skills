@@ -40,13 +40,13 @@ sudo apt-get install jq
 ```
 
 **行为**：
-1. 在 `.task-memory/tasks/` 下创建新任务目录
+1. 在 `.harness/memory/tasks/` 下创建新任务目录
 2. 生成 `init.md`，包含：
    - 任务目标
    - 初始设计方案（需手动填写）
    - 预期步骤（需手动填写）
    - 涉及的文件（需手动填写）
-3. 更新 `.task-memory/current.json` 标记当前任务
+3. 更新 `.harness/memory/current.json` 标记当前任务
 
 ---
 
@@ -92,7 +92,7 @@ sudo apt-get install jq
 2. 生成 `review.md`，包含：
    - 时间线统计
    - 偏差列表
-3. 清空 `.task-memory/current.json`
+3. 清空 `.harness/memory/current.json`
 
 ---
 
@@ -230,18 +230,19 @@ total_deviation: 2
 
 ## 存储位置
 
-所有数据存储在项目目录下的 `.task-memory/` 中：
+所有数据存储在项目目录下的 `.harness/memory/` 中：
 
 ```
 <your-project>/
-└── .task-memory/
-    ├── current.json            # 当前任务状态
-    └── tasks/
-        └── task-2026-03-21-001/
-            ├── init.md         # 初始设计
-            ├── deviation-01.md # 偏差记录 1
-            ├── deviation-02.md # 偏差记录 2
-            └── review.md       # 复盘报告
+└── .harness/
+    └── memory/
+        ├── current.json            # 当前任务状态
+        └── tasks/
+            └── task-2026-03-21-001/
+                ├── init.md         # 初始设计
+                ├── deviation-01.md # 偏差记录 1
+                ├── deviation-02.md # 偏差记录 2
+                └── review.md       # 复盘报告
 ```
 
 ---

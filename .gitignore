@@ -3,3 +3,9 @@ m3u8-dl/
 
 # 忽略用户词汇库数据文件
 plugins/language-skills/**/vocabulary.json
+
+# 忽略 .harness 运行时数据（保留 planning 产物）
+.harness/memory/
+.harness/harness/
+.harness/tasks/
+.harness/workflow.json
