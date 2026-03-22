@@ -410,6 +410,20 @@ workflow 运行模式显式化：
 
 详见 `references/yolo-mode-patterns.md`
 
+### 6. Approve 检查点设计
+
+用户确认节点的三种类型：
+1. **Human-Verify**（验证型）：Claude 完成工作后，用户视觉/交互验证
+2. **Decision**（决策型）：需要用户选择实现方向
+3. **Human-Action**（行动型）：需要用户执行认证/授权等操作
+
+**核心原则**：
+- 检查点只包含用户可直观验证的内容
+- CLI 命令由 Claude 自动执行，不放入检查点
+- 提供明确的 `resume-signal`（如 "approved"、"option-a"）
+
+详见 `references/approve-patterns.md`
+
 ## j-skills 快速命令（可选）
 
 ```bash
@@ -437,6 +451,7 @@ j-skills link --unlink <name>
 | `references/cross-session-workflow-skill-design.md` | 跨会话 workflow 设计 |
 | `references/resume-next-stage-patterns.md` | Resume 协议、Next Up 模板 |
 | `references/yolo-mode-patterns.md` | YOLO / Interactive 运行模式 |
+| `references/approve-patterns.md` | **Approve 检查点设计模式**（验证型/决策型/行动型） |
 | `references/upstream-guide.md` | 与 daymade upstream 的关系 |
 | `references/canonical-location.md` | 主副本位置说明 |
 | `references/throuble-shooting.md` | 常见异常排查（不生效、链接、卸载） |

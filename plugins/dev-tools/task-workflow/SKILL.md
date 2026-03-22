@@ -249,6 +249,47 @@ Brainstorm 阶段的价值在于：
 - [ ] 用户已确认最终方案
 - [ ] decision.md 已生成
 </success_criteria>
+
+<stage_gate type="checkpoint:decision" gate="blocking">
+
+**🚧 阶段门控：BRAINSTORM → HARNESS**
+
+<decision>需求是否已经澄清完成？</decision>
+
+<context>
+BRAINSTORM 阶段的目标是将模糊需求转化为明确方案。
+进入 HARNESS 前，需要确认用户对方案没有更多疑问。
+</context>
+
+<options>
+<option id="approve">
+  <name>✅ approve - 需求已澄清</name>
+  <pros>进入 HARNESS 阶段定义验收边界</pros>
+  <cons>无法再返回 brainstorm 补充方案</cons>
+</option>
+<option id="continue">
+  <name>🔍 继续探索</name>
+  <pros>可以深入讨论更多细节</pros>
+  <cons>延迟进入执行阶段</cons>
+</option>
+<option id="adjust">
+  <name>✏️ 调整需求</name>
+  <pros>重新定义需求后更准确</pros>
+  <cons>需要重新 brainstorm</cons>
+</option>
+</options>
+
+<resume-signal>Type: approve | continue | adjust</resume-signal>
+
+**处理规则**：
+| 选择 | 动作 |
+|------|------|
+| `approve` | → 进入 HARNESS 阶段 |
+| `continue` | → 继续 brainstorm 循环 |
+| `adjust` | → 重新定义需求后再次 brainstorm |
+
+</stage_gate>
+
 </step>
 
 <step name="harness">
@@ -312,8 +353,48 @@ Brainstorm 阶段的价值在于：
 ```
 </anti_patterns>
 
+<stage_gate type="checkpoint:decision" gate="blocking">
+
+**🚧 阶段门控：HARNESS → PLAN**
+
+<decision>验收标准是否确认？</decision>
+
+<context>
+HARNESS 定义了任务完成的验收边界。
+这些标准将用于 EXECUTE 阶段的 TDD 测试用例。
+</context>
+
+<options>
+<option id="approve">
+  <name>✅ approve - 验收标准确认</name>
+  <pros>进入 PLAN 阶段生成执行计划</pros>
+  <cons>后续修改验收标准需要回退</cons>
+</option>
+<option id="adjust">
+  <name>✏️ 调整</name>
+  <pros>修改不合理的验收条件</pros>
+  <cons>需要重新生成 harness.md</cons>
+</option>
+<option id="add">
+  <name>➕ 补充</name>
+  <pros>添加遗漏的验收条件</pros>
+  <cons>增加工作量</cons>
+</option>
+</options>
+
+<resume-signal>Type: approve | adjust | add</resume-signal>
+
+**处理规则**：
+| 选择 | 动作 |
+|------|------|
+| `approve` | → 进入 PLAN 阶段 |
+| `adjust` | → 修改 harness.md 后重新询问 |
+| `add` | → 补充验收条件后重新询问 |
+
+</stage_gate>
+
 <done>
-Harness 定义完成，用户确认验收标准
+Harness 定义完成，用户已确认验收标准
 </done>
 </step>
 
@@ -362,11 +443,71 @@ Harness 定义完成，用户确认验收标准
 - [ ] 每个任务都有 verify 定义
 - [ ] 任务顺序符合依赖关系
 </success_criteria>
+
+<stage_gate type="checkpoint:decision" gate="blocking">
+
+**🚧 阶段门控：PLAN → EXECUTE**
+
+<decision>执行计划是否确认？</decision>
+
+<context>
+PLAN.md 定义了具体的执行步骤和任务顺序。
+一旦进入 EXECUTE，将按照 TDD 模式逐个执行任务。
+</context>
+
+<options>
+<option id="approve">
+  <name>✅ approve - 计划确认</name>
+  <pros>开始执行任务</pros>
+  <cons>修改计划需要暂停执行</cons>
+</option>
+<option id="adjust">
+  <name>🔄 调整</name>
+  <pros>调整任务顺序或内容</pros>
+  <cons>需要重新生成 PLAN.md</cons>
+</option>
+<option id="add">
+  <name>➕ 补充</name>
+  <pros>添加遗漏的任务</pros>
+  <cons>增加工作量</cons>
+</option>
+</options>
+
+<resume-signal>Type: approve | adjust | add</resume-signal>
+
+**处理规则**：
+| 选择 | 动作 |
+|------|------|
+| `approve` | → 进入 EXECUTE 阶段 |
+| `adjust` | → 调整任务后重新询问 |
+| `add` | → 补充任务后重新询问 |
+
+</stage_gate>
+
+<done>
+PLAN 已生成，用户已确认
+</done>
 </step>
 
 <step name="execute">
 
-**目标**：使用 superpowers:executing-plans 执行，同时 task-memory 监听偏差
+**目标**：使用 superpowers:executing-plans 执行，采用 **TDD 驱动** + **HARNESS 验证** + **Loop 修复**
+
+<tdd_philosophy>
+
+## 🔴🟢♻️ TDD 核心理念：红灯-绿灯-重构
+
+**测试先行原则**：
+1. 🔴 **红灯**：先写失败的测试（验证需求理解正确）
+2. 🟢 **绿灯**：写最小代码让测试通过（不过度设计）
+3. ♻️ **重构**：优化代码结构（保持测试通过）
+
+**HARNESS 作为验证标准**：
+- HARNESS 定义了"什么是对的"
+- 测试用例来源于 HARNESS 的 MUST 条件
+- 只有测试通过才算任务完成
+
+</tdd_philosophy>
 
 <prompt_chain_recording>
 
@@ -391,15 +532,20 @@ Harness 定义完成，用户确认验收标准
 | 代码执行失败 | 用户的补充说明 |
 | 用户补充需求 | 是范围蔓延还是原始需求不完整 |
 | 里程碑完成 | 保存当前进展 |
+| 测试失败 | 记录失败原因和修复策略 |
 
 </prompt_chain_recording>
 
 <action>
-1. 调用 superpowers:executing-plans
-2. 逐个执行 PLAN.md 中的任务
+1. **读取 HARNESS**：加载 `.harness/harness/{task-slug}/harness.md`
+2. **逐个执行 PLAN.md 中的任务**（TDD 模式）：
+   - 🔴 先编写测试用例（基于 HARNESS）
+   - 🟢 再实现功能代码
+   - ♻️ 运行测试验证
+   - 🔄 失败则循环修复（最多 5 次）
 3. 每次用户输入后记录到 task-memory
 4. 定期保存进展（防止上下文丢失）
-5. 每个任务完成后验证
+5. 所有任务完成后进入 REVIEW
 </action>
 
 ```
@@ -407,131 +553,325 @@ Harness 定义完成，用户确认验收标准
 
 /executing-plans
 
-同时启动 Prompt 链记录...
+读取 HARNESS: .harness/harness/{{task-slug}}/harness.md
+→ 提取 MUST 条件作为测试用例
 
 执行 T1: {{任务名称}}
-[执行中...]
-✓ T1 完成
-/task-memory save "完成 T1"
+├─ 🔴 编写测试用例（基于 HARNESS MUST 条件）
+├─ 🟢 实现功能代码
+├─ ⚡ 运行测试
+├─ ✓ 测试通过
+└─ /task-memory save "完成 T1"
 
 执行 T2: {{任务名称}}
-[执行中...]
-用户输入: "接口返回结构不对"
-→ 记录: 原始 Prompt 未指定接口格式
-/task-memory save "T2 执行中，用户补充接口格式要求"
-
-✓ T2 完成
+├─ 🔴 编写测试用例
+├─ 🟢 实现功能代码
+├─ ⚡ 运行测试
+├─ ✗ 测试失败（重试 1/5）
+│  ├─ 分析失败原因
+│  ├─ 修复代码
+│  └─ ⚡ 重新测试
+├─ ✓ 测试通过
+└─ /task-memory save "完成 T2（含 1 次修复）"
 ```
 
 <checkpoint_protocol>
 遇到 checkpoint 任务时：
 1. 暂停执行
-2. 展示验证方式
-3. 等待用户确认
-4. 记录用户反馈
+2. 展示验证方式（基于 HARNESS）
+3. 运行所有相关测试
+4. 等待用户确认
+5. 记录用户反馈
 </checkpoint_protocol>
 
 <verify_loop_protocol>
 
-## ⚡ Verify Loop（测试驱动循环）
+## ⚡ TDD-Driven Verify Loop（测试驱动循环）
 
-**核心理念**：测试不通过 → 修复 → 重测 → 直到通过
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      Verify Loop 流程                            │
-└─────────────────────────────────────────────────────────────────┘
-
-                    ┌──────────────┐
-                    │  执行任务     │
-                    └──────┬───────┘
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │  运行测试     │◄─────────────────┐
-                    └──────┬───────┘                  │
-                           │                          │
-              ┌────────────┴────────────┐             │
-              │                         │             │
-              ▼                         ▼             │
-        ┌──────────┐             ┌──────────┐        │
-        │ 全部通过  │             │ 有失败    │        │
-        └────┬─────┘             └────┬─────┘        │
-             │                        │               │
-             │                        ▼               │
-             │                 ┌──────────────┐      │
-             │                 │ 分析失败原因  │      │
-             │                 └──────┬───────┘      │
-             │                        │               │
-             │                        ▼               │
-             │                 ┌──────────────┐      │
-             │                 │  修复代码     │      │
-             │                 └──────┬───────┘      │
-             │                        │               │
-             │                        └───────────────┘
-             │
-             ▼
-      进入下一任务 / REVIEW
-```
-
-**触发条件**：
-- 每个 task 完成后
-- 每个 checkpoint 时
-- 进入 REVIEW 前必须通过
-
-**循环流程**：
+**核心理念**：HARNESS 定义标准 → 测试验证 → 失败修复 → 直到通过
 
 ```
-while (测试未通过) {
-  1. 运行验证: bash .harness/harness/{{task-slug}}/verify.sh
-  2. 分析失败:
-     - 读取错误信息
-     - 定位失败断言
-     - 对比期望 vs 实际
-  3. 修复代码:
-     - 修改源码
-     - /task-memory save "修复: {{失败原因}}"
-  4. 重新测试
-}
+┌───────────────────────────────────────────────────────────────────────────┐
+│                    TDD-Driven Verify Loop 流程                             │
+└───────────────────────────────────────────────────────────────────────────┘
 
-// 通过后继续
-进入下一阶段
+                          ┌─────────────────┐
+                          │ 读取 HARNESS     │
+                          │ 提取 MUST 条件   │
+                          └────────┬────────┘
+                                   │
+                                   ▼
+                          ┌─────────────────┐
+                          │ 🔴 编写测试用例  │
+                          └────────┬────────┘
+                                   │
+                                   ▼
+                          ┌─────────────────┐
+                          │ 🟢 实现代码      │
+                          └────────┬────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │ ⚡ 运行测试               │◄─────────────────┐
+                    └──────────┬───────────────┘                  │
+                               │                                  │
+                  ┌────────────┴────────────┐                    │
+                  │                         │                    │
+                  ▼                         ▼                    │
+            ┌──────────┐             ┌──────────┐               │
+            │ 全部通过  │             │ 有失败    │               │
+            └────┬─────┘             └────┬─────┘               │
+                 │                        │                      │
+                 │                        ▼                      │
+                 │                 ┌──────────────┐             │
+                 │                 │ 重试次数 < 5? │             │
+                 │                 └──────┬───────┘             │
+                 │                        │                      │
+                 │              ┌────────┴────────┐             │
+                 │              │ YES             │ NO           │
+                 │              ▼                 ▼             │
+                 │      ┌──────────────┐   ┌──────────────┐     │
+                 │      │ 分析失败原因  │   │ 暂停询问用户  │     │
+                 │      └──────┬───────┘   └──────────────┘     │
+                 │             │                                │
+                 │             ▼                                │
+                 │      ┌──────────────┐                        │
+                 │      │ 修复代码      │                        │
+                 │      └──────┬───────┘                        │
+                 │             │                                │
+                 │             └────────────────────────────────┘
+                 │
+                 ▼
+          进入下一任务 / REVIEW
 ```
 
-**失败分析模板**：
+**TDD 执行流程**：
+
+```
+FOR each task in PLAN:
+
+  1️⃣ 准备阶段
+     - 读取 HARNESS: .harness/harness/{task-slug}/harness.md
+     - 提取 MUST 条件作为测试用例
+     - 确定测试框架（从 HARNESS 中读取）
+
+  2️⃣ 红灯阶段（Red）
+     - 编写测试用例（覆盖所有 MUST 条件）
+     - 运行测试 → 确认失败（🔴）
+     - 记录期望行为
+
+  3️⃣ 绿灯阶段（Green）
+     - 实现最小代码（仅满足测试）
+     - 不过度设计
+     - 不过早优化
+
+  4️⃣ 循环验证（Loop）
+     retry_count = 0
+     WHILE (测试未通过 AND retry_count < 5):
+        a. 运行测试: bash .harness/harness/{task-slug}/verify.sh
+        b. IF 失败:
+           - 分析失败原因（见下方模板）
+           - 修复代码（最小修改）
+           - 记录到 task-memory
+           - retry_count++
+        c. IF 通过:
+           - BREAK
+
+  5️⃣ 异常处理
+     IF retry_count >= 5:
+        - 暂停执行
+        - 询问用户："测试连续失败 5 次，是否需要："
+          a. 重新设计 HARNESS
+          b. 重新制定 PLAN
+          c. 手动介入修复
+        - 等待用户决策
+
+  6️⃣ 完成标记
+     - ✓ Task 完成
+     - 记录到 task-memory
+     - 进入下一个 task
+```
+
+**失败分析模板（增强版）**：
 
 ```markdown
-## 测试失败分析
+## 🔴 测试失败分析
 
-### 失败用例
-- `should increment count when + clicked`
-  - 期望: count = 1
-  - 实际: count = 0
+### 基本信息
+- **Task ID**: T2
+- **重试次数**: 2/5
+- **失败时间**: 2026-03-22 14:30:00
 
-### 根因
-- 事件监听器未正确绑定
+### 失败的测试用例
+```bash
+# 运行命令
+bash .harness/harness/{{task-slug}}/verify.sh
+
+# 失败输出
+FAIL: should increment count when + clicked
+  Expected: count = 1
+  Received: count = 0
+
+FAIL: should not exceed max value 100
+  Expected: count <= 100
+  Received: count = 101
+```
+
+### 根因分析
+**直接原因**：
+- 事件监听器未正确绑定（用例 1）
+- 未实现最大值限制逻辑（用例 2）
+
+**根本原因**：
+- HARNESS 明确要求"最大值 100"，但实现时遗漏
 - 按钮选择器 `#increment-btn` 与 HTML 不匹配
 
-### 修复
-- 修改 `src/counter.html` 第 X 行
-- 确保 `getElementById('increment-btn')` 正确
+### 修复方案
+```diff
+// src/counter.js
+- document.getElementById('increment-btn')
++ document.getElementById('increment')
 
-### 重测
-```bash
-bash .harness/harness/{{task-slug}}/verify.sh
++ if (this.count < 100) {
++   this.count++;
++ }
 ```
+
+### HARNESS 关联
+- [x] MUST: 点击 + 按钮，计数增加 → **失败**
+- [ ] MUST: 最大值不超过 100 → **失败**
+- [ ] SHOULD: 显示当前计数 → **未测试**
+
+### 重测计划
+1. 修复代码（见上方 diff）
+2. 运行测试: `bash .harness/harness/{{task-slug}}/verify.sh`
+3. 预期结果：所有 MUST 条件通过
 ```
 
 **最大重试次数**：5 次
 
-超过 5 次仍未通过：
-- 暂停并询问用户
-- 可能需要重新设计 HARNESS 或 PLAN
+**超过 5 次仍未通过的处理流程**：
+1. 暂停自动执行
+2. 生成详细失败报告（包含所有尝试）
+3. 使用 AskUserQuestion 询问用户：
+   ```
+   问题: "测试连续失败 5 次，建议采取以下措施："
+   选项:
+   1. "重新设计 HARNESS" - 验收标准可能不合理
+   2. "调整 PLAN" - 任务拆分可能有问题
+   3. "手动介入" - 需要人工修复代码
+   4. "跳过此任务" - 标记为失败，继续后续任务
+   ```
 
 </verify_loop_protocol>
 
+<tdd_best_practices>
+
+## TDD 最佳实践
+
+### 1. 测试先行（Test First）
+```
+❌ 错误：先写代码，后补测试
+✅ 正确：先写测试，再写代码
+```
+
+### 2. 最小实现（Minimal Implementation）
+```
+❌ 错误：一次性实现完整功能 + 额外特性
+✅ 正确：只写让测试通过的最少代码
+```
+
+### 3. 单一职责（Single Responsibility）
+```
+❌ 错误：一个测试用例验证多个条件
+✅ 正确：一个测试用例只验证一个 HARNESS MUST 条件
+```
+
+### 4. 快速反馈（Fast Feedback）
+```
+❌ 错误：写完所有代码才运行测试
+✅ 正确：每完成一个功能点就运行测试
+```
+
+### 5. 重构时机（Refactoring Timing）
+```
+❌ 错误：测试失败时重构
+✅ 正确：测试通过后才重构（保持绿灯）
+```
+
+### HARNESS 映射规则
+
+| HARNESS 条件类型 | 测试策略 |
+|-----------------|---------|
+| MUST 条件 | 必须有对应测试用例，失败则任务失败 |
+| SHOULD 条件 | 建议有测试用例，失败可接受 |
+| 验证命令 | 作为测试脚本的一部分 |
+
+</tdd_best_practices>
+
+<stage_gate type="checkpoint:human-verify" gate="blocking">
+
+**🚧 阶段门控：EXECUTE → REVIEW**
+
+<what-built>
+所有任务已执行完成，测试全部通过。
+
+**执行摘要**：
+- ✅ 已完成任务: T1, T2, T3, T4
+- ✅ 测试通过率: 100%
+- ⚠️ 总重试次数: 3 次
+- 📊 HARNESS 覆盖: 5/5 MUST 条件
+</what-built>
+
+<how-to-verify>
+<completion_checklist>
+执行完成前必须确认：
+
+- [ ] 所有 PLAN 中的 task 已执行
+- [ ] 所有 task 的测试已通过（绿灯 🟢）
+- [ ] HARNESS 中所有 MUST 条件已验证
+- [ ] 失败重试次数均 < 5 次
+- [ ] task-memory 已记录所有偏差
+</completion_checklist>
+</how-to-verify>
+
+<options>
+<option id="approve">
+  <name>✅ approve - 确认完成</name>
+  <pros>进入 REVIEW 阶段生成复盘</pros>
+  <cons>无法再返回执行任务</cons>
+</option>
+<option id="report">
+  <name>📋 查看测试报告</name>
+  <pros>查看详细测试结果</pros>
+  <cons>需要额外时间</cons>
+</option>
+<option id="continue">
+  <name>▶️ 继续执行</name>
+  <pros>补充遗漏的任务</pros>
+  <cons>延迟复盘</cons>
+</option>
+<option id="fix">
+  <name>🔧 需要修复</name>
+  <pros>修复发现的问题</pros>
+  <cons>需要重新运行测试</cons>
+</option>
+</options>
+
+<resume-signal>Type: approve | report | continue | fix</resume-signal>
+
+**处理规则**：
+| 选择 | 动作 |
+|------|------|
+| `approve` | → 进入 REVIEW 阶段 |
+| `report` | → 展示详细测试日志 |
+| `continue` | → 继续在 EXECUTE 阶段 |
+| `fix` | → 返回修复问题 |
+
+</stage_gate>
+
 <done>
-所有任务执行完成，测试全部通过
+所有任务执行完成，测试全部通过，用户已确认
 </done>
 </step>
 
@@ -749,20 +1089,136 @@ INIT → LISTEN → BRAINSTORM → HARNESS → PLAN → EXECUTE ↔ VERIFY → R
 
 ---
 
+<stage_gate_protocol>
+
+## 🚧 阶段门控协议 (Stage Gate Protocol)
+
+**核心理念**：每个阶段完成后，必须用户明确 approve 才能进入下一阶段。
+
+### 门控机制
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           阶段门控流程                                       │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐
+    │  阶段完成     │
+    └──────┬───────┘
+           │
+           ▼
+    ┌──────────────┐
+    │ 展示产物      │
+    │ + 总结       │
+    └──────┬───────┘
+           │
+           ▼
+    ┌──────────────────────────────────┐
+    │ <stage_gate type="checkpoint">    │
+    │ <decision>是否 approve?</decision>│
+    │ <options>...</options>            │
+    │ <resume-signal>...</resume-signal>│
+    └──────────────┬───────────────────┘
+                   │
+         ┌─────────┴─────────┐
+         │                     │
+         ▼                     ▼
+    ┌──────────┐         ┌──────────┐
+    │ approve  │         │ 其他选项  │
+    └────┬─────┘         └────┬─────┘
+         │                     │
+         │                     ▼
+         │              ┌──────────────┐
+         │              │ 调整/补充    │
+         │              └──────┬───────┘
+         │                     │
+         │                     ▼
+         │              ┌──────────────┐
+         │              │ 重新询问     │
+         │              └──────────────┘
+         │
+         ▼
+    进入下一阶段
+```
+
+### 各阶段门控要求
+
+| 阶段 | 门控类型 | 门控条件 | resume-signal |
+|------|----------|----------|---------------|
+| LISTEN | - | init.md 已创建 | 自动进入 |
+| BRAINSTORM | `checkpoint:decision` | decision.md 已创建 + 需求澄清确认 | `approve \| continue \| adjust` |
+| HARNESS | `checkpoint:decision` | harness.md 已创建 + 验收标准确认 | `approve \| adjust \| add` |
+| PLAN | `checkpoint:decision` | PLAN.md 已创建 + 计划确认 | `approve \| adjust \| add` |
+| EXECUTE | `checkpoint:human-verify` | 所有任务完成 + 测试通过 | `approve \| report \| continue \| fix` |
+| REVIEW | - | 复盘报告已生成 | 自动完成 |
+
+### 标准门控格式
+
+```xml
+<stage_gate type="checkpoint:decision" gate="blocking">
+
+**🚧 阶段门控：{当前阶段} → {下一阶段}**
+
+<decision>{需要确认的问题}</decision>
+
+<context>{为什么需要确认}</context>
+
+<options>
+<option id="approve">
+  <name>✅ approve - {描述}</name>
+  <pros>{优点}</pros>
+  <cons>{权衡}</cons>
+</option>
+<option id="alt">
+  <name>🔄 {其他选项}</name>
+  <pros>{优点}</pros>
+  <cons>{权衡}</cons>
+</option>
+</options>
+
+<resume-signal>Type: approve | alt</resume-signal>
+
+</stage_gate>
+```
+
+### 用户响应处理
+
+| 响应类型 | 处理方式 |
+|----------|----------|
+| `approve` / `yes` / `y` / `ok` / `✓` | 进入下一阶段 |
+| 空响应（直接回车） | 视为批准 |
+| 其他内容 | 按选项 ID 匹配，或视为问题描述 |
+
+### 模式对比
+
+| 模式 | 门控确认 | 说明 |
+|------|----------|------|
+| 标准 | 每个阶段都需要 | 适合复杂任务 |
+| quick | 跳过 BRAINSTORM，其他需要 | 适合目标明确的任务 |
+| **yolo** | **跳过所有门控** | 全自动，失败会中止 |
+
+**YOLO 模式 auto_advance 行为**：
+- `checkpoint:decision` → 自动选择第一个选项
+- `checkpoint:human-verify` → 自动批准
+
+</stage_gate_protocol>
+
+---
+
 <stage_transitions>
 
 ## 阶段跳转规则
 
-| 从 | 到 | 允许 | 条件 |
-|----|----|----|------|
-| INIT | LISTEN | ✅ | workflow.json 已创建 |
-| LISTEN | HARNESS | ✅ | init.md 已创建 |
-| LISTEN | BRAINSTORM | ✅ | init.md 已创建 |
-| BRAINSTORM | HARNESS | ✅ | decision.md 已创建 |
-| HARNESS | PLAN | ✅ | harness.md 已创建 |
-| PLAN | EXECUTE | ✅ | PLAN.md 已创建且 verify.sh 已定义 |
-| EXECUTE | REVIEW | ✅ | 所有任务完成且 MUST 验证全部通过 |
-| 任意 | 之前的阶段 | ✅ | 支持回退修改 |
+| 从 | 到 | 允许 | 条件 | 门控确认 |
+|----|----|----|------|----------|
+| INIT | LISTEN | ✅ | workflow.json 已创建 | ❌ 不需要 |
+| LISTEN | BRAINSTORM | ✅ | init.md 已创建 | ❌ 不需要（自动进入） |
+| LISTEN | HARNESS | ✅ | quick 模式 + init.md 已创建 | ❌ 不需要（自动进入） |
+| BRAINSTORM | HARNESS | ✅ | decision.md 已创建 + 需求澄清确认 | ✅ **必须** |
+| HARNESS | PLAN | ✅ | harness.md 已创建 + 验收标准确认 | ✅ **必须** |
+| PLAN | EXECUTE | ✅ | PLAN.md 已创建 + 计划确认 | ✅ **必须** |
+| EXECUTE | REVIEW | ✅ | 所有任务完成 + 测试通过 + 用户 approve | ✅ **必须** |
+| 任意 | 之前的阶段 | ✅ | 支持回退修改 | ❌ 不需要 |
 
 ## 使用 goto 命令
 

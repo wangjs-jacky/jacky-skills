@@ -36,6 +36,25 @@ xxx skill 有问题，为什么没有触发 yyy
     <name>skill-optimizer</name>
     <trigger>优化 skill、skill 没触发、为什么没有、skill 诊断</trigger>
     <requires>Read, Glob, Grep, Agent</requires>
+    
+    <!-- 必须阅读的标准参考 -->
+    <require_read>
+      <ref id="gsd-creator-skills" required="true">GSD 风格 Skill 创建与管理标准</ref>
+    </require_read>
+    
+    <!-- 执行前检查点 -->
+    <checkpoints>
+      <checkpoint order="1">已提取 skill 名称和问题描述</checkpoint>
+      <checkpoint order="2">已定位 skill 文件路径</checkpoint>
+      <checkpoint order="3">已输出诊断报告并获得用户确认</checkpoint>
+    </checkpoints>
+    
+    <!-- 安全约束 -->
+    <constraints>
+      <constraint>禁止在主会话中直接修改 skill</constraint>
+      <constraint>禁止不诊断直接优化</constraint>
+      <constraint>禁止大规模重构，只修改必要部分</constraint>
+    </constraints>
   </gsd:meta>
 
   <gsd:goal>诊断 skill 问题，使用 Agent 执行优化，保护主会话上下文</gsd:goal>
