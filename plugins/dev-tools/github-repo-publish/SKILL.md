@@ -5,369 +5,230 @@ description: Use when user wants to publish local code repository to GitHub, nee
 
 # GitHub 仓库发布
 
-## 概述
-
 将本地代码仓库一键发布到 GitHub，自动处理 README、About 信息、Release 发布等。
 
 **核心原则：最小化交互，自动化处理。**
 
-## 触发条件
+## 前置依赖
 
+- `gh` CLI (GitHub CLI) - `brew install gh`
+- 已登录 gh - `gh auth login`
+- Git 已初始化（可选，会自动处理）
+
+## 运行模式
+
+**开始时确认模式：**
+
+| 模式 | 行为 |
+|------|------|
+| `yolo` | 自动推进低风险步骤，仅高危操作确认 |
+| `interactive` | 每步确认（默认） |
+
+## 执行流程
+
+### Phase 1: 前置检查
+
+**目标**：确认环境就绪，检测项目类型
+
+**步骤**：
+
+1. **检查远程仓库状态**
+   ```bash
+   git remote -v
+   ```
+   - origin 已存在 → 直接进入 Phase 5（推送更新）
+   - origin 不存在 → 继续创建流程
+
+2. **验证 gh CLI**
+   ```bash
+   gh --version && gh auth status
+   ```
+
+3. **检测项目类型**
+   ```bash
+   # VSCode 插件
+   grep -q '"engines".*"vscode"' package.json && echo "vscode-extension"
+
+   # Node.js 库
+   grep -qE '"main"|"module"|"exports"' package.json && echo "nodejs-library"
+
+   # Skills 项目（含 Plugin）
+   [ -d "plugins" ] && find plugins -name "plugin.json" | head -1
+   ```
+
+**Checkpoint**：gh 已登录且远程仓库状态已确认
+
+### Phase 2: 版本检查（Skills 项目专用）
+
+**目标**：确保 Plugin 版本号正确
+
+**触发条件**：检测到 `plugins/` 目录和 `.claude-plugin/plugin.json`
+
+**步骤**：
+
+1. **识别改动的 Plugin**
+   ```bash
+   git diff --name-only HEAD | grep "plugins/" | sed 's|plugins/\([^/]*\)/.*|\1|' | sort -u
+   ```
+
+2. **分析变更类型并建议版本**
+   | 变更类型 | 版本更新 | 示例 |
+   |----------|----------|------|
+   | 新增/删除 Skill | MINOR | 1.0.0 → 1.1.0 |
+   | 修改 Skill | PATCH | 1.0.0 → 1.0.1 |
+   | 破坏性变更 | MAJOR | 1.0.0 → 2.0.0 |
+
+3. **更新版本号**（如需要）
+   ```bash
+   # 使用 jq
+   jq '.version = "1.1.0"' plugin.json > tmp.json && mv tmp.json plugin.json
+
+   # 或使用 sed（无 jq）
+   sed -i '' 's/"version": "[0-9]\+\.[0-9]\+\.[0-9]\+"/"version": "1.1.0"/' plugin.json
+   ```
+
+**Checkpoint**：所有改动 Plugin 的版本号已确认/更新
+
+### Phase 3: 仓库准备
+
+**目标**：生成必要文件，确定仓库名
+
+**步骤**：
+
+1. **确定仓库名**（最多一次交互）
+   优先级：用户指定 > package.json name（清理 scope） > 目录名
+   ```bash
+   # 清理 scope: @org/cool-tool → cool-tool
+   CLEANED_NAME=$(echo "$PACKAGE_NAME" | sed 's/^@[\w-]*\//')
+   ```
+
+2. **生成 README 文件**（如不存在）
+   ```
+   project/
+   ├── README.md      # 英文版（主文件）
+   └── README_CN.md   # 中文版
+   ```
+   两个文件互相链接，README.md 为 GitHub 默认显示。
+
+3. **初始化 Git**（如需要）
+   ```bash
+   [ ! -d .git ] && git init && git add . && git commit -m "Initial commit"
+   ```
+
+4. **补充 .gitignore**（如需要）
+   VSCode 插件需添加 `*.vsix`
+
+**Checkpoint**：仓库名已确认，README 已就绪
+
+### Phase 4: 创建远程仓库
+
+**目标**：创建 GitHub 仓库并推送代码
+
+**步骤**：
+
+1. **配置代理**（可选，失败时跳过）
+   ```bash
+   git config --global http.proxy http://127.0.0.1:10888
+   git config --global https.proxy http://127.0.0.1:10888
+   ```
+
+2. **创建仓库并推送**
+   ```bash
+   gh repo create $REPO_NAME --public --source=. --push --description "$DESCRIPTION"
+   ```
+
+3. **设置 About 信息**
+   ```bash
+   # Description 使用中文
+   gh repo edit --description "中文描述"
+
+   # Topics 使用英文
+   gh repo edit --add-topic "nodejs,typescript,cli-tool"
+   ```
+
+4. **清理代理**
+   ```bash
+   git config --global --unset http.proxy
+   git config --global --unset https.proxy
+   ```
+
+**Checkpoint**：仓库已创建，代码已推送，About 已设置
+
+### Phase 5: 推送更新（远程已存在时）
+
+**目标**：推送本地更新到已有仓库
+
+**步骤**：
+```bash
+# 配置代理（可选）
+git push origin $(git branch --show-current)
 ```
-用户说"发布到 GitHub" / "push 到远端" / "创建 GitHub 仓库"
-    ↓
-使用此 skill
-```
 
-## 前置检查
+### Phase 6: 特殊处理
 
-### 检查远程仓库是否已存在
+**目标**：处理项目特定的发布流程
+
+#### VSCode 插件 → Release
 
 ```bash
-git remote -v
+# 打包
+npx vsce package
+
+# 创建 tag 并推送
+VERSION=$(node -p "require('./package.json').version")
+git tag "v$VERSION" && git push origin "v$VERSION"
+
+# 创建 Release
+gh release create "v$VERSION" --title "v$VERSION" --notes "Release v$VERSION" "*.vsix"
 ```
 
-- **如果 origin 已存在**：仓库已发布，直接推送更新 `git push origin <branch>`
-- **如果 origin 不存在**：继续创建新仓库流程
-
-### 检查 gh CLI 是否可用
+#### Node.js 库 → 提示 npm
 
 ```bash
-gh --version
+echo "检测到 Node.js 库，如需发布到 npm："
+echo "  npm publish --access public  # scoped packages"
+echo "  npm publish                  # regular packages"
 ```
 
-- 如果未安装：提示 `brew install gh` 然后 `gh auth login`
-- 如果未登录：提示 `gh auth login`
+**Checkpoint**：项目特定发布流程已完成
 
-### 检查 Plugin 版本号（如果是 jacky-skills 项目）
+## 验证
 
-**仅当在 `/Users/jiashengwang/jacky-github/jacky-skills` 项目中时执行此检查。**
-
-```bash
-# 检查是否有 plugin 文件被修改
-MODIFIED_PLUGINS=$(git diff --name-only HEAD~1 | grep "plugins/" | sed 's|plugins/\([^/]*\)/.*|\1|' | sort -u)
-
-if [ -n "$MODIFIED_PLUGINS" ]; then
-    echo "检测到以下 Plugin 被修改："
-    echo "$MODIFIED_PLUGINS"
-
-    # 检查版本号是否更新
-    for plugin in $MODIFIED_PLUGINS; do
-        PLUGIN_JSON="plugins/$plugin/.claude-plugin/plugin.json"
-        if [ -f "$PLUGIN_JSON" ]; then
-            CURRENT_VERSION=$(jq -r '.version' "$PLUGIN_JSON")
-            echo "  - $plugin: v$CURRENT_VERSION"
-        fi
-    done
-
-    # 提醒用户确认版本号
-    echo ""
-    echo "⚠️ 请确认以上 Plugin 的版本号是否已更新"
-fi
-```
-
-**版本号规则（SemVer）：**
-
-| 变更类型 | 版本更新 | 示例 |
-|----------|----------|------|
-| 新增 Skill / 功能 | **MINOR** (+0.1.0) | 1.0.0 → 1.1.0 |
-| Bug 修复 / 文档更新 | **PATCH** (+0.0.1) | 1.0.0 → 1.0.1 |
-| 破坏性变更 | **MAJOR** (+1.0.0) | 1.0.0 → 2.0.0 |
-
-**更新版本号：**
-
-```bash
-# 编辑 plugin.json
-vim plugins/<plugin-name>/.claude-plugin/plugin.json
-
-# 或使用 jq 更新
-jq '.version = "1.1.0"' plugins/<plugin-name>/.claude-plugin/plugin.json > tmp.json
-mv tmp.json plugins/<plugin-name>/.claude-plugin/plugin.json
-```
-
-## 工具选择
-
-**必须使用 `gh` CLI**（GitHub CLI），不是 git 命令。
-
-- `gh repo create` - 创建仓库
-- `gh release create` - 创建 Release
-- `gh repo edit` - 修改 About 信息
-
-## 完整流程
-
-### 1. 确定仓库名（仅此一次交互）
-
-**优先级顺序：**
-1. 用户显式指定的名称
-2. `package.json` 的 `name` 字段（需清理 scope）
-3. 当前目录名
-
-```bash
-# 清理 package.json name 的 scope 前缀
-# @org/cool-tool → cool-tool
-CLEANED_NAME=$(echo "$PACKAGE_NAME" | sed 's/^@[\w-]*\//')
-
-# 转换规则：转小写，空格转连字符，移除非字母数字
-```
-
-**交互规则：**
-- 用户说"按默认的来"/"别问我" → 直接使用默认值，无交互
-- 正常情况 → 使用 AskUserQuestion 确认一次（可跳过）
-
-**交互限制：最多一次交互确认仓库名。**
-
-### 2. 检查并生成 README 文件
-
-**重要：使用两个独立的 README 文件，而不是合并。**
-
-```bash
-# 检查 README 是否存在
-if [ ! -f README.md ]; then
-    # 生成 README.md（英文版）
-    # 生成 README_CN.md（中文版）
-fi
-```
-
-**文件结构：**
-
-```
-project/
-├── README.md      # 英文版（主文件）
-└── README_CN.md   # 中文版
-```
-
-**README.md（英文版）模板：**
-
-```markdown
-# Project Name
-
-Brief description in English.
-
-[中文文档](./README_CN.md)
-
-## Features
-...
-
-## Installation
-...
-
-## Usage
-...
-
-## License
-
-MIT
-```
-
-**README_CN.md（中文版）模板：**
-
-```markdown
-# 项目名称
-
-中文简介。
-
-[English](./README.md)
-
-## 功能特性
-...
-
-## 安装
-...
-
-## 使用方法
-...
-
-## 许可证
-
-MIT
-```
-
-**注意事项：**
-- 两个文件互相链接
-- README.md 是主文件（GitHub 默认显示）
-- README_CN.md 是中文补充
-
-### 3. 初始化 Git（如需要）
-
-```bash
-# 检查是否已初始化
-if [ ! -d .git ]; then
-    git init
-    git add .
-    git commit -m "Initial commit"
-fi
-```
-
-### 4. 创建远程仓库并推送
-
-```bash
-# 尝试配置代理（可能失败）
-git config --global http.proxy http://127.0.0.1:10888
-git config --global https.proxy http://127.0.0.1:10888
-
-# 创建仓库并推送
-gh repo create $REPO_NAME --public --source=. --push --description "$DESCRIPTION"
-
-# 如果代理失败，取消代理后重试
-if [ $? -ne 0 ]; then
-    git config --global --unset http.proxy
-    git config --global --unset https.proxy
-    git push -u origin main
-fi
-
-# 完成后取消代理
-git config --global --unset http.proxy
-git config --global --unset https.proxy
-```
-
-### 5. 设置 About 信息
-
-**重要：Description 使用中文。**
-
-```bash
-# 设置中文描述
-gh repo edit --description "中文描述，简要说明项目功能"
-
-# 设置 topics（英文）
-gh repo edit --add-topic "nodejs,typescript,cli-tool"
-```
-
-**Description 来源优先级：**
-1. package.json 的 description（翻译成中文）
-2. 从代码功能总结（用中文描述）
-
-### 6. 特殊项目处理
-
-#### 6.1 VSCode 插件（.vsix 发布到 Release）
-
-```bash
-# 检测是否为 VSCode 插件
-if grep -q '"engines".*"vscode"' package.json; then
-    # 打包插件
-    npx vsce package
-
-    # 获取版本号
-    VERSION=$(node -p "require('./package.json').version")
-
-    # 创建 tag
-    git tag "v$VERSION"
-    git push origin "v$VERSION"
-
-    # 创建 Release 并上传 .vsix
-    gh release create "v$VERSION" \
-        --title "v$VERSION" \
-        --notes "Release v$VERSION" \
-        "*.vsix"
-fi
-```
-
-#### 6.2 Node.js 库（提示 npm 发布）
-
-```bash
-# 检测是否为 Node.js 库（有 main/module/exports 但无 vscode）
-if [ -f package.json ] && [ -z "$VSCODE_ENGINE" ]; then
-    # 检查是否有 main, module, 或 exports
-    if grep -qE '"main"|"module"|"exports"' package.json; then
-        echo "检测到 Node.js 库，如需发布到 npm，请运行："
-        echo "  npm publish --access public  # scoped packages"
-        echo "  npm publish                  # regular packages"
-    fi
-fi
-```
-
-**注意：此 skill 专注于 GitHub 发布，npm 发布由用户自行决定。**
+- [ ] 远程仓库可访问：`gh repo view`
+- [ ] README 正确显示
+- [ ] About 信息（中文描述 + Topics）
+- [ ] VSCode 插件：Release 包含 .vsix
 
 ## 快速参考
 
-| 步骤 | 命令 |
+| 操作 | 命令 |
 |------|------|
 | 创建仓库 | `gh repo create $NAME --public --source=. --push` |
 | 设置描述 | `gh repo edit --description "$中文描述"` |
 | 创建 Release | `gh release create $TAG --title "$TITLE" "*.vsix"` |
-| 打 tag | `git tag $TAG && git push origin $TAG` |
+| 推送更新 | `git push origin <branch>` |
 
-## 常见错误
+## 错误处理
 
-| 错误 | 原因 | 解决 |
-|------|------|------|
-| `gh: command not found` | 未安装 GitHub CLI | `brew install gh` |
-| `permission denied` | 未登录 gh | `gh auth login` |
-| `repository already exists` | 远程仓库已存在 | 直接推送更新或使用 `gh repo edit` |
-| `.vsix already exists` | 重复打包 | 删除旧的 .vsix 文件 |
-| `origin already exists` | 本地已配置远程 | 检查 `git remote -v`，直接 push |
-| `Failed to connect to proxy` | 代理未启动 | 取消代理后直接推送 |
+| 错误 | 解决 |
+|------|------|
+| `gh: command not found` | `brew install gh` |
+| 未登录 gh | `gh auth login` |
+| 仓库已存在 | 直接推送更新 |
+| 代理连接失败 | 跳过代理直接推送 |
+| `.vsix already exists` | 删除旧文件重新打包 |
 
 ## 禁止事项
 
-- **不要多次交互**：最多一次确认仓库名
-- **不要询问 README**：没有就自动生成
-- **不要询问 About**：自动从代码总结，使用中文
-- **不要合并中英文 README**：创建两个独立文件
-- **不要忽略 Release**：VSCode 插件必须发布到 Release
-- **不要提交 .vsix 到仓库**：只发布到 Release，添加到 .gitignore
-- **不要在远程已存在时报错**：智能处理，直接推送更新
+- ❌ 多次交互确认（最多一次）
+- ❌ 询问 README（自动生成）
+- ❌ 询问 About（自动总结）
+- ❌ 合并中英文 README
+- ❌ 提交 .vsix 到仓库
+- ❌ 远程已存在时报错退出
 
-## 完整检查清单
+## Next Up
 
-- [ ] 检查远程仓库是否已存在（`git remote -v`）
-- [ ] 确认仓库名（最多一次交互）
-- [ ] 检查/生成 README.md（英文）和 README_CN.md（中文）
-- [ ] 检查/补充 .gitignore
-- [ ] 初始化 git（如需要）
-- [ ] 配置代理（可选，失败时跳过）
-- [ ] 创建远程仓库并推送
-- [ ] 设置 About 描述（中文）和 topics（英文）
-- [ ] 检测 VSCode 插件 → 打包 → 打 tag → 创建 Release
-- [ ] 取消代理
-
-## 流程图
-
-```dot
-digraph github_publish {
-    rankdir=TB;
-    node [shape=box];
-
-    start [label="用户: 发布到 GitHub" shape=oval];
-
-    subgraph cluster_check {
-        label="前置检查";
-        style=dashed;
-        check_remote [label="git remote -v"];
-        check_gh [label="gh --version"];
-    }
-
-    remote_exists [label="远程已存在?" shape=diamond];
-    push_only [label="git push origin <branch>"];
-
-    subgraph cluster_create {
-        label="创建新仓库";
-        style=dashed;
-        get_name [label="获取仓库名\n(package.json > 目录名)"];
-        check_readme [label="README 存在?" shape=diamond];
-        gen_readme [label="生成 README.md + README_CN.md\n(两个独立文件)"];
-        init_git [label="git init (如需要)"];
-        create_repo [label="gh repo create --push"];
-        set_about [label="gh repo edit\n设置 About (中文描述)"];
-    }
-
-    vscode_check [label="VSCode 插件?" shape=diamond];
-    release_flow [label="vsce package\n→ git tag\n→ gh release create"];
-
-    done [label="完成!" shape=oval];
-
-    start -> check_remote -> check_gh -> remote_exists;
-    remote_exists -> push_only [label="是"];
-    remote_exists -> get_name [label="否"];
-    push_only -> done;
-
-    get_name -> check_readme;
-    check_readme -> gen_readme [label="否"];
-    check_readme -> init_git [label="是"];
-    gen_readme -> init_git;
-
-    init_git -> create_repo -> set_about -> vscode_check;
-    vscode_check -> release_flow [label="是"];
-    vscode_check -> done [label="否"];
-    release_flow -> done;
-}
-```
+- [ ] 确认运行模式（yolo/interactive）
+- [ ] 可复制命令: `gh repo create <name> --public --source=. --push`
+- [ ] 验证: `gh repo view`
