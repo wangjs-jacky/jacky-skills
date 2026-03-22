@@ -1,7 +1,7 @@
 {
   "name": "dev-tools",
-  "version": "1.2.6",
-  "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建等",
+  "version": "1.3.0",
+  "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建、依赖管理等",
   "author": {
     "name": "Jacky Wang",
     "email": "wangjs.jacky@gmail.com",
@@ -15,10 +15,12 @@
     "github",
     "development",
     "skills",
-    "automation"
+    "automation",
+    "dependency-management"
   ],
   "skills": [
     "./github-repo-publish/",
+    "./gsd-creator-skills/",
     "./long-running-agent/",
     "./creator-skills/",
     "./skill-researcher/",

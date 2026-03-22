@@ -1,6 +1,6 @@
 ---
 name: gsd-creator-skills
-description: "基于 GSD 风格的 skills 生成与指导型元技能：用于指导创建/优化其他 skills。若存在 j-skills 可用于管理；无 j-skills 也可使用替代方案。TRIGGER: 创建 skill、新 skill、gsd skill、初始化 skill"
+description: "基于 GSD 风格的 skills 生成与指导型元技能：用于指导创建/优化其他 skills。若存在 j-skills 可用于管理；无 j-skills 也可使用替代方案。支持外部 skill 依赖管理（离线/j-skills 两种模式）。TRIGGER: 创建 skill、新 skill、gsd skill、初始化 skill"
 ---
 
 # GSD 风格 Skill 生成与管理（元技能）
@@ -46,14 +46,32 @@ j-skills install create-skills -g --env claude-code
 用户请求创建 skill
         ↓
 ┌─────────────────────────────┐
-│ 阶段 1: gsd-creator-skills  │
+│ Phase 1: 确认工作区         │
+│ • 确定技能工作目录          │
+└─────────────────────────────┘
+        ↓
+┌─────────────────────────────┐
+│ Phase 2: 创建 Skill         │
 │ • 应用 GSD 最佳实践         │
 │ • 可选接入 j-skills 管理     │
 │ • 生成初始 SKILL.md         │
 └─────────────────────────────┘
         ↓ (可选)
 ┌─────────────────────────────┐
-│ 阶段 2: create-skills       │
+│ Phase 3: 外部依赖管理       │
+│ • 添加 GitHub 仓库依赖      │
+│ • 选择 j-skills/离线模式    │
+│ • 记录版本和 commit hash    │
+└─────────────────────────────┘
+        ↓
+┌─────────────────────────────┐
+│ Phase 4: 集成与验证         │
+│ • j-skills / 手动安装       │
+│ • 验证 skill 可用性         │
+└─────────────────────────────┘
+        ↓ (可选)
+┌─────────────────────────────┐
+│ Phase 5: create-skills 优化 │
 │ • 进一步优化结构            │
 │ • 完善内容细节              │
 │ • 最终质量检查              │
@@ -163,7 +181,120 @@ description: "<简短描述，说明何时触发此 skill>"
 > | 🛑 等待 | 用户确认模板内容 |
 > | ✅ 通过 | 用户确认后进入下一阶段 |
 
-### Phase 3: 集成与验证（j-skills / 手动二选一）
+### Phase 3: 外部依赖管理（可选）
+
+**目标**：为 skill 添加外部 GitHub 仓库的 skill 依赖
+
+> ⚠️ **需要用户选择**
+>
+> | 选项 | 说明 |
+> |------|------|
+> | ⏭️ 跳过 | 不需要外部依赖，直接进入下一阶段 |
+> | 📦 添加依赖 | 配置外部 skill 依赖 |
+
+#### 3.1 选择依赖来源
+
+**步骤**：
+1. **询问** 依赖来源（GitHub 仓库地址，如 `daymade/claude-code-skills`）
+2. **询问** 仓库内的 skill 路径（如 `create-skills`）
+3. **询问** Git 引用（branch/tag/commit，默认 `main`）
+
+#### 3.2 选择安装模式
+
+> ⚠️ **需要用户选择**
+>
+> | 模式 | 说明 | 适用场景 |
+> |------|------|----------|
+> | 🔌 **j-skills 模式** | 使用 `j-skills link + install` 管理 | 开发环境、需要频繁更新 |
+> | 💾 **离线模式** | 克隆到 `references/_deps/` 目录 | 生产环境、网络受限、稳定依赖 |
+
+#### 3.3 执行安装
+
+##### 方案 A：j-skills 模式
+
+> ⚠️ **需要执行命令**
+>
+> ```bash
+> # 1. 克隆依赖仓库（临时）
+> git clone --depth 1 https://github.com/<owner>/<repo>.git /tmp/<repo-name>
+>
+> # 2. 链接到全局注册表
+> cd /tmp/<repo-name>/<skill-path>
+> j-skills link
+>
+> # 3. 安装到环境
+> j-skills install <skill-name> -g
+>
+> # 4. 获取 commit hash（用于记录）
+> cd /tmp/<repo-name>
+> git rev-parse HEAD
+> ```
+
+##### 方案 B：离线模式
+
+> ⚠️ **需要执行命令**
+>
+> ```bash
+> # 1. 创建依赖目录
+> mkdir -p references/_deps
+>
+> # 2. 浅克隆仓库
+> git clone --depth 1 https://github.com/<owner>/<repo>.git references/_deps/<repo-name>
+>
+> # 3. 获取 commit hash
+> cd references/_deps/<repo-name>
+> git rev-parse HEAD
+> ```
+
+#### 3.4 记录依赖信息
+
+创建或更新 `skill-deps.json`：
+
+```json
+{
+  "$schema": "./skill-deps.schema.json",
+  "dependencies": {
+    "<dep-name>": {
+      "source": "github:<owner>/<repo>",
+      "path": "<skill-path>",
+      "ref": "<ref>",
+      "commit": "<commit-hash>",
+      "installMode": "<offline|j-skills>",
+      "installedAt": "<ISO-8601-timestamp>",
+      "localPath": "references/_deps/<repo-name>/<skill-path>"
+    }
+  }
+}
+```
+
+> ⚠️ **Checkpoint - 需要验证**
+>
+> | 检查项 | 命令/方法 |
+> |--------|-----------|
+> | ✅ j-skills 模式 | `j-skills list -g` 显示依赖 skill |
+> | ✅ 离线模式 | `ls references/_deps/<repo>/<path>/SKILL.md` 存在 |
+> | ✅ 依赖清单 | `skill-deps.json` 格式正确 |
+
+#### 3.5 更新依赖（后续操作）
+
+当需要更新依赖时：
+
+```bash
+# 离线模式
+cd references/_deps/<repo-name>
+git fetch origin
+git pull origin <ref>
+git rev-parse HEAD  # 更新 skill-deps.json 中的 commit
+
+# j-skills 模式
+cd /tmp/<repo-name>
+git pull origin <ref>
+j-skills install <skill-name> -g --force
+```
+
+> 📖 **详细文档**：`references/dependency-management.md`
+
+### Phase 4: 集成与验证（j-skills / 手动二选一）
 
 **目标**：将 skill 集成到目标环境并完成可用性验证
 
@@ -202,7 +333,7 @@ description: "<简短描述，说明何时触发此 skill>"
 > | ✅ j-skills 方案 | `j-skills link --list` / `j-skills list -g` 显示 skill |
 > | ✅ 手动方案 | 重启后触发词可命中，且 skill 行为符合预期 |
 
-### Phase 4: 可选优化（create-skills）
+### Phase 5: 可选优化（create-skills）
 
 **目标**：使用 create-skills 进行第二轮优化
 
@@ -299,6 +430,7 @@ j-skills link --unlink <name>
 
 | 文件 | 用途 |
 |------|------|
+| `references/dependency-management.md` | **外部 skill 依赖管理规范**（离线/j-skills 模式） |
 | `references/gsd-xml-tags.md` | GSD 对齐的 workflow XML 词汇表 |
 | `references/hooks-patterns.md` | Claude 项目 hook、skill 内 checkpoint |
 | `references/scripting-workflow-techniques.md` | 复杂需求：脚本解耦、外置进度 |
@@ -309,6 +441,7 @@ j-skills link --unlink <name>
 | `references/canonical-location.md` | 主副本位置说明 |
 | `references/throuble-shooting.md` | 常见异常排查（不生效、链接、卸载） |
 | `references/CHANGELOG.md` | 规则修订记录 |
+| `skill-deps.schema.json` | 依赖清单 JSON Schema |
 
 ## 最佳实践
 
@@ -370,8 +503,12 @@ A: 优先查看 `references/throuble-shooting.md`，按“检查命令 -> 检查
 | Phase 2 | 📝 Skill 名称 | 输入 skill 名称 |
 | Phase 2 | 📝 功能描述 | 输入 skill 功能描述 |
 | Phase 2 | 🛑 模板确认 | 确认生成的 SKILL.md 内容 |
-| Phase 3 | ✅ 安装验证 | 确认安装成功 |
-| Phase 4 | 🔄 优化选择 | 选择是否进行第二阶段优化 |
+| Phase 3 | 🔄 依赖选择 | 选择是否添加外部依赖 |
+| Phase 3 | 📝 依赖来源 | 输入 GitHub 仓库地址和 skill 路径 |
+| Phase 3 | 🔄 安装模式 | 选择 j-skills 或离线模式 |
+| Phase 3 | ✅ 依赖验证 | 确认依赖安装成功 |
+| Phase 4 | ✅ 安装验证 | 确认安装成功 |
+| Phase 5 | 🔄 优化选择 | 选择是否进行第二阶段优化 |
 
 **LLM 执行提示**：
 - 遇到 🛑 标记时 → **必须等待用户确认**，不能自动跳过

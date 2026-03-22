@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Skill Dependencies",
+  "description": "Skill 依赖清单 Schema，用于管理外部 skill 依赖",
+  "type": "object",
+  "required": ["dependencies"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema 引用"
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "依赖列表，key 为依赖名称",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source", "path", "commit", "installMode"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "依赖来源，格式: github:<owner>/<repo>",
+            "pattern": "^github:[^/]+/[^/]+$",
+            "examples": ["github:daymade/claude-code-skills"]
+          },
+          "path": {
+            "type": "string",
+            "description": "仓库内 skill 路径",
+            "examples": ["create-skills", "superpowers"]
+          },
+          "ref": {
+            "type": "string",
+            "description": "Git 引用 (branch/tag/commit)",
+            "default": "main",
+            "examples": ["main", "v1.0.0", "develop"]
+          },
+          "version": {
+            "type": "string",
+            "description": "语义化版本（如有）",
+            "examples": ["v1.0.0", "1.2.3"]
+          },
+          "commit": {
+            "type": "string",
+            "description": "安装时的 commit hash（完整 40 位）",
+            "minLength": 40,
+            "maxLength": 40,
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "installMode": {
+            "type": "string",
+            "description": "安装模式",
+            "enum": ["offline", "j-skills"],
+            "enumDescriptions": [
+              "离线模式：克隆到 references/_deps/ 目录",
+              "j-skills 模式：使用 j-skills link + install 管理"
+            ]
+          },
+          "installedAt": {
+            "type": "string",
+            "description": "安装时间 (ISO 8601)",
+            "format": "date-time",
+            "examples": ["2026-03-22T10:00:00Z"]
+          },
+          "localPath": {
+            "type": "string",
+            "description": "本地路径（仅 offline 模式需要）",
+            "examples": ["references/_deps/claude-code-skills/create-skills"]
+          }
+        }
+      }
+    }
+  }
+}
