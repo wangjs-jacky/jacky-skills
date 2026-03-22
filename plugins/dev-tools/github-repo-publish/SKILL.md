@@ -126,13 +126,7 @@ description: Use when user wants to publish local code repository to GitHub, nee
 
 **步骤**：
 
-1. **配置代理**（可选，失败时跳过）
-   ```bash
-   git config --global http.proxy http://127.0.0.1:10888
-   git config --global https.proxy http://127.0.0.1:10888
-   ```
-
-2. **创建仓库并推送**
+1. **创建仓库并推送**
    ```bash
    gh repo create $REPO_NAME --public --source=. --push --description "$DESCRIPTION"
    ```
@@ -146,11 +140,13 @@ description: Use when user wants to publish local code repository to GitHub, nee
    gh repo edit --add-topic "nodejs,typescript,cli-tool"
    ```
 
-4. **清理代理**
+4. **清理代理**（如已配置）
    ```bash
    git config --global --unset http.proxy
    git config --global --unset https.proxy
    ```
+
+> **注意**：代理配置应使用全局 CLAUDE.md 中定义的端口（HTTP: 10802），而非在此硬编码。
 
 **Checkpoint**：仓库已创建，代码已推送，About 已设置
 
@@ -160,7 +156,7 @@ description: Use when user wants to publish local code repository to GitHub, nee
 
 **步骤**：
 ```bash
-# 配置代理（可选）
+# 如需代理，使用全局 CLAUDE.md 中定义的端口
 git push origin $(git branch --show-current)
 ```
 
@@ -215,7 +211,7 @@ echo "  npm publish                  # regular packages"
 | `gh: command not found` | `brew install gh` |
 | 未登录 gh | `gh auth login` |
 | 仓库已存在 | 直接推送更新 |
-| 代理连接失败 | 跳过代理直接推送 |
+| 代理连接失败 | 使用正确端口（HTTP: 10802）或直连 |
 | `.vsix already exists` | 删除旧文件重新打包 |
 
 ## 禁止事项
