@@ -39,6 +39,52 @@ gh --version
 - 如果未安装：提示 `brew install gh` 然后 `gh auth login`
 - 如果未登录：提示 `gh auth login`
 
+### 检查 Plugin 版本号（如果是 jacky-skills 项目）
+
+**仅当在 `/Users/jiashengwang/jacky-github/jacky-skills` 项目中时执行此检查。**
+
+```bash
+# 检查是否有 plugin 文件被修改
+MODIFIED_PLUGINS=$(git diff --name-only HEAD~1 | grep "plugins/" | sed 's|plugins/\([^/]*\)/.*|\1|' | sort -u)
+
+if [ -n "$MODIFIED_PLUGINS" ]; then
+    echo "检测到以下 Plugin 被修改："
+    echo "$MODIFIED_PLUGINS"
+
+    # 检查版本号是否更新
+    for plugin in $MODIFIED_PLUGINS; do
+        PLUGIN_JSON="plugins/$plugin/.claude-plugin/plugin.json"
+        if [ -f "$PLUGIN_JSON" ]; then
+            CURRENT_VERSION=$(jq -r '.version' "$PLUGIN_JSON")
+            echo "  - $plugin: v$CURRENT_VERSION"
+        fi
+    done
+
+    # 提醒用户确认版本号
+    echo ""
+    echo "⚠️ 请确认以上 Plugin 的版本号是否已更新"
+fi
+```
+
+**版本号规则（SemVer）：**
+
+| 变更类型 | 版本更新 | 示例 |
+|----------|----------|------|
+| 新增 Skill / 功能 | **MINOR** (+0.1.0) | 1.0.0 → 1.1.0 |
+| Bug 修复 / 文档更新 | **PATCH** (+0.0.1) | 1.0.0 → 1.0.1 |
+| 破坏性变更 | **MAJOR** (+1.0.0) | 1.0.0 → 2.0.0 |
+
+**更新版本号：**
+
+```bash
+# 编辑 plugin.json
+vim plugins/<plugin-name>/.claude-plugin/plugin.json
+
+# 或使用 jq 更新
+jq '.version = "1.1.0"' plugins/<plugin-name>/.claude-plugin/plugin.json > tmp.json
+mv tmp.json plugins/<plugin-name>/.claude-plugin/plugin.json
+```
+
 ## 工具选择
 
 **必须使用 `gh` CLI**（GitHub CLI），不是 git 命令。

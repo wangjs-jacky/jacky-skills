@@ -79,3 +79,9 @@ scripts/package_skill.py <path/to/skill-folder>
 | 分发 | zip 打包 | j-skills link/install |
 | 更新 | 重新打包 | 软链接自动生效 |
 | 环境 | 单一环境 | 35+ AI 编码助手 |
+
+## 与本仓库扩展文档的关系
+
+本 skill 在 upstream 之外增加了 **GSD 对齐的 XML 词汇表**、**Hooks 分场景说明**、**笔记接入说明** 等，见同目录下的 `gsd-xml-tags.md`、`hooks-patterns.md`、`notes-import/README.md`。这些文件**不属于** daymade 上游；同步上游时以 `SKILL.md` 与 `upstream-guide.md` 的冲突为准，扩展文档按需手工合并。
+
+**多份副本**：若存在多处 `creator-skills`，请以 `canonical-location.md` 为准。

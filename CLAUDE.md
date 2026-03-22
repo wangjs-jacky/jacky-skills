@@ -15,14 +15,18 @@ npm install -g j-skills
 ```
 jacky-skills/
 ├── CLAUDE.md                    # 本文件
-├── <skill-name>/                # skill 目录
-│   └── SKILL.md                 # skill 定义文件
-└── ...
+├── plugins/                     # Plugin 目录
+│   └── <plugin-name>/
+│       ├── .claude-plugin/
+│       │   └── plugin.json      # Plugin 元数据（含版本号）
+│       └── <skill-name>/
+│           └── SKILL.md         # Skill 定义文件
+└── skills/                      # 独立 Skills（无 Plugin）
+    └── <skill-name>/
+        └── SKILL.md
 ```
 
 ## j-skills 工作流程
-
-当新增或更新 skill 时，按以下步骤操作：
 
 ### 1. 创建 Skill
 
@@ -41,11 +45,8 @@ description: 简短描述，用于触发条件判断
 
 ### 2. 链接到全局注册表
 
-使用 `j-skills link` 将 skill 软链接到全局注册表：
-
 ```bash
 # 在 skill 目录下执行
-cd <skill-name>
 j-skills link
 
 # 或指定路径
@@ -54,10 +55,8 @@ j-skills link /path/to/skill
 
 ### 3. 安装到环境
 
-将 skill 安装到 Claude Code（默认环境）：
-
 ```bash
-# 全局安装（推荐，对所有项目生效）
+# 全局安装（推荐）
 j-skills install <skill-name> -g
 
 # 安装到多个环境
@@ -67,17 +66,9 @@ j-skills install <skill-name> -g --env claude-code,cursor
 ### 常用命令
 
 ```bash
-# 列出已链接的 skills
-j-skills link --list
-
-# 列出已安装的 skills
-j-skills list --all
-
-# 卸载 skill
-j-skills uninstall <skill-name> -g
-
-# 查看配置
-j-skills config
+j-skills link --list      # 列出已链接
+j-skills list --all       # 列出已安装
+j-skills uninstall <name> -g  # 卸载
 ```
 
 ## 路径信息
@@ -95,8 +86,13 @@ j-skills config
 | 列出已安装 | `j-skills list --all` |
 | 卸载 | `j-skills uninstall <name> -g` |
 
-## 软链接优势
+## ⚠️ Git Push 注意事项
 
-- 磁盘占用极低
-- 支持热更新
-- 修改本地文件立即生效
+**修改 Plugin 文件后，必须更新版本号：**
+
+| 变更类型 | 版本更新 | 示例 |
+|----------|----------|------|
+| 新增 Skill | **MINOR** | 1.0.0 → 1.1.0 |
+| Bug 修复 | **PATCH** | 1.0.0 → 1.0.1 |
+
+详见 `/github-repo-publish` skill。

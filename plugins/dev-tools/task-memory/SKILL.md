@@ -1,255 +1,371 @@
 ---
 name: task-memory
-description: 长任务对话记录工具。记录任务执行过程中的偏差，帮助改进 prompt 设计。触发于 /task-memory 命令或"任务记录"、"偏差记录"、"prompt 复盘"等关键词。
+description: 跨会话任务记忆工具。记录任务历史，支持会话中断后恢复上下文。触发于 /task-memory 命令或"任务记忆"、"继续之前"、"任务历史"等关键词。
 ---
 
-# Task Memory - 长任务对话记录工具
+<role>
+你是 Task Memory 管理器。你的职责是：
 
-## 用途
-
-记录开发任务从开始到结束的完整过程，重点关注：
-- 初始设计/Prompt 的内容
-- 执行过程中发现的偏差和修正
-- 最终复盘分析，改进未来的 prompt 设计
-
-## 前提条件
-
-**需要安装 jq（JSON 处理工具）：**
-
-```bash
-# macOS
-brew install jq
-
-# Ubuntu/Debian
-sudo apt-get install jq
-```
-
-## 命令
-
-### /task-memory start <任务名> [描述]
-
-开始一个新任务，记录初始设计。
-
-**参数**：
-- `<任务名>`：任务的简短标识（必填）
-- `[描述]`：任务的详细描述（可选）
-
-**示例**：
-```
-/task-memory start "修复登录 bug" "用户反馈登录后页面白屏"
-```
-
-**行为**：
-1. 在 `.harness/memory/tasks/` 下创建新任务目录
-2. 生成 `init.md`，包含：
-   - 任务目标
-   - 初始设计方案（需手动填写）
-   - 预期步骤（需手动填写）
-   - 涉及的文件（需手动填写）
-3. 更新 `.harness/memory/current.json` 标记当前任务
+1. **持久化任务状态** - 保存到本地文件，跨会话有效
+2. **恢复上下文** - 新会话开始时读取历史记录
+3. **记录进展** - 记录每次重要的用户输入和 AI 输出
+</role>
 
 ---
 
-### /task-memory record <描述>
+<purpose>
 
-记录一次偏差或修正。
+## 核心场景
 
-**参数**：
-- `<描述>`：偏差的简短描述（必填）
-
-**示例**：
 ```
-/task-memory record "发现事件冒泡导致点击无响应"
-```
+用户在做一个长任务：
+1. 上下文会超限，会话会中断
+2. 用户会开启新会话继续工作
+3. 需要知道"之前做了什么"
+4. 需要记录"这次做了什么"
 
-**行为**：
-1. 检测当前是否有进行中的任务
-2. 生成 `deviation-XX.md` 文件，包含：
-   - 问题描述
-   - 发现原因（需手动填写）
-   - 修复方案（需手动填写）
-   - 根因分析（需手动填写）
-
----
-
-### /task-memory status
-
-查看当前任务状态。
-
-**输出**：
-- 当前任务信息（ID、名称、开始时间）
-- 已记录的偏差数量
-- 最近 3 条偏差摘要
-
----
-
-### /task-memory end
-
-结束当前任务，生成复盘报告。
-
-**行为**：
-1. 汇总所有偏差记录
-2. 生成 `review.md`，包含：
-   - 时间线统计
-   - 偏差列表
-3. 清空 `.harness/memory/current.json`
-
----
-
-### /task-memory list
-
-列出项目中所有任务记录。
-
----
-
-### /task-memory review <任务ID>
-
-重新查看某个任务的复盘报告。
-
-**示例**：
-```
-/task-memory review task-2026-03-21-001
+Task Memory 解决：
+- 跨会话的任务连续性
+- 历史记录持久化
+- 上下文恢复
 ```
 
+</purpose>
+
 ---
 
-## 文件格式
+<commands>
 
-### init.md（初始设计）
+| 命令 | 说明 |
+|------|------|
+| `/task-memory start <任务名>` | 开始新任务（或恢复已有任务） |
+| `/task-memory save [描述]` | 保存当前进展 |
+| `/task-memory recall` | 回忆：读取并总结历史记录 |
+| `/task-memory history` | 查看完整历史 |
+| `/task-memory end` | 结束任务 |
+
+</commands>
+
+---
+
+<process>
+
+<step name="start" priority="first">
+
+**命令**: `/task-memory start <任务名>`
+
+**行为**:
+1. 检查 `.harness/memory/` 是否已有该任务
+2. 如果存在 → 读取历史，展示摘要
+3. 如果不存在 → 创建新任务目录
+
+**产物**:
+```
+.harness/memory/
+├── current.json           # 当前任务指针
+└── tasks/
+    └── <task-id>/
+        ├── meta.json      # 任务元信息
+        ├── session-01.md  # 会话 1 记录
+        ├── session-02.md  # 会话 2 记录
+        └── ...
+```
+
+**示例**:
+```
+用户: /task-memory start "开发用户认证模块"
+
+AI: 检测到已有任务记录...
+
+## 📋 任务恢复: 开发用户认证模块
+
+- 创建时间: 2026-03-20
+- 会话次数: 3
+- 最后更新: 2026-03-22
+
+### 最近进展 (Session 3)
+- 完成了邮箱登录 API
+- 遇到问题：密码加密库兼容性
+- 待处理：手机验证码功能
+
+继续上次的工作？
+```
+
+</step>
+
+<step name="save">
+
+**命令**: `/task-memory save [描述]`
+
+**行为**:
+1. 记录当前会话的关键内容
+2. 追加到 session 文件
+3. 更新 current.json
+
+**自动触发时机**（AI 主动执行）:
+- 会话即将结束（检测到上下文接近限制）
+- 完成重要里程碑
+- 用户说"保存一下"
+
+**记录格式**:
+```markdown
+## Session N - 2026-03-22 15:30
+
+### 用户输入
+> "修复登录 API 的 bug"
+
+### AI 行动
+- 定位问题：密码加密库版本不兼容
+- 修复方案：升级 bcrypt 到 5.x
+- 修改文件：src/auth/password.ts
+
+### 结果
+- ✅ 登录 API 正常工作
+- 测试用例通过
+
+### 待处理
+- 手机验证码功能
+- 第三方 OAuth 集成
+```
+
+</step>
+
+<step name="recall">
+
+**命令**: `/task-memory recall`
+
+**行为**:
+1. 读取 current.json 找到当前任务
+2. 读取所有 session 文件
+3. 生成摘要
+
+**输出**:
+```
+## 📋 任务回忆: 开发用户认证模块
+
+### 时间线
+| 日期 | 会话 | 主要内容 |
+|------|------|----------|
+| 03-20 | S1 | 初始设计、技术选型 |
+| 03-21 | S2 | 实现邮箱登录 |
+| 03-22 | S3 | 修复密码加密 bug |
+
+### 已完成
+- [x] 技术栈确定 (React + Node.js)
+- [x] 邮箱登录 API
+- [x] 密码加密功能
+
+### 进行中
+- [ ] 手机验证码
+
+### 待处理
+- [ ] 第三方 OAuth
+- [ ] 登录日志
+
+### 关键决策
+1. 选择 bcrypt 而非 argon2（兼容性考虑）
+2. JWT 有效期设为 7 天
+```
+
+</step>
+
+<step name="history">
+
+**命令**: `/task-memory history`
+
+**行为**: 展示完整的 session 记录（不做摘要）
+
+</step>
+
+<step name="end">
+
+**命令**: `/task-memory end`
+
+**行为**:
+1. 保存最终状态
+2. 清空 current.json
+3. 生成任务总结
+
+</step>
+
+</process>
+
+---
+
+<storage_structure>
+
+```
+.harness/memory/
+├── current.json                    # 当前任务指针
+│   {
+│     "taskId": "task-2026-03-20-auth",
+│     "taskName": "开发用户认证模块",
+│     "sessions": 3,
+│     "lastSession": "session-03.md"
+│   }
+│
+└── tasks/
+    └── task-2026-03-20-auth/
+        ├── meta.json               # 元信息
+        │   {
+        │     "taskName": "开发用户认证模块",
+        │     "createdAt": "2026-03-20T10:00:00Z",
+        │     "status": "in_progress",
+        │     "tags": ["auth", "api"]
+        │   }
+        │
+        ├── session-01.md           # 会话 1 记录
+        ├── session-02.md           # 会话 2 记录
+        └── session-03.md           # 会话 3 记录
+```
+
+</storage_structure>
+
+---
+
+<auto_save_protocol>
+
+## AI 主动保存规则
+
+由于 Hooks 无法完全无感监听，AI 应在以下时机主动保存：
+
+<trigger condition="上下文接近限制">
+当检测到上下文使用超过 70% 时，提示用户：
+"上下文快满了，是否保存当前进展？"
+</trigger>
+
+<trigger condition="完成里程碑">
+当完成重要功能时，自动保存：
+```
+/task-memory save "完成邮箱登录 API"
+```
+</trigger>
+
+<trigger condition="用户请求">
+用户说"保存一下"、"记录一下"时，执行保存
+</trigger>
+
+<trigger condition="会话结束">
+检测到 Stop hook 触发时，提醒保存
+</trigger>
+
+</auto_save_protocol>
+
+---
+
+<session_template>
+
+## Session 记录模板
 
 ```markdown
 ---
-task_id: task-2026-03-21-001
-type: init
-created_at: 2026-03-21T10:00:00Z
-task_name: 修复登录 bug
-description: 用户反馈登录后页面白屏
+sessionId: session-03
+date: 2026-03-22
+duration: ~30min
 ---
 
-## 任务目标
+## 用户输入链
 
-用户反馈登录后页面白屏
+### 输入 1
+> "继续之前的任务"
 
-## 初始设计
+**上下文**: 恢复 Session 2 的进度
 
-1. 检查登录接口返回
-2. 检查路由跳转逻辑
-3. 检查页面渲染条件
+### 输入 2
+> "修复登录 API 的 bug，密码加密有问题"
 
-## 涉及文件
+**触发原因**: Session 2 遗留的 bcrypt 兼容性问题
 
-- src/pages/Login.tsx
-- src/services/auth.ts
+### 输入 3
+> "测试一下登录功能"
+
+**目的**: 验证修复
+
+---
+
+## AI 行动记录
+
+| 行动 | 文件 | 结果 |
+|------|------|------|
+| 升级 bcrypt | package.json | ✅ |
+| 修改加密逻辑 | src/auth/password.ts | ✅ |
+| 编写测试 | tests/auth.test.ts | ✅ |
+
+---
+
+## Prompt 优化笔记
+
+### 原始 Prompt 不足
+- 未指定 bcrypt 版本要求
+- 未说明 Node.js 版本
+
+### 改进建议
+下次开发类似功能时，Prompt 应包含：
+- "使用 bcrypt 5.x，兼容 Node.js 18+"
 ```
 
-### deviation-XX.md（偏差记录）
-
-```markdown
----
-task_id: task-2026-03-21-001
-type: deviation
-sequence: 01
-created_at: 2026-03-21T11:30:00Z
-trigger: manual
-related_files:
-  - src/pages/Login.tsx
----
-
-## 问题描述
-
-点击登录按钮后页面白屏
-
-## 发现原因
-
-登录接口返回的数据结构与预期不一致
-
-## 修复方案
-
-修改数据访问路径，添加防御性检查
-
-## 根因分析
-
-初始设计时没有先打印接口返回数据确认结构
-```
-
-### review.md（复盘报告）
-
-```markdown
----
-task_id: task-2026-03-21-001
-type: review
-created_at: 2026-03-21T14:00:00Z
-total_deviation: 2
----
-
-# 复盘：修复登录 bug
-
-## 统计
-
-- 开始时间: 2026-03-21T10:00:00Z
-- 结束时间: 2026-03-21T14:00:00Z
-- 偏差次数: 2
-
-## 偏差列表
-
-- [01] 接口返回结构不一致
-- [02] 事件冒泡导致点击无响应
+</session_template>
 
 ---
 
-可手动补充改进建议。
-```
+<integration>
 
----
-
-## 使用流程
+## 与 Task Workflow 的集成
 
 ```
-1. 开始任务
-   /task-memory start "修复登录 bug"
+Task Workflow 调用 Task Memory 的时机：
 
-2. 正常工作中...
-   (Claude Code Hooks 检测偏差关键词，提示确认)
+INIT 阶段:
+  → /task-memory start <任务名>
 
-3. 手动记录偏差
-   /task-memory record "发现接口返回结构不一致"
+EXECUTE 阶段:
+  → 每次重要操作后 /task-memory save
 
-4. 查看进度
-   /task-memory status
-
-5. 结束任务
-   /task-memory end
-   → 生成复盘报告
-
-6. 回顾历史
-   /task-memory list
-   /task-memory review task-2026-03-21-001
+REVIEW 阶段:
+  → /task-memory end
 ```
+
+</integration>
 
 ---
 
-## 存储位置
+<examples>
 
-所有数据存储在项目目录下的 `.harness/memory/` 中：
+## 示例 1: 新会话恢复任务
 
 ```
-<your-project>/
-└── .harness/
-    └── memory/
-        ├── current.json            # 当前任务状态
-        └── tasks/
-            └── task-2026-03-21-001/
-                ├── init.md         # 初始设计
-                ├── deviation-01.md # 偏差记录 1
-                ├── deviation-02.md # 偏差记录 2
-                └── review.md       # 复盘报告
+用户: 继续开发用户认证模块
+
+AI: [检查 .harness/memory/current.json]
+
+## 📋 任务恢复
+
+上次你在做：开发用户认证模块
+- 进度：60%
+- 最后更新：2 天前
+
+### 上次做了什么
+- 完成了邮箱登录 API
+- 遇到密码加密 bug（已修复）
+
+### 待处理
+1. 手机验证码功能
+2. 第三方 OAuth
+
+从哪里继续？
 ```
 
----
+## 示例 2: 保存进展
 
-## 最佳实践
+```
+AI: [检测到上下文 75%]
 
-1. **任务开始时记录初始设计** - 不要跳过这一步，这是复盘的基础
-2. **及时记录偏差** - 发现问题时立即记录，避免遗忘
-3. **填写根因分析** - 这是最有价值的部分，帮助改进 prompt
-4. **定期回顾复盘报告** - 积累经验，避免重复犯错
+⚠️ 上下文快满了
+
+建议保存当前进展：
+/task-memory save "完成手机验证码 API，待处理 OAuth"
+
+保存后可以开启新会话继续。
+```
+
+</examples>

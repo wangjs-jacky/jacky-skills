@@ -1,468 +1,527 @@
 ---
 name: task-harness
-description: 任务验收边界设计工具。通过持续对话为 AI 任务定义可检测的验收标准，支持函数(TDD)、网页(快照)、CLI 工具、脚本等多种场景。触发于 /task-harness 或"验收边界"、"harness 设计"、"定义验收标准"等关键词。
+description: 任务验收边界设计工具。通过 TDD 方式生成可执行的测试用例作为验收标准。触发于 /task-harness 或"验收边界"、"测试用例"、"harness 设计"等关键词。
 ---
 
-# Task Harness - 任务验收边界设计
+<role>
+你是 Task Harness 设计器。你的职责是：
 
-## 用途
+1. **引导测试框架选择** - 帮助用户选择合适的测试工具
+2. **生成测试用例代码** - 输出可直接执行的测试代码
+3. **定义验收边界** - 每个 MUST 条件对应一个测试用例
+</role>
 
-在 AI 执行长任务之前，**通过持续对话明确验收边界**。通过多轮引导式提问，帮助用户逐步精确定义可验证的完成标准。
+<philosophy>
 
-## 核心理念
-
-> **Harness = 可检测的验收边界**
-
-一个好的 Harness 定义应该满足：
-1. **可检测**：能用命令/脚本自动验证
-2. **明确性**：没有歧义，非黑即白
-3. **完整性**：覆盖核心功能，不遗漏关键场景
-4. **最小化**：只验证必要条件，不追求完美
-
-## 命令
-
-### /task-harness <任务描述>
-
-启动验收边界设计会话，通过多轮对话引导用户明确可检测的完成标准。
-
-**参数**：
-- `<任务描述>`：你想要 AI 完成的任务
-
-**示例**：
-```
-/task-harness 创建一个用户登录表单组件
-/task-harness 编写一个批量重命名文件的脚本
-/task-harness 开发一个 CLI 工具来管理 Git 分支
-```
-
----
-
-## 核心流程
-
-这是一个**持续确认**的过程，AI 会不断提问直到验收边界足够清晰：
+## 核心理念：Harness = 测试用例
 
 ```
-用户描述任务 → AI 提问 → 用户回答 → AI 继续提问 → ... → 生成 Harness 定义
+传统做法（错误）：
+- 验收标准：组件渲染后显示初始值 0
+- 问题：这是文字描述，无法自动验证
+
+TDD 做法（正确）：
+- 测试用例：
+  it('should render with initial value 0', () => {
+    render(<Counter />);
+    expect(screen.getByText('0')).toBeInTheDocument();
+  });
+- 优势：可执行、可验证、无歧义
 ```
 
-**终止条件**（满足其一即可）：
-1. 用户说"好了"、"够了"、"确认"
-2. AI 判断验收标准已足够明确和可检测
+**Harness 是执行的强依赖标准**：
+- PLAN 阶段依赖 Harness 生成任务
+- EXECUTE 阶段依赖测试用例验证完成
+- 没有 Harness 不能进入 PLAN 阶段
+
+</philosophy>
 
 ---
 
-## 交互流程
+<commands>
 
-### 第一步：理解任务类型
+| 命令 | 说明 |
+|------|------|
+| `/task-harness <任务描述>` | 启动 Harness 设计（含测试框架选择） |
+| `/task-harness generate` | 重新生成测试用例 |
+| `/task-harness verify` | 运行测试验证 |
+| `/task-harness add <条件>` | 添加新的测试用例 |
 
-AI 会首先分析任务属于哪种类型：
-
-| 类型 | 特征 | 验证方式 |
-|------|------|----------|
-| **函数/模块** | 纯逻辑代码 | 单元测试 (TDD) |
-| **网页/UI** | 视觉界面 | 快照测试 + E2E |
-| **CLI 工具** | 命令行交互 | 输出验证 + 退出码 |
-| **脚本** | 一次性执行 | 文件/状态检查 |
-| **API/服务** | 网络接口 | 请求/响应验证 |
-| **配置** | 文件配置 | 语法检查 + 效果验证 |
-
-### 第二步：引导式提问
-
-AI 会提出针对性问题，帮助明确验收标准：
-
-#### 函数/模块类
-
-```
-请回答以下问题来定义验收边界：
-
-1. 【输入】函数接受什么参数？类型是什么？
-2. 【输出】函数返回什么？类型是什么？
-3. 【边界】有哪些边界情况需要处理？
-   - 空值？
-   - 极端值？
-   - 错误输入？
-4. 【副作用】函数会影响外部状态吗？
-5. 【性能】有性能要求吗？（时间/空间复杂度）
-
-示例答案：
-- 输入：用户对象 { name: string, age: number }
-- 输出：布尔值，表示是否成年
-- 边界：age 为 null/负数/小数 时返回 false
-- 副作用：无
-- 性能：O(1)
-```
-
-#### 网页/UI 类
-
-```
-请回答以下问题来定义验收边界：
-
-1. 【元素】页面上必须存在哪些元素？
-2. 【交互】用户可以进行哪些操作？
-3. 【状态】有哪些状态变化？
-4. 【响应式】需要支持哪些屏幕尺寸？
-5. 【可访问性】需要满足哪些无障碍要求？
-
-示例答案：
-- 元素：用户名输入框、密码输入框、登录按钮、错误提示区域
-- 交互：点击登录按钮触发验证
-- 状态：加载中、成功、失败
-- 响应式：桌面 + 移动端
-- 可访问性：支持键盘导航
-```
-
-#### CLI 工具类
-
-```
-请回答以下问题来定义验收边界：
-
-1. 【命令】工具的命令格式是什么？
-2. 【参数】支持哪些参数/选项？
-3. 【输出】成功时的输出是什么？
-4. 【错误】失败时的错误信息是什么？
-5. 【退出码】成功/失败分别返回什么退出码？
-
-示例答案：
-- 命令：mycli <command> [options]
-- 参数：--help, --version, --output <file>
-- 输出：JSON 格式的结果
-- 错误：红色文字的错误信息
-- 退出码：成功 0，失败 1
-```
-
-#### 脚本类
-
-```
-请回答以下问题来定义验收边界：
-
-1. 【前置】执行前需要什么条件？
-2. 【执行】脚本会做什么操作？
-3. 【结果】执行后会产生什么？
-4. 【清理】需要清理临时文件吗？
-5. 【幂等】可以重复执行吗？
-
-示例答案：
-- 前置：目标目录存在
-- 执行：创建日志文件，写入时间戳
-- 结果：/tmp/app.log 文件被创建
-- 清理：无需清理
-- 幂等：是，追加模式
-```
-
-### 第三步：生成 Harness 定义
-
-根据用户的回答，生成结构化的验收定义：
-
-```markdown
-# Harness: <任务名称>
-
-## 任务类型
-<类型>
-
-## 验收标准
-
-### 必须 (MUST)
-- [ ] <验收条件 1>
-- [ ] <验收条件 2>
-- [ ] <验收条件 3>
-
-### 应该 (SHOULD)
-- [ ] <验收条件 4>
-- [ ] <验收条件 5>
-
-### 可选 (MAY)
-- [ ] <验收条件 6>
-
-## 验证脚本
-
-\`\`\`<语言>
-# 可执行的验证脚本
-\`\`\`
-
-## 验证命令
-
-\`\`\`bash
-# 执行验证的命令
-\`\`\`
-```
+</commands>
 
 ---
 
-## 模板库
+<process>
 
-### 函数 TDD 模板
+<step name="select_framework" priority="first">
 
-```markdown
-## Harness: 函数 <函数名>
+**目标**：选择测试框架和工具
 
-### 输入/输出契约
-- 输入: `<类型>`
-- 输出: `<类型>`
+<framework_options>
 
-### 测试用例
-
-| 输入 | 预期输出 | 说明 |
+| 框架 | 适用场景 | 特点 |
 |------|----------|------|
-| `<case1>` | `<expected1>` | 正常情况 |
-| `<case2>` | `<expected2>` | 边界情况 |
-| `<case3>` | `<expected3>` | 错误处理 |
+| **Vitest** | Vite 项目、现代前端 | 快速、ESM 原生、兼容 Jest API |
+| **Jest** | React 项目、Node.js | 生态成熟、文档丰富 |
+| **Playwright** | E2E 测试、跨浏览器 | 真实浏览器环境 |
+| **Node:test** | Node.js 原生 | 无依赖、轻量 |
 
-### 验证命令
+</framework_options>
 
-\`\`\`bash
-npm test -- <test-file>
-\`\`\`
+<action>
+询问用户：
+1. 当前项目使用什么构建工具？（Vite/Webpack/其他）
+2. 是否已有测试框架？
+3. 需要什么类型的测试？（单元/E2E/两者都要）
+</action>
+
+<if condition="用户不确定">
+推荐默认选择：
+- Vite 项目 → Vitest
+- Create React App → Jest
+- 需要真实浏览器 → Playwright
+</if>
+
+</step>
+
+<step name="identify_task_type">
+
+**目标**：识别任务类型，选择测试模板
+
+| 任务类型 | 识别特征 | 测试方式 |
+|----------|----------|----------|
+| **React 组件** | JSX/TSX、hooks | @testing-library/react |
+| **函数/工具** | 纯函数、无 UI | 直接调用断言 |
+| **API 接口** | HTTP 请求 | supertest / msw |
+| **CLI 工具** | 命令行参数 | child_process + stdout |
+| **Hook** | React hooks | @testing-library/react-hooks |
+
+</step>
+
+<step name="generate_test_cases">
+
+**目标**：为每个 MUST 条件生成测试用例
+
+<principle>
+**100% MUST 覆盖原则**
+
+```
+MUST 条件数 = 测试用例数（至少）
+
+每个 MUST 条件必须对应至少一个测试用例：
+- 正向测试：正常输入 → 期望输出
+- 边界测试：边界值处理
+- 负向测试：错误输入 → 错误处理
+```
+</principle>
+
+<action>
+1. 分析用户需求，提取 MUST 条件
+2. 为每个 MUST 生成测试用例代码
+3. 生成测试文件
+</action>
+
+</step>
+
+<step name="confirm_and_save">
+
+**目标**：确认测试用例，保存 Harness
+
+<action>
+1. 展示生成的测试代码
+2. 用户确认或修改
+3. 保存到 .harness/harness/<任务名>/
+</action>
+
+</step>
+
+</process>
+
+---
+
+<test_templates>
+
+## React 组件测试模板
+
+```typescript
+// .harness/harness/{{taskName}}/{{taskName}}.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect } from 'vitest'; // 或 jest
+import { {{ComponentName}} } from './{{ComponentName}}';
+
+describe('{{ComponentName}}', () => {
+  // MUST-1: 组件正确渲染
+  it('should render correctly', () => {
+    render(<{{ComponentName}} />);
+    // TODO: 添加具体断言
+    expect(screen.getByRole('region')).toBeInTheDocument();
+  });
+
+  // MUST-2: {{具体功能}}
+  it('should {{功能描述}}', () => {
+    render(<{{ComponentName}} />);
+
+    // 操作
+    fireEvent.click(screen.getByText('Button'));
+
+    // 断言
+    expect(screen.getByText('Result')).toBeInTheDocument();
+  });
+
+  // MUST-3: 边界情况
+  it('should handle edge case: {{边界描述}}', () => {
+    render(<{{ComponentName}} initialValue={-1} />);
+
+    // 断言边界处理
+    expect(screen.getByText('0')).toBeInTheDocument(); // 不允许负数
+  });
+});
 ```
 
-### 网页快照模板
+## 函数/工具测试模板
+
+```typescript
+// .harness/harness/{{taskName}}/{{functionName}}.test.ts
+import { describe, it, expect } from 'vitest';
+import { {{functionName}} } from './{{module}}';
+
+describe('{{functionName}}', () => {
+  // MUST-1: 正常输入
+  it('should return expected output for valid input', () => {
+    const result = {{functionName}}({{validInput}});
+    expect(result).toEqual({{expectedOutput}});
+  });
+
+  // MUST-2: 边界值
+  it('should handle edge case: empty input', () => {
+    const result = {{functionName}}([]);
+    expect(result).toEqual([]);
+  });
+
+  // MUST-3: 错误输入
+  it('should throw error for invalid input', () => {
+    expect(() => {{functionName}}(null)).toThrow();
+  });
+});
+```
+
+## API 接口测试模板
+
+```typescript
+// .harness/harness/{{taskName}}/api.test.ts
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import request from 'supertest';
+import { app } from './app';
+
+describe('POST /api/{{endpoint}}', () => {
+  // MUST-1: 成功响应
+  it('should return 200 for valid request', async () => {
+    const response = await request(app)
+      .post('/api/{{endpoint}}')
+      .send({{validBody}})
+      .expect(200);
+
+    expect(response.body).toMatchObject({{expectedResponse}});
+  });
+
+  // MUST-2: 验证失败
+  it('should return 400 for invalid input', async () => {
+    const response = await request(app)
+      .post('/api/{{endpoint}}')
+      .send({{invalidBody}})
+      .expect(400);
+
+    expect(response.body.error).toBeDefined();
+  });
+
+  // MUST-3: 认证检查
+  it('should return 401 without auth token', async () => {
+    await request(app)
+      .post('/api/{{endpoint}}')
+      .send({{validBody}})
+      .expect(401);
+  });
+});
+```
+
+## 计数器组件完整示例
+
+```typescript
+// .harness/harness/counter/Counter.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { Counter } from '@/components/Counter';
+
+describe('Counter', () => {
+  // MUST-1: 渲染初始值 0
+  it('should render with initial value 0', () => {
+    render(<Counter />);
+    expect(screen.getByText('0')).toBeInTheDocument();
+  });
+
+  // MUST-2: 点击 + 按钮计数 +1
+  it('should increment by 1 when + button clicked', () => {
+    render(<Counter />);
+    const incrementBtn = screen.getByLabelText('增加计数');
+
+    fireEvent.click(incrementBtn);
+
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
+
+  // MUST-3: 点击 - 按钮计数 -1
+  it('should decrement by 1 when - button clicked', () => {
+    render(<Counter />);
+    const decrementBtn = screen.getByLabelText('减少计数');
+
+    fireEvent.click(decrementBtn);
+
+    expect(screen.getByText('-1')).toBeInTheDocument();
+  });
+
+  // MUST-4: 支持自定义初始值
+  it('should accept initialValue prop', () => {
+    render(<Counter initialValue={10} />);
+    expect(screen.getByText('10')).toBeInTheDocument();
+  });
+
+  // SHOULD-1: 按钮有 hover 效果（无法单元测试，需要 E2E）
+  it.skip('should have hover effect on buttons', () => {
+    // 需要 Playwright/Cypress 测试
+  });
+});
+```
+
+</test_templates>
+
+---
+
+<output_format>
+
+## Harness 输出格式
+
+```
+.harness/harness/{{taskName}}/
+├── harness.md           # 验收标准文档
+├── {{taskName}}.test.ts # 测试用例代码
+├── test-utils.tsx       # 测试工具（可选）
+└── verify.sh            # 验证脚本
+```
+
+### harness.md
 
 ```markdown
-## Harness: 网页 <页面名>
+# Harness: {{任务名称}}
 
-### 元素检查
-- [ ] <元素1> 存在
-- [ ] <元素2> 存在
-- [ ] <元素3> 可见
+## 测试框架
+- 框架: Vitest / Jest
+- 类型: 单元测试 / E2E
 
-### 交互检查
-- [ ] 点击 <按钮> 触发 <动作>
-- [ ] 输入 <值> 显示 <结果>
+## MUST 条件与测试用例映射
 
-### 视觉回归
-- [ ] 桌面端快照匹配
-- [ ] 移动端快照匹配
+| ID | MUST 条件 | 测试用例 | 状态 |
+|----|-----------|----------|------|
+| M1 | 渲染初始值 0 | `it('should render with initial value 0')` | ⏳ |
+| M2 | 点击 + 计数 +1 | `it('should increment by 1')` | ⏳ |
+| M3 | 点击 - 计数 -1 | `it('should decrement by 1')` | ⏳ |
 
-### 验证命令
+## SHOULD 条件
 
-\`\`\`bash
-npm run test:e2e -- --spec <spec-file>
-npm run test:visual
-\`\`\`
+| ID | 条件 | 测试方式 | 状态 |
+|----|------|----------|------|
+| S1 | hover 效果 | E2E (Playwright) | ⏳ |
+
+## 运行测试
+
+```bash
+# Vitest
+npx vitest run .harness/harness/{{taskName}}
+
+# Jest
+npx jest .harness/harness/{{taskName}}
+```
 ```
 
-### CLI 工具模板
+### verify.sh
 
-```markdown
-## Harness: CLI <工具名>
+```bash
+#!/bin/bash
+# Harness 验证脚本
 
-### 命令检查
+echo "=== 运行 Harness 测试 ==="
 
-| 命令 | 预期输出包含 | 预期退出码 |
-|------|-------------|-----------|
-| `<cmd> --help` | `Usage:` | 0 |
-| `<cmd> --version` | `v1.0.0` | 0 |
-| `<cmd> <valid>` | `<success>` | 0 |
-| `<cmd> <invalid>` | `Error:` | 1 |
+cd "$(dirname "$0")"
 
-### 验证命令
+# 检测测试框架
+if command -v vitest &> /dev/null; then
+    npx vitest run --reporter=verbose
+elif command -v jest &> /dev/null; then
+    npx jest --verbose
+else
+    echo "❌ 未找到测试框架"
+    exit 1
+fi
 
-\`\`\`bash
-# 自动化测试脚本
-./test-cli.sh
-\`\`\`
+# 检查结果
+if [ $? -eq 0 ]; then
+    echo "✅ 所有 Harness 测试通过"
+    exit 0
+else
+    echo "❌ Harness 测试失败"
+    exit 1
+fi
 ```
 
-### 文件操作脚本模板
-
-```markdown
-## Harness: 脚本 <脚本名>
-
-### 前置条件
-- [ ] <条件1>
-- [ ] <条件2>
-
-### 执行结果
-- [ ] 文件 `<path>` 被创建
-- [ ] 文件内容包含 `<content>`
-
-### 验证命令
-
-\`\`\`bash
-# 检查文件存在
-test -f <path> && echo "PASS" || echo "FAIL"
-
-# 检查文件内容
-grep -q "<pattern>" <path> && echo "PASS" || echo "FAIL"
-\`\`\`
-```
+</output_format>
 
 ---
 
-## 最佳实践
+<integration>
 
-### 1. 使用 MUST/SHOULD/MAY 优先级
-
-- **MUST**：必须满足，否则任务失败
-- **SHOULD**：强烈建议，但可以有例外
-- **MAY**：锦上添花，不影响核心功能
-
-### 2. 每个标准都可验证
+## 与 Task Workflow 的集成
 
 ```
-❌ 不好的定义：
-- "界面要美观"
-- "性能要好"
-- "用户体验要流畅"
+Task Workflow 调用 Task Harness 的时机：
 
-✅ 好的定义：
-- "页面 Lighthouse 性能分数 >= 90"
-- "首屏加载时间 < 2s"
-- "所有交互响应时间 < 100ms"
+HARNESS 阶段:
+  1. /task-harness "<任务描述>"
+  2. 选择测试框架
+  3. 生成测试用例代码
+  4. 用户确认
+  5. 保存到 .harness/harness/
+
+PLAN 阶段:
+  - 读取 Harness 测试用例
+  - 每个测试用例 → 对应一个实现任务
+
+EXECUTE 阶段:
+  - 实现代码
+  - 运行测试验证
+
+REVIEW 阶段:
+  - 确认所有测试通过
+  - 更新 Harness 状态
 ```
 
-### 3. 覆盖正向和负向场景
-
-```
-正向场景：
-- 正常输入 → 正常输出
-
-负向场景：
-- 空输入 → 友好错误提示
-- 非法输入 → 验证失败提示
-- 网络错误 → 重试机制
-```
-
-### 4. 保持最小化
-
-```
-只定义核心功能的验收标准
-不追求 100% 覆盖率
-先让核心功能工作，再迭代优化
-```
+</integration>
 
 ---
 
-## 示例会话
+<examples>
+
+## 示例 1: React 组件
 
 ```
-用户: /task-harness 创建一个密码强度验证函数
+用户: /task-harness 创建一个计数器组件
 
-AI: 好的，让我们为"密码强度验证函数"设计验收边界。
+AI: ## 选择测试框架
 
-## 第一步：确认任务类型
+检测到项目使用 Vite，推荐使用 **Vitest**。
 
-这是一个【函数/模块】类任务，适合使用 TDD 方式。
+确认使用 Vitest？（或其他选择）
 
-## 第二步：请回答以下问题
+用户: 是
 
-1. 【输入】函数接受什么参数？
-   - 纯字符串？还是密码对象？
+AI: ## 分析需求
 
-2. 【输出】函数返回什么？
-   - 布尔值（弱/强）？
-   - 强度等级（1-5）？
-   - 详细结果对象？
+从"计数器组件"提取 MUST 条件：
 
-3. 【强度规则】什么算"强密码"？
-   - 最小长度？
-   - 必须包含大写？
-   - 必须包含数字？
-   - 必须包含特殊字符？
+1. **M1**: 渲染并显示初始值 0
+2. **M2**: 点击 + 按钮计数 +1
+3. **M3**: 点击 - 按钮计数 -1
 
-4. 【边界情况】需要处理哪些异常？
-   - 空字符串？
-   - null/undefined？
-   - 非字符串类型？
+生成测试用例...
 
-用户:
-1. 接受字符串
-2. 返回对象 { score: number, feedback: string[] }
-3. 最少8位，必须包含大小写和数字
-4. 空字符串返回 score: 0
+```typescript
+// .harness/harness/counter/Counter.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { Counter } from '@/components/Counter';
 
-AI: 完美！根据你的回答，这是生成的 Harness 定义：
+describe('Counter', () => {
+  it('should render with initial value 0', () => {
+    render(<Counter />);
+    expect(screen.getByText('0')).toBeInTheDocument();
+  });
 
-## Harness: 密码强度验证函数
+  it('should increment by 1 when + clicked', () => {
+    render(<Counter />);
+    fireEvent.click(screen.getByLabelText('增加计数'));
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
 
-### 输入/输出契约
-- 输入: `string`
-- 输出: `{ score: number (0-4), feedback: string[] }`
+  it('should decrement by 1 when - clicked', () => {
+    render(<Counter />);
+    fireEvent.click(screen.getByLabelText('减少计数'));
+    expect(screen.getByText('-1')).toBeInTheDocument();
+  });
+});
+```
 
-### 验收标准 (MUST)
+确认这些测试用例？
+```
 
-- [ ] 输入 "Abc12345" 返回 score >= 3
-- [ ] 输入 "password" 返回 score <= 1，feedback 包含 "需要大写字母"
-- [ ] 输入 "" 返回 score: 0
-- [ ] 输入 null 返回 score: 0
+## 示例 2: API 接口
 
-### 验证脚本
+```
+用户: /task-harness 实现用户登录 API
 
-\`\`\`typescript
-import { validatePassword } from './password-validator'
+AI: ## 选择测试框架
 
-describe('password-validator', () => {
-  test('强密码', () => {
-    const result = validatePassword('Abc12345')
-    expect(result.score).toBeGreaterThanOrEqual(3)
-  })
+推荐使用 **Vitest + supertest** 进行 API 测试。
 
-  test('弱密码 - 无大写', () => {
-    const result = validatePassword('password')
-    expect(result.score).toBeLessThanOrEqual(1)
-    expect(result.feedback).toContain('需要大写字母')
-  })
+## 分析需求
 
-  test('空字符串', () => {
-    const result = validatePassword('')
-    expect(result.score).toBe(0)
-  })
+MUST 条件：
+1. **M1**: POST /api/login 返回 200 + token
+2. **M2**: 无效凭证返回 401
+3. **M3**: 缺少字段返回 400
 
-  test('null 值', () => {
-    const result = validatePassword(null as any)
-    expect(result.score).toBe(0)
-  })
-})
-\`\`\`
+生成测试用例...
 
-### 验证命令
+```typescript
+// .harness/harness/auth/login.test.ts
+import { describe, it, expect } from 'vitest';
+import request from 'supertest';
+import { app } from '@/app';
 
-\`\`\`bash
-npm test -- password-validator.test.ts
-\`\`\`
+describe('POST /api/login', () => {
+  it('should return 200 with token for valid credentials', async () => {
+    const res = await request(app)
+      .post('/api/login')
+      .send({ email: 'test@example.com', password: 'valid' })
+      .expect(200);
+
+    expect(res.body.token).toBeDefined();
+  });
+
+  it('should return 401 for invalid credentials', async () => {
+    await request(app)
+      .post('/api/login')
+      .send({ email: 'test@example.com', password: 'wrong' })
+      .expect(401);
+  });
+
+  it('should return 400 for missing fields', async () => {
+    await request(app)
+      .post('/api/login')
+      .send({ email: 'test@example.com' })
+      .expect(400);
+  });
+});
+```
+```
+
+</examples>
 
 ---
 
-**下一步**：你可以：
-1. 确认这个 Harness 定义
-2. 调整某些标准
-3. 开始执行任务，AI 会以这些标准为目标
-```
+<best_practices>
 
----
+1. **先写测试** - TDD 模式，测试驱动开发
+2. **100% MUST 覆盖** - 每个 MUST 条件至少一个测试
+3. **测试即文档** - 测试代码描述了期望行为
+4. **可执行验证** - 运行测试即验证 Harness
+5. **保持独立** - 测试之间不应有依赖
 
-## 存储位置
-
-Harness 定义默认保存在项目目录下的 `.harness/` 中：
-
-```
-<your-project>/
-└── .harness/
-    ├── harness/                # Harness 验收定义
-    │   └── <任务名>/
-    │       ├── harness.md          # Harness 定义
-    │       ├── verify.sh           # 验证脚本（如适用）
-    │       └── results/            # 验证结果
-    │           └── <timestamp>.log
-    ├── memory/                 # Task Memory 任务记录
-    │   ├── current.json            # 当前任务状态
-    │   └── tasks/
-    │       └── task-xxx/
-    │           ├── init.md
-    │           └── review.md
-    └── planning/               # 规划产物（brainstorm 等）
-        ├── specs/
-        │   └── <date>-<name>-design.md
-        └── plans/
-            └── <date>-<name>.md
-```
-
----
-
-## 与其他工具配合
-
-| 工具 | 配合方式 |
-|------|----------|
-| **task-memory** | Harness 定义完成后，用 task-memory 记录执行过程 |
-| **测试框架** | Jest/Vitest/Mocha 等，验证函数类任务 |
-| **Playwright** | E2E 测试，验证网页类任务 |
-| **shell 脚本** | 验证 CLI 工具和脚本类任务 |
+</best_practices>
