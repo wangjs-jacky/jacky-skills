@@ -180,6 +180,44 @@ j-skills 遵循 [Vercel Skills 规范](https://github.com/vercel-labs/skills#ava
 - 支持热更新
 - 修改本地文件立即生效
 
+## 发布流程
+
+> ⚠️ **重要**: 修改 j-skills 源码后，必须执行以下步骤才能让用户使用新版本！
+
+### Step 1: 检查 npm 登录状态
+
+```bash
+npm whoami
+```
+
+如果未登录，执行：
+```bash
+npm login
+```
+
+### Step 2: 更新版本号
+
+```bash
+# 在 package.json 中更新版本号
+# 例如: 0.3.0 → 0.3.1 (PATCH) 或 0.4.0 (MINOR)
+```
+
+### Step 3: 发布到 npm
+
+```bash
+cd /Users/jiashengwang/jacky-github/jacky-skills-package
+npm publish
+```
+
+### Step 4: 通知用户更新
+
+```bash
+# 提示用户更新全局安装
+npm update -g @wangjs-jacky/j-skills
+```
+
+---
+
 ## 使用建议
 
 ### 给 LLM 的建议
@@ -200,6 +238,41 @@ j-skills 遵循 [Vercel Skills 规范](https://github.com/vercel-labs/skills#ava
 2. 生产环境可以考虑复制而非软链接
 3. 使用 `--json` 输出便于 CI/CD 集成
 
+## 发布流程
+
+> ⚠️ **重要：修改 j-skills 源码后，必须发布到 npm 才能生效！**
+
+当代码修改完成并测试通过后，需要执行以下步骤：
+
+### Step 1: 更新版本号
+
+```bash
+# 在 package.json 中更新版本号
+# PATCH: Bug 修复 (0.3.0 → 0.3.1)
+# MINOR: 新功能 (0.3.0 → 0.4.0)
+# MAJOR: 破坏性变更 (0.3.0 → 1.0.0)
+```
+
+### Step 2: 发布到 npm
+
+```bash
+# 1. 先登录 npm（如果未登录）
+npm login
+
+# 2. 进入项目目录并发布
+cd /Users/jiashengwang/jacky-github/jacky-skills-package
+npm publish
+```
+
+### Step 3: 通知用户更新
+
+```bash
+# 提示用户更新全局安装
+npm update -g @wangjs-jacky/j-skills
+```
+
+---
+
 ## 常见问题
 
 **Q: skill 修改后不生效？**
@@ -210,3 +283,39 @@ A: 使用 `j-skills list --all --json` 查看完整安装信息。
 
 **Q: 支持哪些 agent？**
 A: 运行 `j-skills list --help` 查看完整列表，或参考官方文档。
+
+**Q: npm publish 报错 ENEEDAUTH？**
+A: 需要先执行 `npm login` 登录 npm 账号。
+
+---
+
+## ⚠️ 代码修改后的发布提醒
+
+> **重要**: 当你修改了 j-skills 源代码后，必须执行以下操作才能让更改生效：
+
+### 必须执行的步骤
+
+| 步骤 | 命令 | 说明 |
+|------|------|------|
+| 1️⃣ 登录 npm | `npm login` | 只需执行一次 |
+| 2️⃣ 更新版本 | 编辑 `package.json` | PATCH/MINOR/MAJOR |
+| 3️⃣ 发布 | `cd /Users/jiashengwang/jacky-github/jacky-skills-package && npm publish` | 发布到 npm |
+| 4️⃣ 更新本地 | `npm update -g @wangjs-jacky/j-skills` | 更新全局安装 |
+
+### 快速命令
+
+```bash
+# 一键发布流程
+cd /Users/jiashengwang/jacky-github/jacky-skills-package
+npm login  # 如果已登录可跳过
+npm publish
+npm update -g @wangjs-jacky/j-skills
+```
+
+### 如果用户未登录 npm
+
+执行 `npm login` 后按提示输入：
+- Username
+- Password
+- Email
+- OTP (如果启用了两步验证)
