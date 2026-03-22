@@ -1,6 +1,6 @@
 ---
 name: vscode-extension-dev
-description: VSCode 插件完整开发脚手架。从项目初始化、开发环境配置、功能模块生成到发布自动化。TRIGGER: VSCode 插件开发、vscode extension、创建插件、插件脚手架、发布到 Marketplace。
+description: "VSCode 插件完整开发脚手架。从项目初始化、开发环境配置、功能模块生成到发布自动化。TRIGGER: VSCode 插件开发、vscode extension、创建插件、插件脚手架、发布到 Marketplace"
 ---
 
 # VSCode 插件开发脚手架

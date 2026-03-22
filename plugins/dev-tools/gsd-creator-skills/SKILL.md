@@ -1,23 +1,28 @@
 ---
 name: gsd-creator-skills
-description: 创建 GSD 风格的自定义 skill 并通过 j-skills 管理。TRIGGER: "创建 skill"、"新 skill"、"gsd skill"、"初始化 skill"
+description: "基于 GSD 风格的 skills 生成与指导型元技能：用于指导创建/优化其他 skills。若存在 j-skills 可用于管理；无 j-skills 也可使用替代方案。TRIGGER: 创建 skill、新 skill、gsd skill、初始化 skill"
 ---
 
-# Skill 创建与管理
+# GSD 风格 Skill 生成与管理（元技能）
 
-创建自定义 skill 并通过 j-skills 工具管理它们。采用 GSD（Get Shit Done）方法论，支持两阶段优化、跨会话恢复、YOLO/Interactive 运行模式。
+这是一个基于 GSD（Get Shit Done）风格的 skills 元技能，用于指导生成与优化其他 skills。若环境中存在 `j-skills`，可用其完成安装、链接、卸载和日常管理；若不存在，也可使用手动替代方案完成同类工作。支持两阶段优化、跨会话恢复与 YOLO/Interactive 运行模式。
 
 ## 前置依赖
 
-### 1. j-skills CLI 工具
+### 1. j-skills CLI 工具（可选，推荐）
 
-**必须先安装 j-skills npm 包：**
+若已安装 `j-skills`，建议使用标准命令管理 skills：
 
 ```bash
 npm install -g j-skills
 ```
 
-### 2. create-skills（可选增强）
+若未安装 `j-skills`，也可直接采用手动方案：
+- 手动创建 `<skill-name>/SKILL.md`
+- 按目标 Agent 的 skills 目录进行复制或软链接管理
+- 通过重启会话验证 skill 加载状态
+
+### 2. create-skills（可选增强，依赖 j-skills）
 
 此 skill 可基于 [daymade/claude-code-skills](https://github.com/daymade/claude-code-skills) 的 `create-skills` 进行第二阶段优化。
 
@@ -43,7 +48,7 @@ j-skills install create-skills -g --env claude-code
 ┌─────────────────────────────┐
 │ 阶段 1: gsd-creator-skills  │
 │ • 应用 GSD 最佳实践         │
-│ • 添加 j-skills 集成        │
+│ • 可选接入 j-skills 管理     │
 │ • 生成初始 SKILL.md         │
 └─────────────────────────────┘
         ↓ (可选)
@@ -89,10 +94,15 @@ j-skills install create-skills -g --env claude-code
 > |------|------|------|
 > | 📝 skill 名称 | 小写字母+连字符 | `my-skill` |
 > | 📝 功能描述 | 简短说明触发条件 | "用于处理 xxx 场景" |
+>
+> **⚠️ description 格式要求**：
+> - **必须用双引号包裹** - 避免 YAML 解析错误（description 中可能包含冒号、中文标点等）
+> - 不要以 `TRIGGER:` 开头 - 这是旧格式，直接写描述即可
+> - 示例：`"当用户提到 xxx 时触发"` 或 `"用于处理 yyy 场景"`
 
 **步骤**：
 1. **询问** skill 名称（小写字母+连字符，如 `my-skill`）
-2. **询问** skill 功能描述（用于触发判断）
+2. **询问** skill 功能描述（用于触发判断，**必须用双引号包裹**）
 3. 创建目录结构：
    ```
    <skill-name>/
@@ -108,7 +118,7 @@ j-skills install create-skills -g --env claude-code
 ```markdown
 ---
 name: <skill-name>
-description: <简短描述，说明何时触发此 skill>
+description: "<简短描述，说明何时触发此 skill>"
 ---
 
 # <Skill 标题>
@@ -153,9 +163,11 @@ description: <简短描述，说明何时触发此 skill>
 > | 🛑 等待 | 用户确认模板内容 |
 > | ✅ 通过 | 用户确认后进入下一阶段 |
 
-### Phase 3: 链接与安装
+### Phase 3: 集成与验证（j-skills / 手动二选一）
 
-**目标**：将 skill 链接到全局注册表并安装到目标环境
+**目标**：将 skill 集成到目标环境并完成可用性验证
+
+#### 方案 A：使用 j-skills（推荐）
 
 > ⚠️ **需要执行命令** - 以下命令需要用户或 LLM 执行：
 >
@@ -172,17 +184,23 @@ description: <简短描述，说明何时触发此 skill>
 > j-skills list -g
 > ```
 
+#### 方案 B：不使用 j-skills（替代）
+
+1. 在目标 skills 目录中放置 `<skill-name>/SKILL.md`（可复制或软链接）
+2. 保持目录结构完整（如 `references/`、`scripts/`）
+3. 重启会话后通过触发词验证 skill 是否被加载
+
 **步骤**：
-1. 链接到全局注册表
-2. 安装到目标环境
-3. 验证安装
+1. 选择集成方案（A 或 B）
+2. 完成集成动作
+3. 验证可用性
 
 > ⚠️ **Checkpoint - 需要验证**
 >
 > | 检查项 | 命令 |
 > |--------|------|
-> | ✅ 链接成功 | `j-skills link --list` 显示 skill |
-> | ✅ 安装成功 | `j-skills list -g` 显示 skill |
+> | ✅ j-skills 方案 | `j-skills link --list` / `j-skills list -g` 显示 skill |
+> | ✅ 手动方案 | 重启后触发词可命中，且 skill 行为符合预期 |
 
 ### Phase 4: 可选优化（create-skills）
 
@@ -261,7 +279,7 @@ workflow 运行模式显式化：
 
 详见 `references/yolo-mode-patterns.md`
 
-## 快速命令
+## j-skills 快速命令（可选）
 
 ```bash
 # 批量链接所有 skills
@@ -289,6 +307,7 @@ j-skills link --unlink <name>
 | `references/yolo-mode-patterns.md` | YOLO / Interactive 运行模式 |
 | `references/upstream-guide.md` | 与 daymade upstream 的关系 |
 | `references/canonical-location.md` | 主副本位置说明 |
+| `references/throuble-shooting.md` | 常见异常排查（不生效、链接、卸载） |
 | `references/CHANGELOG.md` | 规则修订记录 |
 
 ## 最佳实践
@@ -296,7 +315,7 @@ j-skills link --unlink <name>
 1. **统一管理** - 将所有自定义 skills 放在同一个工作区目录
 2. **命名规范** - skill 名称使用小写字母和连字符，如 `my-skill`
 3. **描述清晰** - description 要准确说明触发条件
-4. **使用软链接** - 通过 j-skills link 实现热更新开发
+4. **优先软链接** - 有 j-skills 时用 `j-skills link`；无 j-skills 时使用手动软链接
 5. **结构化编排** - 复杂 workflow 参考 `gsd-xml-tags.md`
 6. **脚本解耦** - 多步骤任务用 `scripts/` + 外置状态文件
 7. **跨会话协议** - 阶段型任务使用 `next_action` + `Next Up` + `resume-signal`
@@ -305,19 +324,38 @@ j-skills link --unlink <name>
 ## 常见问题
 
 **Q: 修改 skill 后不生效？**
-A: 确保使用 `j-skills link` 链接，而非直接复制文件。
+A: 先跑下面的 `Check List`，再按需查看 `references/throuble-shooting.md`。
 
 **Q: 如何删除 skill？**
-A: 先卸载 `j-skills uninstall <name> -g`，再取消链接 `j-skills link --unlink <name>`。
+A: 建议顺序是先卸载 `j-skills uninstall <name> -g`，再取消链接 `j-skills link --unlink <name>`。
 
 **Q: skill 会影响其他项目吗？**
 A: 全局安装（`-g`）会影响所有项目；项目级安装仅影响当前项目。
 
+**Q: 没有 j-skills 还能用吗？**
+A: 可以。`j-skills` 是推荐管理工具，但不是硬依赖；可通过手动创建/复制/软链接到目标 skills 目录完成替代。
+
+**Q: 遇到链接/加载问题先看哪里？**
+A: 优先查看 `references/throuble-shooting.md`，按“检查命令 -> 检查链接 -> 清理重装”的顺序排查。
+
+---
+
+## Check List（先检查，再排查）
+
+1. `SKILL.md` 顶部包含完整 frontmatter：`name` + `description`
+2. `description` 使用双引号包裹
+3. `name` 使用小写字母+连字符（如 `my-skill`）
+4. 若使用 `j-skills`：`j-skills link --list` / `j-skills list -g` 能看到目标 skill
+5. 若不使用 `j-skills`：skill 已正确复制或软链接到目标 skills 目录
+6. 变更后已重启会话，并用触发词完成一次验证
+7. 仍有问题时，查看 `references/throuble-shooting.md`
+
 ## Next Up
 
 - [ ] 创建第一个 skill
-- [ ] 命令: `j-skills link && j-skills install <skill-name> -g`
-- [ ] 验证: `j-skills list -g`
+- [ ] 命令（有 j-skills）: `j-skills link && j-skills install <skill-name> -g`
+- [ ] 命令（无 j-skills）: 复制或软链接 `<skill-name>/` 到目标 skills 目录
+- [ ] 验证: 重启会话后通过触发词验证加载结果
 
 ---
 
