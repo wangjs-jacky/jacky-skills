@@ -15,12 +15,14 @@
 | Plugin | 图标 | 说明 | 包含 Skills |
 |--------|------|------|-------------|
 | [video-processing](./plugins/video-processing) | 🎬 | 视频处理 | bilibili-to-obsidian, bilibili-batch, video-to-text, m3u8-dl, fix-neat-video |
-| [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, long-running-agent, creator-skills, skill-researcher |
+| [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, long-running-agent, creator-skills, skill-researcher, repo-study, vscode-extension-dev |
+| [translation-tools](./plugins/translation-tools) | 🌐 | 翻译工具 | parallel-translation |
 | [obsidian-tools](./plugins/obsidian-tools) | 📝 | Obsidian 工具 | config-obsidian, ob-summary |
 | [language-skills](./plugins/language-skills) | 🗣️ | 语言技能 | spoken-english-coach |
-| [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | agent-browser-troubleshooting, tauri-troubleshooting |
+| [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | claude-monitor, agent-browser-troubleshooting, tauri-troubleshooting |
 | [skills-management](./plugins/skills-management) | 📦 | Skills 管理 | j-skills, link-all-skills |
 | [dev-advanced](./plugins/dev-advanced) | 🚀 | 高级开发 | multi-agent, web-to-tauri-migration-loop |
+| [monitoring](./plugins/monitoring) | 📊 | 监控调试 | （监控工具，无独立skills） |
 
 ---
 
@@ -193,6 +195,12 @@ j-skills install video-processing -g
 | m3u8-dl | 下载视频、m3u8链接 | 下载M3U8/HLS视频流 |
 | fix-neat-video | 修复.mp4.ts文件 | 修复Neat Download下载的分段视频 |
 
+### 🌐 Translation Tools
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| parallel-translation | 多文件翻译 | 使用haiku模型低成本翻译 |
+
 ### 🛠️ Dev Tools
 
 | Skill | 触发场景 | 说明 |
@@ -201,6 +209,8 @@ j-skills install video-processing -g
 | long-running-agent | continue development | 跨会话开发项目 |
 | creator-skills | 创建新skill | 创建自定义skill |
 | skill-researcher | 研究skills | 研究、对比、分析Skills项目 |
+| repo-study | 研究GitHub仓库 | 调研开源项目技术实现 |
+| vscode-extension-dev | VSCode插件开发 | 插件开发脚手架 |
 
 ### 📝 Obsidian Tools
 
@@ -219,6 +229,7 @@ j-skills install video-processing -g
 
 | Skill | 触发场景 | 说明 |
 |-------|----------|------|
+| claude-monitor | 监控Claude Code | 监控Claude Code运行状态 |
 | agent-browser-troubleshooting | agent-browser失败 | agent-browser故障排查 |
 | tauri-troubleshooting | Tauri插件权限 | Tauri v2故障排查 |
 

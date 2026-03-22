@@ -320,6 +320,7 @@ j-skills link --unlink <name>
 6. **脚本解耦** - 多步骤任务用 `scripts/` + 外置状态文件
 7. **跨会话协议** - 阶段型任务使用 `next_action` + `Next Up` + `resume-signal`
 8. **模式显式化** - 提供 `yolo` / `interactive` 开关
+9. **子 Agent 样式规范** - 创建子 Agent（子 skill）时，必须包含 `background` 的 `color` 属性，用于在 UI 中区分不同 Agent
 
 ## 常见问题
 

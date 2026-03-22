@@ -16,5 +16,8 @@
     "debugging",
     "profiling",
     "hooks"
+  ],
+  "skills": [
+    "./skills/claude-monitor/"
   ]
 }
