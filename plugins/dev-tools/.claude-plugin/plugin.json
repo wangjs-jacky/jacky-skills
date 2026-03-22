@@ -1,6 +1,6 @@
 {
   "name": "dev-tools",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建等",
   "author": {
     "name": "Jacky Wang",
@@ -21,6 +21,7 @@
     "./github-repo-publish/",
     "./long-running-agent/",
     "./creator-skills/",
-    "./skill-researcher/"
+    "./skill-researcher/",
+    "./vscode-extension-dev/"
   ]
 }
