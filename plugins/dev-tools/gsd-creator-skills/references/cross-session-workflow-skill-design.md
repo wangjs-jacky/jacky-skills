@@ -31,7 +31,38 @@
 
 关键是“顺序固定 + next_action 可执行”，而不是具体文件名。
 
-### 2.3 阶段结束引导（Next Up Contract）
+### 2.3 任务级断点模板
+
+```markdown
+---
+phase: phase-02
+task: 3
+status: in_progress
+last_updated: 2026-03-22T00:00:00Z
+---
+
+<current_state>
+...
+</current_state>
+
+<completed_work>
+- ...
+</completed_work>
+
+<remaining_work>
+- ...
+</remaining_work>
+
+<context>
+当时思路/假设/风险
+</context>
+
+<next_action>
+恢复后第一步
+</next_action>
+```
+
+### 2.4 阶段结束引导（Next Up Contract）
 
 每个阶段结束都输出标准化引导块：
 

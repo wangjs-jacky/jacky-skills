@@ -1,6 +1,6 @@
 {
   "name": "dev-tools",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建、依赖管理等",
   "author": {
     "name": "Jacky Wang",

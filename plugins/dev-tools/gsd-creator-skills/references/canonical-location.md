@@ -1,8 +1,8 @@
-# creator-skills 主副本说明
+# gsd-creator-skills 主副本说明
 
-若你在多处看到同名 `creator-skills`（例如本仓库插件目录、全局 `~/.agents/skills/`、`~/.claude/skills/` 经 j-skills 安装后的链接等），**以本仓库中的源文件为准**：
+若你在多处看到同名 `gsd-creator-skills`（例如本仓库插件目录、全局 `~/.agents/skills/`、`~/.claude/skills/` 经 j-skills 安装后的链接等），**以本仓库中的源文件为准**：
 
-- **主副本路径**：`jacky-skills/plugins/dev-tools/creator-skills/`（`SKILL.md` 位于该目录根下）。
+- **主副本路径**：`jacky-skills/plugins/dev-tools/gsd-creator-skills/`（`SKILL.md` 位于该目录根下）。
 
 **更新流程**：
 
