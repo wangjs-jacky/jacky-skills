@@ -9,3 +9,4 @@ plugins/language-skills/**/vocabulary.json
 .harness/harness/
 .harness/tasks/
 .harness/workflow.json
+content/
