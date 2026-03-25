@@ -1,0 +1,84 @@
+# GitHub Actions 自动化采集 Workflow 模板
+# 基于 trending-skills 项目重构
+
+name: {{PROJECT_NAME}}
+
+on:
+  workflow_dispatch:
+    inputs: {}
+  schedule:
+    - cron: '{{CRON_SCHEDULE}}'
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      # ============================================
+      # 1. 准备环境
+      # ============================================
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      # ============================================
+      # 2. 采集数据
+      # ============================================
+      - name: Collect data
+        id: collect
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          {{#CUSTOM_SECRETS}}
+          {{SECRET_NAME}}: ${{ secrets.{{SECRET_NAME}} }}
+          {{/CUSTOM_SECRETS}}
+        run: node scripts/collect.mjs
+
+      # ============================================
+      # 3. 处理数据（可选：AI 处理）
+      # ============================================
+      - name: Process data
+        if: steps.collect.outputs.has_data
+        id: process
+        env:
+          {{#AI_ENABLED}}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          {{/AI_ENABLED}}
+          COLLECTED_DATA: ${{ steps.collect.outputs.data }}
+        run: node scripts/process.mjs
+
+      # ============================================
+      # 4. 更新索引/README
+      # ============================================
+      - name: Update index
+        if: steps.collect.outputs.has_data
+        env:
+          OUTPUT_DATA: ${{ steps.process.outputs.result }}
+        run: |
+          # 根据 OUTPUT_DATA 更新 README 或索引文件
+          # 示例：追加新条目到 README 表格
+          echo "Update logic here"
+
+      # ============================================
+      # 5. 提交代码
+      # ============================================
+      - name: Commit and push
+        if: steps.collect.outputs.has_data
+        env:
+          COMMIT_MESSAGE: ${{ steps.process.outputs.commit_message }}
+        run: |
+          git config user.name "{{BOT_NAME}}"
+          git config user.email "{{BOT_EMAIL}}"
+          git add -A
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "${COMMIT_MESSAGE:-chore: update data $(date +%Y-%m-%d)}"
+          git pull --rebase origin main || true
+          git push

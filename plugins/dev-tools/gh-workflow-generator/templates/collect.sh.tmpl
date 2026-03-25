@@ -1,0 +1,114 @@
+#!/bin/bash
+# 数据采集脚本模板
+# 基于 trending-skills 的采集逻辑
+
+set -e
+
+echo "=== 开始采集数据 ==="
+
+# ============================================
+# 配置区
+# ============================================
+DATA_SOURCE="${DATA_SOURCE_URL:-}"
+OUTPUT_FILE="/tmp/collected_data.json"
+SINCE_DAYS="${SINCE_DAYS:-7}"
+MAX_ITEMS="${MAX_ITEMS:-30}"
+
+# ============================================
+# 采集逻辑（根据数据源类型选择）
+# ============================================
+
+# 示例：GitHub API 采集
+collect_github() {
+  local QUERY="$1"
+  local SINCE_DATE=$(date -d "${SINCE_DAYS} days ago" +%Y-%m-%d)
+
+  echo "查询: ${QUERY}"
+  echo "起始日期: ${SINCE_DATE}"
+
+  RESPONSE=$(curl -s -w "\n%{http_code}" \
+    "https://api.github.com/search/repositories?q=${QUERY}&sort=stars&order=desc&per_page=${MAX_ITEMS}" \
+    -H "Authorization: Bearer ${GH_TOKEN}" \
+    -H "Accept: application/vnd.github.v3+json" 2>/dev/null)
+
+  HTTP_CODE=$(echo "${RESPONSE}" | tail -1)
+  BODY=$(echo "${RESPONSE}" | sed '$d')
+
+  if [ "${HTTP_CODE}" != "200" ]; then
+    echo "::error::GitHub API 返回 HTTP ${HTTP_CODE}"
+    exit 1
+  fi
+
+  # 处理数据
+  PROCESSED=$(echo "${BODY}" | jq '{
+    total_count: .total_count,
+    items: [.items[] | {
+      name: .name,
+      full_name: .full_name,
+      description: .description,
+      stars: .stargazers_count,
+      language: .language,
+      url: .html_url,
+      created_at: .created_at
+    }]
+  }')
+
+  echo "${PROCESSED}" > "${OUTPUT_FILE}"
+  echo "采集完成: $(echo "${PROCESSED}" | jq '.items | length') 条数据"
+}
+
+# 示例：Web API 采集（通用）
+collect_api() {
+  local API_URL="$1"
+
+  echo "请求: ${API_URL}"
+
+  RESPONSE=$(curl -s -w "\n%{http_code}" "${API_URL}" \
+    -H "Authorization: Bearer ${CUSTOM_API_KEY}" \
+    -H "Accept: application/json" 2>/dev/null)
+
+  HTTP_CODE=$(echo "${RESPONSE}" | tail -1)
+  BODY=$(echo "${RESPONSE}" | sed '$d')
+
+  if [ "${HTTP_CODE}" != "200" ]; then
+    echo "::error::API 返回 HTTP ${HTTP_CODE}"
+    exit 1
+  fi
+
+  echo "${BODY}" > "${OUTPUT_FILE}"
+  echo "采集完成"
+}
+
+# ============================================
+# 主逻辑
+# ============================================
+
+case "${DATA_SOURCE_TYPE}" in
+  "github-repos")
+    collect_github "${DATA_SOURCE_QUERY:-created:>${SINCE_DATE}&stars:>10}"
+    ;;
+  "custom-api")
+    collect_api "${DATA_SOURCE_URL}"
+    ;;
+  *)
+    echo "::error::未知的数据源类型: ${DATA_SOURCE_TYPE}"
+    exit 1
+    ;;
+esac
+
+# ============================================
+# 输出结果
+# ============================================
+
+if [ -s "${OUTPUT_FILE}" ]; then
+  # 使用 heredoc 格式输出多行数据
+  {
+    echo "has_data=true"
+    printf 'data<<_EOF_\n%s\n_EOF_\n' "$(cat ${OUTPUT_FILE})"
+    echo "count=$(cat ${OUTPUT_FILE} | jq '.items | length // 0')"
+  } >> "${GITHUB_OUTPUT}"
+else
+  echo "has_data=false" >> "${GITHUB_OUTPUT}"
+fi
+
+echo "=== 采集完成 ==="

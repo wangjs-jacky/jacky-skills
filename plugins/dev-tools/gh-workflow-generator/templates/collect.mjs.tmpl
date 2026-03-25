@@ -1,0 +1,211 @@
+#!/usr/bin/env node
+
+/**
+ * 数据采集脚本模板
+ * 基于 trending-skills 的 find-trending-repo.sh 重构为 Node.js
+ */
+
+import { request } from 'https';
+import { writeFileSync, existsSync, mkdirSync } from 'fs';
+import { execSync } from 'child_process';
+
+// ============================================
+// 配置
+// ============================================
+
+const CONFIG = {
+  // 数据源配置
+  dataSource: {
+    type: '{{DATA_SOURCE_TYPE}}',
+    url: '{{DATA_SOURCE_URL}}',
+    {{#DATA_SOURCE_PARAMS}}
+    {{PARAM_NAME}}: '{{PARAM_VALUE}}',
+    {{/DATA_SOURCE_PARAMS}}
+  },
+
+  // 输出配置
+  output: {
+    dir: './output',
+    file: 'data.json'
+  },
+
+  // 去重配置
+  dedup: {
+    enabled: true,
+    checkFile: './output/.collected'
+  }
+};
+
+// ============================================
+// 工具函数
+// ============================================
+
+/**
+ * HTTP GET 请求封装
+ */
+async function httpGet(url, options = {}) {
+  return new Promise((resolve, reject) => {
+    const req = request(url, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        'Accept': 'application/json',
+        ...options.headers
+      }
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve({ status: res.statusCode, data, headers: res.headers });
+        } else {
+          reject(new Error(`HTTP ${res.statusCode}: ${data}`));
+        }
+      });
+    });
+    req.on('error', reject);
+    req.end();
+  });
+}
+
+/**
+ * 读取已采集的条目（用于去重）
+ */
+function loadCollectedItems() {
+  if (!CONFIG.dedup.enabled || !existsSync(CONFIG.dedup.checkFile)) {
+    return new Set();
+  }
+  const content = execSync(`cat ${CONFIG.dedup.checkFile}`, { encoding: 'utf-8' });
+  return new Set(content.split('\n').filter(Boolean));
+}
+
+/**
+ * 记录已采集的条目
+ */
+function saveCollectedItem(item) {
+  if (!CONFIG.dedup.enabled) return;
+  mkdirSync('./output', { recursive: true });
+  execSync(`echo "${item}" >> ${CONFIG.dedup.checkFile}`);
+}
+
+/**
+ * 输出到 GitHub Actions
+ */
+function setOutput(name, value) {
+  if (process.env.GITHUB_OUTPUT) {
+    // 多行值使用 heredoc 格式
+    if (value.includes('\n')) {
+      execSync(`printf '${name}<<_EOF_\\n%s\\n_EOF_\\n' "${value}" >> ${process.env.GITHUB_OUTPUT}`);
+    } else {
+      execSync(`echo "${name}=${value}" >> ${process.env.GITHUB_OUTPUT}`);
+    }
+  }
+  console.log(`::set-output name=${name}::${value.substring(0, 100)}...`);
+}
+
+// ============================================
+// 数据采集函数
+// ============================================
+
+/**
+ * 采集数据（根据数据源类型定制）
+ */
+async function collectData() {
+  console.log(`开始采集: ${CONFIG.dataSource.type}`);
+  console.log(`数据源: ${CONFIG.dataSource.url}`);
+
+  const collected = [];
+
+  // TODO: 根据数据源类型实现采集逻辑
+  // 示例：GitHub API 采集
+  if (CONFIG.dataSource.type === 'github-api') {
+    const response = await httpGet(CONFIG.dataSource.url, {
+      headers: {
+        'Authorization': `Bearer ${process.env.GH_TOKEN}`
+      }
+    });
+    const data = JSON.parse(response.data);
+    // 处理数据...
+    collected.push(...data.items || []);
+  }
+
+  // 示例：RSS 采集
+  if (CONFIG.dataSource.type === 'rss') {
+    const response = await httpGet(CONFIG.dataSource.url);
+    // 解析 RSS...
+    // collected.push(...items);
+  }
+
+  // 示例：网页抓取
+  if (CONFIG.dataSource.type === 'web-scraper') {
+    const response = await httpGet(CONFIG.dataSource.url);
+    // 解析 HTML...
+    // collected.push(...items);
+  }
+
+  return collected;
+}
+
+// ============================================
+// 主逻辑
+// ============================================
+
+async function main() {
+  try {
+    console.log('=== 开始采集 ===');
+    console.log(`时间: ${new Date().toISOString()}`);
+
+    // 加载已采集的条目
+    const collectedItems = loadCollectedItems();
+    console.log(`已采集条目数: ${collectedItems.size}`);
+
+    // 采集数据
+    const data = await collectData();
+
+    if (!data || data.length === 0) {
+      console.log('没有新数据');
+      setOutput('has_data', 'false');
+      process.exit(0);
+    }
+
+    console.log(`采集到 ${data.length} 条数据`);
+
+    // 去重
+    const newData = data.filter(item => {
+      const key = item.id || item.title || JSON.stringify(item);
+      if (collectedItems.has(key)) {
+        console.log(`跳过已采集: ${key}`);
+        return false;
+      }
+      saveCollectedItem(key);
+      return true;
+    });
+
+    if (newData.length === 0) {
+      console.log('没有新数据（去重后）');
+      setOutput('has_data', 'false');
+      process.exit(0);
+    }
+
+    console.log(`新数据: ${newData.length} 条`);
+
+    // 保存数据
+    mkdirSync(CONFIG.output.dir, { recursive: true });
+    const outputPath = `${CONFIG.output.dir}/${CONFIG.output.file}`;
+    writeFileSync(outputPath, JSON.stringify(newData, null, 2));
+    console.log(`数据已保存到: ${outputPath}`);
+
+    // 输出到 GitHub Actions
+    setOutput('has_data', 'true');
+    setOutput('count', String(newData.length));
+    setOutput('data', JSON.stringify(newData));
+
+    console.log('=== 采集完成 ===');
+
+  } catch (error) {
+    console.error('::error::', error.message);
+    process.exit(1);
+  }
+}
+
+main();

@@ -1,0 +1,149 @@
+#!/bin/bash
+# 数据处理脚本模板
+# 支持可选的 AI 处理
+
+set -e
+
+echo "=== 开始处理数据 ==="
+
+# ============================================
+# 配置区
+# ============================================
+INPUT_DATA="${COLLECTED_DATA:-}"
+OUTPUT_FILE="/tmp/processed_result.json"
+AI_ENABLED="${AI_PROVIDER:-none}"
+
+# ============================================
+# AI 处理（可选）
+# ============================================
+
+process_with_claude() {
+  local DATA="$1"
+  local PROMPT="$2"
+
+  echo "使用 Claude API 处理..."
+
+  REQUEST=$(jq -n \
+    --arg prompt "${PROMPT}" \
+    --arg data "${DATA}" \
+    '{
+      model: "claude-sonnet-4-6",
+      max_tokens: 8000,
+      messages: [{
+        role: "user",
+        content: ($prompt + "\n\n数据:\n" + $data)
+      }]
+    }')
+
+  echo "${REQUEST}" > /tmp/claude_request.json
+
+  RESPONSE=$(curl -s -w "\n%{http_code}" https://api.anthropic.com/v1/messages \
+    -H "content-type: application/json" \
+    -H "x-api-key: ${ANTHROPIC_API_KEY}" \
+    -H "anthropic-version: 2023-06-01" \
+    -d @/tmp/claude_request.json)
+
+  HTTP_CODE=$(echo "${RESPONSE}" | tail -1)
+  BODY=$(echo "${RESPONSE}" | sed '$d')
+
+  if [ "${HTTP_CODE}" != "200" ]; then
+    echo "::error::Claude API 返回 HTTP ${HTTP_CODE}"
+    echo "${BODY}" | jq . 2>/dev/null || echo "${BODY}"
+    exit 1
+  fi
+
+  echo "${BODY}" | jq -r '.content[0].text // empty'
+}
+
+process_with_openai() {
+  local DATA="$1"
+  local PROMPT="$2"
+
+  echo "使用 OpenAI API 处理..."
+
+  REQUEST=$(jq -n \
+    --arg prompt "${PROMPT}" \
+    --arg data "${DATA}" \
+    '{
+      model: "gpt-4",
+      messages: [{
+        role: "user",
+        content: ($prompt + "\n\n数据:\n" + $data)
+      }]
+    }')
+
+  echo "${REQUEST}" > /tmp/openai_request.json
+
+  RESPONSE=$(curl -s -w "\n%{http_code}" https://api.openai.com/v1/chat/completions \
+    -H "content-type: application/json" \
+    -H "Authorization: Bearer ${OPENAI_API_KEY}" \
+    -d @/tmp/openai_request.json)
+
+  HTTP_CODE=$(echo "${RESPONSE}" | tail -1)
+  BODY=$(echo "${RESPONSE}" | sed '$d')
+
+  if [ "${HTTP_CODE}" != "200" ]; then
+    echo "::error::OpenAI API 返回 HTTP ${HTTP_CODE}"
+    echo "${BODY}" | jq . 2>/dev/null || echo "${BODY}"
+    exit 1
+  fi
+
+  echo "${BODY}" | jq -r '.choices[0].message.content // empty'
+}
+
+# ============================================
+# 基础处理（无 AI）
+# ============================================
+
+process_basic() {
+  local DATA="$1"
+
+  echo "使用基础处理..."
+
+  # 示例：转换格式、过滤、排序等
+  echo "${DATA}" | jq '{
+    processed_at: (now | strftime("%Y-%m-%dT%H:%M:%SZ")),
+    data: .
+  }'
+}
+
+# ============================================
+# 主逻辑
+# ============================================
+
+if [ -z "${INPUT_DATA}" ]; then
+  echo "::error::没有输入数据"
+  exit 1
+fi
+
+PROMPT="${AI_PROMPT:-请处理以下数据，提取关键信息并生成结构化输出。}"
+
+case "${AI_ENABLED}" in
+  "claude")
+    RESULT=$(process_with_claude "${INPUT_DATA}" "${PROMPT}")
+    ;;
+  "openai")
+    RESULT=$(process_with_openai "${INPUT_DATA}" "${PROMPT}")
+    ;;
+  *)
+    RESULT=$(process_basic "${INPUT_DATA}")
+    ;;
+esac
+
+if [ -z "${RESULT}" ]; then
+  echo "::error::处理结果为空"
+  exit 1
+fi
+
+echo "${RESULT}" > "${OUTPUT_FILE}"
+
+# ============================================
+# 输出结果
+# ============================================
+
+{
+  printf 'result<<_EOF_\n%s\n_EOF_\n' "$(cat ${OUTPUT_FILE})"
+  echo "commit_message=chore: update data $(date +%Y-%m-%d)"
+} >> "${GITHUB_OUTPUT}"
+
+echo "=== 处理完成 ==="

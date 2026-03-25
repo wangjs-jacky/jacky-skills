@@ -1,0 +1,149 @@
+#!/usr/bin/env node
+
+/**
+ * 数据处理脚本模板
+ * 支持可选的 AI 处理
+ */
+
+import { readFileSync, writeFileSync } from 'fs';
+import { execSync } from 'child_process';
+
+// ============================================
+// 配置
+// ============================================
+
+const CONFIG = {
+  // AI 配置
+  ai: {
+    enabled: '{{AI_ENABLED}}' === 'true',
+    provider: '{{AI_PROVIDER}}',
+    model: '{{AI_MODEL}}'
+  },
+
+  // 处理配置
+  processing: {
+    prompt: `{{AI_PROMPT}}`,
+    outputFormat: '{{OUTPUT_FORMAT}}'
+  }
+};
+
+// ============================================
+// 工具函数
+// ============================================
+
+/**
+ * 输出到 GitHub Actions
+ */
+function setOutput(name, value) {
+  if (process.env.GITHUB_OUTPUT) {
+    if (value.includes('\n')) {
+      execSync(`printf '${name}<<_EOF_\\n%s\\n_EOF_\\n' "${value}" >> ${process.env.GITHUB_OUTPUT}`);
+    } else {
+      execSync(`echo "${name}=${value}" >> ${process.env.GITHUB_OUTPUT}`);
+    }
+  }
+}
+
+/**
+ * 使用 OpenAI API 处理数据
+ */
+async function processWithOpenAI(data, prompt) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not set');
+  }
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: CONFIG.ai.model || 'gpt-4',
+      messages: [
+        {
+          role: 'system',
+          content: '你是一个数据处理助手。根据用户的要求处理数据，输出结构化的结果。'
+        },
+        {
+          role: 'user',
+          content: `${prompt}\n\n数据:\n${JSON.stringify(data, null, 2)}`
+        }
+      ],
+      temperature: 0.7
+    })
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`OpenAI API error: ${response.status} - ${error}`);
+  }
+
+  const result = await response.json();
+  return result.choices[0].message.content;
+}
+
+/**
+ * 基础处理（无 AI）
+ */
+function processBasic(data) {
+  console.log('使用基础处理...');
+
+  // 示例：转换格式、过滤、排序等
+  return {
+    processed_at: new Date().toISOString(),
+    count: Array.isArray(data) ? data.length : 1,
+    data: data
+  };
+}
+
+// ============================================
+// 主逻辑
+// ============================================
+
+async function main() {
+  try {
+    console.log('=== 开始处理 ===');
+
+    // 读取输入数据
+    const inputData = process.env.COLLECTED_DATA;
+    if (!inputData) {
+      console.log('没有输入数据');
+      setOutput('result', '{}');
+      setOutput('commit_message', 'chore: no data to process');
+      process.exit(0);
+    }
+
+    const data = JSON.parse(inputData);
+    console.log(`处理 ${Array.isArray(data) ? data.length : 1} 条数据`);
+
+    let result;
+
+    // 选择处理方式
+    if (CONFIG.ai.enabled && CONFIG.ai.provider === 'openai') {
+      console.log('使用 OpenAI 处理...');
+      result = await processWithOpenAI(data, CONFIG.processing.prompt);
+    } else {
+      result = processBasic(data);
+    }
+
+    // 保存结果
+    const outputPath = './output/processed.json';
+    const resultStr = typeof result === 'string' ? result : JSON.stringify(result, null, 2);
+    writeFileSync(outputPath, resultStr);
+    console.log(`结果已保存到: ${outputPath}`);
+
+    // 输出到 GitHub Actions
+    setOutput('result', resultStr);
+    setOutput('commit_message', `chore: process ${Array.isArray(data) ? data.length : 1} items`);
+
+    console.log('=== 处理完成 ===');
+
+  } catch (error) {
+    console.error('::error::', error.message);
+    process.exit(1);
+  }
+}
+
+main();
