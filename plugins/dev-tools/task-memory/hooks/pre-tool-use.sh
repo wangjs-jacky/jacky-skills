@@ -5,7 +5,13 @@
 
 INPUT="$1"
 PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
-CURRENT_FILE="$(pwd)/.harness/memory/current.json"
+CURRENT_FILE_PRIMARY="$(pwd)/.harness/memory/current.json"
+CURRENT_FILE_LEGACY="$(pwd)/.task-memory/current.json"
+CURRENT_FILE="$CURRENT_FILE_PRIMARY"
+
+if [[ ! -f "$CURRENT_FILE" && -f "$CURRENT_FILE_LEGACY" ]]; then
+  CURRENT_FILE="$CURRENT_FILE_LEGACY"
+fi
 
 # 检查是否存在当前任务
 if [[ ! -f "$CURRENT_FILE" ]]; then

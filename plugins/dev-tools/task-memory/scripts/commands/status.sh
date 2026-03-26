@@ -3,6 +3,8 @@
 # task-memory status 命令
 
 task_status() {
+  set_storage_paths
+
   if ! has_current_task; then
     info "当前没有进行中的任务"
     exit 0
@@ -27,9 +29,10 @@ task_status() {
   # 显示最近的偏差
   if [[ $deviation_count -gt 0 ]]; then
     echo "最近偏差:"
-    ls -1t "$task_dir"/deviation-*.md 2>/dev/null | head -3 | while read file; do
+    ls -1t "$task_dir"/deviation-*.md 2>/dev/null | head -3 | while read -r file; do
       local seq=$(basename "$file" .md | sed 's/deviation-//')
-      local desc=$(grep "^## 问题描述" -A1 "$file" 2>/dev/null | tail -1 | sed 's/^ *//')
+      local desc
+      desc="$(extract_deviation_description "$file")"
       echo -e "  ${YELLOW}[$seq]${NC} ${desc:-无描述}"
     done
   fi

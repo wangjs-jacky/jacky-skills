@@ -3,6 +3,7 @@
 # task-memory list 命令
 
 task_list() {
+  set_storage_paths
   local tasks_dir="$(pwd)/$TASKS_DIR"
 
   if [[ ! -d "$tasks_dir" ]]; then
@@ -24,7 +25,7 @@ task_list() {
 
   ls -1t "$tasks_dir" | head -20 | while read task_id; do
     local init_file="$tasks_dir/$task_id/init.md"
-    local task_name=$(grep "^task_name:" "$init_file" 2>/dev/null | cut -d: -f2- | sed 's/^ *//')
+    local task_name=$(grep "^task_name:" "$init_file" 2>/dev/null | cut -d: -f2- | sed "s/^ *//; s/^'//; s/'$//")
     local created=$(grep "^created_at:" "$init_file" 2>/dev/null | cut -d: -f2- | sed 's/^ *//' | cut -dT -f1)
     local deviation_count=$(ls -1 "$tasks_dir/$task_id"/deviation-*.md 2>/dev/null | wc -l | tr -d ' ')
 

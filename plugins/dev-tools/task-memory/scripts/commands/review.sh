@@ -4,6 +4,7 @@
 
 task_review() {
   local task_id="$1"
+  set_storage_paths
 
   if [[ -z "$task_id" ]]; then
     error "请提供任务 ID"

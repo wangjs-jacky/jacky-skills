@@ -4,7 +4,13 @@
 # 会话结束时检查是否有进行中的任务，提示保存
 
 PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
-CURRENT_FILE="$(pwd)/.harness/memory/current.json"
+CURRENT_FILE_PRIMARY="$(pwd)/.harness/memory/current.json"
+CURRENT_FILE_LEGACY="$(pwd)/.task-memory/current.json"
+CURRENT_FILE="$CURRENT_FILE_PRIMARY"
+
+if [[ ! -f "$CURRENT_FILE" && -f "$CURRENT_FILE_LEGACY" ]]; then
+  CURRENT_FILE="$CURRENT_FILE_LEGACY"
+fi
 
 # 检查是否存在当前任务
 if [[ ! -f "$CURRENT_FILE" ]]; then
@@ -32,8 +38,8 @@ cat <<EOF
   任务名称: ${TASK_NAME:-未知}
 
 本次会话即将结束，建议：
-1. 使用 /task-memory record 记录本次进展
-2. 使用 /task-memory status 查看当前状态
+1. 使用 /task-memory save "本次进展" 记录本次进展
+2. 使用 /task-memory recall 查看任务摘要
 3. 如果任务已完成，使用 /task-memory end 结束
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -3,6 +3,8 @@
 # task-memory end 命令
 
 task_end() {
+  set_storage_paths
+
   if ! has_current_task; then
     error "没有进行中的任务"
     exit 1

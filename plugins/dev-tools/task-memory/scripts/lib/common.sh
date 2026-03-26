@@ -43,9 +43,13 @@ title() {
 
 # 生成任务 ID
 generate_task_id() {
+  if declare -f set_storage_paths >/dev/null 2>&1; then
+    set_storage_paths
+  fi
+
   local prefix="task"
   local date=$(date +%Y-%m-%d)
-  local tasks_dir="$(pwd)/.task-memory/tasks"
+  local tasks_dir="$(pwd)/$TASKS_DIR"
 
   # 确保目录存在
   mkdir -p "$tasks_dir"
@@ -68,26 +72,46 @@ get_local_time() {
 
 # 确保存储目录存在
 ensure_storage() {
-  mkdir -p "$(pwd)/.task-memory/tasks"
+  if declare -f set_storage_paths >/dev/null 2>&1; then
+    set_storage_paths
+  fi
+
+  mkdir -p "$(pwd)/$TASKS_DIR"
 }
 
 # 检查是否有进行中的任务
 has_current_task() {
-  local current_file="$(pwd)/.task-memory/current.json"
+  if declare -f set_storage_paths >/dev/null 2>&1; then
+    set_storage_paths
+  fi
+
+  local current_file="$(pwd)/$CURRENT_FILE"
   [[ -f "$current_file" ]] && [[ -n $(jq -r '.task_id // empty' "$current_file" 2>/dev/null) ]]
 }
 
 # 获取当前任务 ID
 get_current_task_id() {
-  local current_file="$(pwd)/.task-memory/current.json"
+  if declare -f set_storage_paths >/dev/null 2>&1; then
+    set_storage_paths
+  fi
+
+  local current_file="$(pwd)/$CURRENT_FILE"
   jq -r '.task_id // empty' "$current_file" 2>/dev/null
 }
 
 # 获取当前任务信息
 get_current_task_info() {
-  local current_file="$(pwd)/.task-memory/current.json"
+  if declare -f set_storage_paths >/dev/null 2>&1; then
+    set_storage_paths
+  fi
+
+  local current_file="$(pwd)/$CURRENT_FILE"
   if [[ -f "$current_file" ]]; then
-    cat "$current_file"
+    if jq -e . "$current_file" >/dev/null 2>&1; then
+      cat "$current_file"
+    else
+      echo "{}"
+    fi
   else
     echo "{}"
   fi

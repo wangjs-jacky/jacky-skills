@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# task-memory record 命令
+# task-memory record/save 命令
 
 task_record() {
   local description="$1"
   local trigger="${2:-manual}"
+  set_storage_paths
 
   # 参数校验
   if [[ -z "$description" ]]; then
@@ -40,4 +41,10 @@ task_record() {
   info "请编辑 deviation-$sequence.md 文件，填写发现原因、修复方案和根因分析"
   echo ""
   separator
+}
+
+task_save() {
+  local description="${1:-会话进展}"
+  local trigger="${2:-manual}"
+  task_record "$description" "$trigger"
 }
