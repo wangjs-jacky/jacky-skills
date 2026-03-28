@@ -9,6 +9,27 @@ CLARIFY → SEARCH → SPEC → BLUEPRINT → TEST → IMPLEMENT → VERIFY
   ①         ②        ③        ④         ⑤        ⑥         ⑦
 ```
 
+## 零干预边界（Autonomy Gate）
+
+CLARIFY 是人类与 AI 的协作边界。CLARIFY 之后，AI 应该能完全自主运行。
+
+```
+  人类参与         │         AI 自主执行
+ ──────────────── ┼ ───────────────────────────
+  CLARIFY          │  SEARCH → SPEC → BLUEPRINT
+  (说清楚要什么)    │  → TEST → IMPLEMENT → VERIFY
+                   │
+                   └──── 零干预边界（Autonomy Gate）
+```
+
+**零干预的含义**：
+- CLARIFY 阶段结束后，AI 全权负责后续所有阶段
+- AI 自动将长任务分解为可执行的短任务序列
+- 阶段间自动推进，无需人工 approve
+- 遇到错误自动诊断和回退，而非阻塞等待人类
+- 人类可随时查看进度文件，但不影响执行流
+- VERIFY 完成后汇报结果
+
 ## 各阶段定义
 
 ### 阶段 1: CLARIFY（明确）
