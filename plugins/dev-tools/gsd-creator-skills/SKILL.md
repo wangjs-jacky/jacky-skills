@@ -360,9 +360,12 @@ A: 先卸载 `j-skills uninstall <name> -g`，再取消链接 `j-skills link --u
 **Q: 没有 j-skills 还能用吗？**
 A: 可以。手动创建/复制/软链接到目标 skills 目录即可。
 
+**Q: 提示 `missing YAML frontmatter delimited by ---` 怎么办？**
+A: 说明 `SKILL.md` 顶部缺少或损坏 frontmatter。按 `references/trouble-shooting.md` 的第 4 节补齐 `---` 包裹的 `name` 和 `description` 即可。
+
 ## Check List
 
-1. `SKILL.md` 顶部包含完整 frontmatter：`name` + `description`
+1. `SKILL.md` 顶部包含完整 frontmatter（`---` 包裹）：`name` + `description`
 2. `description` 使用双引号包裹，不以 `TRIGGER:` 开头
 3. `name` 使用小写字母+连字符
 4. 若使用 `j-skills`：`j-skills link --list` / `j-skills list -g` 能看到目标 skill

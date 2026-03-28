@@ -53,7 +53,28 @@ j-skills list -g
 ```
 3. 需要跨项目复用时使用全局安装；仅当前仓库使用时保留项目级安装。
 
-## 4) 快速恢复建议
+## 4) SKILL.md 缺少 YAML frontmatter
+
+### 现象
+- 启动或加载时提示：
+  - `Skipped loading 1 skill(s) due to invalid SKILL.md files.`
+  - `<path>/SKILL.md: missing YAML frontmatter delimited by ---`
+
+### 排查
+1. 检查 `SKILL.md` 文件开头是否为标准 frontmatter：
+```markdown
+---
+name: your-skill-name
+description: "简短描述，说明触发条件"
+---
+```
+2. 确认 `---` 成对出现，且位于文件最顶部。
+3. `name` 使用 kebab-case，`description` 使用双引号包裹。
+
+### 快速修复
+在文件顶部补齐上述 frontmatter 后，重启会话并重新触发验证。
+
+## 5) 快速恢复建议
 
 若状态混乱，按以下顺序做一次“最小重置”：
 
