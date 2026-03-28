@@ -1,6 +1,6 @@
 {
   "name": "dev-tools",
-  "version": "1.12.2",
+  "version": "1.14.0",
   "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建、依赖管理等",
   "author": {
     "name": "Jacky Wang",
@@ -29,6 +29,7 @@
     "./feature-tracker/",
     "./gh-workflow-generator/",
     "./skill-optimizer/",
+    "./harness-benchmark/",
     "./task-harness/",
     "./task-memory/",
     "./task-workflow/"

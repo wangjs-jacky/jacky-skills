@@ -1,157 +1,154 @@
 # Harness 模板库
 
 > 此文件包含各类任务的 Harness 模板，供主 SKILL.md 引用。
+> 模板融入项目的 tests/ 体系，不使用独立的 .harness/ 目录。
 
-## 函数 TDD 模板
+## BDD Case 模板（UI 组件/页面）
 
-```markdown
-## Harness: 函数 <函数名>
+### 模板文件：`tests/bdd/cases/{page}/T-{prefix}{N}.js`
 
-### 输入/输出契约
-- 输入: `<类型>`
-- 输出: `<类型>`
-
-### 测试用例
-
-| 输入 | 预期输出 | 说明 |
-|------|----------|------|
-| `<case1>` | `<expected1>` | 正常情况 |
-| `<case2>` | `<expected2>` | 边界情况 |
-| `<case3>` | `<expected3>` | 错误处理 |
-
-### 验证命令
-
-```bash
-npm test -- <test-file>
-```
-```
-
----
-
-## 网页快照模板
-
-```markdown
-## Harness: 网页 <页面名>
-
-### 元素检查
-- [ ] <元素1> 存在
-- [ ] <元素2> 存在
-- [ ] <元素3> 可见
-
-### 交互检查
-- [ ] 点击 <按钮> 触发 <动作>
-- [ ] 输入 <值> 显示 <结果>
-
-### 视觉回归
-- [ ] 桌面端快照匹配
-- [ ] 移动端快照匹配
-
-### 验证命令
-
-```bash
-npm run test:e2e -- --spec <spec-file>
-npm run test:visual
-```
+```javascript
+export default {
+  testCaseId: 'T-{{prefix}}{{N}}',
+  page: '{{PageName}}',
+  title: '{{标题}} - {{简短描述}}',
+  link: '/{{page-route}}',
+  tags: ['待实现'],
+  path: [
+    '{{PageName}} 页面',
+    '{{功能模块}}',
+  ],
+  steps: [
+    {
+      stepId: 1,
+      description: '{{操作描述}}',
+      expectation: '{{期望结果}}',
+    },
+  ],
+}
 ```
 
----
+### 测试脚本：`tests/bdd/{page}/T-{prefix}{N}.test.ts`
 
-## CLI 工具模板
+```typescript
+// @vitest-environment jsdom
+import React from 'react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { render, screen, waitFor } from '@testing-library/react'
+import { expectElement, expectElementAsync } from '@wangjs-jacky/tdd-kit'
 
-```markdown
-## Harness: CLI <工具名>
+// --- Store mock ---
+const showToastMock = vi.fn()
 
-### 命令检查
+vi.mock('{{storePath}}', () => ({
+  useStore: () => ({
+    showToast: showToastMock,
+  }),
+}))
 
-| 命令 | 预期输出包含 | 预期退出码 |
-|------|-------------|-----------|
-| `<cmd> --help` | `Usage:` | 0 |
-| `<cmd> --version` | `v1.0.0` | 0 |
-| `<cmd> <valid>` | `<success>` | 0 |
-| `<cmd> <invalid>` | `Error:` | 1 |
+// --- API mock ---
+const apiMock = vi.fn()
 
-### 验证命令
+vi.mock('{{apiPath}}', () => ({
+  {{apiName}}: {
+    {{methodName}}: apiMock,
+  },
+}))
 
-```bash
-# 自动化测试脚本
-./test-cli.sh
-```
-```
+describe('T-{{prefix}}{{N}} {{标题}}', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
----
+  /**
+   * T-{{prefix}}{{N}} 完整流程（N 步）:
+   * Step 1: {{步骤1描述}}
+   * Step 2: {{步骤2描述}}
+   */
+  it('完整流程: {{步骤摘要}}', async () => {
+    // 准备 mock 数据
+    apiMock.mockResolvedValue({
+      success: true,
+      data: {{mockData}},
+    })
 
-## 文件操作脚本模板
+    // Step 1: {{描述}}
+    const { default: Page } = await import('{{pageComponentPath}}')
+    render(React.createElement(Page))
 
-```markdown
-## Harness: 脚本 <脚本名>
+    const pageEl = await screen.findByTestId('{{pageTestId}}')
+    expect(pageEl).toBeTruthy()
 
-### 前置条件
-- [ ] <条件1>
-- [ ] <条件2>
-
-### 执行结果
-- [ ] 文件 `<path>` 被创建
-- [ ] 文件内容包含 `<content>`
-
-### 验证命令
-
-```bash
-# 检查文件存在
-test -f <path> && echo "PASS" || echo "FAIL"
-
-# 检查文件内容
-grep -q "<pattern>" <path> && echo "PASS" || echo "FAIL"
-```
+    // Step 2: {{描述}}
+    // ...
+  })
+})
 ```
 
 ---
 
-## API/服务模板
+## 集成测试模板（数据一致性/配置对齐）
 
-```markdown
-## Harness: API <接口名>
+### 文件：`tests/integration/{name}-consistency.test.ts`
 
-### 端点检查
+```typescript
+import { describe, it, expect } from 'vitest'
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
 
-| 方法 | 路径 | 预期状态码 | 预期响应 |
-|------|------|-----------|---------|
-| GET | `/api/users` | 200 | 用户列表 |
-| POST | `/api/users` | 201 | 创建的用户 |
-| GET | `/api/users/999` | 404 | 错误信息 |
+const root = resolve(__dirname, '../..')
 
-### 验证命令
+describe('{{name}} 一致性', () => {
+  it('should have same count', () => {
+    const sourceA = getFromSourceA()
+    const sourceB = getFromSourceB()
+    expect(sourceB.length).toBe(sourceA.length)
+  })
 
-```bash
-# 使用 curl 测试
-curl -X GET http://localhost:3000/api/users
-
-# 或使用专用测试
-npm run test:api
-```
+  it('should have matching entries', () => {
+    const aNames = getFromSourceA()
+    const bNames = getFromSourceB()
+    const missing = aNames.filter((n) => !bNames.includes(n))
+    expect(missing, `缺失: ${missing.join(', ')}`).toEqual([])
+  })
+})
 ```
 
 ---
 
-## 配置文件模板
+## 单元测试模板（纯函数/工具）
 
-```markdown
-## Harness: 配置 <配置名>
+### 文件：`tests/unit/{name}.test.ts`
 
-### 语法检查
-- [ ] 配置文件语法正确
-- [ ] 必需字段存在
+```typescript
+import { describe, it, expect } from 'vitest'
+import { {{functionName}} } from '{{modulePath}}'
 
-### 效果验证
-- [ ] 配置生效后 <行为1>
-- [ ] 配置生效后 <行为2>
+describe('{{functionName}}', () => {
+  it('should handle normal input', () => {
+    const result = {{functionName}}({{validInput}})
+    expect(result).toEqual({{expectedOutput}})
+  })
 
-### 验证命令
+  it('should handle edge case: empty input', () => {
+    const result = {{functionName}}([])
+    expect(result).toEqual([])
+  })
 
-```bash
-# 语法检查
-npx prettier --check <config-file>
-
-# 效果验证
-<启动命令> && <验证行为>
+  it('should throw for invalid input', () => {
+    expect(() => {{functionName}}(null)).toThrow()
+  })
+})
 ```
-```
+
+---
+
+## 编号规则速查
+
+| 页面 | 前缀 | 目录 |
+|------|------|------|
+| Develop | `T-D` | cases/develop/, bdd/develop/ |
+| Skills | `T-S` | cases/skills/, bdd/skills/ |
+| Settings | `T-ST` | cases/settings/, bdd/settings/ |
+| 集成测试 | 无编号 | tests/integration/ |
+| 单元测试 | 无编号 | tests/unit/ |
