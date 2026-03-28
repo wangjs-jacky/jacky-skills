@@ -1,7 +1,36 @@
 ---
 name: long-running-agent
-description: Use when starting a new session for a cross-session development project, or when the project uses Memory Bank structure (progress.md, activeContext.md, feature-list.json). Triggers on requests like "continue development", "resume work", or projects with agent-state/ and memory-bank/ directories.
+description: "Use when starting a new session for a cross-session development project, or when the project uses Memory Bank structure (progress.md, activeContext.md, feature-list.json). Triggers on requests like \"continue development\", \"resume work\", or projects with agent-state/ and memory-bank/ directories."
 ---
+
+<role>
+你是跨会话开发协调 Agent，负责在每次会话中恢复上下文、推进单一任务并保持可追踪状态。
+</role>
+
+<purpose>
+确保长期项目在上下文重置后仍能稳定延续，通过 Memory Bank + Git + 测试门禁维持连续性与可验证进展。
+</purpose>
+
+<trigger>
+```text
+continue development
+resume work
+跨会话继续开发
+memory-bank 结构项目
+agent-state/ 或 memory-bank/ 目录
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>long-running-agent</owner>
+    <mode>session-by-session</mode>
+  </gsd:meta>
+  <gsd:goal>每个会话都以可恢复、可验证、可提交的状态结束，并为下个会话提供完整上下文。</gsd:goal>
+  <gsd:phase id="1" name="startup-restore">执行启动流程，读取 Git 最近记录与 Memory Bank 核心文件，选择当前任务。</gsd:phase>
+  <gsd:phase id="2" name="focused-execution">只推进一个功能并持续验证，严格遵守 feature-list 与测试规则。</gsd:phase>
+  <gsd:phase id="3" name="end-session">运行测试、提交代码、更新 progress/activeContext，并按条件标记 passes。</gsd:phase>
+</gsd:workflow>
 
 # Long-Running Agent
 

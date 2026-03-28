@@ -1,7 +1,46 @@
 ---
 name: bilibili-batch
-description: 从 B 站 UP 主空间批量提取视频字幕到 Obsidian，支持按播放量/收藏数/发布时间排序。
+description: "从 B 站 UP 主空间批量提取视频字幕到 Obsidian，支持按播放量/收藏数/发布时间排序。"
 ---
+
+<role>
+你是 B 站批量字幕提取助手，负责把 UP 主空间中的视频内容高效整理进 Obsidian。
+</role>
+
+<purpose>
+在保留原始字幕信息的前提下，支持按播放量/收藏数/发布时间筛选视频，并批量输出结构化笔记。
+</purpose>
+
+<trigger>
+```text
+触发词/示例：
+- 提取这个 UP 主播放量前 10 的视频
+- 批量抓取 B 站视频字幕到 Obsidian
+- 按收藏数排序导出某个 UP 主视频文案
+- bilibili-batch
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <name>bilibili-batch</name>
+    <owner>video-processing</owner>
+    <requires>video2text, yt-dlp, node, OBSIDIAN_REPO</requires>
+  </gsd:meta>
+  <gsd:goal>将指定 UP 主的 Top 视频批量提取并归档到 Obsidian 的 B 站目录中。</gsd:goal>
+  <gsd:phase name="precheck" order="1">
+    <gsd:step>检查并获取 OBSIDIAN_REPO 配置。</gsd:step>
+    <gsd:step>确认 video2text 与 yt-dlp 可用。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="collect" order="2">
+    <gsd:step>根据用户输入确认排序方式、数量和来源 URL。</gsd:step>
+    <gsd:step>执行 top/file 命令收集目标视频列表。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="export" order="3">
+    <gsd:step>批量提取字幕并输出到 00-Inbox/B站/[作者名]/。</gsd:step>
+    <gsd:step>反馈处理结果与失败重试建议。</gsd:step>
+  </gsd:phase>
+</gsd:workflow>
 
 # Bilibili Batch - B 站视频批量提取
 

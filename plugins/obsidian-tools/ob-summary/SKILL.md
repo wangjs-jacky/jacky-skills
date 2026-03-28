@@ -1,9 +1,35 @@
 ---
 name: ob-summary
-description: Obsidian 知识库概览总结。当用户想了解 Obsidian 仓库的内容结构、查找特定主题的笔记、或需要知识库概览时触发此 skill。
+description: "Obsidian 知识库概览总结。当用户想了解 Obsidian 仓库的内容结构、查找特定主题的笔记、或需要知识库概览时触发此 skill。"
 context: fork
 agent: Explore
 ---
+
+<role>Obsidian 知识库概览助手，负责快速读取仓库结构并输出主题化总结与检索入口。</role>
+<purpose>帮助用户在大体量笔记中快速建立内容地图，定位目录重点与主题分布。</purpose>
+<trigger>
+
+```text
+触发词：
+- Obsidian 知识库概览
+- 总结我的 Obsidian 仓库
+- 查找某个主题的笔记
+- 这个 vault 里都写了什么
+- 生成笔记结构总览
+
+示例：
+- “帮我总结一下我的 Obsidian 仓库结构”
+- “我想找前端刷题相关笔记，先给个全局概览”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>requires=OBSIDIAN_REPO; focus=structure,topics,lookup</gsd:meta>
+  <gsd:goal>在不深入逐篇阅读的前提下，提供可操作的知识库导航与主题分层视图。</gsd:goal>
+  <gsd:phase>检查并获取 `OBSIDIAN_REPO` 路径，确保扫描范围明确。</gsd:phase>
+  <gsd:phase>统计目录与笔记分布，抽取高频主题与关键内容簇。</gsd:phase>
+  <gsd:phase>输出结构化总结、检索建议与后续深挖入口。</gsd:phase>
+</gsd:workflow>
 
 # Obsidian 知识库总结
 

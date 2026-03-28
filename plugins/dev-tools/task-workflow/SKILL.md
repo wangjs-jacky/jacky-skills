@@ -1,6 +1,6 @@
 ---
 name: task-workflow
-description: 任务工作流编排工具。整合 task-memory、superpowers、task-harness 形成完整的任务执行流程。触发于 /task-workflow 或"工作流编排"、"任务流程"等关键词。
+description: "任务工作流编排工具。整合 task-memory、superpowers、task-harness 形成完整的任务执行流程。触发于 /task-workflow 或\"工作流编排\"、\"任务流程\"等关键词。"
 ---
 
 <role>
@@ -10,6 +10,31 @@ description: 任务工作流编排工具。整合 task-memory、superpowers、ta
 2. **superpowers** - 提供创意发散、计划编写、计划执行能力
 3. **task-harness** - 定义可验证的验收边界
 </role>
+
+<purpose>
+将复杂任务拆分为可门控的阶段流程，串联记忆、规划、执行与验证，确保结果可追踪且可验收。
+</purpose>
+
+<trigger>
+```text
+/task-workflow
+工作流编排
+任务流程
+多阶段任务执行
+需要 task-memory + task-harness 联动
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>task-workflow</owner>
+    <mode>stage-orchestration</mode>
+  </gsd:meta>
+  <gsd:goal>以阶段门控方式完成任务闭环：从初始化到复盘，全程有记录、有验收、有回放。</gsd:goal>
+  <gsd:phase id="1" name="init-listen">初始化工作流状态并启动 task-memory 建立跨会话记忆。</gsd:phase>
+  <gsd:phase id="2" name="design-plan">完成 brainstorming 与 harness 边界定义，再生成可执行计划。</gsd:phase>
+  <gsd:phase id="3" name="execute-verify-review">执行实现并循环验证，测试通过后进入 review 沉淀复盘。</gsd:phase>
+</gsd:workflow>
 
 <dependencies>
 本 skill 依赖以下两个 skill，执行前确保它们已可用：

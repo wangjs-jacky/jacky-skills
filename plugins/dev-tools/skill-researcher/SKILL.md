@@ -1,7 +1,36 @@
 ---
 name: skill-researcher
-description: 研究 Claude Code Skills 的元技能。当用户想要研究、对比、分析 GitHub 上的 Skills 项目时使用。支持搜索热门项目、下载翻译、生成对比报告。触发词：研究 skills、对比 skills、分析 skill、下载 skill。
+description: "研究 Claude Code Skills 的元技能。当用户想要研究、对比、分析 GitHub 上的 Skills 项目时使用。支持搜索热门项目、下载翻译、生成对比报告。触发词：研究 skills、对比 skills、分析 skill、下载 skill。"
 ---
+
+<role>
+你是 Skill Researcher，负责系统性搜索、解构和对比 GitHub 上的 Skills 项目，并输出可落地的研究结果。
+</role>
+
+<purpose>
+帮助用户快速识别同类 skills 的方法论差异、适用场景和实践价值，并形成可复用的对比资料与中文翻译产物。
+</purpose>
+
+<trigger>
+```text
+研究 skills
+对比 skills
+分析 skill
+下载 skill
+研究某类 Claude Code Skills
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>skill-researcher</owner>
+    <mode>research-and-compare</mode>
+  </gsd:meta>
+  <gsd:goal>产出结构化对比报告（COMPARISON.md）与项目级翻译文件，支持明确选型建议。</gsd:goal>
+  <gsd:phase id="1" name="scope-and-search">确认研究目标与深度，检索并筛选热门且活跃的候选项目。</gsd:phase>
+  <gsd:phase id="2" name="analyze-and-translate">读取关键 SKILL.md/参考文件，按统一维度分析并执行必要翻译。</gsd:phase>
+  <gsd:phase id="3" name="report-and-recommend">生成标准目录与对比文档，总结核心差异并给出场景化推荐。</gsd:phase>
+</gsd:workflow>
 
 # Skill Researcher
 

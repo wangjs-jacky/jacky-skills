@@ -22,11 +22,15 @@
     "./github-repo-publish/",
     "./gsd-creator-skills/",
     "./long-running-agent/",
-    "./creator-skills/",
     "./skill-researcher/",
     "./repo-study/",
     "./vscode-extension-dev/",
     "./doc-to-tutorial/",
-    "./gh-workflow-generator/"
+    "./feature-tracker/",
+    "./gh-workflow-generator/",
+    "./skill-optimizer/",
+    "./task-harness/",
+    "./task-memory/",
+    "./task-workflow/"
   ]
 }

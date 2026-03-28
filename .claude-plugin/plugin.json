@@ -22,11 +22,15 @@
   ],
   "notes": "此文件为元插件配置。推荐安装具体的子插件以获得更好的模块化体验。",
   "subPlugins": [
-    "plugins/video-tools",
+    "plugins/video-processing",
     "plugins/dev-tools",
+    "plugins/translation-tools",
     "plugins/obsidian-tools",
-    "plugins/monitoring-tools",
-    "plugins/skills-mgmt",
-    "plugins/advanced-tools"
+    "plugins/language-skills",
+    "plugins/learning-tools",
+    "plugins/troubleshooting",
+    "plugins/skills-management",
+    "plugins/dev-advanced",
+    "plugins/monitoring"
   ]
 }

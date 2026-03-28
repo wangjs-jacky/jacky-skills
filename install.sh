@@ -74,14 +74,23 @@ echo -e "${GREEN}✓ Skills 链接完成${NC}"
 # 步骤 5：全局安装所有 skills
 echo -e "${YELLOW}[5/5] 全局安装所有 skills...${NC}"
 
-# 获取所有 skill 目录
-for skill_dir in "$REPO_DIR"/*/; do
-    if [ -f "$skill_dir/SKILL.md" ]; then
-        skill_name=$(basename "$skill_dir")
+# 扫描仓库中所有 SKILL.md，按 frontmatter name 安装
+while IFS= read -r skill_file; do
+    skill_name=$(awk '
+        BEGIN { in_fm=0 }
+        /^---$/ { in_fm = !in_fm; next }
+        in_fm && /^name:[[:space:]]*/ {
+            sub(/^name:[[:space:]]*/, "", $0)
+            print $0
+            exit
+        }
+    ' "$skill_file")
+
+    if [ -n "$skill_name" ]; then
         echo -e "${BLUE}  安装: $skill_name${NC}"
         j-skills install "$skill_name" -g --env claude-code 2>/dev/null || true
     fi
-done
+done < <(find "$REPO_DIR/plugins" -type f -name "SKILL.md" | sort)
 
 echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════════════════════╗${NC}"

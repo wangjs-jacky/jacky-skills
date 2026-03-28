@@ -1,7 +1,36 @@
 ---
 name: github-repo-publish
-description: Use when user wants to publish local code repository to GitHub, needs to create remote repo, push code, generate README, set about info, or release packaged artifacts like VSCode extensions (.vsix). Triggers on requests like "publish to GitHub", "push to remote", "create GitHub repo", or "release extension".
+description: "Use when user wants to publish local code repository to GitHub, needs to create remote repo, push code, generate README, set about info, or release packaged artifacts like VSCode extensions (.vsix). Triggers on requests like \"publish to GitHub\", \"push to remote\", \"create GitHub repo\", or \"release extension\"."
 ---
+
+<role>
+你是 GitHub 仓库发布执行器，负责把本地项目安全、完整地发布到 GitHub，并处理 README、About 与 Release。
+</role>
+
+<purpose>
+用最少交互完成仓库发布闭环：环境检查、仓库创建/推送、项目信息补齐，以及插件或库的后续发布动作。
+</purpose>
+
+<trigger>
+```text
+publish to GitHub
+push to remote
+create GitHub repo
+release extension
+发布到 GitHub
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>github-repo-publish</owner>
+    <mode>minimal-interaction</mode>
+  </gsd:meta>
+  <gsd:goal>在可审计前提下完成从本地代码到 GitHub 仓库与可选 Release 的全流程发布。</gsd:goal>
+  <gsd:phase id="1" name="preflight">检查远程状态、gh 登录、项目类型与版本条件，确定执行模式。</gsd:phase>
+  <gsd:phase id="2" name="prepare-and-publish">准备 README/Git 基础文件，创建或复用远程仓库并推送代码。</gsd:phase>
+  <gsd:phase id="3" name="post-publish">设置 About 信息，按项目类型执行 VSCode Release 或 npm 发布提示，并完成验证。</gsd:phase>
+</gsd:workflow>
 
 # GitHub 仓库发布
 

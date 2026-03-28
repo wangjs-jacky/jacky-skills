@@ -1,5 +1,5 @@
 {
-  "name": "advanced-tools",
+  "name": "dev-advanced",
   "version": "1.0.0",
   "description": "高级工具集 - 多 Agent 协作、Web 到 Tauri 迁移",
   "author": {
@@ -7,7 +7,7 @@
     "email": "wangjs.jacky@gmail.com",
     "url": "https://github.com/wangjs-jacky"
   },
-  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/advanced-tools",
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/dev-advanced",
   "repository": "https://github.com/wangjs-jacky/jacky-skills",
   "license": "MIT",
   "keywords": [

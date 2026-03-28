@@ -1,7 +1,33 @@
 ---
 name: agent-browser-troubleshooting
-description: 使用 agent-browser 遇到问题时的故障排查指南。当 agent-browser 命令失败、浏览器无法启动、连接超时、或页面操作异常时触发此 skill。
+description: "使用 agent-browser 遇到问题时的故障排查指南。当 agent-browser 命令失败、浏览器无法启动、连接超时、或页面操作异常时触发此 skill。"
 ---
+
+<role>agent-browser 故障排查助手，负责定位浏览器连接、代理、CDP 与页面操作相关异常。</role>
+<purpose>用可复现命令快速缩小问题范围，给出最短修复路径并完成结果验证。</purpose>
+<trigger>
+
+```text
+触发词：
+- agent-browser 命令失败
+- 浏览器无法启动
+- 连接超时 / ECONNREFUSED
+- snapshot 空白 / 点击无效
+- CDP 连接失败
+
+示例：
+- “agent-browser 一直报 ECONNREFUSED，帮我排查”
+- “open 成功了但 snapshot 没有我要的元素”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>priority=environment-first; key_checks=version,proxy,browser-binary,cdp-port</gsd:meta>
+  <gsd:goal>在最少试错次数内恢复可用浏览器会话，并确保页面操作链路稳定。</gsd:goal>
+  <gsd:phase>收集症状与环境信息，先验证版本、代理与浏览器安装完整性。</gsd:phase>
+  <gsd:phase>按问题类型应用修复：干净环境、connect 模式、等待策略或 JS 提取方案。</gsd:phase>
+  <gsd:phase>用最小可复现命令回归验证，输出后续防回归建议。</gsd:phase>
+</gsd:workflow>
 
 # agent-browser 故障排查指南
 

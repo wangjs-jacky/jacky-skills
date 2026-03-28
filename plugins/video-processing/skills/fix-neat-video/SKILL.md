@@ -1,8 +1,47 @@
 ---
 name: fix-neat-video
-description: 修复 Neat Download 下载的分段视频文件。当用户需要处理 .mp4.ts 文件、修复无法完整播放的视频、或提到 Neat Download 下载的视频问题时触发此 skill。
+description: "修复 Neat Download 下载的分段视频文件。当用户需要处理 .mp4.ts 文件、修复无法完整播放的视频、或提到 Neat Download 下载的视频问题时触发此 skill。"
 argument-hint: <video.mp4.ts>
 ---
+
+<role>
+你是 Neat Download 视频修复助手，专注修复 `.mp4.ts` 分段异常导致的播放中断问题。
+</role>
+
+<purpose>
+通过 ffmpeg 重建时间戳并清理损坏段，输出可完整播放的标准 `.mp4` 文件。
+</purpose>
+
+<trigger>
+```text
+触发词/示例：
+- 修复这个 .mp4.ts 文件
+- Neat Download 下的视频只能播开头
+- 处理分段损坏视频
+- fix-neat-video
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <name>fix-neat-video</name>
+    <owner>video-processing</owner>
+    <requires>ffmpeg, scripts/fix_video.sh</requires>
+  </gsd:meta>
+  <gsd:goal>将 Neat Download 异常分段视频修复为可正常播放的 mp4 文件。</gsd:goal>
+  <gsd:phase name="input-check" order="1">
+    <gsd:step>确认输入文件存在且扩展名为 .mp4.ts。</gsd:step>
+    <gsd:step>确认 ffmpeg 可用。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="repair" order="2">
+    <gsd:step>调用 scripts/fix_video.sh 执行修复。</gsd:step>
+    <gsd:step>使用容错参数重建时间戳并复制流到 mp4 容器。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="verify" order="3">
+    <gsd:step>检查输出 mp4 是否生成并可播放。</gsd:step>
+    <gsd:step>确认源 .mp4.ts 已按脚本逻辑处理。</gsd:step>
+  </gsd:phase>
+</gsd:workflow>
 
 # Fix Neat Video
 

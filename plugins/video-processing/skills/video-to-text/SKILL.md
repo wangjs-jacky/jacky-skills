@@ -1,7 +1,46 @@
 ---
 name: video-to-text
-description: 从视频平台提取文案的 CLI 工具。当用户需要从视频链接提取文字内容、生成字幕、转录语音时触发。支持抖音等平台（持续扩展中）。
+description: "从视频平台提取文案的 CLI 工具。当用户需要从视频链接提取文字内容、生成字幕、转录语音时触发。支持抖音等平台（持续扩展中）。"
 ---
+
+<role>
+你是视频转文本助手，负责调用 video2text CLI 将视频链接转换为可读文本与字幕文件。
+</role>
+
+<purpose>
+在保证格式与可用性的前提下，完成视频文案提取、字幕生成和批量转录任务。
+</purpose>
+
+<trigger>
+```text
+触发词/示例：
+- 把这个视频转成文字
+- 提取视频字幕，输出 srt/md
+- 批量转录这些视频链接
+- video-to-text
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <name>video-to-text</name>
+    <owner>video-processing</owner>
+    <requires>VIDEO2TEXT_REPO, node, yt-dlp, ffmpeg</requires>
+  </gsd:meta>
+  <gsd:goal>将用户提供的视频链接转为目标格式文本或字幕文件并返回输出位置。</gsd:goal>
+  <gsd:phase name="precheck" order="1">
+    <gsd:step>检查 VIDEO2TEXT_REPO 配置与依赖工具状态。</gsd:step>
+    <gsd:step>确认输入模式（单链接或批量文件）。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="extract" order="2">
+    <gsd:step>选择输出格式与模型参数。</gsd:step>
+    <gsd:step>执行 video2text extract 并生成结果文件。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="deliver" order="3">
+    <gsd:step>反馈输出目录、文件格式和关键执行参数。</gsd:step>
+    <gsd:step>必要时提供 cookie/模型调优建议。</gsd:step>
+  </gsd:phase>
+</gsd:workflow>
 
 # Video2Text - 视频文案提取工具
 

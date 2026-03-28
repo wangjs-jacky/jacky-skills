@@ -1,0 +1,23 @@
+{
+  "name": "learning-tools",
+  "version": "1.0.0",
+  "description": "学习工具集 - 仓库学习初始化与文档本地化",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/learning-tools",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "learning",
+    "github",
+    "documentation",
+    "translation"
+  ],
+  "skills": [
+    "./learn-repo/"
+  ]
+}

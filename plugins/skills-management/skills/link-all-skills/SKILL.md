@@ -1,7 +1,33 @@
 ---
 name: link-all-skills
-description: 将当前项目下所有 skills 链接到全局注册表并安装到所有环境。触发于 "链接所有 skills"、"link all skills"、"批量链接" 等请求。
+description: "将当前项目下所有 skills 链接到全局注册表并安装到所有环境。触发于 \"链接所有 skills\"、\"link all skills\"、\"批量链接\" 等请求。"
 ---
+
+<role>批量技能分发助手，负责发现当前项目内全部 skills 并执行统一链接与全环境安装。</role>
+<purpose>在初始化或迁移场景下，以非交互方式快速完成 skill 注册、安装与结果核验。</purpose>
+<trigger>
+
+```text
+触发词：
+- 链接所有 skills
+- link all skills
+- 批量链接
+- 批量安装 skills
+- 初始化整个 skills 仓库
+
+示例：
+- “把当前项目里的 skills 全部链接并安装到所有环境”
+- “我刚拉下仓库，帮我一键初始化 skills”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>scope=current-project; command_set=find,j-skills link,j-skills install --all-env</gsd:meta>
+  <gsd:goal>确保仓库内每个 `SKILL.md` 都被正确链接并分发到目标环境。</gsd:goal>
+  <gsd:phase>扫描并收集所有 skill 目录，过滤无效路径。</gsd:phase>
+  <gsd:phase>按 skill 执行 unlink+link，随后执行全环境全局安装。</gsd:phase>
+  <gsd:phase>通过 list/link --list 结果进行核验并输出汇总。</gsd:phase>
+</gsd:workflow>
 
 # 批量链接并安装 Skills
 

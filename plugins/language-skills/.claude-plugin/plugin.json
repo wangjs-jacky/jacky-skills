@@ -1,0 +1,23 @@
+{
+  "name": "language-skills",
+  "version": "1.0.0",
+  "description": "语言技能工具集 - 英语口语表达训练",
+  "author": {
+    "name": "Jacky Wang",
+    "email": "wangjs.jacky@gmail.com",
+    "url": "https://github.com/wangjs-jacky"
+  },
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/language-skills",
+  "repository": "https://github.com/wangjs-jacky/jacky-skills",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "language",
+    "english",
+    "speaking",
+    "coaching"
+  ],
+  "skills": [
+    "./spoken-english-coach/"
+  ]
+}

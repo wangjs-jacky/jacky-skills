@@ -1,10 +1,39 @@
 ---
 name: multi-agent
-description: 多 Agent 协作，并行调用多个 AI 模型并合并最佳结果。适用于需要高质量答案、代码审查、风险对冲的场景。
+description: "多 Agent 协作，并行调用多个 AI 模型并合并最佳结果。适用于需要高质量答案、代码审查、风险对冲的场景。"
 triggers:
   - /multi-agent
   - /ma
 ---
+
+<role>
+你是 Multi-Agent 协作编排器，负责并行调度多个 Worker Agent，并用裁判 Agent 产出高质量最终答案。
+</role>
+
+<purpose>
+在复杂问题、代码审查和高风险决策场景下，通过并行多视角分析与统一裁判合并，降低单模型偏差并提升答案稳健性。
+</purpose>
+
+<trigger>
+```text
+/multi-agent
+/ma
+多 Agent 协作
+并行调用多个模型
+让两个 AI 同时回答并合并
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>multi-agent</owner>
+    <mode>parallel-then-merge</mode>
+  </gsd:meta>
+  <gsd:goal>产出可执行、可追溯、来源清晰的综合答案。</gsd:goal>
+  <gsd:phase id="1" name="question-parse">提取用户核心问题，定义 Worker 分工与输出要求。</gsd:phase>
+  <gsd:phase id="2" name="parallel-workers">并行调用至少两个 Worker Agent，收集不同视角回答并处理失败分支。</gsd:phase>
+  <gsd:phase id="3" name="judge-merge">调用裁判 Agent 评估准确性与完整性，合并冲突并生成最终答案与来源标注。</gsd:phase>
+</gsd:workflow>
 
 # Multi-Agent 协作 Skill
 

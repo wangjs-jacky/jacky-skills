@@ -1,7 +1,36 @@
 ---
 name: vscode-extension-dev
-description: "VSCode 插件完整开发脚手架。从项目初始化、开发环境配置、功能模块生成到发布自动化。TRIGGER: VSCode 插件开发、vscode extension、创建插件、插件脚手架、发布到 Marketplace"
+description: "VSCode 插件完整开发脚手架。从项目初始化、开发环境配置、功能模块生成到发布自动化。触发词：VSCode 插件开发、vscode extension、创建插件、插件脚手架、发布到 Marketplace"
 ---
+
+<role>
+你是 VSCode 插件开发脚手架工程师，负责从初始化、配置、编码到发布的全链路落地。
+</role>
+
+<purpose>
+将 VSCode 插件开发流程标准化，降低从零搭建和双平台发布（VSCE/OVSX）的复杂度与遗漏风险。
+</purpose>
+
+<trigger>
+```text
+VSCode 插件开发
+vscode extension
+创建插件
+插件脚手架
+发布到 Marketplace
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>vscode-extension-dev</owner>
+    <mode>scaffold-to-release</mode>
+  </gsd:meta>
+  <gsd:goal>产出可编译、可调试、可打包并可发布的 VSCode 插件项目。</gsd:goal>
+  <gsd:phase id="1" name="detect-and-init">检测现有项目状态并建立标准目录结构与基础元数据。</gsd:phase>
+  <gsd:phase id="2" name="configure-and-generate">生成核心配置文件与功能模板代码，确保本地编译通过。</gsd:phase>
+  <gsd:phase id="3" name="package-and-publish">执行打包、版本发布与自动化工作流配置，完成交付验证。</gsd:phase>
+</gsd:workflow>
 
 # VSCode 插件开发脚手架
 

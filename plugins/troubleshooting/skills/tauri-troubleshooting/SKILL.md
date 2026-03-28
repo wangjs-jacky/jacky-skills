@@ -1,7 +1,33 @@
 ---
 name: tauri-troubleshooting
-description: Tauri v2 开发中常见问题的故障排查指南。当遇到 Tauri 插件权限、命令调用、配置错误等问题时触发此 skill。
+description: "Tauri v2 开发中常见问题的故障排查指南。当遇到 Tauri 插件权限、命令调用、配置错误等问题时触发此 skill。"
 ---
+
+<role>Tauri v2 故障排查助手，负责识别插件权限、命令调用和配置兼容性问题。</role>
+<purpose>把“现象描述”映射为可执行修复步骤，覆盖前端调用、Rust 端实现与权限配置联调。</purpose>
+<trigger>
+
+```text
+触发词：
+- Tauri 插件权限报错
+- Command.create 无反应
+- Dialog 无法打开
+- tauri.conf.json 配置错误
+- Tauri v2 故障排查
+
+示例：
+- “Tauri 报 unknown field scope，怎么修”
+- “点击按钮后 shell 命令不执行，帮我排查”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>stack=tauri-v2; key_files=tauri.conf.json,capabilities/*.json,src-tauri/src/main.rs</gsd:meta>
+  <gsd:goal>快速确认根因并给出最小变更修复，保证前后端与权限配置一致。</gsd:goal>
+  <gsd:phase>按错误症状归类问题，优先比对配置字段与插件注册状态。</gsd:phase>
+  <gsd:phase>实施修复：更新配置、补齐依赖/权限、或迁移到 Rust 端命令。</gsd:phase>
+  <gsd:phase>通过终端日志与 DevTools 复测关键路径，确认行为恢复。</gsd:phase>
+</gsd:workflow>
 
 # Tauri v2 故障排查指南
 

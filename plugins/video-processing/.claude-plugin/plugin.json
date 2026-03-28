@@ -1,5 +1,5 @@
 {
-  "name": "video-tools",
+  "name": "video-processing",
   "version": "1.0.0",
   "description": "视频处理工具集 - B站字幕提取、视频下载、格式转换等",
   "author": {
@@ -7,7 +7,7 @@
     "email": "wangjs.jacky@gmail.com",
     "url": "https://github.com/wangjs-jacky"
   },
-  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/video-tools",
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/video-processing",
   "repository": "https://github.com/wangjs-jacky/jacky-skills",
   "license": "MIT",
   "keywords": [

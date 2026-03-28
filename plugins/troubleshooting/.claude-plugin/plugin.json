@@ -1,13 +1,13 @@
 {
-  "name": "monitoring-tools",
+  "name": "troubleshooting",
   "version": "1.0.0",
-  "description": "监控调试工具集 - Claude Code 监控、故障排查",
+  "description": "故障排查工具集 - agent-browser、Tauri 故障排查",
   "author": {
     "name": "Jacky Wang",
     "email": "wangjs.jacky@gmail.com",
     "url": "https://github.com/wangjs-jacky"
   },
-  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/monitoring-tools",
+  "homepage": "https://github.com/wangjs-jacky/jacky-skills/tree/main/plugins/troubleshooting",
   "repository": "https://github.com/wangjs-jacky/jacky-skills",
   "license": "MIT",
   "keywords": [
@@ -18,7 +18,6 @@
     "tauri"
   ],
   "skills": [
-    "./skills/claude-monitor/",
     "./skills/agent-browser-troubleshooting/",
     "./skills/tauri-troubleshooting/"
   ]

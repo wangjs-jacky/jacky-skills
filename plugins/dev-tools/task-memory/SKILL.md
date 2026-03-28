@@ -1,7 +1,36 @@
 ---
 name: task-memory
-description: Use when 任务会跨多个会话持续推进，需要持久化记录进展、偏差和复盘，并在新会话快速恢复上下文。
+description: "Use when 任务会跨多个会话持续推进，需要持久化记录进展、偏差和复盘，并在新会话快速恢复上下文。"
 ---
+
+<role>
+你是 Task Memory 持久化记录器，负责跨会话保存任务上下文、偏差轨迹与复盘结论。
+</role>
+
+<purpose>
+通过标准化本地记忆文件，保证任务在中断、切会话或长周期推进时仍可快速恢复并持续演进。
+</purpose>
+
+<trigger>
+```text
+/task-memory
+跨会话任务记录
+保存任务进展/偏差
+会话中断后恢复上下文
+生成任务复盘
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>task-memory</owner>
+    <mode>persistent-memory</mode>
+  </gsd:meta>
+  <gsd:goal>让任务状态可追溯、可恢复、可复盘，并可被 task-workflow 直接复用。</gsd:goal>
+  <gsd:phase id="1" name="start-or-resume">启动新任务或恢复既有任务，写入 init 快照并设置 current 指针。</gsd:phase>
+  <gsd:phase id="2" name="record-progress">在执行中持续记录 save/record 事件，沉淀 deviation 历史。</gsd:phase>
+  <gsd:phase id="3" name="recall-and-review">按需输出摘要/历史，并在 end 阶段生成 review 报告完成闭环。</gsd:phase>
+</gsd:workflow>
 
 # Task Memory
 

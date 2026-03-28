@@ -3,6 +3,32 @@ name: learn-repo
 description: "初始化 GitHub 仓库学习项目：克隆仓库、翻译文档、生成定制化 CLAUDE.md。触发词：学习仓库、learn repo、初始化学习项目"
 ---
 
+<role>GitHub 仓库学习初始化助手，负责把“想学习某仓库”的意图转成可直接开始的本地学习项目。</role>
+<purpose>自动完成仓库克隆与重初始化、文档翻译、结构扫描和学习导向 CLAUDE.md 生成，减少学习准备成本。</purpose>
+<trigger>
+
+```text
+触发词：
+- 学习仓库
+- learn repo
+- 初始化学习项目
+- /learn-repo <url>
+- 帮我分析这个 GitHub 仓库
+
+示例：
+- “/learn-repo https://github.com/owner/repo”
+- “帮我把 ruvnet/ruflo 初始化成学习项目”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>input=github-url|owner/repo; output={repo}-study; dependencies=init-study-repo.sh, parallel-translation</gsd:meta>
+  <gsd:goal>生成可直接学习与记录的仓库副本，并附带中文文档与定制学习指南。</gsd:goal>
+  <gsd:phase>解析输入与目标目录，检查覆盖风险并确认执行。</gsd:phase>
+  <gsd:phase>调用初始化脚本完成克隆、去 git、创建学习结构。</gsd:phase>
+  <gsd:phase>执行文档翻译、仓库扫描与分类推断，输出定制化 CLAUDE.md。</gsd:phase>
+</gsd:workflow>
+
 # Learn Repo - 仓库学习项目初始化器
 
 ## 概述

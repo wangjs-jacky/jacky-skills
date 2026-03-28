@@ -1,6 +1,6 @@
 ---
 name: parallel-translation
-description: 智能翻译调度器：自动判断单文件/多文件，使用 haiku 模型低成本翻译。触发词：翻译、translate、多文件翻译、仓库翻译、中文翻译
+description: "智能翻译调度器：自动判断单文件/多文件，使用 haiku 模型低成本翻译。触发词：翻译、translate、多文件翻译、仓库翻译、中文翻译"
 ---
 
 <role>
@@ -10,6 +10,38 @@ description: 智能翻译调度器：自动判断单文件/多文件，使用 ha
 <purpose>
 使用 haiku 模型的低成本翻译方案，自动适配单文件/多文件场景，通过并行执行最大化效率。
 </purpose>
+
+<trigger>
+```text
+触发词/示例：
+- 翻译这个文件为中文
+- translate this repo
+- 多文件翻译
+- 仓库翻译
+- parallel-translation
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <name>parallel-translation</name>
+    <owner>translation-tools</owner>
+    <requires>Glob, Task, Write, translation-worker(haiku)</requires>
+  </gsd:meta>
+  <gsd:goal>根据输入规模自动选择单文件或并行多文件策略，低成本完成高质量翻译。</gsd:goal>
+  <gsd:phase name="analyze" order="1">
+    <gsd:step>识别输入是单文件、目录还是文件列表。</gsd:step>
+    <gsd:step>提取目标语言与格式约束。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="dispatch" order="2">
+    <gsd:step>单文件走 single_file_strategy。</gsd:step>
+    <gsd:step>多文件分组并在同一响应中并行启动 translation-worker。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="report" order="3">
+    <gsd:step>汇总各 agent 结果并标记失败项。</gsd:step>
+    <gsd:step>输出最终文件清单和下一步建议。</gsd:step>
+  </gsd:phase>
+</gsd:workflow>
 
 <philosophy>
 **为什么使用子代理：**

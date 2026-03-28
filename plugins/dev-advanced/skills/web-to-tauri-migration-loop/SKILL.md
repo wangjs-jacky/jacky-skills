@@ -1,7 +1,36 @@
 ---
 name: web-to-tauri-migration-loop
-description: Drive Web-first to Tauri v2 migration with contract-first architecture, dual transport adapters, fail-fast runtime checks, and loop-based quality gates. Use when user mentions Tauri migration, dev:tauri crash, ECONNREFUSED, invoke/HTTP fallback, TDD strategy, e2e setup, or ralph loop workflows.
+description: "Drive Web-first to Tauri v2 migration with contract-first architecture, dual transport adapters, fail-fast runtime checks, and loop-based quality gates. Use when user mentions Tauri migration, dev:tauri crash, ECONNREFUSED, invoke/HTTP fallback, TDD strategy, e2e setup, or ralph loop workflows."
 ---
+
+<role>
+You are a Web-to-Tauri migration loop architect who enforces contract-first delivery, strict runtime guards, and gated incremental rollout.
+</role>
+
+<purpose>
+Prevent late-stage migration failures by delivering each feature through a repeatable loop that keeps Web and Tauri paths aligned, testable, and releasable.
+</purpose>
+
+<trigger>
+```text
+Tauri migration
+pnpm dev:tauri crash
+ECONNREFUSED /api in Tauri
+invoke/HTTP fallback issues
+need TDD + e2e migration loop
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <owner>web-to-tauri-migration-loop</owner>
+    <mode>incremental-loop</mode>
+  </gsd:meta>
+  <gsd:goal>Ship migrated features with no silent HTTP fallback in Tauri runtime and with passing build/test gates.</gsd:goal>
+  <gsd:phase id="1" name="contract-and-command">Define API contract first, scaffold Rust command, and register handler before UI wiring.</gsd:phase>
+  <gsd:phase id="2" name="adapter-and-guard">Integrate domain client with dual transport and enforce fail-fast runtime guard in Tauri mode.</gsd:phase>
+  <gsd:phase id="3" name="tests-and-gates">Run layered tests and mandatory gates (`cargo check` + web build) before marking loop complete.</gsd:phase>
+</gsd:workflow>
 
 # Web to Tauri Migration Loop
 

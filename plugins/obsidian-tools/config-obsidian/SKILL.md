@@ -1,7 +1,33 @@
 ---
 name: config-obsidian
-description: 配置 Obsidian 同步环境。触发条件：用户想要配置 Obsidian 同步、设置 Remotely Save 后台触发、配置 Obsidian REST API 等。
+description: "配置 Obsidian 同步环境。触发条件：用户想要配置 Obsidian 同步、设置 Remotely Save 后台触发、配置 Obsidian REST API 等。"
 ---
+
+<role>Obsidian 同步配置助手，负责为用户建立可执行的 Remotely Save 触发链路。</role>
+<purpose>基于用户偏好选择 URI 或 REST 模式，收集必要变量并生成可落地配置与触发命令。</purpose>
+<trigger>
+
+```text
+触发词：
+- 配置 Obsidian 同步环境
+- 设置 Remotely Save 后台触发
+- 配置 Obsidian REST API
+- 同步模式怎么选（uri/rest）
+- 帮我生成 CLAUDE.md 配置片段
+
+示例：
+- “帮我配置 Obsidian 同步，最好后台静默触发”
+- “我要用 Local REST API 方式同步”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>modes=uri|rest; required_vars=OBSIDIAN_REPO,OBSIDIAN_VAULT_NAME[,OBSIDIAN_REST_API_KEY]</gsd:meta>
+  <gsd:goal>让用户在当前机器上稳定触发 Obsidian 同步，并沉淀到全局 CLAUDE.md 配置。</gsd:goal>
+  <gsd:phase>确认用户场景与触发模式，解释显式/隐式触发差异与前提条件。</gsd:phase>
+  <gsd:phase>收集变量与插件状态，生成对应配置模板与命令。</gsd:phase>
+  <gsd:phase>执行连通性验证与故障排查（端口、API key、代理干扰）。</gsd:phase>
+</gsd:workflow>
 
 # Obsidian 同步环境配置
 

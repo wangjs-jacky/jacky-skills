@@ -15,14 +15,15 @@
 | Plugin | 图标 | 说明 | 包含 Skills |
 |--------|------|------|-------------|
 | [video-processing](./plugins/video-processing) | 🎬 | 视频处理 | bilibili-to-obsidian, bilibili-batch, video-to-text, m3u8-dl, fix-neat-video |
-| [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, long-running-agent, creator-skills, skill-researcher, repo-study, vscode-extension-dev |
+| [dev-tools](./plugins/dev-tools) | 🛠️ | 开发工具 | github-repo-publish, gsd-creator-skills, long-running-agent, skill-researcher, repo-study, vscode-extension-dev, doc-to-tutorial, feature-tracker, gh-workflow-generator, skill-optimizer, task-harness, task-memory, task-workflow |
 | [translation-tools](./plugins/translation-tools) | 🌐 | 翻译工具 | parallel-translation |
 | [obsidian-tools](./plugins/obsidian-tools) | 📝 | Obsidian 工具 | config-obsidian, ob-summary |
 | [language-skills](./plugins/language-skills) | 🗣️ | 语言技能 | spoken-english-coach |
-| [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | claude-monitor, agent-browser-troubleshooting, tauri-troubleshooting |
+| [learning-tools](./plugins/learning-tools) | 📚 | 学习工具 | learn-repo |
+| [troubleshooting](./plugins/troubleshooting) | 🔍 | 故障排查 | agent-browser-troubleshooting, tauri-troubleshooting |
 | [skills-management](./plugins/skills-management) | 📦 | Skills 管理 | j-skills, link-all-skills |
 | [dev-advanced](./plugins/dev-advanced) | 🚀 | 高级开发 | multi-agent, web-to-tauri-migration-loop |
-| [monitoring](./plugins/monitoring) | 📊 | 监控调试 | （监控工具，无独立skills） |
+| [monitoring](./plugins/monitoring) | 📊 | 监控调试 | claude-monitor |
 
 ---
 
@@ -206,11 +207,18 @@ j-skills install video-processing -g
 | Skill | 触发场景 | 说明 |
 |-------|----------|------|
 | github-repo-publish | 发布到GitHub | 一键发布仓库到GitHub |
+| gsd-creator-skills | 创建/优化skill | GSD风格技能创建与依赖管理 |
 | long-running-agent | continue development | 跨会话开发项目 |
-| creator-skills | 创建新skill | 创建自定义skill |
 | skill-researcher | 研究skills | 研究、对比、分析Skills项目 |
 | repo-study | 研究GitHub仓库 | 调研开源项目技术实现 |
 | vscode-extension-dev | VSCode插件开发 | 插件开发脚手架 |
+| doc-to-tutorial | 文档转教程 | 生成交互式教程并启动预览 |
+| feature-tracker | 功能追踪/规格管理 | 生成线框图、编号功能清单与测试用例 |
+| gh-workflow-generator | 生成自动化采集仓库 | 快速生成 GitHub Actions 项目模板 |
+| skill-optimizer | 优化skill触发/流程 | 诊断并修复 skill 执行问题 |
+| task-harness | 验收边界设计 | 基于 TDD 生成验收用例 |
+| task-memory | 跨会话任务记忆 | 记录进展、偏差与复盘 |
+| task-workflow | 任务编排 | 整合 task-memory/superpowers/task-harness |
 
 ### 📝 Obsidian Tools
 
@@ -225,11 +233,16 @@ j-skills install video-processing -g
 |-------|----------|------|
 | spoken-english-coach | 英语口语表达 | 英语口语表达教练，建立个性化表达库 |
 
+### 📚 Learning Tools
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| learn-repo | 学习仓库 | 克隆仓库、翻译文档并生成定制 CLAUDE.md |
+
 ### 🔍 Troubleshooting
 
 | Skill | 触发场景 | 说明 |
 |-------|----------|------|
-| claude-monitor | 监控Claude Code | 监控Claude Code运行状态 |
 | agent-browser-troubleshooting | agent-browser失败 | agent-browser故障排查 |
 | tauri-troubleshooting | Tauri插件权限 | Tauri v2故障排查 |
 
@@ -247,6 +260,12 @@ j-skills install video-processing -g
 | multi-agent | 多Agent协作 | 并行调用多个AI模型 |
 | web-to-tauri-migration-loop | Web到Tauri迁移 | Web到Tauri v2迁移工作流 |
 
+### 📊 Monitoring
+
+| Skill | 触发场景 | 说明 |
+|-------|----------|------|
+| claude-monitor | 监控Claude Code | 监控 Claude Code 运行状态、工具调用与性能信息 |
+
 ---
 
 ## 目录结构
@@ -263,11 +282,14 @@ jacky-skills/
 │   │   │   └── marketplace.json
 │   │   └── skills/
 │   ├── dev-tools/            # 开发工具
+│   ├── translation-tools/    # 翻译工具
 │   ├── obsidian-tools/       # Obsidian工具
 │   ├── language-skills/      # 语言技能
+│   ├── learning-tools/       # 学习工具
 │   ├── troubleshooting/      # 故障排查
 │   ├── skills-management/    # Skills管理
-│   └── dev-advanced/         # 高级开发
+│   ├── dev-advanced/         # 高级开发
+│   └── monitoring/           # 监控调试
 ├── install.sh                # 一键安装脚本
 ├── CLAUDE.md                 # 项目配置
 └── README.md                 # 本文件

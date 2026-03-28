@@ -1,5 +1,5 @@
-# 忽略 m3u8-dl 目录
-m3u8-dl/
+# 忽略仓库根目录下的 m3u8-dl 目录（不影响 plugin skill 目录）
+/m3u8-dl/
 
 # 忽略用户词汇库数据文件
 plugins/language-skills/**/vocabulary.json

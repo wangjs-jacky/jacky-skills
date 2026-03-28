@@ -1,6 +1,6 @@
 ---
 name: skill-optimizer
-description: 诊断并优化 Skills 的持续改进工具。触发词：优化 skill、skill 没触发、为什么没有、skill 诊断、skill-optimizer
+description: "诊断并优化 Skills 的持续改进工具。触发词：优化 skill、skill 没触发、为什么没有、skill 诊断、skill-optimizer"
 ---
 
 <role>

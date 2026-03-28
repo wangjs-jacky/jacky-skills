@@ -1,7 +1,33 @@
 ---
 name: claude-monitor
-description: Claude Code Monitor - 监控 Claude Code 运行状态。当用户想查看 Claude Code 在做什么、是否在"偷懒"、执行了哪些操作时触发此 skill。
+description: "Claude Code Monitor - 监控 Claude Code 运行状态。当用户想查看 Claude Code 在做什么、是否在\"偷懒\"、执行了哪些操作时触发此 skill。"
 ---
+
+<role>Claude Code 运行态监控助手，负责采集、查询并解释会话中的工具调用行为。</role>
+<purpose>帮助用户快速回答“Claude 在做什么”、定位慢点与异常步骤，并支持 Skill 调试与性能分析。</purpose>
+<trigger>
+
+```text
+触发词：
+- Claude Code 在做什么
+- 看看它执行了哪些操作
+- monitor-on / monitor-status / monitor-off
+- 分析这个 skill 为什么慢
+- 查看工具调用日志
+
+示例：
+- “帮我看下 Claude Code 现在在干嘛”
+- “这个 skill 执行太慢，查一下瓶颈”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>commands=/monitor-on|/monitor-status|/monitor-off; logs=~/.claude/monitor/sessions/*.jsonl</gsd:meta>
+  <gsd:goal>在最小干预下提供可追踪、可查询、可复盘的 Claude Code 执行证据。</gsd:goal>
+  <gsd:phase>按用户意图启用或检查监控状态，确认日志写入路径可用。</gsd:phase>
+  <gsd:phase>采集并筛选事件流，按工具类型、耗时和错误信号做结构化查询。</gsd:phase>
+  <gsd:phase>输出结论与下一步排查建议，必要时给出可复现命令。</gsd:phase>
+</gsd:workflow>
 
 # Claude Code Monitor
 

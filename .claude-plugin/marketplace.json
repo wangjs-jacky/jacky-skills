@@ -27,11 +27,21 @@
       "name": "dev-tools",
       "displayName": "Dev Tools",
       "description": "开发工具集 - GitHub 发布、跨会话开发、Skills 创建",
-      "version": "1.0.0",
+      "version": "1.12.2",
       "source": "./plugins/dev-tools",
       "icon": "🛠️",
       "category": "developer-tools",
       "keywords": ["github", "development", "skills", "automation"]
+    },
+    {
+      "name": "translation-tools",
+      "displayName": "Translation Tools",
+      "description": "翻译工具集 - 单文件/多文件低成本翻译",
+      "version": "1.0.0",
+      "source": "./plugins/translation-tools",
+      "icon": "🌐",
+      "category": "productivity",
+      "keywords": ["translation", "i18n", "localization", "haiku"]
     },
     {
       "name": "obsidian-tools",
@@ -42,6 +52,26 @@
       "icon": "📝",
       "category": "productivity",
       "keywords": ["obsidian", "notes", "sync", "knowledge"]
+    },
+    {
+      "name": "language-skills",
+      "displayName": "Language Skills",
+      "description": "语言技能工具集 - 英语口语表达训练",
+      "version": "1.0.0",
+      "source": "./plugins/language-skills",
+      "icon": "🗣️",
+      "category": "education",
+      "keywords": ["language", "english", "speaking", "coach"]
+    },
+    {
+      "name": "learning-tools",
+      "displayName": "Learning Tools",
+      "description": "学习工具集 - 仓库学习初始化与文档本地化",
+      "version": "1.0.0",
+      "source": "./plugins/learning-tools",
+      "icon": "📚",
+      "category": "education",
+      "keywords": ["learning", "github", "repo", "docs"]
     },
     {
       "name": "troubleshooting",
@@ -57,7 +87,7 @@
       "name": "skills-management",
       "displayName": "Skills Management",
       "description": "Skills 管理工具 - 链接、安装、批量管理",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "source": "./plugins/skills-management",
       "icon": "📦",
       "category": "developer-tools",
@@ -72,6 +102,16 @@
       "icon": "🚀",
       "category": "developer-tools",
       "keywords": ["multi-agent", "tauri", "migration", "advanced"]
+    },
+    {
+      "name": "monitoring",
+      "displayName": "Monitoring",
+      "description": "监控工具集 - Claude Code 会话状态与性能分析",
+      "version": "1.0.0",
+      "source": "./plugins/monitoring",
+      "icon": "📊",
+      "category": "developer-tools",
+      "keywords": ["monitoring", "profiling", "hooks", "debugging"]
     }
   ]
 }

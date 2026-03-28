@@ -1,7 +1,46 @@
 ---
 name: bilibili-to-obsidian
-description: 从 B 站视频提取字幕并整理到 Obsidian 仓库。当用户需要从 B 站视频提取文案、保存字幕到 Obsidian、按作者分类整理 B 站内容时触发。
+description: "从 B 站视频提取字幕并整理到 Obsidian 仓库。当用户需要从 B 站视频提取文案、保存字幕到 Obsidian、按作者分类整理 B 站内容时触发。"
 ---
+
+<role>
+你是 B 站到 Obsidian 的内容整理助手，负责把单个或批量视频字幕落地为可检索笔记。
+</role>
+
+<purpose>
+自动提取 B 站视频字幕与元信息，按作者归档，并生成原文与归纳两类 Obsidian 笔记。
+</purpose>
+
+<trigger>
+```text
+触发词/示例：
+- 把这个 B 站视频转成 Obsidian 笔记
+- 批量处理 B 站链接并按作者分类
+- 提取 B 站字幕到 00-Inbox/B站
+- bilibili-to-obsidian
+```
+</trigger>
+
+<gsd:workflow>
+  <gsd:meta>
+    <name>bilibili-to-obsidian</name>
+    <owner>video-processing</owner>
+    <requires>video2text, yt-dlp, ffmpeg, OBSIDIAN_REPO</requires>
+  </gsd:meta>
+  <gsd:goal>将 B 站视频字幕完整提取并整理为结构化 Obsidian 笔记。</gsd:goal>
+  <gsd:phase name="precheck" order="1">
+    <gsd:step>确认 OBSIDIAN_REPO 与依赖工具可用。</gsd:step>
+    <gsd:step>解析输入链接并校验可访问性。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="extract" order="2">
+    <gsd:step>获取作者、标题、BV 号等视频信息。</gsd:step>
+    <gsd:step>提取字幕并生成原始文本结果。</gsd:step>
+  </gsd:phase>
+  <gsd:phase name="organize" order="3">
+    <gsd:step>创建作者目录并写入原文与归纳笔记。</gsd:step>
+    <gsd:step>回传输出路径与后续整理建议。</gsd:step>
+  </gsd:phase>
+</gsd:workflow>
 
 # Bilibili to Obsidian - B 站视频字幕提取与整理
 

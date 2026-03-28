@@ -1,7 +1,33 @@
 ---
 name: j-skills
-description: CLI tool for managing Agent Skills - link, install, and manage skills across 35+ coding agent environments. Use when user needs to manage skills, link local skills, or install skills to environments.
+description: "CLI tool for managing Agent Skills - link, install, and manage skills across 35+ coding agent environments. Use when user needs to manage skills, link local skills, or install skills to environments."
 ---
+
+<role>j-skills CLI 管理助手，负责在多 Agent 环境中执行 skill 的链接、安装、卸载与状态核验。</role>
+<purpose>统一 skill 生命周期操作入口，降低多环境分发与排障成本，优先输出可解析结果。</purpose>
+<trigger>
+
+```text
+触发词：
+- j-skills
+- link skill / install skill / uninstall skill
+- 管理 skills
+- 批量安装到多个环境
+- 查看已安装 skills
+
+示例：
+- “用 j-skills 把这个 skill 安装到 claude-code 和 cursor”
+- “帮我查下全局和项目都装了哪些 skills”
+```
+
+</trigger>
+<gsd:workflow xmlns:gsd="urn:gsd:workflow">
+  <gsd:meta>tool=j-skills; mode=project|global; output_preference=json</gsd:meta>
+  <gsd:goal>在正确作用域与目标环境中完成 skill 管理动作，并提供可审计执行结果。</gsd:goal>
+  <gsd:phase>识别用户意图与作用域（项目/全局），必要时先询问范围。</gsd:phase>
+  <gsd:phase>执行 `link/install/uninstall/list/config` 命令，优先附带 `--json`。</gsd:phase>
+  <gsd:phase>核验安装状态与路径映射，输出下一步操作建议。</gsd:phase>
+</gsd:workflow>
 
 # j-skills
 
