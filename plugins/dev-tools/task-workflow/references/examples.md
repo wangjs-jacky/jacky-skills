@@ -83,6 +83,61 @@ T2 完成（含偏差修复）
 - 偏差数: 3
 - 改进建议: ...
 
+**workflow.json 最终状态**（完整 stageTimeline）：
+
+```json
+{
+  "taskId": "wf-2026-03-22-001",
+  "name": "开发用户认证模块",
+  "taskSlug": "user-auth-module",
+  "status": "completed",
+  "currentStage": "COMPLETED",
+  "complexity": {
+    "level": "medium",
+    "affectedFileCount": 6,
+    "recommendation": "standard"
+  },
+  "createdAt": "2026-03-22T10:00:00Z",
+  "updatedAt": "2026-03-22T14:00:00Z",
+  "stageTimeline": {
+    "INIT": {
+      "enteredAt": "2026-03-22T10:00:00Z",
+      "exitedAt": "2026-03-22T10:05:00Z"
+    },
+    "LISTEN": {
+      "enteredAt": "2026-03-22T10:05:00Z",
+      "exitedAt": "2026-03-22T10:20:00Z"
+    },
+    "BRAINSTORM": {
+      "enteredAt": "2026-03-22T10:20:00Z",
+      "exitedAt": "2026-03-22T11:00:00Z"
+    },
+    "HARNESS": {
+      "enteredAt": "2026-03-22T11:00:00Z",
+      "exitedAt": "2026-03-22T11:30:00Z"
+    },
+    "PLAN": {
+      "enteredAt": "2026-03-22T11:30:00Z",
+      "exitedAt": "2026-03-22T12:00:00Z"
+    },
+    "EXECUTE": {
+      "enteredAt": "2026-03-22T12:00:00Z",
+      "exitedAt": "2026-03-22T13:30:00Z"
+    },
+    "VERIFY": {
+      "enteredAt": "2026-03-22T13:30:00Z",
+      "exitedAt": "2026-03-22T13:50:00Z"
+    },
+    "REVIEW": {
+      "enteredAt": "2026-03-22T13:50:00Z",
+      "exitedAt": "2026-03-22T14:00:00Z"
+    }
+  },
+  "deviations": 3,
+  "dependencies": ["task-memory", "task-harness"]
+}
+```
+
 工作流完成！
 ```
 
@@ -107,6 +162,11 @@ T2 完成（含偏差修复）
   "taskSlug": "<任务名称规范化后的slug>",
   "status": "in_progress",
   "currentStage": "INIT",
+  "complexity": {
+    "level": "medium",
+    "affectedFileCount": 6,
+    "recommendation": "standard"
+  },
   "createdAt": "2026-03-22T10:00:00Z",
   "updatedAt": "2026-03-22T10:00:00Z",
   "stageTimeline": {
@@ -219,8 +279,8 @@ mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,revi
 ```
 
 **核心职责**：
-- 编写测试用例（基于 HARNESS MUST 条件）
-- 实现功能代码
+- **Red**：先写失败测试（基于 HARNESS MUST 条件），运行确认测试失败
+- **Green**：实现最小代码使测试通过
 - 记录执行偏差到 task-memory
 - 不负责验证循环（验证逻辑在 VERIFY 阶段）
 

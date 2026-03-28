@@ -15,6 +15,8 @@ description: "任务工作流编排工具。整合 task-memory、superpowers、t
 4. **禁止直接实现代码**：在进入 EXECUTE 阶段前，不得编写任何实现代码。阅读代码、分析代码是允许的。
 
 5. **必须调用依赖 skill**：LISTEN 阶段必须调用 task-memory，HARNESS 阶段必须调用 task-harness。如果不可用，必须暂停并提示用户安装。
+
+6. **禁止先写实现再补测试**：EXECUTE 阶段必须先写失败测试（Red），确认失败后再写实现代码（Green）。每个任务的执行顺序为：Red（写测试 → 运行确认失败）→ Green（写最小实现 → 测试通过）→ 记录偏差。
 </critical>
 
 <role>
@@ -131,8 +133,14 @@ INIT -> LISTEN -> BRAINSTORM -> HARNESS -> PLAN -> EXECUTE <-> VERIFY -> REVIEW
 2. 创建 `.harness/tasks/{task-slug}/` 目录结构
 3. 生成 `workflow.json` 记录状态
 4. 确认依赖 skill 已安装
-5. 更新 `.harness/current.json`（指向当前活跃任务）
-6. 更新 `workflow.json`：currentStage = "INIT", stageTimeline.INIT = { enteredAt: now }, updatedAt = now
+5. **检索已有实现**：使用 Grep/Glob 扫描项目中与任务相关的代码（关键词、文件路径模式），将检索结果写入 `.harness/tasks/{task-slug}/listen/search.md`，供后续阶段参考避免重复劳动
+6. **判断任务复杂度**：基于以下维度评估并记录到 workflow.json：
+   - **简单**（影响文件 ≤ 3，无跨模块依赖）→ 推荐 `quick` 模式
+   - **中等**（影响文件 4-8，有模块间依赖）→ 推荐 `standard` 模式
+   - **复杂**（影响文件 > 8，跨系统/架构级变更）→ 推荐 `standard` + 强调 BRAINSTORM 阶段深度探索
+   - 向用户展示复杂度评估，用户可覆盖推荐模式
+7. 更新 `.harness/current.json`（指向当前活跃任务）
+8. 更新 `workflow.json`：currentStage = "INIT", stageTimeline.INIT = { enteredAt: now }, updatedAt = now，complexity = { level, affectedFileCount, recommendation }
 
 ```bash
 mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,review}
@@ -212,6 +220,11 @@ mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,revi
 
 **验收标准要求**：必须可检测、明确无歧义、覆盖核心功能、最小化只验证必要条件。
 
+**失败模式要求**：Harness 必须包含 `<failure_modes>` 部分，为每个 MUST 条件定义：
+- 预期失败场景（什么情况下会不通过）
+- 检测方式（如何发现失败）
+- 恢复策略（失败后的处理方式）
+
 > Harness 模板和反模式见 references/storage-structure.md
 
 **门控确认**（必须）：
@@ -231,9 +244,13 @@ mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,revi
 **目标**：使用 superpowers:writing-plans 生成执行计划
 
 **动作**：
-1. 基于 Harness 验收标准
+1. 基于 Harness 验收标准 + INIT 阶段的 search.md（已有实现参考）
 2. 调用 `/writing-plans`
-3. 生成 PLAN.md，确保每个任务都有验证方式
+3. 生成 PLAN.md，必须包含以下**蓝图四要素**：
+   - **受影响文件清单**：标注每个文件的变更类型（create/modify/delete）
+   - **代码依赖关系**：任务间的依赖标注（哪些任务必须先完成）
+   - **风险与回归点**：可能破坏的现有功能 + 需要回归验证的场景
+   - **失败模式**：每个关键任务的回退方案（if X fails, then Y）
 4. 更新 `workflow.json`：currentStage = "PLAN", stageTimeline.HARNESS.exitedAt = now, stageTimeline.PLAN = { enteredAt: now }, updatedAt = now
 5. 更新 `.harness/current.json`：currentStage = "PLAN", updatedAt = now
 
@@ -262,9 +279,9 @@ mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,revi
 
 **动作**：
 1. 读取 HARNESS 提取 MUST 条件
-2. 逐个执行 PLAN.md 中的任务：
-   - 编写测试用例（基于 HARNESS MUST 条件）
-   - 实现功能代码
+2. 逐个执行 PLAN.md 中的任务（严格按 Red-Green 顺序）：
+   - **Red**：先写失败测试（基于 HARNESS MUST 条件），运行确认测试失败
+   - **Green**：实现最小代码使测试通过
    - 记录执行偏差到 task-memory
 3. 每次用户输入后记录到 task-memory
 4. 更新 `workflow.json`：currentStage = "EXECUTE", stageTimeline.PLAN.exitedAt = now, stageTimeline.EXECUTE = { enteredAt: now }, updatedAt = now
@@ -333,6 +350,33 @@ mkdir -p .harness/tasks/{task-slug}/{listen,brainstorm,harness,plan,execute,revi
 任务记录已保存到: .harness/tasks/{task-slug}/
 下次可使用 /task-memory recall 恢复上下文
 ```
+
+</step>
+
+<step name="resume" trigger="current.json exists and status != completed">
+
+**目标**：从断点恢复中断的工作流
+
+**触发条件**：检测到 `.harness/current.json` 存在且 status 不是 completed
+
+**动作**：
+1. 读取 `.harness/current.json` 获取活跃任务 slug
+2. 读取 `.harness/tasks/{task-slug}/workflow.json` 获取完整状态
+3. 定位断点：分析 stageTimeline 找到最后一个有 enteredAt 但无 exitedAt 的阶段
+4. 展示恢复摘要：
+   - 任务名称与当前阶段
+   - 已完成阶段列表
+   - 断点阶段的进入时间
+   - 是否存在偏差记录
+5. 使用 AskUserQuestion 询问用户恢复策略：
+   - **continue**：从断点阶段继续（保留已有产物）
+   - **restart-stage**：重新执行当前阶段（清除该阶段产物）
+   - **abort**：放弃当前任务，从当前阶段退出
+6. 根据用户选择执行恢复操作，更新 `workflow.json` 和 `current.json`
+
+**产物**：无新产物，恢复已有工作流状态
+
+**门控确认**：恢复策略确认（上述 AskUserQuestion）
 
 </step>
 
