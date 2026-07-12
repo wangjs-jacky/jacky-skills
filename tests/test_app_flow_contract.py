@@ -9,8 +9,14 @@ import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-APP_FLOW = REPO_ROOT / "labs" / "app-flow" / "app-flow"
+LABS_APP_FLOW = REPO_ROOT / "labs" / "app-flow"
+APP_FLOW = LABS_APP_FLOW / "app-flow"
 HAPPY_EXPERIENCE = REPO_ROOT / "skills" / "happy-app-experience"
+SUITE_CHILDREN = (
+    "app-flow-build",
+    "app-flow-delivery",
+    "app-flow-reviewer",
+)
 
 
 def load_skill(skill_root: Path) -> tuple[dict[str, object], str]:
@@ -23,7 +29,7 @@ def load_skill(skill_root: Path) -> tuple[dict[str, object], str]:
 
 
 class AppFlowContractTests(unittest.TestCase):
-    def assert_progressive_local_memory(self, skill_root: Path, body: str) -> None:
+    def assert_local_memory_ignored(self, skill_root: Path) -> None:
         ignore_lines = {
             line.strip()
             for line in (skill_root / ".gitignore").read_text(encoding="utf-8").splitlines()
@@ -54,6 +60,9 @@ class AppFlowContractTests(unittest.TestCase):
             text=True,
         )
         self.assertEqual("", tracked.stdout.strip())
+
+    def assert_progressive_local_memory(self, skill_root: Path, body: str) -> None:
+        self.assert_local_memory_ignored(skill_root)
 
         protocol = REPO_ROOT / "docs" / "philosophy" / "references" / "local-memory.md"
         protocol_reference = Path(os.path.relpath(protocol, skill_root)).as_posix()
@@ -95,31 +104,63 @@ class AppFlowContractTests(unittest.TestCase):
         self.assertNotIn("happy-app-experience", body)
         self.assertFalse((APP_FLOW / "workflow.yaml").exists())
 
-    def test_app_flow_has_bounded_durable_loop(self) -> None:
+    def test_app_flow_has_bounded_loop(self) -> None:
         _, body = load_skill(APP_FLOW)
         for phrase in (
-            "唯一",
-            "maps/resume/<repo-key>/<task-key>.md",
-            "generation",
-            "sequence",
-            "fencing",
-            "每 10 秒",
-            "30 秒",
-            "token",
-            "非 owner",
-            "checkpoint",
             "4 小时",
             "15 分钟",
             "失败签名",
             "新增证据",
             "阻塞",
             "用户授权",
+            "checkpoint",
         ):
             self.assertIn(phrase, body)
+
+    def test_app_flow_exposes_capability_map_without_fixed_pipeline(self) -> None:
+        _, body = load_skill(APP_FLOW)
+        self.assertIn("核心能力地图", body)
+        for child in SUITE_CHILDREN:
+            self.assertIn(child, body)
+        # 能力地图是候选池，不是固定流水线。
+        self.assertNotIn("research → prototype → design → build", body)
+        self.assertFalse((APP_FLOW / "workflow.yaml").exists())
+
+    def test_app_flow_suite_children_are_dual_mode(self) -> None:
+        for child in SUITE_CHILDREN:
+            skill_root = LABS_APP_FLOW / child
+            self.assertTrue(
+                (skill_root / "SKILL.md").is_file(),
+                f"缺少子 Skill：{child}",
+            )
+            metadata, body = load_skill(skill_root)
+            self.assertEqual(child, metadata["name"])
+            description = str(metadata["description"])
+            self.assertNotIn("<", description)
+            self.assertNotIn(">", description)
+            # 既能独立处理窄任务，也能作为 app-flow 的当前行动。
+            self.assertIn("独立", body)
+            self.assertIn("app-flow", description)
+            self.assertIn("Flow 模式", body)
+            # 不硬编码可选经验包。
+            self.assertNotIn("happy-app-experience", body)
 
     def test_app_flow_local_memory_is_ignored_and_progressive(self) -> None:
         _, body = load_skill(APP_FLOW)
         self.assert_progressive_local_memory(APP_FLOW, body)
+
+    def test_app_flow_suite_children_local_memory_is_ignored(self) -> None:
+        protocol = REPO_ROOT / "docs" / "philosophy" / "references" / "local-memory.md"
+        for child in SUITE_CHILDREN:
+            skill_root = LABS_APP_FLOW / child
+            _, body = load_skill(skill_root)
+            self.assert_local_memory_ignored(skill_root)
+            protocol_reference = Path(os.path.relpath(protocol, skill_root)).as_posix()
+            self.assertIn(protocol_reference, body)
+            self.assertTrue((skill_root / protocol_reference).resolve().is_file())
+            self.assertIn("local/INDEX.md", body)
+            for invariant in ("不可变", "supersedes"):
+                self.assertIn(invariant, body)
 
     def test_happy_experience_is_optional_and_evidence_backed(self) -> None:
         metadata, body = load_skill(HAPPY_EXPERIENCE)
