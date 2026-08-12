@@ -1,0 +1,4 @@
+interface:
+  display_name: "照片风格动态"
+  short_description: "将人物照片转成风格动态，并输出 MP4、动态 JPEG 或 GIF"
+  default_prompt: "Use $photo-to-styled-motion to turn this portrait into styled motion outputs."
