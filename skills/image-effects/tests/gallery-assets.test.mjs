@@ -9,19 +9,10 @@ import { fileURLToPath } from 'node:url';
 import { translations } from '../gallery/translations.js';
 import { effectTitleId, readLocationFilters, syncLocationFilters } from '../gallery/gallery-runtime.mjs';
 import { publicTemplatePath } from '../scripts/public-layout.mjs';
+import { HAPPY_SOURCE_REVISION, MIGRATED_EFFECT_IDS } from './catalog-fixture.mjs';
 
 const SKILL_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const GALLERY_ROOT = path.join(SKILL_ROOT, 'gallery');
-const EXPECTED_REFS = [
-  'healing-anime-scribble-v3@1.0.0',
-  'minimal-zine-poster@1.0.0',
-  'photo-illustration-diptych@1.0.0',
-  'photo-illustration-diptych-lakeside@1.0.0',
-  'photo-illustration-editorial-echo@1.0.0',
-  'scene-distillation-zine@1.0.0',
-  'scenes-gathered-zine@1.0.0',
-  'scenes-gathered-zine-sea@1.0.0',
-];
 const EXPECTED_PROVENANCE = {
   'healing-anime-scribble-v3@1.0.0': {
     repository: 'ConardLi/garden-skills',
@@ -197,28 +188,41 @@ test('Library 固定公开来源、源码许可和预览署名契约', async (t)
   const library = await (await expectOk(new URL('api/library.json', staticServer.baseUrl))).json();
   for (const effect of library.effects) {
     const expected = EXPECTED_PROVENANCE[effect.ref];
-    assert.ok(expected, `unexpected effect ref: ${effect.ref}`);
-    assert.deepEqual(effect.provenance, {
-      repository: expected.repository,
-      revision: expected.revision,
-      license: {
-        spdx: 'MIT',
-        url: `https://github.com/${expected.repository}/blob/${expected.revision}/LICENSE`,
-      },
-      preview: {
-        origin: expected.origin,
-        author: 'wangjs-jacky',
-        licenseSpdx: 'CC-BY-4.0',
-      },
+    if (expected) {
+      assert.deepEqual(effect.provenance, {
+        repository: expected.repository,
+        revision: expected.revision,
+        license: {
+          spdx: 'MIT',
+          url: `https://github.com/${expected.repository}/blob/${expected.revision}/LICENSE`,
+        },
+        preview: {
+          origin: expected.origin,
+          author: 'wangjs-jacky',
+          licenseSpdx: 'CC-BY-4.0',
+        },
+      });
+      continue;
+    }
+
+    assert.ok(MIGRATED_EFFECT_IDS.includes(effect.id), `unexpected effect ref: ${effect.ref}`);
+    assert.equal(effect.provenance.repository, 'wangjs-jacky/happy');
+    assert.equal(effect.provenance.revision, HAPPY_SOURCE_REVISION);
+    assert.deepEqual(effect.provenance.license, {
+      spdx: 'MIT',
+      url: `https://github.com/wangjs-jacky/happy/blob/${HAPPY_SOURCE_REVISION}/LICENSE`,
     });
+    assert.match(effect.provenance.preview.origin, /text-only|fictional/i);
+    assert.doesNotMatch(effect.provenance.preview.origin, /dog|tiramisu|狗狗|提拉米苏/i);
+    assert.equal(effect.provenance.preview.author, 'wangjs-jacky');
+    assert.equal(effect.provenance.preview.licenseSpdx, 'CC-BY-4.0');
   }
 });
 
 test('English public README documents the complete standalone catalog contract', async () => {
   const readme = await readFile(publicTemplatePath(SKILL_ROOT, 'README.md'), 'utf8');
 
-  assert.match(readme, /eight effects/i);
-  for (const ref of EXPECTED_REFS) assert.match(readme, new RegExp(`\\b${ref.replaceAll('.', '\\.')}`));
+  assert.match(readme, /growing semantic library/i);
   assert.match(readme, /Use \$image-effects effect healing-anime-scribble-v3@1\.0\.0 on my uploaded image\./);
   assert.match(readme, /Use \$image-effects effect minimal-zine-poster@1\.0\.0 with this idea or my uploaded image\./);
   assert.match(readme, /Editorial Echo[\s\S]*Stage A[\s\S]*Stage B[\s\S]*fallback/i);
@@ -231,8 +235,7 @@ test('English public README documents the complete standalone catalog contract',
 test('Chinese public README documents the complete standalone catalog contract', async () => {
   const readme = await readFile(publicTemplatePath(SKILL_ROOT, 'README_CN.md'), 'utf8');
 
-  assert.match(readme, /8 个效果/);
-  for (const ref of EXPECTED_REFS) assert.match(readme, new RegExp(`\\b${ref.replaceAll('.', '\\.')}`));
+  assert.match(readme, /按视觉语义组织/);
   assert.match(readme, /Use \$image-effects effect healing-anime-scribble-v3@1\.0\.0 on my uploaded image\./);
   assert.match(readme, /Use \$image-effects effect minimal-zine-poster@1\.0\.0 with this idea or my uploaded image\./);
   assert.match(readme, /Editorial Echo[\s\S]*Stage A[\s\S]*Stage B[\s\S]*降级/);
@@ -255,13 +258,37 @@ test('Library 的每个分类都有中英文展示标签', async () => {
   }
 
   assert.deepEqual(translations.en.categories, {
+    'assets-and-props': 'Assets & Props',
+    'avatars-and-profile': 'Avatars & Profile',
+    'branding-and-packaging': 'Branding & Packaging',
+    'editing-workflows': 'Editing Workflows',
     portrait: 'Portrait',
     editorial: 'Editorial',
+    'grids-and-collages': 'Grids & Collages',
+    infographics: 'Infographics',
+    maps: 'Maps',
+    'portraits-and-characters': 'Portraits & Characters',
+    'poster-and-campaigns': 'Posters & Campaigns',
+    'product-visuals': 'Product Visuals',
+    'scenes-and-illustrations': 'Scenes & Illustrations',
+    'storyboards-and-sequences': 'Storyboards & Sequences',
     zine: 'Zine',
   });
   assert.deepEqual(translations.zh.categories, {
+    'assets-and-props': '素材资产',
+    'avatars-and-profile': '头像人设',
+    'branding-and-packaging': '品牌包装',
+    'editing-workflows': '图像编辑',
     portrait: '人物',
     editorial: '编辑设计',
+    'grids-and-collages': '网格拼贴',
+    infographics: '信息图',
+    maps: '地图',
+    'portraits-and-characters': '人物视觉',
+    'poster-and-campaigns': '海报营销',
+    'product-visuals': '产品视觉',
+    'scenes-and-illustrations': '氛围插画',
+    'storyboards-and-sequences': '叙事序列',
     zine: '纸本杂志',
   });
 });

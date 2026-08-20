@@ -44,7 +44,23 @@ const YAML_INDICATOR_START_PATTERN = /^[-?:,\[\]{}#&*!|>'"%@`]/;
 const YAML_PLAIN_SEPARATOR_PATTERN = /:[ \t]|[ \t]#/;
 const CONTROL_CHARACTER_PATTERN = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
 const MARKDOWN_TEXT_PATTERN = /[\\`*_\[\]()<>!|]/g;
-const CATEGORIES = new Set(['portrait', 'editorial', 'zine']);
+const CATEGORIES = new Set([
+  'assets-and-props',
+  'avatars-and-profile',
+  'branding-and-packaging',
+  'editing-workflows',
+  'editorial',
+  'grids-and-collages',
+  'infographics',
+  'maps',
+  'portrait',
+  'portraits-and-characters',
+  'poster-and-campaigns',
+  'product-visuals',
+  'scenes-and-illustrations',
+  'storyboards-and-sequences',
+  'zine',
+]);
 const EXECUTION_KINDS = new Set([
   'host-image-generation',
   'host-image-generation-and-layout',
@@ -316,7 +332,7 @@ export function parseEffect(markdown, filePath) {
   }
 
   if (!CATEGORIES.has(fields.category)) {
-    fail('category must be portrait, editorial, or zine', filePath);
+    fail(`category must be one of: ${[...CATEGORIES].join(', ')}`, filePath);
   }
   if (!EXECUTION_KINDS.has(fields.execution_kind)) {
     fail(

@@ -1,6 +1,6 @@
 # Image Effects
 
-为 AI 编程 Agent 提供可复用且带版本的图片效果卡，并附带一个可浏览全部配方的静态 Gallery。完整目录包含 8 个效果。
+为 AI 编程 Agent 提供按视觉语义组织、可复用且带版本的图片效果卡，并附带一个可浏览全部配方的静态 Gallery。
 
 [English](./README.md) · [Gallery](https://wangjs-jacky.github.io/image-effects/)
 
@@ -12,7 +12,7 @@ npx skills add wangjs-jacky/image-effects
 
 一次安装即可获得每张效果卡的完整行为，不需要额外安装任何 Skill 依赖。本目录不包含 `grade-images`，也不包含确定性调色配方。
 
-## 效果目录
+## 代表效果
 
 - `healing-anime-scribble-v3@1.0.0` — 图片输入
 - `minimal-zine-poster@1.0.0` — 文字或图片输入
@@ -24,6 +24,7 @@ npx skills add wangjs-jacky/image-effects
 - `scenes-gathered-zine-sea@1.0.0` — 图片输入
 
 每个引用都包含精确版本号。Skill 不会悄悄替换未知版本，因此已有调用可以保持稳定，后续配方也能独立演进。
+完整生成目录请查看 [`references/INDEX.md`](./references/INDEX.md) 或 Gallery，其中按产品、海报营销、信息图、氛围插画、人物、网格、分镜、素材、地图、编辑影像、人像和纸刊等语义分组。
 
 ## 使用
 
@@ -51,7 +52,7 @@ Editorial Echo 固定采用两个阶段。创建任何中间资产前，Skill �
 
 ## Gallery、预览与许可
 
-[Gallery](https://wangjs-jacky.github.io/image-effects/) 是纯静态页面，只负责浏览效果和复制带版本的调用语句，不会生成图片，也不会接收用户上传。7 张新增预览均以彼此独立的虚构文字主题生成；Editorial Echo 使用虚构生成资产在本地完成合成。预览作者为 `wangjs-jacky`，采用 CC-BY-4.0 许可。
+[Gallery](https://wangjs-jacky.github.io/image-effects/) 是纯静态页面，只负责浏览效果和复制带版本的调用语句，不会生成图片，也不会接收用户上传。迁移预览均以彼此独立的虚构文字主题生成；Editorial Echo 使用虚构生成资产在本地完成合成。预览作者为 `wangjs-jacky`，采用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 许可。
 
 根目录 [LICENSE](./LICENSE) 仅覆盖本仓库的原创代码与适配内容，不会重新许可第三方材料。固定的上游作者、源码提交、逐文件哈希、许可证链接、适配说明和完整 MIT notice 均保留在 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
 

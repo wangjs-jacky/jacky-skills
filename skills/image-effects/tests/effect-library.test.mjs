@@ -11,6 +11,7 @@ import {
   parseEffect,
   renderThirdPartyNotices,
 } from '../scripts/effect-library.mjs';
+import { EXPECTED_CATALOG_REFS } from './catalog-fixture.mjs';
 
 const SOURCE_SHA = '67021faabdbd9e5d5db6851eb2e5bc6a650a76ef399a4f0949fdae0f93989461';
 const PREVIEW_SHA = '0'.repeat(64);
@@ -19,17 +20,6 @@ const EFFECTS_PATH = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '../references/effects',
 );
-const EXPECTED_CATALOG_REFS = [
-  'healing-anime-scribble-v3@1.0.0',
-  'minimal-zine-poster@1.0.0',
-  'photo-illustration-diptych@1.0.0',
-  'photo-illustration-diptych-lakeside@1.0.0',
-  'photo-illustration-editorial-echo@1.0.0',
-  'scene-distillation-zine@1.0.0',
-  'scenes-gathered-zine@1.0.0',
-  'scenes-gathered-zine-sea@1.0.0',
-];
-
 const REQUIRED_FIELDS = {
   id: 'healing-anime-scribble-v3',
   version: '1.0.0',
@@ -469,7 +459,7 @@ test('loadEffects reads Markdown cards and returns stable ID and SemVer order', 
   }
 });
 
-test('published effect directory loads the exact approved eight-effect catalog', async () => {
+test('published effect directory loads the exact approved semantic catalog', async () => {
   const effects = await loadEffects(EFFECTS_PATH);
 
   assert.deepEqual(

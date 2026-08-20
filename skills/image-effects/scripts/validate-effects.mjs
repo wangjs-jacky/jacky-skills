@@ -104,6 +104,7 @@ export async function validateEffects(options = {}) {
 }
 
 export async function validateOnlineSources(effects, { fetcher = fetchGitHubContent } = {}) {
+  const payloadByRemote = new Map();
   for (const effect of effects) {
     for (const source of effect.sources) {
       const request = {
@@ -112,14 +113,20 @@ export async function validateOnlineSources(effects, { fetcher = fetchGitHubCont
         path: source.path,
       };
       let payload;
-      try {
-        payload = await fetcher(request);
-      } catch (cause) {
-        const message =
-          cause?.code === 'ERR_PINNED_SOURCE_FETCH'
-            ? cause.message
-            : `Failed to validate pinned GitHub source ${remoteLabel(request)}`;
-        throw new Error(message, { cause });
+      const label = remoteLabel(request);
+      if (payloadByRemote.has(label)) {
+        payload = payloadByRemote.get(label);
+      } else {
+        try {
+          payload = await fetcher(request);
+        } catch (cause) {
+          const message =
+            cause?.code === 'ERR_PINNED_SOURCE_FETCH'
+              ? cause.message
+              : `Failed to validate pinned GitHub source ${label}`;
+          throw new Error(message, { cause });
+        }
+        payloadByRemote.set(label, payload);
       }
       const actualSha = sha256(decodeBase64Content(payload, request));
       if (actualSha !== source.sha256) {

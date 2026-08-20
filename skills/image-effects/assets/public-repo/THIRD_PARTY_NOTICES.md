@@ -2,6 +2,166 @@
 
 The repository root `LICENSE` applies to this repository's own material. It does not automatically cover third-party materials identified below; each such material remains subject to its stated upstream license and attribution terms.
 
+## anime-key-visual@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained anime key visual compiler.
+
+## banner-grid-2x2@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit privacy quality and delivery rules.
+
+## banner-hero@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained web hero effect with explicit privacy quality and delivery rules.
+
+## bento-grid-infographic@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit privacy quality and delivery rules.
+
+## bento-memory-card@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy subject-bound reference prompt into a subject-neutral self-contained memory-card effect with explicit privacy quality and delivery rules.
+
+## brand-poster@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit rights privacy quality and delivery rules.
+
+## campaign-kv@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained campaign effect with explicit rights privacy quality and delivery rules.
+
+## character-grid-portrait@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## character-merch-board@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the subject-bound Happy reference prompt into a reusable subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## character-sheet@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## cinematic-storyboard@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes two subject-bound cinematic storyboard prompts into a neutral self-contained narrative sequence effect.
+
+## concept-scene@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## editorial-cover@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained editorial cover effect with explicit rights privacy quality and delivery rules.
+
+## food-map@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained illustrated map effect with explicit privacy quality and delivery rules.
+
+## four-panel-comic@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained four-panel story compiler.
+
+## hand-drawn-infographic@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit privacy quality and delivery rules.
+
 ## healing-anime-scribble-v3@1.0.0
 
 - Repository: `ConardLi/garden-skills`
@@ -12,6 +172,56 @@ The repository root `LICENSE` applies to this repository's own material. It does
 - Notice: `references/licenses/conardli-garden-skills-mit.txt` (SHA-256: `1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685`)
 - Adaptation: Preserves the one-photo anime construction sketch behavior and adds fixed v3 ratios, host-neutral delivery, privacy gates, and one targeted retry.
 
+## healing-scene@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## lifestyle-product-scene@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained lifestyle effect.
+
+## lookbook-grid@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit identity privacy quality and delivery rules.
+
+## manga-spread-page@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained manga spread compiler.
+
+## mascot-brand-kit@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
 ## minimal-zine-poster@1.0.0
 
 - Repository: `LiamGvchi/gc-minimal-zine-poster`
@@ -21,6 +231,36 @@ The repository root `LICENSE` applies to this repository's own material. It does
 - License: [MIT](<https://github.com/LiamGvchi/gc-minimal-zine-poster/blob/4cb0396ad4e834019f753b37e1c4f415f5e02026/LICENSE>)
 - Notice: `references/licenses/liamgvchi-mit.txt` (SHA-256: `d15c81ae8fa9a0b4b1db46c66e4490cc92e4898fb1f55e030559fbd2a2e2a232`)
 - Adaptation: Preserves the original minimal-zine composition ratios, metaphor discipline, paper material, text-or-image routes, variation engine, experimental typography, visible ink anchor, and targeted correction in a host-neutral card.
+
+## minimalist-mood-scene@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## mixed-style-multi-panel@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Adapts the Happy catalog entry generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained host-native effect with explicit identity privacy quality and delivery rules.
+
+## packaging-showcase@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained packaging compiler.
 
 ## photo-illustration-diptych@1.0.0
 
@@ -53,6 +293,56 @@ The repository root `LICENSE` applies to this repository's own material. It does
 - Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
 - Adaptation: Preserves the mandatory illustrated-motif and deterministic-layout pipeline while replacing product-specific paths with host-neutral capability gates, privacy cleanup, and honest fallback.
 
+## picture-book-scene@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## premium-studio-product@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained product compiler.
+
+## product-tvc-storyboard@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a subject-bound product storyboard prompt into a neutral self-contained advertising sequence effect.
+
+## recipe-process-flowchart@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained recipe compiler.
+
+## retro-skeuomorphic-icons@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
 ## scene-distillation-zine@1.0.0
 
 - Repository: `Zeejay0/gathered-scenes-zine-skill`
@@ -82,6 +372,66 @@ The repository root `LICENSE` applies to this repository's own material. It does
 - License: [MIT](<https://github.com/Zeejay0/gathered-scenes-zine-skill/blob/e764b7fd243d7cc501723b9d325279bf6dd852c2/LICENSE>)
 - Notice: `references/licenses/gathered-scenes-zine-contributors-mit.txt` (SHA-256: `7d063a2fe4a45ac0adf349ab8d568de5bc93206aaa3982a243dd8d067a3e2f4a`)
 - Adaptation: Specializes the Gathered Scenes Zine compiler for coastal scenes while preserving its truthful photo anchor, torn-paper handoff, source-derived abstraction, one structural hue, and restrained micro-text.
+
+## step-by-step-infographic@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained process infographic compiler.
+
+## sticker-set@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## themed-3d-icon@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy catalog effect generated from ConardLi/gpt-image-2-101 into a subject-neutral self-contained compiler with privacy gates and one targeted retry.
+
+## vintage-editorial-infographic@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a Happy subject-bound reference prompt into a subject-neutral self-contained archival infographic effect with explicit evidence privacy quality and delivery rules.
+
+## vintage-film-editorial@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalogExtras.ts` (SHA-256: `19b9222c2b96fc77fe461e065f28e20ee7f6413c1881cf6631f4f509a7683365`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes a subject-bound café prompt into a neutral self-contained editorial effect for arbitrary subjects.
+
+## white-background-product@1.0.0
+
+- Repository: `wangjs-jacky/happy`
+- Revision: `9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f`
+- Source: `packages/happy-app/sources/components/agents/imageStyleCatalog.ts` (SHA-256: `301a744429efc49379e6ae363dc1e9b7fa401087bde21897c83d9c44ee727d40`)
+- Source: `LICENSE` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- License: [MIT](<https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE>)
+- Notice: `references/licenses/happy-coder-contributors-mit.txt` (SHA-256: `e251d0448ef3ce023c20ebac9b90a7d8642b1434825838247d6e457668eb3e00`)
+- Adaptation: Generalizes the Happy catalog effect generated from ConardLi/gpt-image-2-101 into a neutral self-contained ecommerce effect.
 
 ## Full license notices
 

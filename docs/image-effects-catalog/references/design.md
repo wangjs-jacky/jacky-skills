@@ -1,5 +1,7 @@
 # Image Effects 全量效果目录设计
 
+> 本文记录八效果首版基线。后续语义迁移的实时效果集合以 `skills/image-effects/references/INDEX.md` 为准；首版的来源、许可、版本化与静态 Gallery 契约继续有效。
+
 > 日期：2026-08-18 ｜ 状态：规格已批准，实施已完成并通过本地与 GitHub 检查，待合并后公开发布
 
 ## 一、目标

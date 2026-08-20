@@ -5,7 +5,23 @@ const EXECUTION_KINDS = new Set([
   'host-image-generation',
   'host-image-generation-and-layout',
 ]);
-const CATEGORIES = new Set(['portrait', 'editorial', 'zine']);
+const CATEGORIES = new Set([
+  'assets-and-props',
+  'avatars-and-profile',
+  'branding-and-packaging',
+  'editing-workflows',
+  'editorial',
+  'grids-and-collages',
+  'infographics',
+  'maps',
+  'portrait',
+  'portraits-and-characters',
+  'poster-and-campaigns',
+  'product-visuals',
+  'scenes-and-illustrations',
+  'storyboards-and-sequences',
+  'zine',
+]);
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SEMVER_PATTERN =
   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/;

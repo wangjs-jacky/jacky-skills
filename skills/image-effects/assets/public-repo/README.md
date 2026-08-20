@@ -1,6 +1,6 @@
 # Image Effects
 
-Eight effects packaged as reusable, versioned cards for AI coding agents, plus a static Gallery for browsing every recipe.
+A growing semantic library of reusable, versioned image-effect cards for AI coding agents, plus a static Gallery for browsing every recipe.
 
 [中文说明](./README_CN.md) · [Gallery](https://wangjs-jacky.github.io/image-effects/)
 
@@ -12,7 +12,7 @@ npx skills add wangjs-jacky/image-effects
 
 This one installation contains the complete behavior for every card. There is no extra Skill dependency, and the catalog does not include `grade-images` or deterministic color-grading recipes.
 
-## Catalog
+## Representative effects
 
 - `healing-anime-scribble-v3@1.0.0` — image input
 - `minimal-zine-poster@1.0.0` — text or image input
@@ -24,6 +24,7 @@ This one installation contains the complete behavior for every card. There is no
 - `scenes-gathered-zine-sea@1.0.0` — image input
 
 Every ref includes an exact version. The Skill will not silently replace an unknown version, so an existing invocation remains stable while later recipes can evolve independently.
+Browse the complete generated catalog in [`references/INDEX.md`](./references/INDEX.md) or the Gallery; it includes semantic groups for products, campaigns, infographics, scenes, characters, grids, storyboards, assets, maps, editorial work, portraits, and zines.
 
 ## Use
 
@@ -51,7 +52,7 @@ If a host has no compatible image tool for a single-stage effect, the Skill retu
 
 ## Gallery, previews, and licensing
 
-The [Gallery](https://wangjs-jacky.github.io/image-effects/) is static: it browses and copies versioned invocations but does not generate images or receive user uploads. Its seven new previews were independently generated from fictional, text-only subjects; Editorial Echo was locally composed from fictional generated assets. Preview attribution is `wangjs-jacky`, licensed under CC-BY-4.0.
+The [Gallery](https://wangjs-jacky.github.io/image-effects/) is static: it browses and copies versioned invocations but does not generate images or receive user uploads. Migrated previews were independently generated from fictional, text-only subjects; Editorial Echo was locally composed from fictional generated assets. Preview attribution is `wangjs-jacky`, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The root [LICENSE](./LICENSE) covers only original code and adaptations in this repository and does not relicense third-party material. Full pinned upstream authorship, source revisions, file hashes, license links, adaptation notes, and MIT notices are preserved in [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
 

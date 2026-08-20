@@ -24,6 +24,7 @@ import { fileURLToPath } from "node:url";
 
 import { exportPublicRepository } from "../scripts/export-public-repo.mjs";
 import { publicTemplatePath } from "../scripts/public-layout.mjs";
+import { EXPECTED_CATALOG as FIXED_REFS } from "./catalog-fixture.mjs";
 
 const execFile = promisify(execFileCallback);
 const SKILL_ROOT = path.resolve(
@@ -32,16 +33,6 @@ const SKILL_ROOT = path.resolve(
 );
 const SCRIPT_PATH = path.join(SKILL_ROOT, "scripts/export-public-repo.mjs");
 const MANIFEST_NAME = ".image-effects-export.json";
-const FIXED_REFS = [
-  ["healing-anime-scribble-v3@1.0.0", ".jpg"],
-  ["minimal-zine-poster@1.0.0", ".png"],
-  ["photo-illustration-diptych@1.0.0", ".png"],
-  ["photo-illustration-diptych-lakeside@1.0.0", ".png"],
-  ["photo-illustration-editorial-echo@1.0.0", ".png"],
-  ["scene-distillation-zine@1.0.0", ".png"],
-  ["scenes-gathered-zine@1.0.0", ".png"],
-  ["scenes-gathered-zine-sea@1.0.0", ".png"],
-];
 const LICENSE_NOTICE_NAMES = [
   "conardli-garden-skills-mit.txt",
   "gathered-scenes-zine-contributors-mit.txt",

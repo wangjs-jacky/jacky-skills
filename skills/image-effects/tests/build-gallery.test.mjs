@@ -26,6 +26,7 @@ import {
   validateEffects,
   validateOnlineSources,
 } from '../scripts/validate-effects.mjs';
+import { EXPECTED_CATALOG as FULL_CATALOG } from './catalog-fixture.mjs';
 
 const SKILL_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLIC_TEMPLATE_ROOT = existsSync(
@@ -53,16 +54,6 @@ const MANAGED_PATHS = [
   `gallery/media/${EFFECT_REF}.jpg`,
   `gallery/source/${EFFECT_REF}.md`,
   'references/INDEX.md',
-];
-const FULL_CATALOG = [
-  ['healing-anime-scribble-v3@1.0.0', '.jpg'],
-  ['minimal-zine-poster@1.0.0', '.png'],
-  ['photo-illustration-diptych@1.0.0', '.png'],
-  ['photo-illustration-diptych-lakeside@1.0.0', '.png'],
-  ['photo-illustration-editorial-echo@1.0.0', '.png'],
-  ['scene-distillation-zine@1.0.0', '.png'],
-  ['scenes-gathered-zine@1.0.0', '.png'],
-  ['scenes-gathered-zine-sea@1.0.0', '.png'],
 ];
 const FULL_CATALOG_REFS = FULL_CATALOG.map(([ref]) => ref);
 const FULL_MANAGED_PATHS = [
@@ -125,7 +116,7 @@ async function makeFixtureSource(root, sourceSha = SOURCE_SHA) {
   ]);
 }
 
-test('完整目录构建逐字节可复现并包含 8 个效果、真实尺寸与 4 份完整 notice', async () => {
+test('完整目录构建逐字节可复现并包含完整语义目录、真实尺寸与 4 份完整 notice', async () => {
   const outputOne = await mkdtemp(path.join(tmpdir(), 'image-effects-full-output-one-'));
   const outputTwo = await mkdtemp(path.join(tmpdir(), 'image-effects-full-output-two-'));
 
@@ -1019,6 +1010,26 @@ test('在线验证按固定仓库、revision、path 请求并校验 base64 内�
         path: LICENSE_PATH,
       },
     ]);
+  } finally {
+    await rm(sourceRoot, { recursive: true, force: true });
+  }
+});
+
+test('在线验证对多个效果共享的固定来源只请求一次', async () => {
+  const sourceRoot = await mkdtemp(path.join(tmpdir(), 'image-effects-source-cache-'));
+  const requests = [];
+  try {
+    await makeFixtureSource(sourceRoot);
+    const [effect] = await validateEffects({ sourceRoot });
+    const second = { ...effect, id: 'second-effect', ref: 'second-effect@1.0.0' };
+    await validateOnlineSources([effect, second], {
+      fetcher: async (request) => {
+        requests.push(request);
+        const bytes = request.path === LICENSE_PATH ? LICENSE_BYTES : SOURCE_BYTES;
+        return { encoding: 'base64', content: bytes.toString('base64') };
+      },
+    });
+    assert.deepEqual(requests.map(({ path: sourcePath }) => sourcePath), [SOURCE_PATH, LICENSE_PATH]);
   } finally {
     await rm(sourceRoot, { recursive: true, force: true });
   }

@@ -3,6 +3,694 @@
   "generatedAt": "2026-08-18T00:00:00.000Z",
   "effects": [
     {
+      "ref": "anime-key-visual@1.0.0",
+      "id": "anime-key-visual",
+      "version": "1.0.0",
+      "title": {
+        "en": "Anime Key Visual",
+        "zh": "动漫主视觉"
+      },
+      "summary": {
+        "en": "Elevate one original subject into a polished anime campaign key visual with cinematic staging, stable identity, and intentional negative space.",
+        "zh": "将一个原创主体提升为精致动漫活动主视觉，以电影化调度、稳定身份和有意留白为核心。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 768,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/anime-key-visual@1.0.0.png",
+      "sourceUrl": "./source/anime-key-visual@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional young lighthouse mechanic and mechanical moths with no real person, franchise, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect anime-key-visual@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "banner-grid-2x2@1.0.0",
+      "id": "banner-grid-2x2",
+      "version": "1.0.0",
+      "title": {
+        "en": "Banner Grid 2x2",
+        "zh": "2×2 横幅套装"
+      },
+      "summary": {
+        "en": "Create four independently usable campaign panels that share one visual system, product scale, and copy-safe layout.",
+        "zh": "创建四张可独立使用的活动面板，共享统一视觉系统、主体尺度和文案安全区。"
+      },
+      "category": "grids-and-collages",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/banner-grid-2x2@1.0.0.png",
+      "sourceUrl": "./source/banner-grid-2x2@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect banner-grid-2x2@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "banner-hero@1.0.0",
+      "id": "banner-hero",
+      "version": "1.0.0",
+      "title": {
+        "en": "Banner Hero",
+        "zh": "Web Hero 横幅"
+      },
+      "summary": {
+        "en": "Compose a wide hero image with one grounded subject, generous copy space, and robust desktop and mobile crop safety.",
+        "zh": "构建一张宽幅主视觉，以一个真实落地的主体、充足文案区和稳定的桌面移动端裁切安全为核心。"
+      },
+      "category": "poster-and-campaigns",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 576,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/banner-hero@1.0.0.png",
+      "sourceUrl": "./source/banner-hero@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect banner-hero@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "bento-grid-infographic@1.0.0",
+      "id": "bento-grid-infographic",
+      "version": "1.0.0",
+      "title": {
+        "en": "Bento Grid Infographic",
+        "zh": "Bento 网格信息图"
+      },
+      "summary": {
+        "en": "Organize one topic or image into an asymmetric modular explainer with one dominant block and concise supporting facts.",
+        "zh": "将一个主题或一张图片组织成非对称模块化解说图，以一个主模块和精简辅助信息构成清晰层级。"
+      },
+      "category": "infographics",
+      "executionKind": "host-image-generation",
+      "previewWidth": 655,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/bento-grid-infographic@1.0.0.png",
+      "sourceUrl": "./source/bento-grid-infographic@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect bento-grid-infographic@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "bento-memory-card@1.0.0",
+      "id": "bento-memory-card",
+      "version": "1.0.0",
+      "title": {
+        "en": "Bento Memory Card",
+        "zh": "Bento 记忆卡"
+      },
+      "summary": {
+        "en": "Preserve one moment as a warm seven-to-eight-module memory card built from a hero scene, details, palette, and quiet notes.",
+        "zh": "将一个瞬间保存为温暖的七至八模块记忆卡，由主场景、细节、色板和克制记录共同构成。"
+      },
+      "category": "grids-and-collages",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/bento-memory-card@1.0.0.png",
+      "sourceUrl": "./source/bento-memory-card@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect bento-memory-card@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "brand-poster@1.0.0",
+      "id": "brand-poster",
+      "version": "1.0.0",
+      "title": {
+        "en": "Brand Poster",
+        "zh": "品牌主视觉海报"
+      },
+      "summary": {
+        "en": "Distill one subject into a bold poster with a single hero, disciplined identity cues, and a copy-safe brand block.",
+        "zh": "将一个主体提炼成醒目的品牌海报，以单一主视觉、克制识别线索和文案安全区构建冲击力。"
+      },
+      "category": "poster-and-campaigns",
+      "executionKind": "host-image-generation",
+      "previewWidth": 819,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/brand-poster@1.0.0.png",
+      "sourceUrl": "./source/brand-poster@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect brand-poster@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "campaign-kv@1.0.0",
+      "id": "campaign-kv",
+      "version": "1.0.0",
+      "title": {
+        "en": "Campaign Key Visual",
+        "zh": "活动主视觉"
+      },
+      "summary": {
+        "en": "Build one scalable campaign symbol and cinematic key art with disciplined hierarchy and crop-safe extensions.",
+        "zh": "构建一个可扩展的活动核心符号和电影感主视觉，以严格层级与安全裁切支持系列延展。"
+      },
+      "category": "poster-and-campaigns",
+      "executionKind": "host-image-generation",
+      "previewWidth": 819,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/campaign-kv@1.0.0.png",
+      "sourceUrl": "./source/campaign-kv@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect campaign-kv@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "character-grid-portrait@1.0.0",
+      "id": "character-grid-portrait",
+      "version": "1.0.0",
+      "title": {
+        "en": "Character Grid Portrait",
+        "zh": "角色肖像网格"
+      },
+      "summary": {
+        "en": "Show one consistent fictional identity across a controlled grid of expressions, actions, eras, or styling variations.",
+        "zh": "在受控网格中呈现同一虚构角色的表情、动作、时代或造型变化，同时保持身份一致。"
+      },
+      "category": "avatars-and-profile",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/character-grid-portrait@1.0.0.png",
+      "sourceUrl": "./source/character-grid-portrait@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of one fictional adult not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect character-grid-portrait@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "character-merch-board@1.0.0",
+      "id": "character-merch-board",
+      "version": "1.0.0",
+      "title": {
+        "en": "Character Merchandise Board",
+        "zh": "角色周边商品板"
+      },
+      "summary": {
+        "en": "Apply one consistent original character across a balanced editorial board of practical merchandise mockups.",
+        "zh": "将一个原创角色稳定应用到一组实用周边商品，并组织为清晰平衡的编辑商品板。"
+      },
+      "category": "branding-and-packaging",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/character-merch-board@1.0.0.png",
+      "sourceUrl": "./source/character-merch-board@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of an original fictional character and generic products not based on a real brand, known character, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect character-merch-board@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "character-sheet@1.0.0",
+      "id": "character-sheet",
+      "version": "1.0.0",
+      "title": {
+        "en": "Character Sheet",
+        "zh": "角色综合设定表"
+      },
+      "summary": {
+        "en": "Compile one original character into a coherent turnaround, expression, outfit, prop, and palette sheet.",
+        "zh": "将一个原创角色编译为三视、表情、服装、道具与色板结构一致的综合设定表。"
+      },
+      "category": "portraits-and-characters",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/character-sheet@1.0.0.png",
+      "sourceUrl": "./source/character-sheet@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of one original fictional character not based on a real person, brand, known character, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect character-sheet@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "cinematic-storyboard@1.0.0",
+      "id": "cinematic-storyboard",
+      "version": "1.0.0",
+      "title": {
+        "en": "Cinematic Storyboard",
+        "zh": "电影短片分镜"
+      },
+      "summary": {
+        "en": "Distill one quiet narrative premise into a coherent 3x3 cinematic sequence with clear shot progression and visual continuity.",
+        "zh": "将一个安静叙事命题蒸馏为连贯的 3×3 电影序列，具有清楚的镜头推进与视觉连续性。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/cinematic-storyboard@1.0.0.png",
+      "sourceUrl": "./source/cinematic-storyboard@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional night watchkeeper finding a paper lantern in an invented greenhouse with no real person or place.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect cinematic-storyboard@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "concept-scene@1.0.0",
+      "id": "concept-scene",
+      "version": "1.0.0",
+      "title": {
+        "en": "Cinematic Concept Scene",
+        "zh": "电影感概念场景"
+      },
+      "summary": {
+        "en": "Expand one idea or reference into an original cinematic world with strong scale, atmosphere, and spatial hierarchy.",
+        "zh": "将一个想法或参考图扩展为尺度鲜明、氛围完整且空间层级清楚的原创电影感世界。"
+      },
+      "category": "scenes-and-illustrations",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 512,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/concept-scene@1.0.0.png",
+      "sourceUrl": "./source/concept-scene@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional world and fictional people not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect concept-scene@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "editorial-cover@1.0.0",
+      "id": "editorial-cover",
+      "version": "1.0.0",
+      "title": {
+        "en": "Editorial Cover",
+        "zh": "编辑杂志封面"
+      },
+      "summary": {
+        "en": "Turn one subject into a restrained magazine cover with a dominant image, disciplined masthead, and minimal accurate cover lines.",
+        "zh": "将一个主体转为克制的杂志封面，以主图、严格刊头和少量准确封面线构成编辑层级。"
+      },
+      "category": "poster-and-campaigns",
+      "executionKind": "host-image-generation",
+      "previewWidth": 768,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/editorial-cover@1.0.0.png",
+      "sourceUrl": "./source/editorial-cover@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect editorial-cover@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "food-map@1.0.0",
+      "id": "food-map",
+      "version": "1.0.0",
+      "title": {
+        "en": "Food Map",
+        "zh": "手绘食物地图"
+      },
+      "summary": {
+        "en": "Reframe one food theme or image as a navigable illustrated world with a central dish, distinct ingredient landmarks, and a compact legend.",
+        "zh": "将一个食物主题或图片重构为可游览的插画世界，以中央主食、清晰食材地标和紧凑图例组成。"
+      },
+      "category": "maps",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/food-map@1.0.0.png",
+      "sourceUrl": "./source/food-map@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect food-map@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "four-panel-comic@1.0.0",
+      "id": "four-panel-comic",
+      "version": "1.0.0",
+      "title": {
+        "en": "Four Panel Comic",
+        "zh": "四格反转漫画"
+      },
+      "summary": {
+        "en": "Tell one compact setup-to-payoff story in a consistent 2x2 comic with readable action and a clear final turn.",
+        "zh": "用一致的 2×2 四格漫画讲述从铺垫到回收的紧凑故事，并在末格形成清楚转折。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/four-panel-comic@1.0.0.png",
+      "sourceUrl": "./source/four-panel-comic@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional repair apprentice and a wind-up bird with no real person, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect four-panel-comic@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "hand-drawn-infographic@1.0.0",
+      "id": "hand-drawn-infographic",
+      "version": "1.0.0",
+      "title": {
+        "en": "Hand-Drawn Infographic",
+        "zh": "手绘信息图"
+      },
+      "summary": {
+        "en": "Turn one topic or image into a clear hand-drawn explainer with a single visual flow, restrained labels, and tactile paper character.",
+        "zh": "将一个主题或一张图片整理为清晰的手绘解说图，用单一视觉流、克制标签和纸面质感传达重点。"
+      },
+      "category": "infographics",
+      "executionKind": "host-image-generation",
+      "previewWidth": 655,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/hand-drawn-infographic@1.0.0.png",
+      "sourceUrl": "./source/hand-drawn-infographic@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect hand-drawn-infographic@1.0.0 with this idea or my uploaded image."
+    },
+    {
       "ref": "healing-anime-scribble-v3@1.0.0",
       "id": "healing-anime-scribble-v3",
       "version": "1.0.0",
@@ -46,6 +734,221 @@
       "invocation": "Use $image-effects effect healing-anime-scribble-v3@1.0.0 on my uploaded image."
     },
     {
+      "ref": "healing-scene@1.0.0",
+      "id": "healing-scene",
+      "version": "1.0.0",
+      "title": {
+        "en": "Healing Scene",
+        "zh": "治愈系日常场景"
+      },
+      "summary": {
+        "en": "Reframe one idea or reference as a quiet restorative moment with soft natural light and breathable illustration detail.",
+        "zh": "将一个想法或参考图转化为自然柔光、细节克制且留白舒展的治愈日常场景。"
+      },
+      "category": "scenes-and-illustrations",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/healing-scene@1.0.0.png",
+      "sourceUrl": "./source/healing-scene@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional person and place not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect healing-scene@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "lifestyle-product-scene@1.0.0",
+      "id": "lifestyle-product-scene",
+      "version": "1.0.0",
+      "title": {
+        "en": "Lifestyle Product Scene",
+        "zh": "生活方式产品场景"
+      },
+      "summary": {
+        "en": "Place one product in a believable everyday setting where light, props, and use context support the hero without overpowering it.",
+        "zh": "将一个产品置于可信日常场景，让光线、道具与使用语境共同支持主体而不喧宾夺主。"
+      },
+      "category": "product-visuals",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 768,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/lifestyle-product-scene@1.0.0.png",
+      "sourceUrl": "./source/lifestyle-product-scene@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional linen-bound portable radio in an invented quiet reading nook with no real brand or place.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect lifestyle-product-scene@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "lookbook-grid@1.0.0",
+      "id": "lookbook-grid",
+      "version": "1.0.0",
+      "title": {
+        "en": "Lookbook Grid",
+        "zh": "Lookbook 造型网格"
+      },
+      "summary": {
+        "en": "Build a coherent six-to-nine-panel lookbook with a stable subject, distinct looks, and disciplined editorial spacing.",
+        "zh": "构建六至九格的连贯造型册，以稳定主体、清晰差异和克制的编辑间距呈现系列。"
+      },
+      "category": "grids-and-collages",
+      "executionKind": "host-image-generation",
+      "previewWidth": 768,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/lookbook-grid@1.0.0.png",
+      "sourceUrl": "./source/lookbook-grid@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect lookbook-grid@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "manga-spread-page@1.0.0",
+      "id": "manga-spread-page",
+      "version": "1.0.0",
+      "title": {
+        "en": "Manga Spread Page",
+        "zh": "漫画跨页"
+      },
+      "summary": {
+        "en": "Compose one story beat as a rhythmic multi-panel manga spread with consistent characters, controlled gutters, and legible action flow.",
+        "zh": "将一个故事节拍编排为富有节奏的多分镜漫画跨页，保持角色一致、装订安全和动作流清楚。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 703,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/manga-spread-page@1.0.0.png",
+      "sourceUrl": "./source/manga-spread-page@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of fictional bicycle couriers crossing an invented floating market with no real people, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect manga-spread-page@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "mascot-brand-kit@1.0.0",
+      "id": "mascot-brand-kit",
+      "version": "1.0.0",
+      "title": {
+        "en": "Mascot Brand Kit",
+        "zh": "吉祥物品牌套装"
+      },
+      "summary": {
+        "en": "Develop one original mascot into a coherent hero, turnaround, expression, and application system.",
+        "zh": "将一个原创吉祥物发展为主视觉、三视、表情与应用物料一致的完整品牌套装。"
+      },
+      "category": "branding-and-packaging",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/mascot-brand-kit@1.0.0.png",
+      "sourceUrl": "./source/mascot-brand-kit@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of an original fictional mascot and generic products not based on a real brand, known character, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect mascot-brand-kit@1.0.0 with this idea or my uploaded image."
+    },
+    {
       "ref": "minimal-zine-poster@1.0.0",
       "id": "minimal-zine-poster",
       "version": "1.0.0",
@@ -87,6 +990,135 @@
         }
       },
       "invocation": "Use $image-effects effect minimal-zine-poster@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "minimalist-mood-scene@1.0.0",
+      "id": "minimalist-mood-scene",
+      "version": "1.0.0",
+      "title": {
+        "en": "Minimalist Mood Scene",
+        "zh": "极简留白氛围图"
+      },
+      "summary": {
+        "en": "Reduce one idea or reference to a single quiet motif, broad negative space, and a restrained emotional palette.",
+        "zh": "将一个想法或参考图提炼为单一安静母题、大面积留白与克制情绪色板。"
+      },
+      "category": "scenes-and-illustrations",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/minimalist-mood-scene@1.0.0.png",
+      "sourceUrl": "./source/minimalist-mood-scene@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of fictional still-life objects not based on a real brand, place, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect minimalist-mood-scene@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "mixed-style-multi-panel@1.0.0",
+      "id": "mixed-style-multi-panel",
+      "version": "1.0.0",
+      "title": {
+        "en": "Mixed-Style Multi-Panel",
+        "zh": "多媒介混合风格拼贴"
+      },
+      "summary": {
+        "en": "Render one stable subject across five coordinated media while preserving identity, pose, geometry, and palette anchors.",
+        "zh": "将同一稳定主体以五种协调媒介呈现，同时守住身份、姿态、几何和配色锚点。"
+      },
+      "category": "grids-and-collages",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/mixed-style-multi-panel@1.0.0.png",
+      "sourceUrl": "./source/mixed-style-multi-panel@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect mixed-style-multi-panel@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "packaging-showcase@1.0.0",
+      "id": "packaging-showcase",
+      "version": "1.0.0",
+      "title": {
+        "en": "Packaging Showcase",
+        "zh": "包装展示图"
+      },
+      "summary": {
+        "en": "Stage a coherent unbranded packaging family with one hero pack, supporting views, and commercially credible materials.",
+        "zh": "展示一套连贯的无品牌包装，以一个英雄包装、少量辅助视图和可信商业材质为核心。"
+      },
+      "category": "product-visuals",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 768,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/packaging-showcase@1.0.0.png",
+      "sourceUrl": "./source/packaging-showcase@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of fictional seed-paper soap packaging with invented geometric marks and no real brand or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect packaging-showcase@1.0.0 with this idea or my uploaded image."
     },
     {
       "ref": "photo-illustration-diptych@1.0.0",
@@ -218,6 +1250,221 @@
       "invocation": "Use $image-effects effect photo-illustration-editorial-echo@1.0.0 on my uploaded image."
     },
     {
+      "ref": "picture-book-scene@1.0.0",
+      "id": "picture-book-scene",
+      "version": "1.0.0",
+      "title": {
+        "en": "Picture Book Scene",
+        "zh": "绘本叙事场景"
+      },
+      "summary": {
+        "en": "Turn one idea or reference into a warm picture-book scene with a clear story beat and original character language.",
+        "zh": "将一个想法或参考图编译为叙事动作清晰、角色原创且具有温暖纸本质感的绘本场景。"
+      },
+      "category": "scenes-and-illustrations",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/picture-book-scene@1.0.0.png",
+      "sourceUrl": "./source/picture-book-scene@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of fictional characters and a fictional place not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect picture-book-scene@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "premium-studio-product@1.0.0",
+      "id": "premium-studio-product",
+      "version": "1.0.0",
+      "title": {
+        "en": "Premium Studio Product",
+        "zh": "高级影棚产品摄影"
+      },
+      "summary": {
+        "en": "Present one product as a premium advertising hero with controlled studio light, refined materials, and a disciplined palette.",
+        "zh": "将一个产品呈现为高级广告主视觉，以可控影棚光、精致材质和克制色板为核心。"
+      },
+      "category": "product-visuals",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 768,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/premium-studio-product@1.0.0.png",
+      "sourceUrl": "./source/premium-studio-product@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional amber glass desk lamp with no real brand or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect premium-studio-product@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "product-tvc-storyboard@1.0.0",
+      "id": "product-tvc-storyboard",
+      "version": "1.0.0",
+      "title": {
+        "en": "Product TVC Storyboard",
+        "zh": "产品 TVC 分镜"
+      },
+      "summary": {
+        "en": "Turn one product proposition into a consistent 3x3 advertising storyboard from context and tactile detail to the final hero reveal.",
+        "zh": "将一个产品命题转为一致的 3×3 广告分镜，从场景与触感细节推进到最终英雄展示。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/product-tvc-storyboard@1.0.0.png",
+      "sourceUrl": "./source/product-tvc-storyboard@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional compact tabletop radio campaign with no real brand, person, place, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect product-tvc-storyboard@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "recipe-process-flowchart@1.0.0",
+      "id": "recipe-process-flowchart",
+      "version": "1.0.0",
+      "title": {
+        "en": "Recipe Process Flowchart",
+        "zh": "食谱流程图"
+      },
+      "summary": {
+        "en": "Compile one recipe into an illustrated, ordered cooking flow with ingredients, concise steps, and a clear finished dish.",
+        "zh": "将一道食谱编译为有序的插画烹饪流程，包含食材、简洁步骤和清楚的成品。"
+      },
+      "category": "storyboards-and-sequences",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/recipe-process-flowchart@1.0.0.png",
+      "sourceUrl": "./source/recipe-process-flowchart@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional six-step roasted pear recipe using generic ingredients and no third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect recipe-process-flowchart@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "retro-skeuomorphic-icons@1.0.0",
+      "id": "retro-skeuomorphic-icons",
+      "version": "1.0.0",
+      "title": {
+        "en": "Retro Skeuomorphic Icons",
+        "zh": "复古拟物图标集"
+      },
+      "summary": {
+        "en": "Turn one idea or reference into a coherent grid of tactile glass, metal, paper, and leather icons.",
+        "zh": "将一个想法或参考图编译为玻璃、金属、纸张与皮革质感统一的复古拟物图标集。"
+      },
+      "category": "assets-and-props",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/retro-skeuomorphic-icons@1.0.0.png",
+      "sourceUrl": "./source/retro-skeuomorphic-icons@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of fictional utility objects not based on a real brand or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect retro-skeuomorphic-icons@1.0.0 with this idea or my uploaded image."
+    },
+    {
       "ref": "scene-distillation-zine@1.0.0",
       "id": "scene-distillation-zine",
       "version": "1.0.0",
@@ -345,6 +1592,264 @@
         }
       },
       "invocation": "Use $image-effects effect scenes-gathered-zine-sea@1.0.0 on my uploaded image."
+    },
+    {
+      "ref": "step-by-step-infographic@1.0.0",
+      "id": "step-by-step-infographic",
+      "version": "1.0.0",
+      "title": {
+        "en": "Step by Step Infographic",
+        "zh": "步骤教程信息图"
+      },
+      "summary": {
+        "en": "Turn one practical process into a visual-first ordered infographic with concise stages, clear connectors, and a strong final outcome.",
+        "zh": "将一个实用流程转为视觉优先的有序信息图，以简洁阶段、清楚连接和突出结果为核心。"
+      },
+      "category": "infographics",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/step-by-step-infographic@1.0.0.png",
+      "sourceUrl": "./source/step-by-step-infographic@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional five-step desk terrarium assembly using generic materials and no third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect step-by-step-infographic@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "sticker-set@1.0.0",
+      "id": "sticker-set",
+      "version": "1.0.0",
+      "title": {
+        "en": "Sticker Set",
+        "zh": "角色贴纸套组"
+      },
+      "summary": {
+        "en": "Expand one idea or reference into a cohesive sheet of separately cuttable character stickers with consistent identity.",
+        "zh": "将一个想法或参考图扩展为角色身份一致、姿态多样且可独立裁切的完整贴纸套组。"
+      },
+      "category": "avatars-and-profile",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/sticker-set@1.0.0.png",
+      "sourceUrl": "./source/sticker-set@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of an original fictional character not based on a real person, brand, known character, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect sticker-set@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "themed-3d-icon@1.0.0",
+      "id": "themed-3d-icon",
+      "version": "1.0.0",
+      "title": {
+        "en": "Themed 3D Icon",
+        "zh": "主题 3D 头像图标"
+      },
+      "summary": {
+        "en": "Turn one idea or reference into an original single-subject 3D icon with a strong silhouette and compact theme cues.",
+        "zh": "将一个想法或参考图转化为主体单一、轮廓鲜明且主题线索克制的原创 3D 头像图标。"
+      },
+      "category": "avatars-and-profile",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/themed-3d-icon@1.0.0.png",
+      "sourceUrl": "./source/themed-3d-icon@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional non-human character not based on a real person, brand, known character, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect themed-3d-icon@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "vintage-editorial-infographic@1.0.0",
+      "id": "vintage-editorial-infographic",
+      "version": "1.0.0",
+      "title": {
+        "en": "Vintage Editorial Infographic",
+        "zh": "复古编辑信息图"
+      },
+      "summary": {
+        "en": "Compile a topic or image into a sparse archival infographic with engraved motifs, disciplined ink, and evidence-safe diagrams.",
+        "zh": "将主题或图片编译成稀疏的档案式信息图，以雕版母题、克制油墨和不虚构依据的图解构成。"
+      },
+      "category": "infographics",
+      "executionKind": "host-image-generation",
+      "previewWidth": 683,
+      "previewHeight": 1024,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/vintage-editorial-infographic@1.0.0.png",
+      "sourceUrl": "./source/vintage-editorial-infographic@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect vintage-editorial-infographic@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "vintage-film-editorial@1.0.0",
+      "id": "vintage-film-editorial",
+      "version": "1.0.0",
+      "title": {
+        "en": "Vintage Film Editorial",
+        "zh": "复古胶片编辑影像"
+      },
+      "summary": {
+        "en": "Reframe one idea or reference image as a restrained 35mm editorial still with warm halation, tactile grain, and natural atmosphere.",
+        "zh": "将一个主题或一张参考图重构为克制的 35mm 编辑影像，以暖色晕光、可感颗粒和自然氛围为核心。"
+      },
+      "category": "editing-workflows",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 768,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/vintage-film-editorial@1.0.0.png",
+      "sourceUrl": "./source/vintage-film-editorial@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional neighborhood flower shop at dusk with no real place, person, brand, or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect vintage-film-editorial@1.0.0 with this idea or my uploaded image."
+    },
+    {
+      "ref": "white-background-product@1.0.0",
+      "id": "white-background-product",
+      "version": "1.0.0",
+      "title": {
+        "en": "White Background Product",
+        "zh": "白底电商产品图"
+      },
+      "summary": {
+        "en": "Isolate one product on clean white with truthful geometry, crisp edges, and a soft physically plausible grounding shadow.",
+        "zh": "将一个产品置于干净白底，以真实结构、清晰边缘和符合物理的柔和落地阴影为核心。"
+      },
+      "category": "product-visuals",
+      "executionKind": "host-image-generation",
+      "previewWidth": 1024,
+      "previewHeight": 768,
+      "input": {
+        "mode": "text-or-image",
+        "min": 0,
+        "max": 1,
+        "formats": [
+          "jpeg",
+          "png"
+        ]
+      },
+      "outputCount": 1,
+      "previewUrl": "./media/white-background-product@1.0.0.png",
+      "sourceUrl": "./source/white-background-product@1.0.0.md",
+      "provenance": {
+        "repository": "wangjs-jacky/happy",
+        "revision": "9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f",
+        "license": {
+          "spdx": "MIT",
+          "url": "https://github.com/wangjs-jacky/happy/blob/9fe4b5d0fc893b9dfe2713dd43e3cd324fb6744f/LICENSE"
+        },
+        "preview": {
+          "origin": "Text-only image generation of a fictional cobalt travel kettle with no real brand or third-party image.",
+          "author": "wangjs-jacky",
+          "licenseSpdx": "CC-BY-4.0"
+        }
+      },
+      "invocation": "Use $image-effects effect white-background-product@1.0.0 with this idea or my uploaded image."
     }
   ]
 }
