@@ -23,13 +23,14 @@ const LICENSES_PATH = path.join(SKILL_ROOT, 'references/licenses');
 const EFFECTS_PATH = path.join(SKILL_ROOT, 'references/effects');
 const PREVIEW_SHA256 = '70a3c534832532faed62cb80816df56002382cb661b51d2077d7eab429760daf';
 const GENERATED_PREVIEWS = {
-  'photo-illustration-editorial-echo.png': { width: 1024, height: 1536 },
+  'photo-illustration-editorial-echo.png': { width: 1024, height: 768 },
   'photo-illustration-diptych-lakeside.png': { width: 1024, height: 1536 },
   'photo-illustration-diptych.png': { width: 1024, height: 1536 },
   'scenes-gathered-zine-sea.png': { width: 1536, height: 1024 },
   'scenes-gathered-zine.png': { width: 1024, height: 1536 },
   'scene-distillation-zine.png': { width: 1024, height: 1536 },
   'minimal-zine-poster.png': { width: 1024, height: 1536 },
+  'torn-paper-editorial-photo-collage.jpg': { width: 615, height: 1024 },
 };
 const SOURCE_LICENSE_NOTICE_SHA256 =
   '1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685';
@@ -421,6 +422,24 @@ test('Minimal Zine 保留固定来源的版式与字体变化能力', async () =
   assert.doesNotMatch(effect.body, /large display copy|pseudo-text|signatures, watermarks/i);
 });
 
+test('撕纸编辑影像拼贴保留单图输入、核心构图与拟像检查', async () => {
+  const effects = await loadEffects(EFFECTS_PATH);
+  const effect = effects.find(
+    ({ ref }) => ref === 'torn-paper-editorial-photo-collage@1.0.0',
+  );
+
+  assert.ok(effect, 'missing Torn Paper Editorial Photo Collage card');
+  assert.equal(effect.executionKind, 'host-image-generation');
+  assert.deepEqual(effect.input, { mode: 'image', min: 1, max: 1, formats: ['jpeg', 'png'] });
+  assert.equal(effect.sourceRepository, 'wangjs-jacky/happy');
+  assert.equal(effect.sourceRevision, 'd1259c69fdc5494553f31b6736b640d597a89bfb');
+  assert.equal(effect.preview, 'assets/previews/torn-paper-editorial-photo-collage.jpg');
+  assert.match(effect.body, /45% to 65%/);
+  assert.match(effect.body, /exactly one broad opaque dry-brush swash/i);
+  assert.match(effect.body, /face-like pareidolia/i);
+  assert.match(effect.body, /host's native image-delivery path/i);
+});
+
 test('真实编码的干净 JPEG 和 PNG 可完整解码并通过元数据检查', async () => {
   const directory = await mkdtemp(path.join(tmpdir(), 'image-effects-media-'));
   try {
@@ -779,17 +798,18 @@ test('授权预览具有固定 SHA、尺寸且不含被禁止的元数据', asyn
   assert.equal(info.height, 1086);
 });
 
-test('七张独立生成预览可完整解码、无禁止元数据且符合目标方向', async () => {
+test('八张独立生成预览可完整解码、无禁止元数据且符合目标方向', async () => {
   const { assertMetadataFreeImage } = await loadImageTools();
 
   for (const [fileName, expectedDimensions] of Object.entries(GENERATED_PREVIEWS)) {
     const previewPath = path.join(SKILL_ROOT, 'assets/previews', fileName);
     const buffer = await readFile(previewPath);
     const digest = createHash('sha256').update(buffer).digest('hex');
-    const image = await assertMetadataFreeImage(buffer, 'png');
+    const expectedFormat = path.extname(fileName) === '.jpg' ? 'jpeg' : 'png';
+    const image = await assertMetadataFreeImage(buffer, expectedFormat);
 
     assert.match(digest, /^[0-9a-f]{64}$/, fileName);
-    assert.equal(image.format, 'png', fileName);
+    assert.equal(image.format, expectedFormat, fileName);
     assert.deepEqual(
       { width: image.width, height: image.height },
       expectedDimensions,

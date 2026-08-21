@@ -45,6 +45,7 @@ const ORIGINAL_CATALOG = [
   ['scene-distillation-zine@1.0.0', '.png'],
   ['scenes-gathered-zine@1.0.0', '.png'],
   ['scenes-gathered-zine-sea@1.0.0', '.png'],
+  ['torn-paper-editorial-photo-collage@1.0.0', '.jpg'],
 ];
 
 export const EXPECTED_CATALOG = Object.freeze([

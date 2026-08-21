@@ -21,10 +21,10 @@ source_license_spdx: MIT
 source_license_url: https://github.com/wangjs-jacky/happy/blob/e8716a0a0c949f8e2b45e1e3d7c8d36ad7bba17c/LICENSE
 source_license_notice: references/licenses/happy-coder-contributors-mit.txt
 adaptation_notice: Preserves the mandatory illustrated-motif and deterministic-layout pipeline while replacing product-specific paths with host-neutral capability gates, privacy cleanup, and honest fallback.
-preview_origin: Locally composed from two text-only generated fictional assets; not based on a real person, place, brand, or third-party image.
+preview_origin: Text-only image generation of a fictional rainy storefront and bicycle; not based on a real person, place, brand, or third-party image.
 preview_author: wangjs-jacky
 preview_license_spdx: CC-BY-4.0
-preview_sha256: 6d749c55f692bff9b6a7e2c0ec84545ee05fb6191abfd5eb07df7e6dde9cc990
+preview_sha256: ed002f7dd4641a691ccec1f0ce3575fca6be85c26991cb5e75c745ea23aa9313
 ---
 
 ## 适用场景

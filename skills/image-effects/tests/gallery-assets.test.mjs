@@ -37,7 +37,7 @@ const EXPECTED_PROVENANCE = {
   'photo-illustration-editorial-echo@1.0.0': {
     repository: 'wangjs-jacky/happy',
     revision: 'e8716a0a0c949f8e2b45e1e3d7c8d36ad7bba17c',
-    origin: 'Locally composed from two text-only generated fictional assets; not based on a real person, place, brand, or third-party image.',
+    origin: 'Text-only image generation of a fictional rainy storefront and bicycle; not based on a real person, place, brand, or third-party image.',
   },
   'scene-distillation-zine@1.0.0': {
     repository: 'Zeejay0/gathered-scenes-zine-skill',
@@ -53,6 +53,11 @@ const EXPECTED_PROVENANCE = {
     repository: 'Zeejay0/gathered-scenes-zine-skill',
     revision: 'e764b7fd243d7cc501723b9d325279bf6dd852c2',
     origin: 'Text-only image generation of a fictional scene; not based on a real person, place, brand, or third-party image.',
+  },
+  'torn-paper-editorial-photo-collage@1.0.0': {
+    repository: 'wangjs-jacky/happy',
+    revision: 'd1259c69fdc5494553f31b6736b640d597a89bfb',
+    origin: 'Text-only image generation of a fictional rainy stair scene with an unattended umbrella; not based on a real person, place, brand, or third-party image.',
   },
 };
 
