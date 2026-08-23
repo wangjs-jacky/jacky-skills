@@ -45,6 +45,7 @@ const YAML_PLAIN_SEPARATOR_PATTERN = /:[ \t]|[ \t]#/;
 const CONTROL_CHARACTER_PATTERN = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
 const MARKDOWN_TEXT_PATTERN = /[\\`*_\[\]()<>!|]/g;
 const CATEGORIES = new Set([
+  'academic-figures',
   'assets-and-props',
   'avatars-and-profile',
   'branding-and-packaging',
@@ -59,6 +60,10 @@ const CATEGORIES = new Set([
   'product-visuals',
   'scenes-and-illustrations',
   'storyboards-and-sequences',
+  'slides-and-visual-docs',
+  'technical-diagrams',
+  'typography-and-text-layout',
+  'ui-mockups',
   'zine',
 ]);
 const EXECUTION_KINDS = new Set([

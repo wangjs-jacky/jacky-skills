@@ -8,6 +8,7 @@ const EXECUTION_KINDS = new Set([
   'host-image-generation-and-layout',
 ]);
 const CATEGORIES = new Set([
+  'academic-figures',
   'assets-and-props',
   'avatars-and-profile',
   'branding-and-packaging',
@@ -22,6 +23,10 @@ const CATEGORIES = new Set([
   'product-visuals',
   'scenes-and-illustrations',
   'storyboards-and-sequences',
+  'slides-and-visual-docs',
+  'technical-diagrams',
+  'typography-and-text-layout',
+  'ui-mockups',
   'zine',
 ]);
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

@@ -11,7 +11,11 @@ import { PUBLIC_MEDIA_BASE_URL } from '../gallery/gallery-config.mjs';
 import { effectTitleId, readLocationFilters, syncLocationFilters } from '../gallery/gallery-runtime.mjs';
 import { buildGallerySite } from '../scripts/build-site.mjs';
 import { publicTemplatePath } from '../scripts/public-layout.mjs';
-import { HAPPY_SOURCE_REVISION, MIGRATED_EFFECT_IDS } from './catalog-fixture.mjs';
+import {
+  EXPANDED_EFFECT_IDS,
+  HAPPY_SOURCE_REVISION,
+  MIGRATED_EFFECT_IDS,
+} from './catalog-fixture.mjs';
 
 const SKILL_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const GALLERY_ROOT = path.join(SKILL_ROOT, 'gallery');
@@ -238,6 +242,19 @@ test('Library 固定公开来源、源码许可和预览署名契约', async (t)
       continue;
     }
 
+    if (EXPANDED_EFFECT_IDS.includes(effect.id)) {
+      assert.equal(effect.provenance.repository, 'ConardLi/garden-skills');
+      assert.equal(effect.provenance.revision, 'aaf9a82f5efd73e87cc0998edc398e75bfc35901');
+      assert.deepEqual(effect.provenance.license, {
+        spdx: 'MIT',
+        url: 'https://github.com/ConardLi/garden-skills/blob/aaf9a82f5efd73e87cc0998edc398e75bfc35901/LICENSE',
+      });
+      assert.match(effect.provenance.preview.origin, /original procedural vector/i);
+      assert.equal(effect.provenance.preview.author, 'wangjs-jacky');
+      assert.equal(effect.provenance.preview.licenseSpdx, 'CC-BY-4.0');
+      continue;
+    }
+
     assert.ok(MIGRATED_EFFECT_IDS.includes(effect.id), `unexpected effect ref: ${effect.ref}`);
     assert.equal(effect.provenance.repository, 'wangjs-jacky/happy');
     assert.equal(effect.provenance.revision, HAPPY_SOURCE_REVISION);
@@ -293,6 +310,7 @@ test('Library 的每个分类都有中英文展示标签', async () => {
   }
 
   assert.deepEqual(translations.en.categories, {
+    'academic-figures': 'Academic Figures',
     'assets-and-props': 'Assets & Props',
     'avatars-and-profile': 'Avatars & Profile',
     'branding-and-packaging': 'Branding & Packaging',
@@ -307,9 +325,14 @@ test('Library 的每个分类都有中英文展示标签', async () => {
     'product-visuals': 'Product Visuals',
     'scenes-and-illustrations': 'Scenes & Illustrations',
     'storyboards-and-sequences': 'Storyboards & Sequences',
+    'slides-and-visual-docs': 'Slides & Visual Docs',
+    'technical-diagrams': 'Technical Diagrams',
+    'typography-and-text-layout': 'Typography & Text Layout',
+    'ui-mockups': 'UI Mockups',
     zine: 'Zine',
   });
   assert.deepEqual(translations.zh.categories, {
+    'academic-figures': '学术配图',
     'assets-and-props': '素材资产',
     'avatars-and-profile': '头像人设',
     'branding-and-packaging': '品牌包装',
@@ -324,6 +347,10 @@ test('Library 的每个分类都有中英文展示标签', async () => {
     'product-visuals': '产品视觉',
     'scenes-and-illustrations': '氛围插画',
     'storyboards-and-sequences': '叙事序列',
+    'slides-and-visual-docs': '视觉文档',
+    'technical-diagrams': '技术图示',
+    'typography-and-text-layout': '字体版式',
+    'ui-mockups': '界面样机',
     zine: '纸本杂志',
   });
 });
