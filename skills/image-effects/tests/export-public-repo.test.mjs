@@ -64,6 +64,7 @@ const EXPECTED_EXPORT_PATHS = [
   "package-lock.json",
   "package.json",
   "references/INDEX.md",
+  "references/release-sop.md",
   ...LICENSE_NOTICE_NAMES.map((name) => `references/licenses/${name}`),
   ...FIXED_REFS.flatMap(([ref, extension]) => [
     `gallery/media/${ref}${extension}`,
@@ -121,6 +122,7 @@ async function makeSourceFixture() {
     "skills/image-effects/agents/openai.yaml":
       "interface:\n  display_name: Image Effects\n",
     "skills/image-effects/references/INDEX.md": "# Index\n",
+    "skills/image-effects/references/release-sop.md": "# Release SOP\n",
     "skills/image-effects/assets/previews/example.png": Buffer.from([
       0x89, 0x50, 0x4e, 0x47,
     ]),

@@ -262,6 +262,7 @@ test('English public README documents the complete standalone catalog contract',
   assert.match(readme, /no extra Skill dependenc/i);
   assert.match(readme, /does not include `grade-images`/i);
   assert.match(readme, /\[Gallery\]\(https:\/\/wangjs-jacky\.github\.io\/image-effects\/\)/);
+  assert.match(readme, /\[Gallery release and OSS hotlink-protection SOP\]\(\.\/references\/release-sop\.md\)/);
   assert.match(readme, /\[THIRD_PARTY_NOTICES\.md\]\(\.\/THIRD_PARTY_NOTICES\.md\)/);
 });
 
@@ -275,6 +276,7 @@ test('Chinese public README documents the complete standalone catalog contract',
   assert.match(readme, /不需要额外安装任何 Skill 依赖/);
   assert.match(readme, /不包含 `grade-images`/);
   assert.match(readme, /\[Gallery\]\(https:\/\/wangjs-jacky\.github\.io\/image-effects\/\)/);
+  assert.match(readme, /\[Gallery 发布与 OSS 防盗链 SOP\]\(\.\/references\/release-sop\.md\)/);
   assert.match(readme, /\[THIRD_PARTY_NOTICES\.md\]\(\.\/THIRD_PARTY_NOTICES\.md\)/);
 });
 

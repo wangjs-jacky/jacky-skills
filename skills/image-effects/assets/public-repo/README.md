@@ -66,3 +66,4 @@ The root [LICENSE](./LICENSE) covers only original code and adaptations in this 
 
 Do not hand-edit generated Gallery files or `THIRD_PARTY_NOTICES.md`.
 The exported repository keeps `THIRD_PARTY_NOTICES.header.md` at its root so a clean checkout can rebuild and test the notice output without source-only files.
+Maintainers must follow the [Gallery release and OSS hotlink-protection SOP](./references/release-sop.md) for the two-repository release, Pages verification, strict Referer policy, and rollback procedure.
