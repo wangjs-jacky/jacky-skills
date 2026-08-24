@@ -61,7 +61,8 @@ The root [LICENSE](./LICENSE) covers only original code and adaptations in this 
 
 The canonical source is `wangjs-jacky/jacky-skills/skills/image-effects`. Submit effect
 changes there. Merges automatically create or update the generated public-repository
-and Paws snapshot pull requests; do not hand-edit generated downstream catalog files.
+and Paws snapshot pull requests, validate them, and squash-merge them in release order;
+do not hand-edit generated downstream catalog files.
 
 1. Add one versioned card under `references/effects/` with complete provenance and license fields.
 2. Add a metadata-free JPEG or PNG preview under `assets/previews/`.

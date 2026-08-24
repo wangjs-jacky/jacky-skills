@@ -111,21 +111,22 @@ Maintainers edit only `jacky-skills/skills/image-effects`. A merge to
 `Sync image-effects downstream repositories`, which performs the following work:
 
 1. validates the canonical Skill and Gallery;
-2. exports a clean, hashed snapshot and creates or updates a PR in
-   `wangjs-jacky/image-effects`;
-3. generates the pinned offline Paws snapshot and creates or updates a PR in
-   `wangjs-jacky/happy`;
-4. links the Paws PR to the public snapshot PR and instructs maintainers to merge the
-   public snapshot first.
+2. exports a clean, hashed snapshot, creates or updates a PR in
+   `wangjs-jacky/image-effects`, and squash-merges it;
+3. waits for the Gallery OSS publication and Pages deployment to succeed;
+4. generates the pinned offline Paws snapshot, creates or updates a PR in
+   `wangjs-jacky/happy`, and squash-merges it;
+5. waits for the Paws production OTA and Web deployment to succeed.
 
 The automation requires the repository Secret `IMAGE_EFFECTS_DOWNSTREAM_TOKEN` in
 `jacky-skills`. Use a fine-grained token limited to Contents and Pull requests write
 access for `image-effects` and `happy`; never store the token in repository files or
 workflow output.
 
-Downstream PRs remain review and merge gates. Do not edit their generated catalog,
+Downstream PRs are retained as audit records, but the canonical workflow merges them
+automatically after its validation gates pass. Do not edit their generated catalog,
 Gallery, prompt, or preview files directly. If validation fails, fix the canonical
-source and let the same automation branches update both PRs.
+source and rerun the workflow; never repair a generated downstream branch manually.
 
 After the public PR is merged, `Deploy Gallery to Pages` verifies or uploads only
 missing immutable versioned previews, then deploys the Gallery. Configure
@@ -133,9 +134,9 @@ missing immutable versioned previews, then deploys the Gallery. Configure
 `image-effects`, using a RAM identity limited to the Gallery bucket. Existing remote
 objects are never overwritten: a hash mismatch fails the deployment.
 
-Wait for both the OSS publication step and the Pages deployment to succeed. A merged
-pull request without a successful `Deploy Gallery to Pages` run is not a completed
-release.
+The canonical workflow waits for the OSS publication, Pages deployment, Paws
+production OTA, and Paws Web deployment. A merge without all applicable delivery runs
+succeeding is reported as a failed downstream release rather than a completed one.
 
 For a local recovery export, use a clean canonical source commit and run:
 

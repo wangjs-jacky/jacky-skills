@@ -104,6 +104,37 @@ jobs:
           fi
           echo "url=$pr_url" >> "$GITHUB_OUTPUT"
 
+      - name: Merge public repository PR
+        if: steps.public.outputs.changed == 'true'
+        id: public-merge
+        run: |
+          public_pr="${{ steps.public-pr.outputs.url }}"
+          gh pr merge "$public_pr" --repo "$PUBLIC_REPOSITORY" \
+            --squash --delete-branch \
+            --match-head-commit "${{ steps.public.outputs.commit }}" \
+            --subject "chore: sync image-effects from canonical source" \
+            --body ""
+          merge_commit="$(gh pr view "$public_pr" --repo "$PUBLIC_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
+          test -n "$merge_commit"
+          echo "commit=$merge_commit" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for Gallery deployment
+        if: steps.public.outputs.changed == 'true'
+        run: |
+          gallery_run_id=""
+          for attempt in {1..30}; do
+            gallery_run_id="$(gh run list --repo "$PUBLIC_REPOSITORY" \
+              --workflow pages.yml --commit "${{ steps.public-merge.outputs.commit }}" \
+              --limit 1 --json databaseId --jq '.[0].databaseId // ""')"
+            if test -n "$gallery_run_id"; then break; fi
+            echo "Waiting for Gallery deployment run ($attempt/30)..."
+            sleep 10
+          done
+          test -n "$gallery_run_id" || { echo '::error::Gallery deployment run was not created.'; exit 1; }
+          gh run watch "$gallery_run_id" --repo "$PUBLIC_REPOSITORY" --exit-status
+          git -C image-effects fetch origin main
+          git -C image-effects switch --detach origin/main
+
       - name: Check out Paws repository
         if: steps.public.outputs.changed == 'true'
         uses: actions/checkout@v4
@@ -160,12 +191,64 @@ jobs:
 
       - name: Create or update Paws PR
         if: steps.app.outputs.changed == 'true'
+        id: app-pr
         run: |
           existing_url="$(gh pr list --repo "$APP_REPOSITORY" --head "$APP_BRANCH" --base main --state open --json url --jq '.[0].url // ""')"
           public_pr="${{ steps.public-pr.outputs.url }}"
-          body="$(printf 'Canonical source: wangjs-jacky/jacky-skills@%s\nPublic snapshot: %s\n\nMerge the public snapshot first. This PR keeps Paws offline-safe by pinning the reviewed catalog and preview assets.' "$GITHUB_SHA" "$public_pr")"
+          body="$(printf 'Canonical source: wangjs-jacky/jacky-skills@%s\nMerged public snapshot: %s\n\nThis generated PR keeps Paws offline-safe by pinning the validated catalog and preview assets. The canonical workflow will merge it automatically.' "$GITHUB_SHA" "$public_pr")"
           if test -n "$existing_url"; then
             gh pr edit "$existing_url" --repo "$APP_REPOSITORY" --title "chore(app): sync image-effects catalog snapshot" --body "$body"
+            pr_url="$existing_url"
           else
-            gh pr create --repo "$APP_REPOSITORY" --base main --head "$APP_BRANCH" --title "chore(app): sync image-effects catalog snapshot" --body "$body"
+            pr_url="$(gh pr create --repo "$APP_REPOSITORY" --base main --head "$APP_BRANCH" --title "chore(app): sync image-effects catalog snapshot" --body "$body")"
           fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Merge Paws PR
+        if: steps.app.outputs.changed == 'true'
+        id: app-merge
+        run: |
+          app_pr="${{ steps.app-pr.outputs.url }}"
+          gh pr merge "$app_pr" --repo "$APP_REPOSITORY" \
+            --squash --delete-branch \
+            --match-head-commit "$(git -C happy rev-parse HEAD)" \
+            --subject "chore(app): sync image-effects catalog snapshot" \
+            --body ""
+          merge_commit="$(gh pr view "$app_pr" --repo "$APP_REPOSITORY" --json mergeCommit --jq '.mergeCommit.oid')"
+          test -n "$merge_commit"
+          echo "commit=$merge_commit" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for Paws production delivery
+        if: steps.app.outputs.changed == 'true'
+        run: |
+          ota_run_id=""
+          web_run_id=""
+          for attempt in {1..30}; do
+            ota_run_id="$(gh run list --repo "$APP_REPOSITORY" \
+              --workflow ota-production.yml --commit "${{ steps.app-merge.outputs.commit }}" \
+              --limit 1 --json databaseId --jq '.[0].databaseId // ""')"
+            web_run_id="$(gh run list --repo "$APP_REPOSITORY" \
+              --workflow web-production-deploy.yml --commit "${{ steps.app-merge.outputs.commit }}" \
+              --limit 1 --json databaseId --jq '.[0].databaseId // ""')"
+            if test -n "$ota_run_id" && test -n "$web_run_id"; then break; fi
+            echo "Waiting for Paws production runs ($attempt/30)..."
+            sleep 10
+          done
+          test -n "$ota_run_id" || { echo '::error::Paws production OTA run was not created.'; exit 1; }
+          test -n "$web_run_id" || { echo '::error::Paws Web deployment run was not created.'; exit 1; }
+          gh run watch "$ota_run_id" --repo "$APP_REPOSITORY" --exit-status
+          gh run watch "$web_run_id" --repo "$APP_REPOSITORY" --exit-status
+
+      - name: Summarize automatic downstream release
+        if: steps.app.outputs.changed == 'true'
+        run: |
+          {
+            echo '### image-effects downstream release'
+            echo
+            echo "- Canonical source: wangjs-jacky/jacky-skills@$GITHUB_SHA"
+            echo "- Gallery PR: ${{ steps.public-pr.outputs.url }}"
+            echo "- Gallery merge: ${{ steps.public-merge.outputs.commit }}"
+            echo "- Paws PR: ${{ steps.app-pr.outputs.url }}"
+            echo "- Paws merge: ${{ steps.app-merge.outputs.commit }}"
+            echo '- Gallery Pages/OSS, Paws production OTA, and Paws Web all completed successfully.'
+          } >> "$GITHUB_STEP_SUMMARY"
