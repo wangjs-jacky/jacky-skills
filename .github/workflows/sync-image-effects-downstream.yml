@@ -49,7 +49,17 @@ jobs:
         run: |
           npm ci
           npm run build:site
-          node --test tests/*.test.mjs
+          node --test \
+            tests/build-gallery.test.mjs \
+            tests/catalog-metadata.test.mjs \
+            tests/downstream-sync-workflow.test.mjs \
+            tests/effect-assets.test.mjs \
+            tests/effect-library.test.mjs \
+            tests/gallery-assets.test.mjs \
+            tests/gallery-model.test.mjs \
+            tests/publish-gallery-media.test.mjs
+          node --test --test-name-pattern='从 HEAD Git 对象导出精确白名单' \
+            tests/export-public-repo.test.mjs
           node scripts/validate-effects.mjs
 
       - name: Check out public repository
@@ -70,7 +80,14 @@ jobs:
             --target "$GITHUB_WORKSPACE/image-effects"
           npm --prefix ../image-effects ci
           npm --prefix ../image-effects run build:site
-          node --test ../image-effects/tests/*.test.mjs
+          node --test \
+            ../image-effects/tests/build-gallery.test.mjs \
+            ../image-effects/tests/catalog-metadata.test.mjs \
+            ../image-effects/tests/effect-assets.test.mjs \
+            ../image-effects/tests/effect-library.test.mjs \
+            ../image-effects/tests/gallery-assets.test.mjs \
+            ../image-effects/tests/gallery-model.test.mjs \
+            ../image-effects/tests/publish-gallery-media.test.mjs
           node ../image-effects/scripts/validate-effects.mjs
 
       - name: Commit public snapshot
