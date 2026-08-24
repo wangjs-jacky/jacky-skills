@@ -173,6 +173,8 @@ jobs:
       - name: Set up pnpm
         if: steps.public.outputs.changed == 'true'
         uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.0
 
       - name: Validate Paws snapshot
         if: steps.public.outputs.changed == 'true'

@@ -26,6 +26,11 @@ test('downstream sync automatically merges in release order and waits for delive
   assert.match(workflow, /gh run watch "\$gallery_run_id"[\s\S]*--exit-status/);
   assert.match(workflow, /gh run watch "\$ota_run_id"[\s\S]*--exit-status/);
   assert.match(workflow, /gh run watch "\$web_run_id"[\s\S]*--exit-status/);
+  assert.match(
+    workflow,
+    /uses: pnpm\/action-setup@v4[\s\S]*?with:\s*\n\s*version: 10\.11\.0/,
+    'Paws validation must install the repository pnpm version explicitly',
+  );
   assert.doesNotMatch(workflow, /node --test tests\/\*\.test\.mjs/);
   assert.match(workflow, /--test-name-pattern='从 HEAD Git 对象导出精确白名单'/);
 });
