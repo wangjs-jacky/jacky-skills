@@ -21,6 +21,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      ALIBABA_CLOUD_ACCESS_KEY_ID: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
+      ALIBABA_CLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -31,6 +34,22 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Verify OSS credentials
+        run: |
+          test -n "$ALIBABA_CLOUD_ACCESS_KEY_ID" || { echo '::error::Missing ALIYUN_OSS_ACCESS_KEY_ID secret.'; exit 1; }
+          test -n "$ALIBABA_CLOUD_ACCESS_KEY_SECRET" || { echo '::error::Missing ALIYUN_OSS_ACCESS_KEY_SECRET secret.'; exit 1; }
+      - name: Install aliyun CLI
+        run: |
+          curl -fsSL -o /tmp/aliyun-cli.tgz https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
+          tar -xzf /tmp/aliyun-cli.tgz -C /tmp
+          sudo mv /tmp/aliyun /usr/local/bin/aliyun
+          aliyun ossutil --help >/dev/null
+          aliyun configure set --profile default --mode AK \
+            --access-key-id "$ALIBABA_CLOUD_ACCESS_KEY_ID" \
+            --access-key-secret "$ALIBABA_CLOUD_ACCESS_KEY_SECRET" \
+            --region cn-hangzhou
+      - name: Publish immutable Gallery previews to OSS
+        run: node scripts/publish-gallery-media.mjs
       - name: Build Gallery
         run: npm run build:site
       - name: Configure Pages

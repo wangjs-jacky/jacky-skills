@@ -104,24 +104,44 @@ ossutil api get-bucket-referer \
   --output-format json
 ```
 
-## Publish through both repositories
+## Publish from the single canonical source
 
-1. Push the source branch, open a pull request to `jacky-skills/main`, wait for all
-   checks, and merge it.
-2. Record the source merge SHA. Export only from that clean merge commit:
+Maintainers edit only `jacky-skills/skills/image-effects`. A merge to
+`jacky-skills/main` that touches this directory triggers
+`Sync image-effects downstream repositories`, which performs the following work:
 
-   ```bash
-   node scripts/export-public-repo.mjs --target /absolute/path/to/image-effects
-   ```
+1. validates the canonical Skill and Gallery;
+2. exports a clean, hashed snapshot and creates or updates a PR in
+   `wangjs-jacky/image-effects`;
+3. generates the pinned offline Paws snapshot and creates or updates a PR in
+   `wangjs-jacky/happy`;
+4. links the Paws PR to the public snapshot PR and instructs maintainers to merge the
+   public snapshot first.
 
-3. Confirm `.image-effects-export.json` records the source merge SHA and the complete
-   managed-file set.
-4. In the public repository, run `npm ci`, the Gallery build, the focused tests above,
-   and effect validation again.
-5. Open and merge a public-repository pull request. Do not push a feature commit
-   directly to `main`.
-6. Wait for `Deploy Gallery to Pages` for the public merge SHA. A merged pull request
-   without a successful Pages run is not a completed release.
+The automation requires the repository Secret `IMAGE_EFFECTS_DOWNSTREAM_TOKEN` in
+`jacky-skills`. Use a fine-grained token limited to Contents and Pull requests write
+access for `image-effects` and `happy`; never store the token in repository files or
+workflow output.
+
+Downstream PRs remain review and merge gates. Do not edit their generated catalog,
+Gallery, prompt, or preview files directly. If validation fails, fix the canonical
+source and let the same automation branches update both PRs.
+
+After the public PR is merged, `Deploy Gallery to Pages` verifies or uploads only
+missing immutable versioned previews, then deploys the Gallery. Configure
+`ALIYUN_OSS_ACCESS_KEY_ID` and `ALIYUN_OSS_ACCESS_KEY_SECRET` as repository Secrets in
+`image-effects`, using a RAM identity limited to the Gallery bucket. Existing remote
+objects are never overwritten: a hash mismatch fails the deployment.
+
+Wait for both the OSS publication step and the Pages deployment to succeed. A merged
+pull request without a successful `Deploy Gallery to Pages` run is not a completed
+release.
+
+For a local recovery export, use a clean canonical source commit and run:
+
+```bash
+node scripts/export-public-repo.mjs --target /absolute/path/to/image-effects
+```
 
 ## Production acceptance matrix
 

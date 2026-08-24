@@ -59,6 +59,9 @@ Editorial Echo 固定采用两个阶段。创建任何中间资产前，Skill �
 
 ## 贡献效果
 
+唯一源文件位于 `wangjs-jacky/jacky-skills/skills/image-effects`。效果修改请提交到该目录；
+合并后会自动创建或更新公开仓库与 Paws 快照 PR，不要直接编辑下游生成的目录文件。
+
 1. 在 `references/effects/` 中新增一张带版本的效果卡，完整填写来源与许可证字段。
 2. 在 `assets/previews/` 中加入一张已清除元数据的 JPEG 或 PNG 预览图。
 3. 运行 Skill 包中记录的 Gallery 构建和效果验证命令。

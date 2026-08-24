@@ -1,0 +1,169 @@
+name: Sync image-effects downstream repositories
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'skills/image-effects/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: image-effects-downstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.IMAGE_EFFECTS_DOWNSTREAM_TOKEN }}
+      PUBLIC_REPOSITORY: wangjs-jacky/image-effects
+      PUBLIC_BRANCH: automation/sync-image-effects
+      APP_REPOSITORY: wangjs-jacky/happy
+      APP_BRANCH: automation/sync-image-effects
+    steps:
+      - name: Check out canonical source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify downstream token
+        run: |
+          test -n "$GH_TOKEN" || { echo '::error::Missing IMAGE_EFFECTS_DOWNSTREAM_TOKEN secret.'; exit 1; }
+          gh auth status
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: skills/image-effects/package-lock.json
+
+      - name: Install and validate canonical Skill
+        working-directory: skills/image-effects
+        run: |
+          npm ci
+          npm run build:site
+          node --test tests/*.test.mjs
+          node scripts/validate-effects.mjs
+
+      - name: Check out public repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PUBLIC_REPOSITORY }}
+          ref: main
+          token: ${{ secrets.IMAGE_EFFECTS_DOWNSTREAM_TOKEN }}
+          fetch-depth: 0
+          path: .downstream/image-effects
+
+      - name: Export and validate public repository
+        run: |
+          git -C .downstream/image-effects fetch origin "$PUBLIC_BRANCH" || true
+          git -C .downstream/image-effects switch -C "$PUBLIC_BRANCH" origin/main
+          node skills/image-effects/scripts/export-public-repo.mjs \
+            --target "$GITHUB_WORKSPACE/.downstream/image-effects"
+          npm --prefix .downstream/image-effects ci
+          npm --prefix .downstream/image-effects run build:site
+          node --test .downstream/image-effects/tests/*.test.mjs
+          node .downstream/image-effects/scripts/validate-effects.mjs
+
+      - name: Commit public snapshot
+        id: public
+        working-directory: .downstream/image-effects
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          if git diff --quiet && test -z "$(git status --short)"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add --all
+          git commit -m "chore: sync image-effects from jacky-skills"
+          git push --force-with-lease origin "HEAD:$PUBLIC_BRANCH"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update public repository PR
+        if: steps.public.outputs.changed == 'true'
+        id: public-pr
+        run: |
+          existing_url="$(gh pr list --repo "$PUBLIC_REPOSITORY" --head "$PUBLIC_BRANCH" --base main --state open --json url --jq '.[0].url // ""')"
+          body="Canonical source: wangjs-jacky/jacky-skills@${GITHUB_SHA}\n\nThis PR is generated from skills/image-effects. Do not edit generated files here; update the canonical source instead."
+          if test -n "$existing_url"; then
+            gh pr edit "$existing_url" --repo "$PUBLIC_REPOSITORY" --title "chore: sync image-effects from canonical source" --body "$body"
+            pr_url="$existing_url"
+          else
+            pr_url="$(gh pr create --repo "$PUBLIC_REPOSITORY" --base main --head "$PUBLIC_BRANCH" --title "chore: sync image-effects from canonical source" --body "$body")"
+          fi
+          echo "url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Check out Paws repository
+        if: steps.public.outputs.changed == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.APP_REPOSITORY }}
+          ref: main
+          token: ${{ secrets.IMAGE_EFFECTS_DOWNSTREAM_TOKEN }}
+          fetch-depth: 0
+          path: .downstream/happy
+
+      - name: Generate Paws snapshot
+        if: steps.public.outputs.changed == 'true'
+        run: |
+          git -C .downstream/happy fetch origin "$APP_BRANCH" || true
+          git -C .downstream/happy switch -C "$APP_BRANCH" origin/main
+          node .downstream/happy/packages/happy-app/scripts/sync-image-effects-catalog.mjs \
+            --source "$GITHUB_WORKSPACE/.downstream/image-effects"
+
+      - name: Set up pnpm
+        if: steps.public.outputs.changed == 'true'
+        uses: pnpm/action-setup@v4
+
+      - name: Validate Paws snapshot
+        if: steps.public.outputs.changed == 'true'
+        working-directory: .downstream/happy
+        run: |
+          pnpm install --frozen-lockfile
+          node --test packages/happy-app/scripts/sync-image-effects-catalog.test.mjs
+          pnpm --filter happy-app exec vitest run \
+            sources/components/agents/imageEffectsCatalogAdapter.test.ts \
+            sources/components/agents/imageStylePreviewManifest.test.ts
+          pnpm --filter happy-app run typecheck
+
+      - name: Commit Paws snapshot
+        if: steps.public.outputs.changed == 'true'
+        id: app
+        working-directory: .downstream/happy
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          if git diff --quiet && test -z "$(git status --short)"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add packages/happy-app/assets/images/image-effects \
+            packages/happy-app/scripts/sync-image-effects-catalog.mjs \
+            packages/happy-app/sources/components/agents/imageEffectsCatalogAdapter.ts \
+            packages/happy-app/sources/components/agents/imageEffectsCatalogSnapshot.json \
+            packages/happy-app/sources/components/agents/imageStylePreviewAssets.ts \
+            packages/happy-app/sources/components/agents/imageStylePreviewManifest.ts
+          git commit -m "chore(app): sync image-effects catalog snapshot"
+          git push --force-with-lease origin "HEAD:$APP_BRANCH"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update Paws PR
+        if: steps.app.outputs.changed == 'true'
+        run: |
+          existing_url="$(gh pr list --repo "$APP_REPOSITORY" --head "$APP_BRANCH" --base main --state open --json url --jq '.[0].url // ""')"
+          public_pr="${{ steps.public-pr.outputs.url }}"
+          body="Canonical source: wangjs-jacky/jacky-skills@${GITHUB_SHA}\nPublic snapshot: ${public_pr}\n\nMerge the public snapshot first. This PR keeps Paws offline-safe by pinning the reviewed catalog and preview assets."
+          if test -n "$existing_url"; then
+            gh pr edit "$existing_url" --repo "$APP_REPOSITORY" --title "chore(app): sync image-effects catalog snapshot" --body "$body"
+          else
+            gh pr create --repo "$APP_REPOSITORY" --base main --head "$APP_BRANCH" --title "chore(app): sync image-effects catalog snapshot" --body "$body"
+          fi

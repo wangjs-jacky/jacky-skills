@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2026-08-24.94",
+  "categories": {
+    "academic-figures": { "title": { "en": "Academic Figures", "zh": "学术配图" }, "accent": "#1A4E8A" },
+    "assets-and-props": { "title": { "en": "Assets and Props", "zh": "素材资产" }, "accent": "#6B5B95" },
+    "avatars-and-profile": { "title": { "en": "Avatars and Profiles", "zh": "头像人设" }, "accent": "#D08C60" },
+    "branding-and-packaging": { "title": { "en": "Branding and Packaging", "zh": "品牌包装" }, "accent": "#B8860B" },
+    "editing-workflows": { "title": { "en": "Editing Workflows", "zh": "图像编辑" }, "accent": "#4A6FA5" },
+    "editorial": { "title": { "en": "Editorial", "zh": "编辑设计" }, "accent": "#B34732" },
+    "grids-and-collages": { "title": { "en": "Grids and Collages", "zh": "网格拼贴" }, "accent": "#2E7D8B" },
+    "infographics": { "title": { "en": "Infographics", "zh": "信息图" }, "accent": "#D4665A" },
+    "maps": { "title": { "en": "Maps", "zh": "地图" }, "accent": "#3B7A57" },
+    "portrait": { "title": { "en": "Portrait", "zh": "人物" }, "accent": "#315D86" },
+    "portraits-and-characters": { "title": { "en": "Portraits and Characters", "zh": "人物视觉" }, "accent": "#8B4513" },
+    "poster-and-campaigns": { "title": { "en": "Posters and Campaigns", "zh": "海报营销" }, "accent": "#E8472C" },
+    "product-visuals": { "title": { "en": "Product Visuals", "zh": "产品视觉" }, "accent": "#C7522A" },
+    "scenes-and-illustrations": { "title": { "en": "Scenes and Illustrations", "zh": "氛围插画" }, "accent": "#5E8B7E" },
+    "slides-and-visual-docs": { "title": { "en": "Slides and Visual Documents", "zh": "视觉文档" }, "accent": "#6A4C93" },
+    "storyboards-and-sequences": { "title": { "en": "Storyboards and Sequences", "zh": "叙事序列" }, "accent": "#A23E48" },
+    "technical-diagrams": { "title": { "en": "Technical Diagrams", "zh": "技术图示" }, "accent": "#0A6E96" },
+    "typography-and-text-layout": { "title": { "en": "Typography and Text Layout", "zh": "字体版式" }, "accent": "#4F4F4F" },
+    "ui-mockups": { "title": { "en": "UI Mockups", "zh": "界面样机" }, "accent": "#1F6FB2" },
+    "zine": { "title": { "en": "Zine", "zh": "纸本杂志" }, "accent": "#7A6250" }
+  }
+}
