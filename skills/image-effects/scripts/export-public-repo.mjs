@@ -45,6 +45,9 @@ const EXACT_SKILL_FILES = new Set([
   "package.json",
   "package-lock.json",
 ]);
+const SOURCE_ONLY_SKILL_FILES = new Set([
+  "tests/downstream-sync-workflow.test.mjs",
+]);
 const SKILL_DIRECTORY_PREFIXES = [
   "agents/",
   "references/",
@@ -197,6 +200,7 @@ function mapSourcePath(sourcePath) {
       ) ?? null
     );
   }
+  if (SOURCE_ONLY_SKILL_FILES.has(relativePath)) return null;
   if (EXACT_SKILL_FILES.has(relativePath)) return relativePath;
   if (
     SKILL_DIRECTORY_PREFIXES.some((prefix) => relativePath.startsWith(prefix))

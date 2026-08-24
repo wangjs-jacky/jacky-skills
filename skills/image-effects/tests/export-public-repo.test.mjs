@@ -131,6 +131,8 @@ async function makeSourceFixture() {
     "skills/image-effects/scripts/run.mjs": "export const ok = true;\n",
     "skills/image-effects/tests/run.test.mjs":
       "import test from 'node:test';\ntest('ok', () => {});\n",
+    "skills/image-effects/tests/downstream-sync-workflow.test.mjs":
+      "throw new Error('source-only workflow test must not be exported');\n",
     "skills/image-effects/package.json": '{"name":"fixture","type":"module"}\n',
     "skills/image-effects/package-lock.json":
       '{"name":"fixture","lockfileVersion":3}\n',
