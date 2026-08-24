@@ -24,6 +24,7 @@ jobs:
     env:
       ALIBABA_CLOUD_ACCESS_KEY_ID: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
       ALIBABA_CLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
+      ALIBABA_CLOUD_REGION_ID: cn-hangzhou
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

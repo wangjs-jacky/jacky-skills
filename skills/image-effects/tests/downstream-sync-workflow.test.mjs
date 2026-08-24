@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workflowPath = path.resolve(skillRoot, '../../.github/workflows/sync-image-effects-downstream.yml');
+const pagesWorkflowPath = path.resolve(skillRoot, 'assets/public-repo/.github/workflows/pages.yml');
 
 test('downstream sync automatically merges in release order and waits for delivery', async () => {
   const workflow = await readFile(workflowPath, 'utf8');
@@ -27,4 +28,10 @@ test('downstream sync automatically merges in release order and waits for delive
   assert.match(workflow, /gh run watch "\$web_run_id"[\s\S]*--exit-status/);
   assert.doesNotMatch(workflow, /node --test tests\/\*\.test\.mjs/);
   assert.match(workflow, /--test-name-pattern='从 HEAD Git 对象导出精确白名单'/);
+});
+
+test('Gallery deployment supplies the Aliyun CLI region environment', async () => {
+  const workflow = await readFile(pagesWorkflowPath, 'utf8');
+
+  assert.match(workflow, /ALIBABA_CLOUD_REGION_ID:\s*cn-hangzhou/);
 });
