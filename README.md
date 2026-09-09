@@ -21,7 +21,7 @@
 | [knowledge-base](./plugins/knowledge-base) | 1.3.0 | 开发教程、经验与参考方案 | npm-publish, vsix-publish, vscode-extension-dev, gh-workflow-generator, github-profile-coolify, chrome-ext-ai-script, web-to-tauri-migration-loop, llm-wiki, codex-env-config |
 | [language-skills](./plugins/language-skills) | 1.0.1 | 语言学习与表达训练 | spoken-english-coach |
 | [learning-tools](./plugins/learning-tools) | 2.4.1 | 仓库学习、文档教程与技术调研 | learn-repo, repo-study, doc-to-tutorial, youtube-study-note |
-| [media-toolkit](./plugins/media-toolkit) | 1.0.0 | 媒体流下载与视频文件修复 | m3u8-dl, fix-neat-video |
+| [media-toolkit](./plugins/media-toolkit) | 1.1.0 | 媒体文件修复 | fix-neat-video |
 | [monitoring](./plugins/monitoring) | 2.5.5 | Claude Code 运行监控与历史查询 | claude-monitor, cc-history |
 | [obsidian-tools](./plugins/obsidian-tools) | 2.13.1 | Obsidian 同步、采集、编译与知识库管理 | config-obsidian, ob-collect, ob-index, ob-chat, ob-tidy, ob-project-log, ob-benchmark, ob-topic, ob-bridge, ob-compile, ob-router |
 | [skill-stats](./plugins/skill-stats) | 0.1.2 | Skill 调用统计与使用分析 | skill-stats |
