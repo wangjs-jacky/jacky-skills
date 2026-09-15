@@ -44,7 +44,7 @@
 | [skill-usage-audit](./skills/skill-usage-audit) | [web-e2e](./skills/web-e2e) | [pc-web-interaction-reviewer](./skills/pc-web-interaction-reviewer) |
 | [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
-| [photo-to-styled-motion](./skills/photo-to-styled-motion) |  |  |
+| [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
 
 `image-effects` 的事实源同样位于 [`skills/image-effects`](./skills/image-effects)，并通过目录软链接共享给同名 Plugin，避免维护两份内容。
 
