@@ -1,4 +1,4 @@
 interface:
   display_name: "Ego 浏览经验治理"
   short_description: "安全沉淀并复用经过验证的网页操作经验与持续治理流程"
-  default_prompt: "Use $ego-ops to safely execute and verify a browser task, then capture only verified reusable knowledge."
+  default_prompt: "使用 $ego-ops 先渐进读取站点经验，再观察、行动、验证，并在真实成功后自动沉淀脱敏且可校验的 operation 知识。"

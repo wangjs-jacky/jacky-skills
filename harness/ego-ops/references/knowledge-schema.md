@@ -1,78 +1,22 @@
-# Ego Ops 知识 schema
+# Ego Ops 知识 schema（兼容入口）
 
-只将已验证、可复用且脱敏的事实写入 `references/sites/`。真实操作时按“全局索引 → 一个站点索引 → 一个 operation”的顺序读取。
+知识规范已拆分为两个可渐进读取的 schema：
+
+- [站点索引 schema](schemas/site-index.md)：定义根路由和单站点索引。
+- [Operation 文档 schema](schemas/operation.md)：定义单个可复用操作。
+
+历史文档引用本文件时，仍可从这里进入规范；不要把真实站点步骤、临时对象、完整响应或认证材料写入本文件。
 
 ## 一级站点索引
 
-路径：`references/sites/index.md`
-
-```markdown
----
-format: ego-site-index
-updated: YYYY-MM-DD
----
-
-# 站点索引
-
-| site | domains | aliases | last_verified | reference |
-| --- | --- | --- | --- | --- |
-| <site-slug> | <canonical-domain> | <产品别名> | YYYY-MM-DD | [说明](<site-slug>/index.md) |
-```
-
-只放路由信息，不写页面步骤、临时对象或完整响应。
+路径：`references/sites/index.md`。只保存站点、域名、别名、最近验证日期和站点索引相对链接。
 
 ## 站点索引
 
-路径：`references/sites/<site>/index.md`
-
-```markdown
----
-site: <site-slug>
-domains:
-  - <canonical-domain>
-aliases:
-  - <产品别名>
-updated: YYYY-MM-DD
----
-
-# <站点名称>
-
-## 平台特征
-
-只记录会影响多个 operation 的登录、导航或加载事实。
-
-## 操作目录
-
-| operation | intent | risk | last_verified | reference |
-| --- | --- | --- | --- | --- |
-| <operation-slug> | <一句话目的> | low | YYYY-MM-DD | [说明](operations/<operation-slug>.md) |
-```
-
-一个产品的不同域名和环境优先复用同一个站点 slug，在 `domains` 或 `aliases` 中维护映射；不要因环境复制同一份操作经验。
+路径：`references/sites/<site-slug>/index.md`。只保存跨 operation 的平台特征、operation 路由和站点级陷阱。
 
 ## Operation
 
-路径：`references/sites/<site>/operations/<operation>.md`
+路径：`references/sites/<site-slug>/operations/<operation-slug>.md`。保存目标、授权、入口、已验证步骤、检查点、成功标准、失败恢复和验证证据。
 
-Frontmatter 必须包含：
-
-```yaml
-site: <site-slug>
-operation: <operation-slug>
-title: <中文标题>
-risk: low | medium | high
-last_verified: YYYY-MM-DD
-```
-
-正文必须按以下顺序包含八个章节：
-
-1. `目标`：可复用目标与适用边界。
-2. `前置条件与授权`：登录、角色、唯一对象与不可逆确认边界。
-3. `入口`：不含敏感参数的稳定 URL 或导航语义。
-4. `已验证步骤`：本次真实走通的语义步骤，不用坐标、瞬态引用或动态标识。
-5. `检查点`：结果不确定时应停止的位置。
-6. `成功标准`：证明业务结果真正生效的可观察结果。
-7. `失败模式与恢复`：只记录已证实且可恢复的失败。
-8. `验证证据`：最小、脱敏的 URL、状态、列表变化或确认提示。
-
-不要保存认证材料、完整响应、个人数据、动态标识、临时元素引用、坐标或未完成占位符。验证器只证明目录结构与安全边界；页面步骤是否仍然正确，必须由实时浏览结果证明。
+所有知识必须脱敏、可复用，并通过 `scripts/validate-knowledge.mjs`；失败任务不得刷新验证日期。

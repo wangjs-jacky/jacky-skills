@@ -1,10 +1,10 @@
 ---
 format: ego-site-index
-updated: 2026-08-23
+updated: 2026-09-23
 ---
 
 # 站点索引
 
-| site | domains | aliases | last_verified | reference |
+| 站点 | 域名 | 别名 | 最近验证 | 参考文档 |
 | --- | --- | --- | --- | --- |
-| douyin | www.douyin.com | 抖音 | 2026-08-23 | [说明](douyin/index.md) |
+| [douyin](douyin/index.md) | www.douyin.com | 抖音 | 2026-08-23 | [站点索引](douyin/index.md) |
