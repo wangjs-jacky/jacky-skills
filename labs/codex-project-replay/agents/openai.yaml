@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目回放器"
+  short_description: "读取本地 Codex 多会话历史，按时间回放操作、结果、错误与修正"
+  default_prompt: "使用 $codex-project-replay 复盘指定项目的本地 Codex 会话，生成 index.md 和逐会话回放，保留步骤证据并说明历史缺口。"

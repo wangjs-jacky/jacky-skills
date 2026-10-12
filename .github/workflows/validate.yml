@@ -33,6 +33,9 @@ jobs:
       - name: 运行仓库级单元测试
         run: python -m unittest discover -s tests -p 'test_*.py' -v
 
+      - name: 验证 Codex 项目回放工具
+        run: node --test labs/codex-project-replay/tests/*.test.mjs
+
       - name: 审计仓库
         run: python scripts/audit_skills.py --scan-shared-content
 
