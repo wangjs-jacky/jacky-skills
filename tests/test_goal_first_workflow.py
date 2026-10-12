@@ -62,6 +62,14 @@ class GoalFirstWorkflowInitializerTests(unittest.TestCase):
             for forbidden in ("/users/", "qv2ray", "cloudflare", "xray"):
                 self.assertNotIn(forbidden, generated_markdown)
 
+    def test_skill_allows_redacted_project_specific_context(self):
+        skill = (ROOT / "labs/goal-first-workflow/SKILL.md").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("可复用 Skill、静态模板和规则必须保持领域中性", skill)
+        self.assertIn("工作区可以保存必要且脱敏的项目上下文", skill)
+
 
 if __name__ == "__main__":
     unittest.main()
