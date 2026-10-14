@@ -18,7 +18,7 @@
       "name": "dev-tools",
       "source": "./plugins/dev-tools",
       "description": "发布、任务管理、Durable 长任务、联网、浏览器操控与效率审计工具",
-      "version": "2.8.7"
+      "version": "2.8.8"
     },
     {
       "name": "distiller-tools",
