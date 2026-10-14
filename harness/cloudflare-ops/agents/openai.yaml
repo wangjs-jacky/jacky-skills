@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cloudflare OPS"
+  short_description: "按能力与常用操作维护 Cloudflare 的设计边界、额度限制及已验证经验"
+  default_prompt: "使用 $cloudflare-ops，按相关能力及 operation 检查设计、额度与历史经验，验证后更新知识。"

@@ -57,6 +57,9 @@
 | [happy-ops](./harness/happy-ops) | Happy/Paws 自托管工程 | 拓扑理解、运行维护、故障路由和复盘经验 |
 | [hyperframes-ops](./harness/hyperframes-ops) | HyperFrames 官方 Skills | 最佳实践、复杂能力组合、本机水土不服和环境兼容性 |
 | [ego-ops](./harness/ego-ops) | 浏览器自动化经验 | 最小授权执行、可观察验证与已验证操作知识沉淀 |
+| [cloudflare-ops](./harness/cloudflare-ops) | Cloudflare 能力与场景 | Workers/DO 设计边界、额度、常见坑、事件驱动约束与操作经验 |
+
+安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
 
 每个 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录。创建新的 harness skill 时，默认放到 `harness/<target>-ops/`；详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
 
@@ -189,7 +192,8 @@ jacky-skills/
 │   ├── CLAUDE.md
 │   ├── happy-ops/
 │   ├── hyperframes-ops/
-│   └── ego-ops/
+│   ├── ego-ops/
+│   └── cloudflare-ops/
 ├── labs/                      # 实验性 Skill 与轻量 Workflow（预览版）
 │   ├── app-flow/
 │   │   └── app-flow/
