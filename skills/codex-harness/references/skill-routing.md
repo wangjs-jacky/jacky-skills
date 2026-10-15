@@ -14,6 +14,7 @@
 
 | 场景 | 先用 | 再用 |
 |------|------|------|
+| Codex 安装、配置、技能、认证连接、额度 | `codex-ops` 对应 capability / operation | 操作需要的执行 Skill；额度使用 `codex-quota` |
 | 需求模糊、需要先拆方案 | `brainstorming` | 对应领域 skill |
 | 修 bug、异常排查、回归定位 | `systematic-debugging` | 对应领域 skill |
 | 新功能实现且逻辑/回归风险高 | `test-driven-development` | 对应领域 skill |
@@ -28,6 +29,7 @@
 
 - 同时命中多个 skill 时，优先过程 skill
 - 只用最小集合，不要把所有 skill 都读一遍
+- Codex 自身运维按 `codex-ops` 的能力路由，通用过程 Skill 不应反过来覆盖其版本、配置归属与证据边界；普通编码不因运行在 Codex 中就触发该 OPS。
 - 已有脚本、reference、模板足够时，直接复用，不再新增流程
 - 用户明确点名某个 skill 时，优先满足用户要求
 

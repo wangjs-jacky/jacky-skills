@@ -14,11 +14,11 @@
 | Plugin | 版本 | 说明 | Skills |
 |--------|------|------|--------|
 | [claude-config](./plugins/claude-config) | 0.3.0 | Claude Code 配置 | statusline-setup |
-| [dev-tools](./plugins/dev-tools) | 2.8.8 | 发布、任务管理、Durable 长任务、联网、浏览器操控与效率审计 | github-repo-publish, efficiency-audit, todo, durable, web-search, browser-control, animate-prompt, remote-dev-sync, ssh-connect |
+| [dev-tools](./plugins/dev-tools) | 2.8.9 | 发布、任务管理、Durable 长任务、联网、浏览器操控与效率审计 | github-repo-publish, efficiency-audit, todo, durable, web-search, browser-control, animate-prompt, remote-dev-sync, ssh-connect |
 | [distiller-tools](./plugins/distiller-tools) | 1.2.0 | 资源蒸馏与知识提炼 | distiller, math-curve-loading-reference |
 | [evaluators](./plugins/evaluators) | 1.1.0 | 任务目标与 Skill 设计质量评估 | harness-benchmark, skill-design-benchmark |
 | [image-effects](./plugins/image-effects) | 1.0.0 | 可版本化图像效果、参考图生成与静态画廊 | image-effects |
-| [knowledge-base](./plugins/knowledge-base) | 1.3.0 | 开发教程、经验与参考方案 | npm-publish, vsix-publish, vscode-extension-dev, gh-workflow-generator, github-profile-coolify, chrome-ext-ai-script, web-to-tauri-migration-loop, llm-wiki, codex-env-config |
+| [knowledge-base](./plugins/knowledge-base) | 1.3.3 | 开发教程、经验与参考方案 | npm-publish, vsix-publish, vscode-extension-dev, gh-workflow-generator, github-profile-coolify, chrome-ext-ai-script, web-to-tauri-migration-loop, llm-wiki, codex-env-config |
 | [language-skills](./plugins/language-skills) | 1.0.1 | 语言学习与表达训练 | spoken-english-coach |
 | [learning-tools](./plugins/learning-tools) | 2.4.1 | 仓库学习、文档教程与技术调研 | learn-repo, repo-study, doc-to-tutorial, youtube-study-note |
 | [media-toolkit](./plugins/media-toolkit) | 1.1.0 | 媒体文件修复 | fix-neat-video |
@@ -45,6 +45,9 @@
 | [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
+| [create-ops](./skills/create-ops) | | |
+
+`create-ops` 用于新建 OPS，或把已有 Skill、功能和经验改造成 OPS：先由用户确认分类主键与常用 operations，再生成自动沉淀协议和安装时的全局前置提示词。
 
 `image-effects` 的事实源同样位于 [`skills/image-effects`](./skills/image-effects)，并通过目录软链接共享给同名 Plugin，避免维护两份内容。
 
@@ -58,10 +61,18 @@
 | [hyperframes-ops](./harness/hyperframes-ops) | HyperFrames 官方 Skills | 最佳实践、复杂能力组合、本机水土不服和环境兼容性 |
 | [ego-ops](./harness/ego-ops) | 浏览器自动化经验 | 最小授权执行、可观察验证与已验证操作知识沉淀 |
 | [cloudflare-ops](./harness/cloudflare-ops) | Cloudflare 能力与场景 | Workers/DO 设计边界、额度、常见坑、事件驱动约束与操作经验 |
+| [release-ops](./harness/release-ops) | 软件分发平台 | GitHub/npm/扩展发布的适用流程、限制、验证及自动沉淀 |
+| [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
 
 安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
 
-每个 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录。创建新的 harness skill 时，默认放到 `harness/<target>-ops/`；详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
+安装 `ego-ops` 的 Agent 同样读取其[全局前置提示词](./harness/ego-ops/references/global-agents-prompt.md)，建议在网页操作前先加载站点经验；纯复制或链接安装不会自动执行这项交互。
+
+`github-repo-publish`、`npm-publish`、`vsix-publish` 保留为兼容入口，共享 `release-ops`。单独通过 Plugin 安装这些入口时，需同时安装仓库中的 `harness/release-ops`（可用 `j-skills link` 后安装；全量安装脚本已扫描 harness）。安装 Agent 读取其[全局前置提示词](./harness/release-ops/references/global-agents-prompt.md)，经用户确认后才加入全局规则。[分类与设计](./docs/release-ops/README.md)记录知识归属。
+
+每个 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录。使用 [`create-ops`](./skills/create-ops) 创建或改造 OPS，配合官方 `skill-creator`；本仓库产物默认放到 `harness/<target>-ops/`，详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
+
+`codex-env-config` 保留为 `codex-ops` 兼容入口；单独安装 knowledge-base Plugin 时需同时安装独立 `harness/codex-ops`，额度查询另需 `skills/codex-quota`。`codex-harness` 继续维护通用工作习惯，Codex 自身运维按新库路由。安装 Agent 读取[全局前置提示词](./harness/codex-ops/references/global-agents-prompt.md)，经用户确认后加入全局规则；[分类与迁移说明](./docs/codex-ops/README.md)记录知识归属。
 
 `archived/` 下的内容是历史归档，不参与批量链接和安装。
 
@@ -193,7 +204,9 @@ jacky-skills/
 │   ├── happy-ops/
 │   ├── hyperframes-ops/
 │   ├── ego-ops/
-│   └── cloudflare-ops/
+│   ├── cloudflare-ops/
+│   ├── release-ops/
+│   └── codex-ops/
 ├── labs/                      # 实验性 Skill 与轻量 Workflow（预览版）
 │   ├── app-flow/
 │   │   └── app-flow/
