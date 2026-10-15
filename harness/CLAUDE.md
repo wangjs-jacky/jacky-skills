@@ -6,10 +6,10 @@
 
 当用户说“创建一个 harness skill”“给某工程建 harness”或“把这个工具的经验沉淀起来”时：
 
-1. 使用官方 `skill-creator`。
+1. 先读取 [`create-ops`](../skills/create-ops/SKILL.md)，由用户参与确认分类主键和常用 operations；配合官方 `skill-creator` 创建或改造。
 2. 默认创建到 `harness/<target>-ops/`，名称和 frontmatter `name` 都使用 `<target>-ops`。
 3. 不再创建 `*-harness` 目录；`harness` 只作为顶层分类名。
-4. 先确认目标对象和典型触发场景；没有额外要求时，采用本文件规定的最小结构。
+4. 沿用用户已明确的目标、分类和场景，不重复确认；无实质分类需求的简单本机经验采用下面的最小结构，需要按对象维护 operations 时按 `create-ops` 生成渐进路由与写回协议。
 
 ## 最小结构
 

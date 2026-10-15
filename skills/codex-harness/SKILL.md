@@ -18,6 +18,8 @@ description: "Codex 的驾驭层 / 经验沉淀层（harness）。默认由 usin
 
 ## 使用优先级
 
+涉及 Codex 自身安装、配置、技能管理、认证连接或额度时，先按技能目录或注册表读取 `codex-ops/SKILL.md`，再按能力与 operation 处理；本 Skill 保留通用任务习惯。Codex 专属经验写入该 OPS，项目集成经验归对应工程 OPS，不再把新记录混入本 Skill 的通用经验文件。跨任务已有适用读取直接复用。
+
 按这个顺序执行：
 
 1. 用户明确要求

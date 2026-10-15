@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex OPS"
+  short_description: "按能力维护 Codex 安装、配置、技能、连接与额度经验，操作后自动沉淀"
+  default_prompt: "使用 $codex-ops，先核对当前宿主与版本，按对应能力和 operation 处理这个 Codex 问题，并写回实际证据。"

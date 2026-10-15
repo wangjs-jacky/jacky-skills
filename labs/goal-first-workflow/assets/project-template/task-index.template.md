@@ -2,18 +2,16 @@
 status: pending
 ---
 
-# NN · Task title
+# NN · 中文任务名
 
-Goal: state the concrete result this task must produce.
+目标摘要：<用一句话概括本任务要达成的结果；完整约定见 PROMPT.md>。
 
-## Current progress
+## 按用途查看
 
-State what is known, what has actually been done, and what prevents the next step.
+- [完整任务说明与执行依据](PROMPT.md)：查看范围、路径、依赖、输入、验收要求，以及目标确认、草案审阅和执行选择的真实来源入口。
 
-## Outputs
+<!-- 只添加已存在的主要产物和重要理解主题；按读者问题说明用途，并标明当前/历史/替代关系。过程事件产生后再添加 PROGRESS.md 入口，附件由所属报告组织。摘要不构成另一份契约；冲突先核对来源并修正，不择宽执行。 -->
 
-Link actual records here after they exist: [result](result.md), [sources](REFERENCES.md), [evidence](evidence/), [questions](FAQ.md), or [ideas](IDEA.md).
+## 下一步
 
-## Progress and feedback
-
-- YYYY-MM-DD · Record a material status change, user feedback, result, failure, or handoff.
+<必要时只留一行下一步或待决事项；详细原因链接到对应说明，没有则删去本节。>

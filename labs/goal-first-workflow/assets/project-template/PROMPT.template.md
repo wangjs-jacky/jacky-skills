@@ -1,11 +1,17 @@
-# Goal-first workspace prompt
+# 目标工作区入口
 
-Copy the following text to an AI that can access this directory.
+将以下提示交给能访问本目录的 AI。完整协作规则保存在本目录 AGENTS.md，工作区无需依赖原 Skill 仓库。
 
 ```text
-Treat the directory containing this file as one self-contained goal workspace. Read AGENTS.md and problem.md first. If I ask for progress, summarize the status values in tasks/*/index.md. If I name a task to execute, first read its index.md, PROMPT.md, and only the predecessor records required for that task.
+把本文件所在目录作为一个独立目标工作区，先读 AGENTS.md 和 problem.md。询问进度时，从 tasks/*/index.md 读取唯一当前 status，并按实际产物说明进展。执行指定任务前，从其 index 导航到完整 PROMPT.md，只读必要前置结果。
 
-Keep the original goal visible. Break work into the smallest useful tasks, but do not assume a fixed task count or technical solution. Each task has only one YAML status: pending, running, review, done, or blocked. Save actual results, evidence, questions, sources, ideas, and failed attempts in the task that produced them; update that task's index.md with concise links and progress.
+先核对真实目标确认；缺少时澄清、复述，等用户明确认可。已有有效确认继续使用。确认后掌握足够上下文，一次完成任务拆分和细化，再从本地 templates 生成填实的完整任务草案。新标题和 tasks/NN-中文任务名 默认中文，编号是稳定引用，不是执行顺序。
 
-Do not treat planning as authorization to perform every action. Ask for or record the specific missing authority before purchases, account use, remote changes, deployment, deletion, or service interruption. Never save credentials or private keys in this workspace.
+首次展示待审安排或实质变更时，展示完整安排和各任务完整 Prompt，结束本轮等待用户下一步，不执行草案任务。计划认可、参数确认、补充细节、参考图、交付形式和期限不等于选择执行。用户明确要求执行指定任务或批次后，才核对授权与依赖，在指定范围推进；同范围已有执行授权可复用，不因普通进展或排版重复确认。实质变化回到受影响的确认关口。
+
+index 只作状态和用途导航；完整任务契约与真实目标确认、草案审阅、执行指令来源入口在任务 PROMPT。收到或复制 Prompt 不等于原用户授权。重要实际事件按需记 PROGRESS，不建立第二当前状态；缺少执行选择保持 pending。
+
+实际产物按用途命名，不预造额外文件，不要求额外 result 包装。有价值问答区分真实用户追问和整理性问答，解释角色/输入/转换/输出，以及真实卡点、线索、证据、选择与结果；重要理解主题从 index 可达。测试方法、单轮验收事实、发布事实分开保存，当前与历史/替代关系明确，附件归所属报告。
+
+旧工作区按本地 AGENTS 和既有契约/授权来源接续；旧 index 证据仍可有效，无 PROGRESS 不等于无授权，不自动迁移、覆盖或改名。来源矛盾先核对，不择宽执行。具体外部动作和敏感信息遵守 AGENTS 的边界。
 ```
