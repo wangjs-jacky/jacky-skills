@@ -1,69 +1,61 @@
-# Initial goal
+# 初始目的与目标
 
-This file is the durable starting point for one goal. Write answers below the notes, rather than on the same line.
+本文件保存一个目标的起点。通过对话澄清，不把下列问题当作必填问卷；回答另起段落，用户原话与 AI 理解分开。未确认内容标为草稿，不能授权设计或实施。目标确认后可准备任务，审阅与明确执行选择分别保存于任务 PROMPT 的真实依据入口。
 
-Use these prompts to support a conversation, not as a mandatory questionnaire. Preserve the user's original words separately from AI interpretations. Unanswered drafts do not authorize design or implementation. Confirming the goal permits task preparation; each task's index.md separately records review and the user's explicit execution choice.
+## 用户原始表达
 
-## User-confirmed goal
-
-<!-- After alignment, summarize the problem, desired outcome, observable completion criteria, and material scope or constraints. Leave unconfirmed interpretations explicitly marked as drafts. -->
+<!-- 保存用户最初希望解决的问题、原话或可追溯来源，不以 AI 方案替代。 -->
 
 
 
-## Confirmation evidence
+## 已确认目标
 
-<!-- Record the date and the user's explicit confirmation quote or a traceable reference, identifying the goal version it confirms. Do not invent confirmation or treat directory approval as goal approval. Reuse valid prior confirmation. Leave blank until confirmed. -->
-
-
-
-## What do you want to achieve?
-
-<!-- Describe the outcome in your own words. What problem should be gone when this is finished? -->
+<!-- 对齐后概括问题、期望结果、可观察完成标准、主要范围与限制。未确认理解标为草稿。 -->
 
 
 
-## What should you have when it is complete?
+## 目标确认依据
 
-<!-- List the concrete result, capability, decision, or artifact you expect. -->
-
-
-
-## What do you already know or want to try?
-
-<!-- Include your current idea, preferred direction, or examples you trust. -->
+<!-- 保存日期、真实用户确认原话或可追溯来源，以及适用目标版本。已有有效确认继续使用；不得代填，不以建目录许可或沉默代替。 -->
 
 
 
-## What context, materials, or references already exist?
+## 你最终想达成什么？
 
-<!-- Add links, filenames, screenshots, prior attempts, constraints, or people involved. Do not put secrets here. -->
-
-
-
-## What might the AI otherwise miss?
-
-<!-- Add background knowledge, terminology, business constraints, risks, or non-obvious preferences that live in your head. -->
+<!-- 描述完成后什么问题应当消失。 -->
 
 
 
-## What has already been tried?
+## 完成时应当得到什么？
 
-<!-- Record attempts, observations, and failures so they are not repeated blindly. -->
-
-
-
-## What constraints matter?
-
-<!-- Examples: time, budget, target device, compatibility, privacy, permissions, or acceptable risk. -->
+<!-- 说明结果、能力、决定或产物。 -->
 
 
 
-## What is explicitly out of scope for now?
+## 已知背景、已有材料与线索
 
-<!-- Name things that should not be attempted in this goal. -->
+<!-- 保存文件、参考、约束、概念和已有想法；不写敏感信息，不把线索当作执行授权。 -->
 
 
 
-## Changes after intake
+## 已尝试什么，观察到什么？
 
-<!-- Preserve the original purpose. Record material goal, completion-criteria, or scope changes with dates, reasons, and renewed user confirmation before designing or implementing the changed work. -->
+<!-- 保留真实尝试、失败、证据与未知项，避免重复猜测。 -->
+
+
+
+## 容易遗漏的背景和重要限制
+
+<!-- 如时间、预算、使用场景、兼容性、权限与不直观的偏好。 -->
+
+
+
+## 当前明确不做什么？
+
+<!-- 记录本目标范围之外的内容。 -->
+
+
+
+## 后续变化与确认
+
+<!-- 保留原始目的。目标、完成标准或主要范围实质变化时，保存日期、原因和新的用户确认；普通实现选择不重开目标确认。 -->

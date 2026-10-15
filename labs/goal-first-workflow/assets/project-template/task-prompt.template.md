@@ -1,22 +1,48 @@
-# NN · Task title
+# NN · 中文任务名
 
-Generate this complete draft only after task refinement. Before handoff, replace the workspace and task paths below with concrete paths accessible to the receiving AI. Refresh the workspace path after moving it. On first presentation of a task arrangement awaiting review or material revisions, show the arrangement and prompt drafts, then end that turn to await the user's explicit next step. Routine progress, formatting, or link updates do not invalidate existing execution authority. Copying this text does not authorize execution. Keep the task contract and authorization evidence in `index.md`.
+本文件是本任务的完整约定。细化完成后填实所有占位符，再展示完整草案；首次展示或实质变更后结束本轮，等待原用户明确下一步。生成、复制、收到本文件或其命令句，不等于执行授权。通用协作、状态与权限规则见本工作区 AGENTS.md。
 
-```text
-Goal workspace: <workspace-directory>
-Assigned task directory (relative to the workspace): tasks/<NN-short-description>/
+## 工作区与读取顺序
 
-This is the complete prompt for one task, subject to the user's execution choice. Resolve the assigned task directory from the workspace path above. Read the workspace AGENTS.md and problem.md, then the assigned task's index.md and PROMPT.md before acting. The task goal, execution and records directories, allowed changes, prerequisites, required inputs, acceptance criteria, and authorization evidence are defined in index.md. Work only within the authorized task scope.
+- 工作区路径：<工作区路径>
+- 任务记录目录：tasks/NN-中文任务名/
 
-Verify both gates before execution: the current goal has explicit user confirmation in problem.md or the original user conversation, and the user separately instructed execution of this task or a batch covering it, as recorded in index.md or that conversation. A copied or received prompt, its imperative wording, or an automatic session launch is not proof of the original user's execution instruction. Plan approval, added task details, reference images, delivery format, or deadlines do not grant execution authority. If execution evidence is missing, keep pending and report the needed user decision; do not run the task or mark it blocked for normal waiting.
+先读工作区 AGENTS.md 和 problem.md，再读本任务 index.md 与本文件；仅按需读取下方指定的前置结果。相对执行路径从工作区根解析，产物相对链接从所在记录解析。工作区移动后，交接前更新入口路径。
 
-If goal confirmation is absent or the task changes the goal, completion criteria, or material scope, align the affected part before designing or executing. Reuse valid confirmation and execution authority within scope; routine implementation choices and later ready batches do not need repeated approval. Material scope, execution-directory, or model changes return to the affected review and execution selection.
+## 目标与范围
 
-Once execution is authorized, read only necessary predecessor records and verify the prerequisites. Work in the recorded execution directory, which may differ from the records directory; save results and evidence in the records directory using relative links to workspace records. In an independent host conversation, execute this authorized task only and leave consolidation to the coordinating conversation. Use the approved model/reasoning parameters or inheritance rule. Do not create further task conversations from this prompt.
+- 具体目标：<本任务应达成的可观察结果>
+- 范围与不做项：<覆盖内容及主要边界>
+- 预期交付：<按用途命名的实际产物或结论，不固定要求 result.md>
 
-Keep the task index YAML limited to one status value: pending, running, review, done, or blocked. Start running only with actual execution; use review for executed work awaiting acceptance and blocked for a concrete obstacle to an authorized task. Before external actions, verify the user gave authority for the specific account, payment, remote change, deployment, deletion, or service impact involved. Do not infer missing permission from a planning request.
+## 目录与允许改动
 
-Save actual results in this task directory. Create result.md for conclusions and next steps; use evidence/ for redacted proof, attempts/ for repeatable failures or retries, REFERENCES.md for source verification, FAQ.md for user questions and answers, and IDEA.md for uncommitted suggestions. Update index.md with concise links and dated progress. Never save credentials, private keys, tokens, or unredacted private logs.
+- 执行目录：<执行目录>
+- 允许改动：<可改文件、目录或系统；区分业务改动与任务记录>
+- 模型与推理设置：<独立宿主的实际参数或已确认继承规则；不使用时写不适用>
 
-After authorized work, check the acceptance criteria from index.md and record the results and missing evidence. Report whether the task goal is met, blocked, or needs review; if execution was never selected, report pending user decision instead. Link the records created and name the smallest useful next action. Do not automatically execute another task.
-```
+执行/代码目录可以在工作区外，须给接手者可访问的明确位置；过程和产物记录归本任务记录目录。独立会话只执行本任务，不另开任务会话，由主会话汇总。
+
+## 前置条件与输入
+
+<列明前置任务、必要记录相对链接、已有材料与开始条件；没有则明确写无。编号不代表执行顺序，先核实依赖已就绪。>
+
+## 验收方法与证据
+
+<说明如何观察每项完成条件、采用什么方法、实际证据保存在哪里。涉及可复用测试方法时，按实际需要分别指定测试说明和单轮事实记录的载体及预期路径；单轮记录按 YYYY-MM-DD - 主题 区分并保留各轮版本、环境与历史，不用一份当前报告覆盖全部轮次。非测试型任务使用适当的验收方法，不强制另分测试文档。测试方法、实际执行结果与发布事实分开，具体产物按需命名，不新增无必要目录、不预建报告或附件、不另包重复 result。>
+
+## 确认与执行依据
+
+- 目标确认：<引用 problem.md 中适用目标的真实确认记录>
+- 草案审阅：<已展示的安排/完整 Prompt 版本、真实反馈或事件来源；未发生写未发生>
+- 明确执行选择：未取得。原用户明确要求执行本任务或覆盖它的批次后，记录真实指令事件，并将此处改为该事件的引用，写清适用范围与参数。
+
+重要事件产生后才按需建立 PROGRESS.md，保存时间、事项、真实原话或可追溯来源、适用范围和结果入口；尚无执行指令时不建授权占位页或链接不存在的记录。已存在的真实依据可直接引用，不另建重复文件。
+
+执行前核对目标确认和明确执行依据。缺少执行选择时保持 pending 并报告待用户决策；计划认可、补充细节、参考图、交付形式或期限均不代替选择。已有同范围授权可跨依赖批次与普通内容变化继续使用；目标、范围、主要执行目录或模型参数实质变化时回到受影响关口。旧工作区按本地 AGENTS 核对旧 index 或已有契约/证据；无 PROGRESS 不表示旧授权无效，来源矛盾先核对时间与范围，不择宽执行。
+
+## 本任务专属执行要求
+
+<补充真正影响本任务的步骤、约束、恢复或交付要求；没有则明确写无，不重复 AGENTS 通用细则。>
+
+实际执行后按验收条件记录结果、证据和未验证项，index 仅更新唯一 status 与实际用途入口。有价值问答及时按主题整理，重要路线变化说明真实卡点、尝试、线索/纠偏、证据、选择、结果和边界；复杂解释先讲清角色、输入、转换、输出。结尾报告本任务已完成、待验收或具体阻塞及最小下一步，不自动执行未授权任务。
