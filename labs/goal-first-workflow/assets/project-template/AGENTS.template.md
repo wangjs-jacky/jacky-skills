@@ -1,62 +1,61 @@
-# Goal-first workspace
+# 目标工作区协作约定
 
-This directory is a self-contained workspace for one goal. Preserve the user's original purpose, prepare reviewable tasks, and keep evidence beside the task that produced it. Goal confirmation and task execution selection are separate gates for every conversation.
+本目录保存一个目标及其任务，必须能独立交接。目标确认与任务执行选择是两道不同关口，主会话、手工接手及 Happy 独立会话都遵守。
 
-## Start here
+## 先确认目标，再准备完整任务
 
-Read [problem.md](problem.md) before proposing work. Check that the current goal has explicit user confirmation, with a quote or traceable reference. A filled draft or an AI's judgment that the goal is clear is not confirmation. If confirmation is missing, ask one to three focused questions at a time, reflect the desired outcome, completion criteria, and material boundaries, and let the user correct or confirm that understanding. Necessary read-only checks may inform clarification. Do not design solutions, split tasks, or implement until the user explicitly confirms the goal. Approval to create a directory is not goal confirmation.
+先读 [problem.md](problem.md)，核对当前目标的用户原话、明确确认及适用范围。草稿、AI 判断“已经清楚”、用户沉默或同意建目录都不等于目标确认。缺少确认时，每轮只问一到三个关键问题，复述问题、期望结果、完成标准和主要限制，待用户纠正或确认；此前只能做帮助澄清的必要只读核对，不能设计方案、拆任务或实施。已有有效确认继续使用，只有目标、完成标准或主要范围实质变化才重新对齐受影响部分。
 
-Reuse valid confirmation from the conversation or problem.md; never invent it or repeatedly ask for it. Reopen alignment only for changes to the goal, completion criteria, or material scope, not routine implementation choices. After confirmation, gather enough context, then combine task splitting and refinement in one step. Do not require an initial rough split or a fixed task count. Prepare the complete task arrangement before generating full task prompt drafts; create only the task directories needed under `tasks/`. Preparing tasks does not execute the research, design, prototypes, or implementation they describe.
+目标确认后，掌握足够上下文，把任务拆分和细化合在同一步，按真实依赖与可验收结果安排，不强制先粗拆或固定任务数量。细化完成才创建完整任务草案；准备安排不等于执行其中的调研、设计、原型或编码。
 
-Name tasks as `NN-short-description/`, for example `01-research-options/`. Each task begins with `index.md` and `PROMPT.md`, created from this workspace's [task index template](templates/task-index.template.md) and [task prompt template](templates/task-prompt.template.md). Fill the task contract in `index.md`: execution and records directories, allowed changes, prerequisites and required inputs (explicitly none when absent), and observable acceptance criteria with evidence. Include model/reasoning settings or inheritance rules when using independent host conversations. Set the workspace and task paths in `PROMPT.md` for handoff; refresh the workspace path if the directory moves. The prompt points to the contract rather than maintaining another copy.
+新任务默认命名为 `tasks/NN-中文任务名/`，如 `tasks/01-比较方案/`；标题默认中文，可保留 API、Git 等技术专名，用户语言和项目约定优先。编号从 `01` 递增，仅供稳定引用，不代表执行顺序。按依赖及执行授权选择任务，旧英文任务不自动改名。
 
-## Review, then wait for execution selection
+每项任务从本目录的 [导航模板](templates/task-index.template.md) 和 [完整任务模板](templates/task-prompt.template.md) 建立 `index.md`、`PROMPT.md`，无需读取 Skill 仓库。完整草案必须填实占位符、路径和任务要求，不能把空模板交给用户。工作区移动后，交接前核对 Prompt 中的入口与实际执行目录。
 
-When first presenting an arrangement awaiting review, or materially revising it, show the complete arrangement and every full prompt draft. A flow or wireframe may help review the arrangement. End that turn and wait for the user's explicit next step; do not execute a task from its draft. The user may delete, combine, split, or narrow tasks. Approval of the plan, parameter confirmation, added details, reference images, delivery format, or a deadline do not select execution. Update the drafts when the user is still refining them. Routine progress, formatting, or link updates do not trigger this pause or invalidate existing execution authority; unchanged authorized tasks may continue under their dependencies.
+## 展示草案后，停下来等待执行选择
 
-Execute only when the user explicitly asks to run identified tasks or a batch; ordinary natural language is sufficient. Record goal confirmation evidence, plan review, and the separate execution instruction in the task index body, using the user's quote or a traceable reference, applicable tasks, and parameters. Reuse existing valid execution authority across ready batches without repeatedly asking, and never expand it to other tasks. Reopen the affected gate for material changes to the goal, task scope, execution directory, or model settings.
+首次展示待审任务安排或实质修订时，展示完整安排与每项完整 Prompt；可用流程图或线框说明安排，但不开始制作任务交付物。展示后结束本轮，等待用户明确下一步。用户可删除、合并、拆分、缩小任务。仅认可计划、确认参数、补充细节、发参考图、强调交付形式或期限，都不等于选择执行，应先更新草案。
 
-These gates apply to the coordinating conversation, manual handoff, and independent host conversations. A generated, copied, or received PROMPT.md, including its imperative wording, is not evidence of the original user's execution choice. Before acting, verify that evidence in index.md or the original user conversation. If absent, keep the task pending and report that user selection is needed; automation cannot supply that decision.
+用户以普通自然语言明确要求执行指定任务或批次后，才在该范围开始。核对原用户指令的语义、来源、适用任务与参数，把真实依据保存到任务 `PROMPT.md` 的授权入口；已存在重要事件记录时引用它。已获授权的任务可按依赖分批推进，不重复索要同范围授权，也不扩大到其他任务。普通进展、排版和链接更新不使授权失效；目标变化返回目标确认，任务范围、主要执行目录或模型参数实质变化则重新审阅并选择受影响任务。
 
-## Task lifecycle
+生成、复制、收到带有“执行”字样的 Prompt，或自动创建宿主会话，均不能证明原用户选择了执行。接手者核对 `PROMPT.md` 中的真实确认与执行依据；缺少执行选择时保持 `pending`，简短说明待用户决策，不当作阻塞。
 
-Each task `index.md` has YAML frontmatter containing exactly one field:
+## 文件归属与任务状态
+
+`index.md` 是薄导航：一个 YAML `status`、中文任务标题与一句话目标摘要、按读者问题组织的实际入口及用途，必要时一行下一步。完整任务契约与确认依据在 `PROMPT.md`，过程事件按需在 `PROGRESS.md`；不要复制到 index 维护。摘要与 Prompt 或用户确认不一致时，先核对来源、时间和适用范围并修正，不能择宽执行。
+
+每个任务的 YAML 只含：
 
 ```yaml
 status: pending
 ```
 
-Allowed values are `pending`, `running`, `review`, `done`, and `blocked`. Drafts awaiting review or execution selection stay `pending`, with the next decision described in the body. Use `running` only after actual execution starts, `review` for executed work awaiting acceptance, and `blocked` for an authorized task that cannot proceed because of a concrete missing input, resource, or operation permission. Normal waiting for user selection is not a blocker. Do not create a separate progress dashboard or add percentage fields.
+- `pending`：尚未实际执行，包括待审阅、待用户选择或等待前置任务。
+- `running`：已经实际开始执行。
+- `review`：已执行产物待验收；任务草案仍为 `pending`。
+- `done`：已按验收条件完成，不需本任务继续。
+- `blocked`：已授权任务因具体缺失的输入、资源或操作权限而无法继续。
 
-Before working on a task, read its `index.md`, `PROMPT.md`, and only the predecessor results it needs. Check both authorization gates and the recorded prerequisites before starting, work in its execution directory within the allowed scope, and save records in its records directory. Verify the recorded acceptance criteria before marking it done; state missing checks or evidence. Execute only selected tasks. Planning a task does not authorize its execution or all of its external actions.
+只有 index 保存当前状态。不另建状态看板、百分比或全部待办。开始前读本任务 index、Prompt 及必要前置结果，核对授权与前置条件，区分实际执行/代码目录和记录目录，在允许范围工作，按 Prompt 的验收方法记录实际结果及未验证项。
 
-## Optional host sessions
+## 事件、问答与实际产物
 
-When a host such as Happy can open independent conversations, use the review and execution gates above. Open conversations only for tasks covered by a separate explicit execution instruction. Plan or task confirmation alone cannot start a session. Check dependencies and overlapping writes, then schedule authorized tasks in ready batches without repeating a valid execution approval. Record and reuse its evidence in each relevant index.md; realign material changes to scope, execution directories, or model settings.
+只在产生实际内容时建立记录，不预造额外文件或目录，也不要求结果必须包装成 `result.md`。业务产物使用语义名称；主要产物与重要理解主题从 index 直接可达，各入口说明读者何时看、解决什么问题。附件由所属验收或排障报告组织，避免在导航平铺截图、日志。
 
-Each new conversation receives its task PROMPT.md and the workspace context, works only on that task, and writes results to that task directory. The coordinating conversation owns goal changes and final consolidation. Record returned session IDs and message acknowledgements in task-local execution metadata when available; verify real execution separately. Preserve existing session mappings when retrying. Without host support, these same task prompts remain manually usable.
+- `PROGRESS.md`：有重要事件才建；逐条保存时间、事项、真实用户原话或可追溯来源、适用范围和结果入口。收到执行指令后记录真实事件，并从 Prompt 的授权入口引用；尚无指令时不建授权占位页、不链接不存在的文件。此文件不维护当前 status、百分比或全部待办。
+- `FAQ.md`：及时保存有价值的真实追问或整理性问答，按主题组织。真实追问带日期及原话/来源；AI 整理的问题明确标为“整理性问答”并列实际依据。纯执行确认、进度事件归 PROGRESS。有关键路线变化时解释卡点、真实尝试、用户实际线索或纠偏、证据、选择、结果和边界，不编造用户贡献；先让读者能复述角色、输入、转换、输出，再链接技术细节。简单任务不强制整套问答；独立权威文档已解释的决定由 FAQ 引用，不重复维护。
+- `REFERENCES.md`、`IDEA.md` 或独立文档仅在具有实际用途时创建；新想法不自动成为执行任务。
 
-## Records and ownership
+产物开头说明用途、适用范围、当前或历史性质及上下游。一个主题保留一份当前权威内容，跨任务引用原归属；历史材料保留日期和替代关系，不反复改写历史。同一结果不另加重复的 result 包装。
 
-Keep results, evidence, failed attempts, sources, questions, and ideas in the task that generated them:
+开发任务可按实际需要使用设计、原型、实现、测试和发布产物；非开发任务无需这些目录。测试说明写清范围、版本环境、前置权限、步骤命令、预期结果、必要清理与风险，不等于已执行；单轮验收报告保存实际版本环境、执行范围、逐项结果证据、失败与未覆盖项、清理情况，并组织该轮附件；发布记录保存具体授权来源、对象与环境版本、尝试和操作结果、可核查标识、未做项，发布成功不能代替 E2E 验证。跨任务的功能生命周期通过链接贯通，避免重复复制。
 
-```text
-tasks/NN-short-description/
-  index.md       status, goal, links, and concise progress notes
-  PROMPT.md      complete copyable instruction for an independent AI
-  result.md      created only after actual work produces a result
-  FAQ.md         user questions and their answers
-  REFERENCES.md  sources, purpose, and verification state
-  IDEA.md        uncommitted ideas and possible improvements
-  notes/         research or learning notes
-  evidence/      redacted screenshots, logs, and verification records
-  attempts/      failed or repeatable attempts
-```
+## 可选宿主会话与旧工作区
 
-Create a file only when it has real content. Link it from the task `index.md`. Do not duplicate whole contexts across tasks; use relative links to the source record.
+Happy 等宿主只为已有明确执行授权且依赖就绪的任务开独立会话；计划确认本身不能启动。先检查重叠写入，使用已确认模型/推理参数或继承规则。各会话只推进自己的任务，主会话负责目标变化与汇总。记录真实会话映射，分别验证创建、消息送达和实际执行；重试沿用已有映射。无宿主能力时可手工交接相同 Prompt。
 
-## Safety and authority
+维护旧工作区以其本地 AGENTS 和已有契约/证据为准，旧 index 内的契约和授权仍可有效；没有 PROGRESS 不代表未授权。只补缺失的本地任务模板，保留已有规则、任务和自定义模板，不重跑初始化器，不自动迁移、覆盖或改名。新旧来源矛盾时核对真实来源、时间与范围，不能挑较宽的一份执行。
 
-Do not record secrets, credentials, private keys, access tokens, or unredacted private logs. Do not treat a plan as permission to spend money, use an account, change a remote system, deploy, delete, or interrupt a service. If an authorized task cannot proceed without such authority or a necessary input, set it to `blocked` and state the concrete condition. A task awaiting execution selection stays `pending`.
+## 权限与敏感信息
 
-Preserve failed attempts and changed decisions with dates. A newer conclusion may replace an old one, but should link to the earlier record rather than erase it.
+任务执行授权不自动包含付款、账号使用、私有系统读取、远端变更、部署、删除或中断服务等具体动作；在当前范围核对已有授权。已授权任务缺少必要操作权限时记录真实缺口，正常待用户选择仍为 pending。不得保存凭据、私钥、token、认证头、完整私有配置或未脱敏日志。证据先脱敏，再按所属任务引用。
