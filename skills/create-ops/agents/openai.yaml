@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create OPS"
+  short_description: "确认分类与常用操作，创建或改造能自动沉淀经验并建议全局前置的 OPS 技能"
+  default_prompt: "使用 $create-ops，把这个工具或已有 Skill 改造成 OPS，先和我确认分类标准及常用 operations，再生成自动沉淀协议和安装时的全局前置提示词。"

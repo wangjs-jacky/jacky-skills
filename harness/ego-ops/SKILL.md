@@ -7,6 +7,12 @@ description: "Ego 浏览器操作的经验库与治理层：渐进读取、实�
 
 `ego-ops` 是 Ego 浏览器操作的经验库与治理层。浏览器 Skill 负责浏览器连接、页面观察、点击输入、任务空间、用户接管和任务完成；本 Skill 负责经验的渐进读取、实时复核、授权边界、成功验证，以及把真实成功操作沉淀成脱敏、可复用、可校验的站点知识。
 
+## 安装时：建议启用全局前置
+
+负责安装或配置本 Skill 的 Agent，先读取[全局触发配置提示词](references/global-agents-prompt.md)。向用户展示建议规则、实际全局文件和生效范围，获得明确同意后再写入；已有相同内容与范围的授权直接复用。普通网页任务继续下面的流程，不重复进行安装确认。
+
+仅复制或链接文件不会自动执行该交互。全局规则负责要求先读取经验；实际浏览器控制仍遵循当前浏览器执行 Skill。
+
 ## 语言
 
 - 面向用户的进度、问题、确认、结论、文档、表格和脚本输出均使用中文。
@@ -101,10 +107,11 @@ node "$EGO_OPS_DIR/scripts/validate-knowledge.mjs"
 - operation schema：`references/schemas/operation.md`
 - 兼容 schema 入口：`references/knowledge-schema.md`
 - 便携提示词：`references/portable-llm-prompt.md`
+- 安装 Agent 全局前置提示词：`references/global-agents-prompt.md`
 - 安全脚手架：`scripts/scaffold-operation.mjs`
 - 知识校验器：`scripts/validate-knowledge.mjs`
 - 自动化测试：`tests/scaffold-operation.test.mjs`、`tests/validate-knowledge.test.mjs`、`tests/knowledge-tools.test.mjs`
 
 ### 可选快速回归
 
-仓库已有 `references/fast-regression.md` 和 `scripts/render-regression-video.mjs`，只能在用户明确请求“录制回归过程”时启用。它们不得改变普通浏览器操作的默认流程，不得要求每次操作生成视频，不得让性能预算、视频编码或截图采集阻塞普通知识沉淀；重复成功且站点事实未变化时，不更新知识文件、不运行脚手架和知识校验器。
+仓库已有 `references/fast-regression.md` 和 `scripts/render-regression-video.mjs`，只能在用户明确请求“录制回归过程”时启用。它们不得改变普通浏览器操作的默认流程，不得要求每次操作生成视频，不得让性能预算、视频编码或截图采集阻塞普通知识沉淀。重复成功仍按上面的写回协议维护验证日期、索引并执行结构校验；正文无新增事实时不重复追加步骤，也不额外启动视频录制。

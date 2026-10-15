@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release OPS"
+  short_description: "按发布平台读取操作经验，核对项目发布链路并自动沉淀结果与恢复方法"
+  default_prompt: "使用 $release-ops，先核对这个项目的发布平台和现有流程，再按对应 operation 完成任务并写回经验。"

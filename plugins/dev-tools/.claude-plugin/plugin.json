@@ -1,6 +1,6 @@
 {
   "name": "dev-tools",
-  "version": "2.8.8",
+  "version": "2.8.9",
   "description": "核心开发工具集 - 发布、任务管理、Durable 长任务、联网、浏览器操控、效率审计",
   "author": {
     "name": "Jacky Wang",

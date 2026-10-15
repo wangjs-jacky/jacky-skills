@@ -62,6 +62,7 @@ harness/<target>-ops/
 - `harness` 是仓库分类；具体 Skill 一律使用 `<target>-ops`，不再使用 `*-harness`。
 - `ops` 表示 Operations，覆盖运行维护、调试复盘、最佳实践、本机适配和第三方 Skill 水土不服经验。
 - 可分享规则进入 `SKILL.md`；本机路径、代理、拓扑和验证记录进入 gitignored 的 `experience.local.md`。
+- 创建或改造按分类与 operations 维护经验的 OPS 时，先读取 [`create-ops`](skills/create-ops/SKILL.md)，由用户确认分类标准，再建立自动沉淀协议和安装 Agent 的全局前置提示词；沿用已明确的分类决定。
 
 ## Plugin 清单与版本
 
