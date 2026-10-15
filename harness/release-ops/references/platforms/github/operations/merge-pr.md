@@ -1,8 +1,8 @@
 ---
 platform: github
 operation: merge-pr
-status: documented
-last_verified: null
+status: verified
+last_verified: 2026-10-15
 ---
 
 # 合并指定 PR
@@ -33,4 +33,6 @@ head 变化后重新检查新增差异。冲突按已授权任务处理，不能
 
 ## 证据与边界
 
-2026-10-15 核对 gh pr merge 官方行为；未执行真实合并。按[写回协议](../../../knowledge-schema.md)保存范围明确的证据。
+2026-10-15：真实 PR 的 8 项现有 CI 检查全部成功后，使用 `--squash --match-head-commit` 合入用户指定的主分支；读回 PR 为 MERGED，并通过远端 fetch 确认主分支包含合并提交。本例没有额外 base 变化，合并后的文件树也与核对过的 head 一致。
+
+验证范围为本次普通 squash 合并；未使用管理员绕过，不覆盖 merge queue 或其他合并策略。具体 PR、原 head、合并 SHA 和检查记录保存在私有实例，按[写回协议](../../../knowledge-schema.md)维护。
