@@ -2,6 +2,20 @@
 
 This file is the durable starting point for one goal. Write answers below the notes, rather than on the same line.
 
+Use these prompts to support a conversation, not as a mandatory questionnaire. Preserve the user's original words separately from AI interpretations. Unanswered drafts do not authorize design or implementation. Confirming the goal permits task preparation; each task's index.md separately records review and the user's explicit execution choice.
+
+## User-confirmed goal
+
+<!-- After alignment, summarize the problem, desired outcome, observable completion criteria, and material scope or constraints. Leave unconfirmed interpretations explicitly marked as drafts. -->
+
+
+
+## Confirmation evidence
+
+<!-- Record the date and the user's explicit confirmation quote or a traceable reference, identifying the goal version it confirms. Do not invent confirmation or treat directory approval as goal approval. Reuse valid prior confirmation. Leave blank until confirmed. -->
+
+
+
 ## What do you want to achieve?
 
 <!-- Describe the outcome in your own words. What problem should be gone when this is finished? -->
@@ -52,4 +66,4 @@ This file is the durable starting point for one goal. Write answers below the no
 
 ## Changes after intake
 
-<!-- After the AI turns this draft into a formal problem statement, preserve the original purpose and record major changes here with dates. -->
+<!-- Preserve the original purpose. Record material goal, completion-criteria, or scope changes with dates, reasons, and renewed user confirmation before designing or implementing the changed work. -->
