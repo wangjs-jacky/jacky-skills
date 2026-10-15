@@ -22,8 +22,8 @@ docs_checked: 2026-10-15
 | operation | status | last_verified | 文档 |
 | --- | --- | --- | --- |
 | publish-repository | documented | — | [首次发布仓库](operations/publish-repository.md) |
-| push-changes | documented | — | [推送改动](operations/push-changes.md) |
-| merge-pr | documented | — | [合并 PR](operations/merge-pr.md) |
+| push-changes | verified | 2026-10-15 | [推送改动](operations/push-changes.md) |
+| merge-pr | verified | 2026-10-15 | [合并 PR](operations/merge-pr.md) |
 | publish-release | documented | — | [发布 Release](operations/publish-release.md) |
 
 ## 共享陷阱与来源

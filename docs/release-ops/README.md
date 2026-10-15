@@ -2,7 +2,7 @@
 
 更新日期：2026-10-15。读者：确认分类标准的用户，以及后续实现和维护发布经验的 Agent。
 
-**状态：用户已于 2026-10-15 确认按发布平台分类。** [release-ops](../../harness/release-ops/SKILL.md) 已建立 4 个平台档案和 9 个 documented operations；三个旧发布 Skill 及其参考入口已改为共享知识路由。已核对官方文档，未执行真实发布；安装与结构检查结果在本机交付记录维护。
+**状态：用户已于 2026-10-15 确认按发布平台分类。** [release-ops](../../harness/release-ops/SKILL.md) 已建立 4 个平台档案和 9 个 operations；三个旧发布 Skill 及其参考入口已改为共享知识路由。GitHub 推送和 PR 合并已有真实验证，其他操作仍为文档指导；安装、结构检查与执行证据在本机交付记录维护。
 
 ## 目标与首版范围
 
@@ -35,7 +35,7 @@
 
 ## 二、首批 operations
 
-以下场景已建立文档。当前全部为 `documented`，未填成功验证日期；状态以 [平台索引](../../harness/release-ops/references/platforms/index.md) 和对应 operation 为准。
+以下场景已建立文档。各操作的当前可信度和实际验证日期，以 [平台索引](../../harness/release-ops/references/platforms/index.md) 下的平台档案和对应 operation 为准；不能将仓库推送、PR 合并成功外推为包或扩展已发布。
 
 | 平台 | operation | 用户目标 | 成功所需证据 |
 | --- | --- | --- | --- |
