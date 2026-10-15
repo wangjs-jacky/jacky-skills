@@ -36,6 +36,9 @@ jobs:
       - name: 验证 Codex 项目回放工具
         run: node --test labs/codex-project-replay/tests/*.test.mjs
 
+      - name: 验证 Goal-first Happy 可选适配器
+        run: node --test labs/goal-first-workflow/tests/*.test.mjs
+
       - name: 审计仓库
         run: python scripts/audit_skills.py --scan-shared-content
 

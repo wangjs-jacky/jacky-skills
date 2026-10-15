@@ -34,14 +34,17 @@ try {
 
 await mkdir(destination, { recursive: true });
 await mkdir(resolve(destination, "tasks"));
+await mkdir(resolve(destination, "templates"));
 
 for (const [source, output] of [
   ["AGENTS.template.md", "AGENTS.md"],
   ["PROMPT.template.md", "PROMPT.md"],
   ["problem.template.md", "problem.md"],
+  ["task-index.template.md", "templates/task-index.template.md"],
+  ["task-prompt.template.md", "templates/task-prompt.template.md"],
 ]) {
   await cp(resolve(templateDirectory, source), resolve(destination, output));
 }
 
 console.log(`Created goal workspace: ${destination}`);
-console.log("Next: fill in problem.md, then ask an AI to read PROMPT.md.");
+console.log("Next: read PROMPT.md; verify goal confirmation before task preparation, show full task drafts and wait for the user's next step, then execute only tasks covered by an explicit user execution instruction.");
