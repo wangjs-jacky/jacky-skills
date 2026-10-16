@@ -3,8 +3,8 @@ site: cloudflare
 domains:
 - dash.cloudflare.com
 aliases:
-- 无
-updated: 2026-09-07
+- Cloudflare
+updated: 2026-10-15
 ---
 
 # cloudflare
@@ -17,7 +17,10 @@ updated: 2026-09-07
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
+| [publish-http-tunnel-route](operations/publish-http-tunnel-route.md) | 为已授权本地服务建立独立隧道和代理 DNS，并在控制台核验 | high | 2026-10-15 | [操作](operations/publish-http-tunnel-route.md) |
 | audit-active-zone-dns-export | 确认已委派域名的 Zone、套餐、DNS 记录和 Universal SSL 状态，并导出 BIND 区文件 | low | 2026-09-07 | [说明](operations/audit-active-zone-dns-export.md) |
+| audit-paid-plan-runtime-quota | 只读核对付费套餐与运行时配额 | low | 2026-10-02 | [说明](operations/audit-paid-plan-runtime-quota.md) |
+| cancel-workers-renewal | 取消Workers下期续费并保留本期权限 | high | 2026-10-02 | [说明](operations/cancel-workers-renewal.md) |
 
 ## 站点级陷阱
 

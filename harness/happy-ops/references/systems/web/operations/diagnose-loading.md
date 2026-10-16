@@ -2,10 +2,10 @@
 
 - system: web
 - operation: diagnose-loading
-- status: historical
-- last_verified: none
+- status: verified
+- last_verified: 2026-10-05
 - risk: low
-- scope: 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。
+- scope: 皮肤静态资源路由修复；图片 MIME 与解码、首页及 health、浏览器背景显示；账号恢复期间隐藏登录表单及慢请求反馈。公网延迟及其他历史故障未重验。
 
 ## 目标
 
@@ -35,6 +35,8 @@
 
 ## 验证证据
 
-历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/web/operations/diagnose-loading.md)。last_verified 为 none；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
+2026-10-05：背景资源落入 SPA HTML 兜底已通过补齐静态路由修复，验证范围与记录见[私有操作证据](../../../../local/systems/web/operations/diagnose-loading.md)。
+
+历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/web/operations/diagnose-loading.md)。旧历史记录未重验；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。

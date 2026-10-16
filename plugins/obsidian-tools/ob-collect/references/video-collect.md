@@ -2,6 +2,33 @@
 
 > SKILL.md 的「视频/音频采集模式」章节包含处理管线、平台能力矩阵和 ASR 回退步骤；本文是各类模板细节和归纳规则。
 
+## 字幕资产归档契约（先于学习摘记）
+
+每条新视频在写入 raw 笔记前，先建立以下稳定资产；视频或音频本体仍是临时文件，转写完成后删除：
+
+```
+raw/videos/{作者名}/
+├── captions/
+│   ├── {video_id}.srt       # 必需：UTF-8，逐段起止时间
+│   └── {video_id}.meta.json # 必需：来源、语言、引擎、段数、生成时间
+└── {YYYY-MM-DD}-{video_id}-来源摘记.md
+```
+
+`meta.json` 最小格式：
+
+```json
+{
+  "video_id": "7684917728125618155",
+  "source_url": "https://www.douyin.com/video/7684917728125618155",
+  "caption_source": "platform",
+  "language": "zh",
+  "generated_at": "2026-09-14T12:00:00+08:00",
+  "segment_count": 512
+}
+```
+
+当 `caption_source` 是 `asr` 时，额外写入 `engine` 和 `model`。原始平台 VTT/JSON 可作为附加文件保留，但 `{video_id}.srt` 是 MISS 与后续问答统一使用的规范入口。
+
 ## raw 模板（带时间轴分段）
 
 视频/音频的 raw 层按作者名归档：`raw/[作者名]/标题.md`
@@ -15,6 +42,9 @@ type: transcript
 category: Audio
 duration: "10:30"
 status: uncompiled
+caption_file: "captions/{video_id}.srt"
+caption_status: archived
+caption_source: platform | asr
 tags: [音频笔记, {作者名}]
 ---
 
@@ -96,15 +126,16 @@ raw_note: "[[raw/作者名/标题]]"
 
 AI 归纳视频/音频内容时遵循以下原则：
 
-1. **观点拆解**：将内容拆解为 3-7 个核心观点/论点，每个有独立标题
-2. **raw 引用**：每个观点必须用 `[[raw/作者名/标题#M:SS]]` 链接到 raw 层原文的 heading
-3. **时间范围**：观点跨多段时用 `~` 连接起止：`[[raw/作者名/标题#1:30]] ~ [[raw/作者名/标题#3:45]]`
-4. **不搬运原文**：归纳用自己的话概括，不直接复制原文句子
-5. **关键结论**：提炼 3-5 条一句话可消化的结论，附链接
-6. **金句引用**：选取 2-4 条原文中最有表达力的原话，附链接
-7. **我的思考**：留空，供用户自行补充
-8. **不做延伸**：只归纳，不添加 transcript 中没有的观点
-9. **元数据进 frontmatter**：author / source_url / origin_url / duration / ingested_at / raw_note 一律写入 YAML，**不要**塞进正文 `>` 引用块——结构化字段进 frontmatter 才能被 Dataview/Bases 查询、过滤、聚合。正文顶部只留一句背景 + 一行原文/来源链接。`duration` 形如 `70:33` 必须加引号，否则被 YAML 当 60 进制数字解析。
+1. **字幕先验收**：先确认 `caption_file` 和对应 SRT 存在、非空且至少含一个时间范围；缺字幕时不得把“ASR 已阅读”或学习摘记写成“字幕已归档”。
+2. **观点拆解**：将内容拆解为 3-7 个核心观点/论点，每个有独立标题
+3. **raw 引用**：每个观点必须用 `[[raw/作者名/标题#M:SS]]` 链接到 raw 层原文的 heading
+4. **时间范围**：观点跨多段时用 `~` 连接起止：`[[raw/作者名/标题#1:30]] ~ [[raw/作者名/标题#3:45]]`
+5. **不搬运原文**：归纳用自己的话概括，不直接复制原文句子
+6. **关键结论**：提炼 3-5 条一句话可消化的结论，附链接
+7. **金句引用**：选取 2-4 条原文中最有表达力的原话，附链接
+8. **我的思考**：留空，供用户自行补充
+9. **不做延伸**：只归纳，不添加 transcript 中没有的观点
+10. **元数据进 frontmatter**：author / source_url / origin_url / duration / ingested_at / raw_note 一律写入 YAML，**不要**塞进正文 `>` 引用块——结构化字段进 frontmatter 才能被 Dataview/Bases 查询、过滤、聚合。正文顶部只留一句背景 + 一行原文/来源链接。`duration` 形如 `70:33` 必须加引号，否则被 YAML 当 60 进制数字解析。
 
 ## browser 提取真实地址（yt-dlp / opencli download 失效时的兜底）
 

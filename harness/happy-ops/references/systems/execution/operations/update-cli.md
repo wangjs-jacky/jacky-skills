@@ -3,9 +3,9 @@
 - system: execution
 - operation: update-cli
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-14
 - risk: high
-- scope: 稳定入口切换本机 CLI 与 daemon、protocol 3 注册和真实 Codex 回复；保留 30 个旧会话，Claude 已安装但未登录，未更新其他设备或 npm。
+- scope: 最近验证为 Resume 同轮终态时间戳落后修复，保留实际运行补丁构建激活；真实 API/socket 旧版复现、新版消除假 running，新 worker 启动通过，既有 worker 保留；未提交模型请求、未热替换旧 worker、未发布 npm。此前原生目录/准备/只读工具/取消事件证据保留。
 
 ## 目标
 
@@ -34,8 +34,20 @@
 
 全局 npm 版本一致不证明 runner 更新。不得为版本对齐批量杀旧 worker，不把构建环境生成的 chunk 文件名当跨平台固定入口。
 
+本机已叠加补丁时，以实际不可变 release 核对依赖和运行基线，不能用干净主干构建覆盖尚未合入的线上补丁。候选需独立构建和目标回归，再切换稳定入口并验证 daemon 注册与新 worker 的实际 bundle 路径；保留前版及切换前 worker 清单供回退和影响核验。相同包版本也可能对应不同本机修复，分别记录源码提交和 release 标识。
+
+只读工具授权仍需可用原生环境与工具入口；空环境列表和禁用工具宿主会让已传递材料无法读取。仅在明确授权下调整，保留只读sandbox与写入限制，并用真实附件核对。纯租约续期不保证收到取消状态，取消须独立事件通知与精确租约控制读取；检查中的通知要合并补处理，不能以周期轮询补偿。
+
+受限原生环境需保留已明确配置的专用代理，同时保留账号隔离。JSONB 中对象键序可以变化，目标身份应按字段比较。daemon 未登记旧 worker，不代表旧进程可以清理。
+
 ## 验证证据
 
-2026-10-03 验证覆盖上述 scope，来源与限制见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
+2026-10-07 验证覆盖上述本次 scope，来源与历史限制见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-10-09 补充：准备与领取优化发布完成，五轮真实请求领取等待为毫秒级，但原生请求超时与重试仍造成长首字等待。后续独立恢复发布的验证范围保持不变；各发布时序见私有证据。
+
+2026-10-11：原生目录与真实服务执行、材料读取、显式恢复和事件取消已验证，具体范围及旧问题限制见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
+
+2026-10-14：Resume 假 running 修复已通过候选构建、目标回归、真实 API/socket 新旧对照及激活后新 worker 启动检查；旧 worker 未中断，未提交模型任务。证据及生效边界见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。

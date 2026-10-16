@@ -3,9 +3,9 @@
 - system: android
 - operation: publish-ota
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-15
 - risk: high
-- scope: PR preview 与 merged-main production CI 发布及 manifest 元数据读回通过；未覆盖手机实际加载。
+- scope: Merged-main production CI 发布及公开 manifest 的 Update ID、runtime 和 commit 读回通过；未覆盖手机实际加载。
 
 ## 目标
 
@@ -39,3 +39,7 @@
 2026-10-03 执行结果覆盖上面的 scope；具体来源、产物与限制见[私有证据](../../../../local/systems/android/operations/publish-ota.md)。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-10-08 最新执行范围见上方 scope，证据收录于对应私有操作入口。
+
+2026-10-15：merged-main生产CI成功，latest及不可变manifest的ID/runtime/提交前缀读回一致，主包可达；仍未验证手机实际加载。具体参数及证据见私有操作入口。

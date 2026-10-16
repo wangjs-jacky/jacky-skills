@@ -13,7 +13,7 @@ package、channel、runtime 是同一发布契约，从工程机器可读配置�
 
 | 目标／症状 | 操作 | 状态 | 最近验证 |
 | --- | --- | --- | --- |
-| 发布并核对 OTA | [publish-ota](operations/publish-ota.md) | verified | 2026-10-03 |
+| 发布并核对 OTA | [publish-ota](operations/publish-ota.md) | verified | 2026-10-15 |
 | 核对原生包构建与安装契约 | [build-apk](operations/build-apk.md) | historical | none |
 | 排查 OTA 与 APK 更新 | [diagnose-update](operations/diagnose-update.md) | historical | none |
 | 排查推送注册与提醒 | [diagnose-notifications](operations/diagnose-notifications.md) | pending | none |

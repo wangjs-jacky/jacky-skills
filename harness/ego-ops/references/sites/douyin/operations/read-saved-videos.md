@@ -3,7 +3,7 @@ site: douyin
 operation: read-saved-videos
 title: 读取收藏中的前 N 个视频
 risk: low
-last_verified: 2026-08-23
+last_verified: 2026-09-02
 ---
 
 # 读取收藏中的前 N 个视频
@@ -49,4 +49,4 @@ last_verified: 2026-08-23
 ## 验证证据
 
 - 页面地址显示收藏主标签与视频子标签
-- 本次只读提取 count=10，结果均为去重的 /video/ 链接
+- 本次只读提取 count=30，uniqueCount=30，结果均为去重的 /video/ 链接

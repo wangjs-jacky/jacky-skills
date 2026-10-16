@@ -99,7 +99,7 @@ $OBSIDIAN_REPO/.kb/
 
 ## 获取内容（默认委托 web-search + 明确例外）
 
-> **【硬约束】所有「如何拿到内容」的决策**默认**由 [web-search](../../dev-tools/web-search/SKILL.md) skill 负责。本 skill 不维护路由表。**
+> **【硬约束】所有「如何拿到内容」的决策**默认**由 `dev-tools:web-search`（`web-search`）skill 负责。本 skill 不维护路由表。** 从当前环境的 Skills 目录取得该 skill 的实际路径并读取；不要从本 skill 的安装目录拼接跨 skill 相对路径，也不要把标识中的 `:` 转成目录分隔符。
 >
 > **例外口子由本节末尾的「例外清单」统一管理**。未列入清单的绕过路径一律视为违规。
 
@@ -173,10 +173,12 @@ web-search 负责"怎么拿"，ob-collect 负责"放哪儿"。raw/ 归档目录�
 
 > 这些是采集质量的底线，**新增扩展点不能破坏这些约束**。
 
-1. **视频类只存字幕，不存视频本身**
-   - 优先 OpenCLI `subtitle`/`transcript`（web-search Layer 1 自动调用）
-   - 字幕缺失 → 调用 audio-to-subtitle skill 做 ASR（用本地音视频大模型转字幕）
-   - ASR 完成后**立即删除**临时视频/音频文件（详见 ASR 回退流程）
+1. **视频类只存字幕，不存视频本身；字幕资产必须可复用**
+   - 每条新采集视频都必须在 `raw/videos/{作者名}/captions/` 留存 `{video_id}.srt`（UTF-8、带起止时间）。有平台字幕时优先保留其原始格式，并额外生成或规范化为该 SRT。
+   - 同时留存 `{video_id}.meta.json`，至少记录 `video_id`、`source_url`、`caption_source`（`platform` 或 `asr`）、`language`、`generated_at`、`segment_count`；ASR 另记 `engine` 与 `model`。
+   - 优先 OpenCLI `subtitle`/`transcript`（web-search Layer 1 自动调用）；字幕缺失 → 调用 audio-to-subtitle skill 做 ASR（用本地音视频大模型转字幕），输出格式固定为 SRT。
+   - raw 学习摘记的 frontmatter 必须写入 `caption_file`、`caption_status: archived`、`caption_source`；时间轴摘记、摘要和 wiki 归纳都不能替代逐字字幕。
+   - ASR 完成后**立即删除**临时视频/音频文件（详见 ASR 回退流程），不得删除已验证的字幕资产。
    - 例外：用户**显式**要求保留视频时才下载，且事前确认
 2. **raw 层一次写入不可修改**（要改进 → 在 wiki 层追加引用，不动 raw）
 3. **每篇 wiki 文章必须有 article_id**（`OBA-{8 位 lowercase}` 格式）

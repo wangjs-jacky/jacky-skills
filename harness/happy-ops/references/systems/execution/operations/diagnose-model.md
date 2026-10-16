@@ -2,10 +2,10 @@
 
 - system: execution
 - operation: diagnose-model
-- status: historical
-- last_verified: none
+- status: verified
+- last_verified: 2026-10-16
 - risk: low
-- scope: 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。
+- scope: 同一模型容量失败后，在线原线程的单次继续、真实文本及工具执行已验证；未重验目录、其他模型或手机 UI，历史模型案例保留。
 
 ## 目标
 
@@ -33,8 +33,10 @@
 
 包版本或 agent 支持图像不能证明所有模型支持；不因容量错误自行切账号或改变用户模型选择。
 
+serverOverloaded 表示上游报告模型容量不足，先核对原生错误与当前 worker/turn，而非仅按界面文案归因。在线 worker 已空闲且失败后没有新消息时，可在恢复授权内沿原模型补一次稳定 localId 的正常继续；提交前核对线程、失败轮和消息序列未变，用真实回复及工具调用确认恢复。一次成功不证明上游容量问题永久消失。
+
 ## 验证证据
 
-历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/execution/operations/diagnose-model.md)。last_verified 为 none；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
+2026-10-16：容量失败后的同模型、原线程单次继续产生真实回复及工具执行。状态和日期只覆盖上述 scope；具体证据、公开反馈与历史未覆盖项见[私有证据](../../../../local/systems/execution/operations/diagnose-model.md)。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。

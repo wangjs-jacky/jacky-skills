@@ -4,7 +4,7 @@ domains:
 - www.xiaohongshu.com
 aliases:
 - 无
-updated: 2026-09-09
+updated: 2026-10-04
 ---
 
 # xiaohongshu
@@ -17,7 +17,9 @@ updated: 2026-09-09
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| login-by-phone | 使用用户提供的手机号和一次性验证码登录小红书网页端 | medium | 2026-09-09 | [说明](operations/login-by-phone.md) |
+| [collect-video-note](operations/collect-video-note.md) | 归档公开视频笔记的标题、作者与可播放媒体 | low | 2026-10-04 | [操作](operations/collect-video-note.md) |
+| [collect-article-note](operations/collect-article-note.md) | 归档公开图文笔记的正文与有序画廊 | low | 2026-10-03 | [操作](operations/collect-article-note.md) |
+| login-by-phone | 使用用户提供的手机号和一次性验证码登录小红书网页端 | medium | 2026-10-03 | [说明](operations/login-by-phone.md) |
 
 ## 站点级陷阱
 

@@ -3,9 +3,9 @@
 - system: web
 - operation: verify-deployment
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-15
 - risk: low
-- scope: 继承既有 Web 版本、资源和页面加载证据；不是全站 E2E。
+- scope: Merged main CI 上传、原子切换、边缘路由、live verify 与发布摘要实际通过，正式 HTML revision 和入口 CSS/JS 核对一致；未做浏览器视觉或手机加载验收。
 
 ## 目标
 
@@ -39,3 +39,7 @@
 继承既有 Web 版本、资源和页面加载证据；不是全站 E2E。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/web/operations/verify-deployment.md)。日期继承已存在的具体成功证据，不是本次迁移的执行日期。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-10-10 最新执行范围见上方 scope；中断发布经同一 CI run 重跑后完成，证据收录于私有操作入口。
+
+2026-10-15：正式HTML、入口资源、SPA路由revision及浏览器设置页运行版本行均与目标merge一致；页面缓存禁用并旁路Service Worker后重新加载。仅为最小上线核验，不替代完整会话或真机交互验收。

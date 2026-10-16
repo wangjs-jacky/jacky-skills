@@ -62,9 +62,10 @@ opencli browser <session> close   # 释放 tab lease
 
 1. `opencli <site> download <url> -o /tmp/collect-download/` 下载视频（无 download 子命令的平台改用上方 browser 兜底）
 2. `ffmpeg -i /tmp/collect-download/video.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 /tmp/collect-download/audio.wav` 提取音频
-3. `python3 {A2S_DIR}/scripts/transcribe.py /tmp/collect-download/audio.wav --engine local -m large-v3-turbo -f md -o /tmp/collect-download/ --yolo` ASR 转录
-4. 读取转录结果，继续正常 raw/ → wiki/ 流程
-5. 清理临时文件：`rm -rf /tmp/collect-download/`
+3. `python3 {A2S_DIR}/scripts/transcribe.py /tmp/collect-download/audio.wav --engine local -m large-v3-turbo -f srt -o /tmp/collect-download/ --yolo` ASR 转录
+4. 校验 SRT 非空且含时间范围，将其移动到 `raw/videos/{作者名}/captions/{video_id}.srt`；再写入同目录 `{video_id}.meta.json`，记录来源、语言、引擎、模型、生成时间与段数
+5. 读取字幕生成时间轴摘记，继续正常 raw/ → wiki/ 流程；raw 笔记 frontmatter 写入 `caption_file`、`caption_status: archived` 与 `caption_source: asr`
+6. 清理临时文件：`rm -rf /tmp/collect-download/`（只清理临时视频、音频和中间字幕，不清理已归档字幕）
 
 > **超时设置**：OpenCLI download 命令设置超时 `OPENCLI_BROWSER_COMMAND_TIMEOUT=120000`（120s）
 >
@@ -245,4 +246,3 @@ status: uncompiled       # 待 OCR + wiki 编译
 | 并发 | Sub Agent 4 个 | Python 进程 3 worker |
 | 编译时机 | 边采边编（每条 raw + wiki）| 阶段解耦（先全采，再 normalize，再 OCR，wiki 多对一蒸馏）|
 | wiki 产出 | 1 URL → 1 wiki | N URL → 1 方法论 wiki（多对一蒸馏，调 distiller）|
-

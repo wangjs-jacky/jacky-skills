@@ -1,6 +1,6 @@
 ---
 name: repo-study
-description: "研究 GitHub 仓库的特定技术实现。触发词：调研下、研究下、学习下、看看 xxx 仓库、分析开源项目、repo-study"
+description: "Use when the user explicitly invokes `$repo-study` to research a GitHub repository; never invoke it implicitly for ordinary repository questions."
 ---
 
 <role>

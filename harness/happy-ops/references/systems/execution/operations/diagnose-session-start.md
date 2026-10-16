@@ -3,9 +3,9 @@
 - system: execution
 - operation: diagnose-session-start
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-13
 - risk: low
-- scope: 已验证旧 Codex 导致首轮模型拒绝、升级并保留账号恢复原会话后真实回复；其他历史启动故障仍需现场核实。
+- scope: 已验证旧Codex模型拒绝恢复，以及macOS后台调度导致本地加载迟延、改为Standard后真实新worker启动和两轮模型回复；不覆盖旧worker迁移或近期恶化的具体触发因素。
 
 ## 目标
 
@@ -25,6 +25,7 @@
 2. 核实真实 runtime、cwd/PATH、代理与控制端预算；UI 草稿恢复文案不能定位根因。
 3. 检查历史复制锁、receiver-ready 和启动能力登记；探针不应堆积潜在远端任务。
 4. 首轮模型拒绝时核对实际执行二进制版本；升级后用原账号和原模型最小验证。恢复绑定账号会话须走正常 session grant 流程并校验失败轮次，完成后读回真实回复与 completed 状态。
+5. macOS本地依赖加载慢时同时核对launchd ProcessType与实际调度priority，nice为0不排除后台限制；同机同runtime隔离探针定位后，正式修复须再用正常daemon创建的新worker和真实模型回复验收。
 
 ## 成功标准
 
@@ -36,6 +37,12 @@
 
 启动等待不一律归因认证或网络；不以加超时掩盖锁阻塞。探针涉及创建会话时沿任务授权执行。
 
+Background限制可使本地依赖加载和事件循环显著变慢，表面凭据文件读取等待不一定是磁盘或远端认证问题。经授权修改启动策略并重载daemon后，必须读回实际分类；既有worker不随daemon自动解除限制，不得为验收批量清理。进程保留须结合清理源码、进程组及重载后存活检查。
+
+真实回复读取须兼容role=session、content.role=agent的协议封装，同时核对文本事件和completed状态；仅识别旧role=agent会产生观察器假超时。计时区分本地启动、首个可见文本与整轮完成，不用受限观察器的轮询延迟替代原事件时间。
+
 ## 验证证据
 
 2026-10-03：三个原会话的旧版模型请求失败，经升级与正常账号授权恢复，全部在原会话内返回验证回复并完成。详见[私有证据](../../../../local/systems/execution/operations/diagnose-session-start.md)。验证仅覆盖此案例，不将其他历史条目自动视为已验证。
+
+2026-10-13：后台调度限制经隔离对照定位；授权改为Standard后，正式daemon创建的新worker实际正常优先级，启动和两轮真实模型回复通过。测试worker停止、旧worker保留；具体计时、观察器修正与限制见同一私有证据入口。

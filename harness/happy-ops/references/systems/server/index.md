@@ -13,7 +13,7 @@
 
 | 目标／症状 | 操作 | 状态 | 最近验证 |
 | --- | --- | --- | --- |
-| 部署自托管 Server | [deploy](operations/deploy.md) | verified | 2026-10-03 |
+| 部署自托管 Server | [deploy](operations/deploy.md) | verified | 2026-10-11 |
 | 排查 API 与 Socket 连接 | [diagnose-connection](operations/diagnose-connection.md) | historical | none |
 | 排查安装包目录接口 | [diagnose-native-catalog](operations/diagnose-native-catalog.md) | historical | none |
 | 排查凭据同步与账号归属 | [diagnose-credential-sync](operations/diagnose-credential-sync.md) | historical | none |

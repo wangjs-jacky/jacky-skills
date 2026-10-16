@@ -3,9 +3,9 @@
 - system: web
 - operation: deploy
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-15
 - risk: high
-- scope: Merged main 经 CI 上传、预激活校验、原子切换和 live verify 通过；正式 HTML revision 及 4 个入口 CSS/JS 响应已核对。
+- scope: Merged main CI 上传、原子切换、边缘路由、live verify 与发布摘要实际通过，正式 HTML revision 和入口 CSS/JS 核对一致；未做浏览器视觉或手机加载验收。
 
 ## 目标
 
@@ -40,3 +40,11 @@
 2026-10-03 执行结果覆盖上面的 scope；具体来源、产物与限制见[私有证据](../../../../local/systems/web/operations/deploy.md)。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-10-08 最新执行范围见上方 scope，证据收录于对应私有操作入口。
+
+同日后续仅发布独立应用的发送前准备优化；函数对照和公网资源核对通过，未复验浏览器或完整模型回复。具体记录见私有操作入口。
+
+2026-10-10 最新执行范围见上方 scope；中断发布经同一 CI run 重跑后完成，证据收录于私有操作入口。
+
+2026-10-15：再次验证精确merged-main生产CI上传、激活与live verify；公开revision/资源及浏览器运行版本行一致。具体证据见私有操作入口，未扩大为完整会话交互或手机加载验收。
