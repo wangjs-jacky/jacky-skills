@@ -1,0 +1,7 @@
+# Runtime knowledge, including the mutable project index, stays local.
+/references/projects/
+
+# Local instance mappings and evidence.
+experience.local.md
+*.local.*
+local/

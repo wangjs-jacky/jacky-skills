@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INITIALIZER = ROOT / "labs/goal-first-workflow/scripts/init-goal-project.mjs"
+INITIALIZER = ROOT / "labs/goal-first/scripts/init-goal-project.mjs"
 
 
 class GoalFirstWorkflowInitializerTests(unittest.TestCase):
@@ -63,7 +63,7 @@ class GoalFirstWorkflowInitializerTests(unittest.TestCase):
                 self.assertNotIn(forbidden, generated_markdown)
 
     def test_skill_allows_redacted_project_specific_context(self):
-        skill = (ROOT / "labs/goal-first-workflow/SKILL.md").read_text(
+        skill = (ROOT / "labs/goal-first/SKILL.md").read_text(
             encoding="utf-8"
         )
 
