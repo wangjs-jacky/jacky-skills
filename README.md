@@ -45,7 +45,9 @@
 | [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
-| [create-ops](./skills/create-ops) | | |
+| [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | |
+
+`existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
 
 `create-ops` 用于新建 OPS，或把已有 Skill、功能和经验改造成 OPS：先由用户确认分类主键与常用 operations，再生成自动沉淀协议和安装时的全局前置提示词。
 

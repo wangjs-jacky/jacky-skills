@@ -1,0 +1,4 @@
+interface:
+  display_name: "基于现有界面迭代设计"
+  short_description: "复原原有页面与设计风格，在同一底稿上制作多版可交互方案并持续迭代"
+  default_prompt: "用 $existing-ui-design 基于现有页面或设计稿制作几版交互方案，保留已有风格，并根据我的反馈继续迭代。"
