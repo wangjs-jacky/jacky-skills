@@ -1,0 +1,8 @@
+# Project goals, reports, process records and evidence stay on this machine.
+/projects/
+
+# Legacy compatibility entries remain private during migration.
+/references/projects
+local/
+experience.local.md
+*.local.*

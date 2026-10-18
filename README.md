@@ -65,6 +65,7 @@
 | [cloudflare-ops](./harness/cloudflare-ops) | Cloudflare 能力与场景 | Workers/DO 设计边界、额度、常见坑、事件驱动约束与操作经验 |
 | [release-ops](./harness/release-ops) | 软件分发平台 | GitHub/npm/扩展发布的适用流程、限制、验证及自动沉淀 |
 | [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
+| [goal-first-ops](./harness/goal-first-ops) | Goal First 项目目标档案 | 按 project 与 features 集中保存每个目标的报告、过程、产物、证据与方法 |
 
 安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
 
@@ -72,7 +73,9 @@
 
 `github-repo-publish`、`npm-publish`、`vsix-publish` 保留为兼容入口，共享 `release-ops`。单独通过 Plugin 安装这些入口时，需同时安装仓库中的 `harness/release-ops`（可用 `j-skills link` 后安装；全量安装脚本已扫描 harness）。安装 Agent 读取其[全局前置提示词](./harness/release-ops/references/global-agents-prompt.md)，经用户确认后才加入全局规则。[分类与设计](./docs/release-ops/README.md)记录知识归属。
 
-每个 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录。使用 [`create-ops`](./skills/create-ops) 创建或改造 OPS，配合官方 `skill-creator`；本仓库产物默认放到 `harness/<target>-ops/`，详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
+一般 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录；`goal-first-ops` 按下述目标档案模型保存这些内容。使用 [`create-ops`](./skills/create-ops) 创建或改造 OPS，配合官方 `skill-creator`；本仓库产物默认放到 `harness/<target>-ops/`，详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
+
+`goal-first` 负责目标确认、任务安排与执行选择，`goal-first-ops` 按 `projects/<project>/features/<feature>/` 管理目标档案。每个 feature 就是一个目标文件夹，报告、需求、过程、产物、证据和复用方法集中保存；整个 projects/ 只保留本机、不提交 Git，空索引模板随 Skill 分发并在首次实际记录时初始化。新项目和目标随真实工作补充。安装 Agent 读取其[全局前置提示词](./harness/goal-first-ops/references/global-agents-prompt.md)，按已有授权或用户选择处理全局规则。
 
 `codex-env-config` 保留为 `codex-ops` 兼容入口；单独安装 knowledge-base Plugin 时需同时安装独立 `harness/codex-ops`，额度查询另需 `skills/codex-quota`。`codex-harness` 继续维护通用工作习惯，Codex 自身运维按新库路由。安装 Agent 读取[全局前置提示词](./harness/codex-ops/references/global-agents-prompt.md)，经用户确认后加入全局规则；[分类与迁移说明](./docs/codex-ops/README.md)记录知识归属。
 
@@ -85,6 +88,7 @@
 - [web-flow](./labs/web-flow)：渐进串联网站调研、原型、设计、实现、评审与部署。
 - [app-flow](./labs/app-flow/app-flow)：不固定技术栈、阶段或交付形式的长任务 App Workflow，按任务证据动态组织工作。
 - [self-learning](./labs/self-learning)：让 AI 从视频、文章或主题自主学习、扩展调研并生成可验证产物。
+- [goal-first](./labs/goal-first)：澄清目标、安排可审阅任务并按明确选择执行；项目知识由 `goal-first-ops` 沉淀。
 
 ## 兼容性边界
 

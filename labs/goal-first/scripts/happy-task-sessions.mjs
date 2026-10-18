@@ -158,7 +158,7 @@ export async function launchBatch(plan, approval, runtime) {
       }
       const sent = await runtime.send({ sessionId: record.sessionId, accountProfileId: plan.accountProfileId,
         directory: task.directory, localId: record.localId, text: task.text,
-        meta: { sentFrom: 'goal-first-workflow', model: task.model, effort: task.effort, permissionMode: task.permissionMode, fast: task.fast } });
+        meta: { sentFrom: 'goal-first', model: task.model, effort: task.effort, permissionMode: task.permissionMode, fast: task.fast } });
       record.messageSeq = sent.seq;
       await writeFile(task.receipt, JSON.stringify(record, null, 2) + '\n');
       results.push({ task: task.task, sessionId: record.sessionId, messageSeq: record.messageSeq });

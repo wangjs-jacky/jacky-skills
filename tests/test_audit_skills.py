@@ -69,6 +69,23 @@ class AuditSkillsCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(payload["summary"]["skills"], 1)
 
+    def test_harness_goal_archives_are_not_discovered_as_active_skills(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            self.write_skill(repo, "harness/demo-ops")
+            self.write_skill(
+                repo,
+                "harness/demo-ops/projects/demo/features/research/original-skill",
+                name="archived-experiment",
+            )
+
+            result = self.run_audit(repo, "--format", "json")
+            payload = json.loads(result.stdout)
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(payload["summary"]["skills"], 1)
+        self.assertEqual(payload["errors"], [])
+
     def test_harness_skill_requires_ops_suffix(self):
         with tempfile.TemporaryDirectory() as directory:
             repo = Path(directory)

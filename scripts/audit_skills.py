@@ -131,11 +131,18 @@ def find_active_skill_files(repo: Path, plugins: Iterable[Path]) -> list[Path]:
             continue
         if stat.S_ISLNK(metadata.st_mode) or not stat.S_ISDIR(metadata.st_mode):
             continue
-        skill_files.extend(
-            path
-            for path in root.rglob("SKILL.md")
-            if path.is_file() and is_active_path(path, repo)
-        )
+        for directory, children, filenames in os.walk(root):
+            children[:] = [
+                name for name in children if name not in IGNORED_PARTS
+            ]
+            skill_file = Path(directory) / "SKILL.md"
+            if "SKILL.md" not in filenames or not skill_file.is_file():
+                continue
+            if is_active_path(skill_file, repo):
+                skill_files.append(skill_file)
+            if root in (repo / "skills", repo / "harness"):
+                # A Skill owns its goal archives and embedded source examples.
+                children[:] = []
     return sorted(set(skill_files))
 
 

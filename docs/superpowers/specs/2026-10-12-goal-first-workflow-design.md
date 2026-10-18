@@ -1,5 +1,7 @@
 # Goal-First Workflow Design
 
+> Historical document: on 2026-10-16 the Skill was renamed to `goal-first`. Current entry: [goal-first](../../../labs/goal-first/SKILL.md); project knowledge is maintained by [goal-first-ops](../../../harness/goal-first-ops/SKILL.md). Original implementation names below are retained as historical context.
+
 ## Intent
 
 Create an experimental, reusable Skill that turns a newly stated project goal into an independent, file-backed execution workspace. It must preserve the user's original goal, break work into small tasks, let each task carry a copyable prompt and one simple status, and leave auditable results, sources, questions, and ideas in the task that produced them.

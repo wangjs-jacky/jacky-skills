@@ -15,7 +15,7 @@
 ## Operations
 
 - [修改运行配置](operations/configure-runtime.md)
-- [维护全局 AGENTS](operations/maintain-global-instructions.md)
+- [维护全局 AGENTS](operations/maintain-global-instructions.md)：2026-10-18复核同范围段落替换、私有备份与本会话收到新规则的证据。
 - [诊断配置加载](operations/diagnose-config-loading.md)
 
 ## 来源

@@ -1,5 +1,7 @@
 # Goal-First Workflow Implementation Plan
 
+> Historical document: on 2026-10-16 the Skill was renamed to `goal-first`. Current entry: [goal-first](../../../labs/goal-first/SKILL.md); project knowledge is maintained by [goal-first-ops](../../../harness/goal-first-ops/SKILL.md). Original implementation names below are retained as historical context.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Add an experimental, installable-on-demand Goal-First Workflow Skill that initializes a portable, auditable task workspace inside another project.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goal First OPS"
+  short_description: "按项目与目标集中保存报告、过程、产物和证据，支持接续执行与持续更新"
+  default_prompt: "使用 $goal-first-ops，按 project 和 feature 找到目标，读取核心报告与过程，并将本次真实结果更新回同一目标目录。"

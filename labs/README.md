@@ -11,17 +11,21 @@
 - [`web-flow`](./web-flow/)：面向网站交付的固定阶段 Workflow，依次串联调研、原型、设计、实现、评审与部署。
 - [`app-flow`](./app-flow/app-flow/)：面向长任务 App 交付的薄套件——薄总入口 `app-flow` 加三个窄能力 `app-flow-build`、`app-flow-delivery`、`app-flow-reviewer`；不预设固定技术栈、阶段或交付形式，而是根据任务证据动态选能。
 - [`self-learning`](./self-learning/)：让 AI 从视频、文章或主题自主学习、扩展调研并生成可验证产物；HyperFrames 产出能力由子 Skill `self-learning-hyperframes` 承担。
-- [`goal-first-workflow`](./goal-first-workflow/)：把一个新目标初始化为可追踪、可审计、可由独立 AI 接续的文件化任务工作区。
-- [`codex-project-replay`](./codex-project-replay/)：独立读取本地 Codex 多会话历史，生成项目 `index.md` 与逐会话回放，追溯操作、验证、错误和修正；不依赖 Goal-First Workflow。
+- [`goal-first`](./goal-first/)：把一个新目标初始化为可追踪、可审计、可由独立 AI 接续的文件化任务工作区；项目经验配合 `goal-first-ops` 沉淀。
+- [`codex-project-replay`](./codex-project-replay/)：独立读取本地 Codex 多会话历史，生成项目 `index.md` 与逐会话回放，追溯操作、验证、错误和修正；不依赖 `goal-first`。
 
 `web-flow` 适合沿固定交付阶段推进网站任务；`app-flow` 则为长任务 App Workflow 动态选择能力与交付物。
 
-要预览 Goal-First Workflow，可单独链接并安装：
+要预览 Goal First 及其知识层，可分别链接并安装：
 
 ```bash
-j-skills link ./labs/goal-first-workflow
-j-skills install goal-first-workflow -g --env claude-code,codex
+j-skills link ./labs/goal-first
+j-skills install goal-first -g --env claude-code,codex
+j-skills link ./harness/goal-first-ops
+j-skills install goal-first-ops -g --env claude-code,codex
 ```
+
+`goal-first-ops` 默认按 `projects/<project>/features/<feature>/` 组织目标，每个 feature 就是目标工作区，报告、需求、过程、产物、证据和方法集中保存；整个 projects/ 及动态索引不提交 Git，首次实际记录时从随附空索引模板初始化导航。不另设 workspace、本机经验或实例索引。安装 Agent 按其全局提示词处理可选的前置规则，不因链接成功自动修改全局配置。
 
 要预览项目回放器，可在新会话中使用它分析任意项目：
 
