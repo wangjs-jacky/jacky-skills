@@ -46,6 +46,9 @@
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
 | [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
+| [story-ui](./skills/story-ui) | | |
+
+`story-ui` 用于技术组件库的全状态交互展台：集中展示相关用户状态，支持示例输入、状态推进与重播，并复用实际组件。
 
 `existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
 
