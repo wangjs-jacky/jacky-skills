@@ -45,7 +45,7 @@
 | [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
-| [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | |
+| [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
 
 `existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
 
