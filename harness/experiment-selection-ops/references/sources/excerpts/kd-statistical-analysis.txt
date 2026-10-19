@@ -1,0 +1,27 @@
+## Analysis Workflow
+
+Use the following workflow, documenting prespecified decisions and exploratory departures.
+
+1. **Frame the question before touching the data.** State the hypothesis, the outcome and predictor variables, and the design (independent vs. paired, number of groups). Specify the target effect, sampling unit, dependence, contrasts and multiplicity family before outcome-driven selection. Label adaptive exploration explicitly.
+2. **Inspect the data.** Per group: n, mean, SD, median, missing values. Plot the raw data (histograms or box plots) before any test. Unequal group sizes, missingness, floor/ceiling effects, and outliers all change what test is appropriate — surface them to the user rather than silently working around them.
+3. **Select the test** using the quick reference below, or `references/test_selection_guide.md` for designs beyond the basics (counts, time-to-event, reliability, factorial).
+4. **Check assumptions** with `scripts/assumption_checks.py`. Interpret plots and screens alongside the design and estimand; do not switch tests automatically at a diagnostic p-value threshold. Report justified sensitivity analyses and any departures from the plan.
+5. **Run the test** and always compute the effect size alongside it — a p-value assesses incompatibility with the null model; the effect estimate and its uncertainty support judgments about practical importance.
+6. **Report** using the APA templates below, including descriptives, exact statistics, effect sizes with CIs, and the assumption checks performed.
+
+If the user only needs one step (e.g., "how many participants do I need?"), jump straight to that section — but still confirm the design assumptions the calculation rests on.
+
+
+[... omitted ...]
+
+## Statistical Integrity
+
+These are the practices that keep an analysis defensible. They matter because the most common statistical failures are not computational errors — they are silent flexibility (testing until something works) and selective reporting.
+
+1. **Distinguish confirmatory from exploratory.** State the planned analysis before running it; label anything discovered along the way as exploratory.
+2. **Don't shop for significance.** If the planned test is non-significant, that is the result. Trying alternative tests, subgroups, or outlier-removal schemes until p < .05 invalidates the p-value.
+3. **Correct for multiple comparisons** when running families of tests (Tukey HSD for post-hoc ANOVA; Holm or Benjamini-Hochberg FDR for other families) and say which correction was used.
+4. **A non-significant result is not evidence of no effect.** With small n, the study may simply have been underpowered — run a sensitivity analysis, or use a Bayesian analysis / equivalence test to actually quantify support for the null.
+5. **Statistical significance is not practical importance.** With large n, trivial effects reach p < .001. Lead the interpretation with the effect size.
+6. **Understand missing data before dropping rows.** State which rows were removed and why. Complete-case validity depends on the model and missingness mechanism; MCAR is sufficient in many settings but not necessary universally. Imputation also needs assumptions and sensitivity analysis, especially under MNAR.
+7. **Make it reproducible.** Set random seeds, report library versions for simulation-based methods, and keep the analysis in a runnable script.

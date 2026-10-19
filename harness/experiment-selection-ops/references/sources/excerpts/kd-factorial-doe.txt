@@ -1,0 +1,61 @@
+When several factors might affect a response, testing them **one factor at a time
+(OFAT)** is both wasteful and blind to interactions. Factorial designs vary factors
+*together*, so the appropriate full design separates main effects and interactions;
+reduced designs trade some of that information for fewer runs. This file covers the family of DOE designs and the
+concepts (resolution, aliasing) needed to read them. Generate them with
+`scripts/doe_designs.py`.
+
+
+[... omitted ...]
+
+## Why factorial beats OFAT
+
+Vary one factor while holding others fixed and you (1) spend runs inefficiently and
+(2) can never see **interactions** — cases where the effect of A depends on the level
+of B, which are the rule, not the exception, in real systems. A factorial varies all
+factors simultaneously across runs; each effect is estimated using *all* the data, so
+a 2^k factorial is more precise than k separate OFAT studies of the same size.
+
+## Full factorial
+
+A **2^k** design runs every combination of k factors at two levels (low/high, coded
+−1/+1). It estimates all k main effects and all 2^k − k − 1 interactions. With one observation per combination, the
+model containing every effect plus an intercept is saturated: it has zero residual
+degrees of freedom. Replicate independently or pre-specify a defensible reduced
+model before claiming standard errors or significance.
+
+- Runs = 2^k: 8 for 3 factors, 16 for 4, 32 for 5. Practical to ~5 factors.
+- Use when you have a handful of factors and want a full picture including
+
+
+[... omitted ...]
+
+## Fractional factorial
+
+When k is large, 2^k is too many runs — but most high-order interactions are
+negligible (the *sparsity-of-effects* principle). A **2^(k−p)** fractional factorial
+runs a carefully chosen fraction (1/2, 1/4, ...) of the full design, trading the
+ability to estimate some interactions for far fewer runs.
+
+- `fractional_factorial(factors, generator="a b c abc")` builds a half-fraction of 4
+  factors in 8 runs. The generator string (Yates notation) assigns each factor to a
+  column; a multi-letter token aliases that factor with an interaction.
+- The price is **aliasing**: some effects become indistinguishable. You must know
+  which.
+
+## Resolution and aliasing
+
+**Aliasing** (confounding) means two effects are estimated by the same contrast — the
+data cannot separate them. Which effects are aliased is summarized by the design's
+**resolution**:
+
+| Resolution | Aliasing | Interpretation |
+|------------|----------|----------------|
+| **III** | main effects aliased with 2-factor interactions | Screening only; a "significant" main effect might be an interaction |
+| **IV** | main effects clear of 2FI, but 2FIs aliased with each other | Main effects require negligible aliased 3FI+ |
+| **V** | main effects and 2FIs all clear of each other (aliased with 3FI+) | Main/2FI separation assumes negligible aliased higher effects |
+
+Always state the resolution and inspect the alias structure before interpreting a
+fractional design. Concluding "factor C has no effect" is unsafe if C is aliased with
+a real interaction (it could cancel out). When in doubt, choose a higher-resolution
+generator (more runs) or add runs to **de-alias** (fold-over / augment the design).

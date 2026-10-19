@@ -1,0 +1,38 @@
+### 3. Write the report as a decision object
+
+This report is not a transcript of outputs.
+
+Each section must answer a real question:
+- What did we test?
+- What changed numerically?
+- What is actually supported?
+- What failed or remains uncertain?
+- What should we do next?
+
+Read `references/decision-oriented-analysis.md` for the expected reasoning depth.
+
+### 4. Interpret figures inside the report
+
+Do not only attach figures.
+
+For each main figure:
+- introduce why it is included,
+- state the key observation,
+- explain the supported interpretation,
+- explain the decision implication.
+
+Read `references/figure-interpretation.md` and `references/statistical-completeness.md` as needed.
+
+
+
+[... omitted ...]
+
+## Required quality bar
+
+- The report must be dateable, searchable, and attributable to one experiment line and one round.
+- The report must cite actual evidence from the analysis bundle.
+- The report must include negative results when they matter.
+- The report must separate stable conclusion from tentative interpretation.
+- The report must say what changed in project belief and what should happen next.
+- The report must preserve Claim Candidate wording and must not promote `speculative` or `observed` claims into decisive conclusions.
+

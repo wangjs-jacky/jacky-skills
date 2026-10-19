@@ -69,6 +69,7 @@
 | [release-ops](./harness/release-ops) | 软件分发平台 | GitHub/npm/扩展发布的适用流程、限制、验证及自动沉淀 |
 | [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
 | [goal-first-ops](./harness/goal-first-ops) | Goal First 项目目标档案 | 按 project 与 features 集中保存每个目标的报告、过程、产物、证据与方法 |
+| [experiment-selection-ops](./harness/experiment-selection-ops) | 技术选型与对比实验 | 按任务类型设计真实比较，形成可追溯报告，并持续积累场景方法 |
 
 安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
 
@@ -273,3 +274,5 @@ claude plugin validate --strict .
 ## 许可证
 
 [MIT](LICENSE)
+
+`experiment-selection-ops` 包含采用单独许可的第三方文档及改编内容，包括 CC BY 4.0；具体范围、署名和许可见其 [第三方说明](./harness/experiment-selection-ops/THIRD_PARTY_NOTICES.md)，不能将整个 Skill 概称为 MIT。

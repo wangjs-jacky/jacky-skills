@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "purpose": "Provenance for adopted excerpts; not instructions to load all originals",
+  "imported_at_utc": "2026-10-16T17:50:20.878660+00:00",
+  "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+  "network_refreshed_in_task07": false,
+  "repository_metadata": [
+    {
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "stars": 51194,
+      "forks": 4540,
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "repository_last_pushed_at_utc": "2026-10-15T23:57:39Z",
+      "fork": false,
+      "archived": false,
+      "maintenance_limit": "repository-level push metadata only; no proof of per-skill updates or maintainer responsiveness"
+    },
+    {
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar",
+      "stars": 5806,
+      "forks": 457,
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "repository_last_pushed_at_utc": "2026-09-23T07:23:56Z",
+      "fork": false,
+      "archived": false,
+      "maintenance_limit": "repository-level push metadata only; no proof of per-skill updates or maintainer responsiveness"
+    },
+    {
+      "repository": "jlevy/squares",
+      "url": "https://github.com/jlevy/squares",
+      "stars": 39,
+      "forks": 6,
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "repository_last_pushed_at_utc": "2026-10-16T14:04:56Z",
+      "fork": false,
+      "archived": false,
+      "maintenance_limit": "repository-level push metadata only; no proof of per-skill updates or maintainer responsiveness"
+    }
+  ],
+  "upstream_entries": [
+    {
+      "source_id": "kd-experimental-design",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "1.5",
+      "upstream_path": "skills/experimental-design/SKILL.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/experimental-design/SKILL.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "db2de0f3d29b7729776a91e923c9c83801298f5ad8e88fe44570045fbefcc248",
+      "line_ranges_1_based_inclusive": [
+        [
+          15,
+          24
+        ],
+        [
+          219,
+          234
+        ],
+        [
+          271,
+          286
+        ]
+      ],
+      "excerpt_file": "excerpts/kd-experimental-design.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "05a546fe3b1bde8d17097e774e4aa37776789bdf2dd98108dd7a3eaba0914c5f",
+      "claims": [
+        "unit, controls, replication, confounding, prespecified design"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/design-and-execution.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "source_ref_note": "pinned commit; branch name not required or independently rechecked here"
+    },
+    {
+      "source_id": "kd-statistical-analysis",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "2.0",
+      "upstream_path": "skills/statistical-analysis/SKILL.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/statistical-analysis/SKILL.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "e112848726b3713267cac65e4e2c15491a0a26ee1ed628db01195f7e43f97997",
+      "line_ranges_1_based_inclusive": [
+        [
+          54,
+          65
+        ],
+        [
+          426,
+          436
+        ]
+      ],
+      "excerpt_file": "excerpts/kd-statistical-analysis.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "abebf6044c53bdfd86b2f3ceee0d8a8e3d09c53c45c37a3e578c2fc0519f08c1",
+      "claims": [
+        "estimand and dependence before tests; diagnostics not automatic switching; effects and uncertainty"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/statistics.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "source_ref_note": "pinned commit; branch name not required or independently rechecked here"
+    },
+    {
+      "source_id": "scholar-results-analysis",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "0.2.0",
+      "upstream_path": "skills/results-analysis/SKILL.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/results-analysis/SKILL.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "2232f74d141fad4a3e23635be0109217713d34bf0cb7be8d120e6296f4b79782",
+      "line_ranges_1_based_inclusive": [
+        [
+          55,
+          84
+        ],
+        [
+          126,
+          148
+        ],
+        [
+          196,
+          204
+        ]
+      ],
+      "excerpt_file": "excerpts/scholar-results-analysis.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "8289ae7c6afd5077fff20e5cb27831cc067fee7c02b0be3071e6492ecc7bcda1",
+      "claims": [
+        "comparison units, claim candidates, real figure interpretation"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/reporting.md",
+        "references/methods/design-and-execution.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented"
+    },
+    {
+      "source_id": "scholar-results-report",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "0.1.0",
+      "upstream_path": "skills/results-report/SKILL.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/results-report/SKILL.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "b7dc9d1bda3f6cc4c844ae5a9354e7a8b3ad38fb704ff7e5a4301ae4a7a27e4f",
+      "line_ranges_1_based_inclusive": [
+        [
+          119,
+          143
+        ],
+        [
+          168,
+          176
+        ]
+      ],
+      "excerpt_file": "excerpts/scholar-results-report.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "72ae8c14deff1a3d9849e2681268d2b0cff9f56679302f636ef7f3cb5762c8d2",
+      "claims": [
+        "decision narrative, negative results, figure implications, preserve claim strength"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/reporting.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented"
+    },
+    {
+      "source_id": "scholar-evidence-propagation",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "at pinned commit",
+      "upstream_path": "skills/results-report/references/EVIDENCE-PROPAGATION.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/results-report/references/EVIDENCE-PROPAGATION.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "ba3bf76f22641a6893af8e46e1dc3aa0563f899b6ec9ef2db6d97f07726a570b",
+      "line_ranges_1_based_inclusive": [
+        [
+          1,
+          37
+        ]
+      ],
+      "excerpt_file": "excerpts/scholar-evidence-propagation.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "ba3bf76f22641a6893af8e46e1dc3aa0563f899b6ec9ef2db6d97f07726a570b",
+      "claims": [
+        "carry evidence, allowed/forbidden wording, uncertainty and next check"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/reporting.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented"
+    },
+    {
+      "source_id": "squares-experiment-loop",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Joshua Levy, the squares project (https://github.com/jlevy/squares)",
+      "repository": "jlevy/squares",
+      "branch": null,
+      "commit": "e2e018f32b2627a7d4b38ed95790bee145b1524a",
+      "source_version": "no semantic version; pinned commit",
+      "upstream_path": ".agents/skills/experiment-loop/SKILL.md",
+      "url": "https://github.com/jlevy/squares/blob/e2e018f32b2627a7d4b38ed95790bee145b1524a/.agents/skills/experiment-loop/SKILL.md",
+      "metadata_queried_at_utc": "2026-10-16T15:25:27.285529+00:00",
+      "original_file_sha256": "473fe6e3cebe417832fd3e9a001255a4e058b256896dad6ee3494b7e09fe694b",
+      "line_ranges_1_based_inclusive": [
+        [
+          113,
+          116
+        ],
+        [
+          131,
+          133
+        ],
+        [
+          134,
+          136
+        ],
+        [
+          137,
+          139
+        ],
+        [
+          140,
+          141
+        ],
+        [
+          142,
+          144
+        ],
+        [
+          145,
+          150
+        ]
+      ],
+      "excerpt_file": "excerpts/squares-experiment-loop.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF",
+      "excerpt_sha256": "37eefb09f1bd019876753d31921647a93505c0836434e04562633d26d9c97ec7",
+      "claims": [
+        "retain failures, stable IDs, source provenance, real-before-good, annotation corrections, instrument validity, skips"
+      ],
+      "interpretation": "Chinese guidance is an adaptation, not a verbatim translation or empirical validation",
+      "owners": [
+        "references/methods/design-and-execution.md"
+      ],
+      "license": "CC-BY-4.0",
+      "license_file": "../../licenses/squares-LICENSE.txt",
+      "evidence_level": "documented",
+      "source_ref_note": "pinned commit; branch name not required or independently rechecked here"
+    },
+    {
+      "source_id": "kd-hypothesis-quality",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/hypothesis-generation/references/hypothesis_quality_criteria.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/hypothesis-generation/references/hypothesis_quality_criteria.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "12698b549f77a6ee64807b959093f39628fe3d47aa9a00a9b235681bf0b09269",
+      "git_blob_sha1": "528014c80d4061886f25e8ce154720278cf35a05",
+      "original_bytes": 8035,
+      "line_ranges_1_based_inclusive": [
+        [
+          17,
+          29
+        ],
+        [
+          60,
+          82
+        ],
+        [
+          93,
+          111
+        ],
+        [
+          131,
+          145
+        ]
+      ],
+      "paragraph_locators": [
+        "Question-level review / Feasibility; Interest and relevance",
+        "Hypothesis-level review / Testability; Falsifiability and vulnerability; Discriminability",
+        "Boundary conditions and transport; Assumption transparency",
+        "Prediction-level review"
+      ],
+      "excerpt_file": "excerpts/kd-hypothesis-quality.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "cbd8894558b74f2e45bf1cf643c83dc30123a0634138a7443fc0dc745af284e8",
+      "excerpt_bytes": 2983,
+      "claims": [
+        "Discriminating prospective prediction and inconclusive outcome, rather than post-hoc confirmation"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/question-to-contrast.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "kd-discriminating-tests",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/hypothesis-generation/references/experimental_design_patterns.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/hypothesis-generation/references/experimental_design_patterns.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "83c0c75c7b1edadc92e4ae23607624277c19955fc6a71ee0313b6efc51e4e939",
+      "git_blob_sha1": "0367eca3f1b5cc02d96f1f046369e4879cd3fffe",
+      "original_bytes": 9765,
+      "line_ranges_1_based_inclusive": [
+        [
+          1,
+          9
+        ],
+        [
+          69,
+          79
+        ]
+      ],
+      "paragraph_locators": [
+        "Design starts from the prediction",
+        "Within-unit or crossover design"
+      ],
+      "excerpt_file": "excerpts/kd-discriminating-tests.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "5193058c24b5d9fe10d42bb36bca363f5e575b934fff945cd2f7ba9c24ce76fe",
+      "excerpt_bytes": 670,
+      "claims": [
+        "Design follows prediction; crossover requires control of period, learning and carryover"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/question-to-contrast.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "scholar-question-card",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/research-ideation/references/research-contract.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/research-ideation/references/research-contract.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "0496a670f64d4b9d7d3f0bc4f236a8b16274f7b3c0aff7477d4893cc8236acab",
+      "git_blob_sha1": "c98020f23a922f797434a24945e85f655415497d",
+      "original_bytes": 4121,
+      "line_ranges_1_based_inclusive": [
+        [
+          12,
+          29
+        ]
+      ],
+      "paragraph_locators": [
+        "Research Question Card"
+      ],
+      "excerpt_file": "excerpts/scholar-question-card.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "65a80d7ef7b0908a00423c7bd463a5d9441f30f5f3251092411260d6e49523f7",
+      "excerpt_bytes": 365,
+      "claims": [
+        "Question type, supporting/falsifying evidence and minimal next action"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/question-to-contrast.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "kd-randomization-blocking",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/experimental-design/references/randomization_and_blocking.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/experimental-design/references/randomization_and_blocking.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "fabcfae913397fb8c3018b959b67ddf8fe47322b40cbf4155d898fa11738e9ae",
+      "git_blob_sha1": "1b0dd39fee22c4fd0347cd30e6163d8c9d1fa731",
+      "original_bytes": 7831,
+      "line_ranges_1_based_inclusive": [
+        [
+          15,
+          17
+        ],
+        [
+          40,
+          59
+        ],
+        [
+          102,
+          127
+        ]
+      ],
+      "paragraph_locators": [
+        "Randomization / seeded schedule",
+        "Blocking — removing known nuisance variation",
+        "Batch effects and plate layout; Documentation"
+      ],
+      "excerpt_file": "excerpts/kd-randomization-blocking.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "1e7e3c3e63b149e8fe76e919c52830f8dfdc97356df0dfc53a961e96f15f952f",
+      "excerpt_bytes": 2824,
+      "claims": [
+        "Block known nuisance variation and randomize within allowed groups; do not align candidate with batch"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/blocking-and-interactions.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "kd-factorial-doe",
+      "kind": "pinned-upstream-excerpts",
+      "author": "K-Dense Inc.",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "branch": null,
+      "commit": "a1043ef544e3a100c28e70a736b6cf32554d0677",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/experimental-design/references/factorial_and_doe.md",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills/blob/a1043ef544e3a100c28e70a736b6cf32554d0677/skills/experimental-design/references/factorial_and_doe.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "a59fa2279c439c096a66955b4923ad68c00d6046570665e6f6d36e807fa1de63",
+      "git_blob_sha1": "9e7558fcbfa301e1507b9779cc57e33749e2252b",
+      "original_bytes": 9069,
+      "line_ranges_1_based_inclusive": [
+        [
+          3,
+          8
+        ],
+        [
+          20,
+          37
+        ],
+        [
+          47,
+          75
+        ]
+      ],
+      "paragraph_locators": [
+        "Introduction",
+        "Why factorial beats OFAT; Full factorial",
+        "Fractional factorial; Resolution and aliasing"
+      ],
+      "excerpt_file": "excerpts/kd-factorial-doe.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "c6aafbc8238ae5cd5d315c10c61221c6d1808b009a298883f912cd7ae1240d29",
+      "excerpt_bytes": 3248,
+      "claims": [
+        "Cross relevant factors to see interactions; saturated and fractional designs limit inference"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/blocking-and-interactions.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/k-dense-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "scholar-figure-catalog",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/results-analysis/examples/example-figure-catalog.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/results-analysis/examples/example-figure-catalog.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "26898b3eb40b19780a3f02c9b3958dc5df866c09a423d1be18d1531b4b12fd28",
+      "git_blob_sha1": "d9222f15d009d6527770af8eb41ab4c9c7835938",
+      "original_bytes": 1371,
+      "line_ranges_1_based_inclusive": [
+        [
+          3,
+          13
+        ],
+        [
+          15,
+          18
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          30,
+          33
+        ]
+      ],
+      "paragraph_locators": [
+        "Figure 1 — Main comparison / source, seed points and consistency checks",
+        "Figure 2 — Convergence dynamics / temporal and stability checks"
+      ],
+      "excerpt_file": "excerpts/scholar-figure-catalog.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "1c5b12a94bf66c15a13c0fce32753ccb2c533a2b96b4f86e01cfa777baf0daa0",
+      "excerpt_bytes": 1265,
+      "claims": [
+        "Preserve unit-level points and dynamics to test whether aggregate observations hide instability; illustrative example only"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/diagnostic-figures.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    },
+    {
+      "source_id": "scholar-analysis-pitfalls",
+      "kind": "pinned-upstream-excerpts",
+      "author": "Gaorui Zhang",
+      "repository": "Galaxy-Dawn/claude-scholar",
+      "branch": "codex",
+      "commit": "b672e80951a2348dd6136316d096603bf2dc5b83",
+      "source_version": "at pinned commit; reference has no independent semantic version",
+      "upstream_path": "skills/results-analysis/references/common-pitfalls.md",
+      "url": "https://github.com/Galaxy-Dawn/claude-scholar/blob/b672e80951a2348dd6136316d096603bf2dc5b83/skills/results-analysis/references/common-pitfalls.md",
+      "source_snapshot_captured_at_utc": "2026-10-16T15:33:52.107732+00:00",
+      "read_for_task09_on": "2026-10-17 Asia/Shanghai",
+      "network_refreshed_in_task09": false,
+      "original_file_sha256": "f16c6528d21fa75c4e5bcadba4e8b14d9d64343c581336e26849caf887d4d22b",
+      "git_blob_sha1": "559f29a65f9c606a70b721ff2b83b47080e961e2",
+      "original_bytes": 998,
+      "line_ranges_1_based_inclusive": [
+        [
+          1,
+          28
+        ]
+      ],
+      "paragraph_locators": [
+        "Statistical pitfalls; Visualization pitfalls; Reasoning pitfalls; Reporting pitfalls"
+      ],
+      "excerpt_file": "excerpts/scholar-analysis-pitfalls.txt",
+      "excerpt_separator": "two LF, [... omitted ...], two LF; ranges retain original line terminators",
+      "excerpt_sha256": "f16c6528d21fa75c4e5bcadba4e8b14d9d64343c581336e26849caf887d4d22b",
+      "excerpt_bytes": 998,
+      "claims": [
+        "Do not mix units, report only best run, or hide instability behind a mean"
+      ],
+      "interpretation": "Chinese steps and engineering examples are project adaptations, not verbatim translation or empirical validation. Original external papers/books/links were not independently read in task09.",
+      "owners": [
+        "references/methods/diagnostic-figures.md"
+      ],
+      "license": "MIT",
+      "license_file": "../../licenses/claude-scholar-MIT.txt",
+      "evidence_level": "documented",
+      "last_verified": null
+    }
+  ],
+  "project_observation_evidence": [
+    {
+      "evidence_id": "review-data-methods",
+      "sha256": "cc3194efdaadb031d71fbb1411caf4ae34cb120b9898c7b3b51ae43c7039953f",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "review-report-quality",
+      "sha256": "2c611fecec6d70650e5979f122115680b02110b29e54a770814049148d928ec4",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "adoption-scope",
+      "sha256": "2211d1b9641da48b84edd6b72c9c818d840a9348ea28505f45b44dd9e3a7ce24",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "C-VISUAL-20261017",
+      "sha256": "fc2df66bc948cf7058f8e901c5c9c474779076ee6ca3922d573f0c3e6652fac9",
+      "bytes": 5126,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-C-library",
+      "sha256": "a4c0fa2370071d7b50da9eec50936cfde8ee7e55d4e4058ba6fc8172bccdee2e",
+      "bytes": 2046,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-library-diff",
+      "sha256": "558e7fc13acbbe077e17a527244459558b2b175ea39c41641d82c026a092466a",
+      "bytes": 3177,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-final-acceptance",
+      "sha256": "0d5e0f7d09b2f92bf429fa4569ba16bf488dcd9347914b3d21122bf4eecc75bc",
+      "bytes": 23777,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-final-freeze",
+      "sha256": "3a8f975616997ae7d5cb11c8605ab53eef07286f95660f238d6b6b4a6078ac4e",
+      "bytes": 301769,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-visual-revision01",
+      "sha256": "f80a0a7581b05b011fb3613429bb979bbeb7a354a5b97ad084b44d8a726247ef",
+      "bytes": 3602,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    },
+    {
+      "evidence_id": "task08-library-timing-revision01",
+      "sha256": "5f7c64ddecb0c2b7f0839dd3512285f2e3ece42f1a9a99033269ff3e3f3a1c17",
+      "bytes": 3361,
+      "business_implementation": "0.1.0",
+      "merged_scope": "task08 final bounded acceptance; partial only, null last_verified",
+      "portability": "raw record not bundled; private holder mapping only; summary is not original evidence"
+    }
+  ],
+  "task09_addition": {
+    "sources": "seven saved original files from task01; no supplied video, new network acquisition or new paper reading",
+    "method_owners": [
+      "references/methods/question-to-contrast.md",
+      "references/methods/blocking-and-interactions.md",
+      "references/methods/diagnostic-figures.md"
+    ],
+    "status": "documented; last_verified null; no business execution",
+    "adopted_example_limit": "Scholar figure catalog is an illustrative upstream example, not project data or independent verification"
+  }
+}

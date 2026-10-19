@@ -1,0 +1,24 @@
+# Design Patterns for Discriminating Tests
+
+## Design starts from the prediction
+
+For each test, link:
+
+`candidate → mechanism → prediction → observable → operationalization → design → analysis → interpretation`
+
+Choose the design that can distinguish candidates under realistic uncertainty. Do not select a design merely because it is familiar or available.
+
+
+[... omitted ...]
+
+### Within-unit or crossover design
+
+Useful when effects are reversible and carryover can be controlled.
+
+Check:
+
+- period and sequence effects;
+- washout rationale;
+- time trends and learning;
+- missing periods;
+- whether the condition is stable and intervention reversible.
