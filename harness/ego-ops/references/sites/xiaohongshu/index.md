@@ -17,7 +17,6 @@ updated: 2026-09-09
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| login-by-phone | 使用用户提供的手机号和一次性验证码登录小红书网页端 | medium | 2026-09-09 | [说明](operations/login-by-phone.md) |
 
 ## 站点级陷阱
 

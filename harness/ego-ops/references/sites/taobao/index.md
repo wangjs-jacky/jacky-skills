@@ -17,7 +17,6 @@ updated: 2026-09-01
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| search-compare-products | 在不修改账号数据的前提下搜索商品并核验候选页的店铺、价格、评价与发货信息 | low | 2026-09-01 | [说明](operations/search-compare-products.md) |
 
 ## 站点级陷阱
 

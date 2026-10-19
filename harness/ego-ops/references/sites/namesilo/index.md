@@ -17,7 +17,6 @@ updated: 2026-09-07
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| inspect-retained-dns-after-delegation | 在域名已委派到外部 nameserver 后，核对注册商 NS 并读取仍保留在 NameSilo 的旧 DNS 记录作为恢复资料 | low | 2026-09-07 | [说明](operations/inspect-retained-dns-after-delegation.md) |
 
 ## 站点级陷阱
 

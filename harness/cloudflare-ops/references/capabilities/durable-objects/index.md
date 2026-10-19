@@ -1,6 +1,6 @@
 ---
 capability: durable-objects
-updated: 2026-10-14
+updated: 2026-10-18
 docs_checked: 2026-10-14
 ---
 
@@ -33,7 +33,7 @@ SQLite 内 `get/put/delete/list` 使用隐藏表，也按读取/写入行数计�
 
 | operation | 适用场景 | status | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| design-stateful-service | 设计状态、通知与断线恢复 | documented | — | [说明](operations/design-stateful-service.md) |
+| design-stateful-service | 设计状态、通知与断线恢复 | partial | — | [说明](operations/design-stateful-service.md) |
 | diagnose-read-quota | 从账户告警定位读取来源 | verified | 2026-10-14 | [说明](operations/diagnose-read-quota.md) |
 | reduce-read-amplification | 消除轮询与 schema/历史扫描放大 | partial | — | [说明](operations/reduce-read-amplification.md) |
 

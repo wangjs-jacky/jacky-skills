@@ -3,7 +3,7 @@
 - system: web
 - operation: deploy
 - status: verified
-- last_verified: 2026-10-03
+- last_verified: 2026-10-19
 - risk: high
 - scope: Merged main 经 CI 上传、预激活校验、原子切换和 live verify 通过；正式 HTML revision 及 4 个入口 CSS/JS 响应已核对。
 
@@ -40,3 +40,17 @@
 2026-10-03 执行结果覆盖上面的 scope；具体来源、产物与限制见[私有证据](../../../../local/systems/web/operations/deploy.md)。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-10-08 最新执行范围见上方 scope，证据收录于对应私有操作入口。
+
+同日后续仅发布独立应用的发送前准备优化；函数对照和公网资源核对通过，未复验浏览器或完整模型回复。具体记录见私有操作入口。
+
+2026-10-10 最新执行范围见上方 scope；中断发布经同一 CI run 重跑后完成，证据收录于私有操作入口。
+
+2026-10-15：再次验证精确merged-main生产CI上传、激活与live verify；公开revision/资源及浏览器运行版本行一致。具体证据见私有操作入口，未扩大为完整会话交互或手机加载验收。
+
+2026-10-17：精确合并提交的生产CI实际完成构建、不可变资源上传／校验、原子切换、live verify与摘要。真实GitHub摘要的commit／origin和线上首页／设置路由revision一致，入口CSS及三个JS跟随既有静态存储重定向后最终HTTP200。只覆盖发布链、版本和资源，不包含本轮生产会话或真机交互。
+
+2026-10-17后续：另一精确merged-main发布完成上传、预激活、激活、live verify和清理；通过成功的summary写入日志与run headSha核对发布目标，正式首页／设置路由revision及四个入口资源读回通过。本轮无浏览器或真机交互验收。
+
+2026-10-19：授权精确merged-main的Web CI实际完成不可变上传、预激活、原子切换、live verify与summary；真实Actions摘要Commit/Origin与目标一致，公开首页和设置HTML revision及1CSS/3JS最终HTTP200、MIME核对通过，线上JS中本次新增批注标识可见。未向生产会话发测试消息或新增真机交互，具体版本与证据由所属Goal First目标唯一维护。

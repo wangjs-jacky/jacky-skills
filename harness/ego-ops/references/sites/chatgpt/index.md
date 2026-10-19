@@ -19,7 +19,6 @@ updated: 2026-09-10
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| generate-image-and-send-to-happy | 复用已登录 ChatGPT 的图片能力，生成图片并通过 Happy send_image 回传当前会话 | medium | 2026-09-10 | [说明](operations/generate-image-and-send-to-happy.md) |
 
 ## 站点级陷阱
 

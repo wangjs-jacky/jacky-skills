@@ -3,8 +3,8 @@ site: cloudflare
 domains:
 - dash.cloudflare.com
 aliases:
-- 无
-updated: 2026-09-07
+- Cloudflare
+updated: 2026-10-19
 ---
 
 # cloudflare
@@ -17,7 +17,8 @@ updated: 2026-09-07
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| audit-active-zone-dns-export | 确认已委派域名的 Zone、套餐、DNS 记录和 Universal SSL 状态，并导出 BIND 区文件 | low | 2026-09-07 | [说明](operations/audit-active-zone-dns-export.md) |
+| [restore-session-with-saved-github-profile](operations/restore-session-with-saved-github-profile.md) | 恢复既有Cloudflare登录并核对目标账户与所需权限 | medium | 2026-10-19 | [操作](operations/restore-session-with-saved-github-profile.md) |
+| [inspect-worker-abuse-report](operations/inspect-worker-abuse-report.md) | 核对Worker异常与对应滥用报告 | low | 2026-10-19 | [操作](operations/inspect-worker-abuse-report.md) |
 
 ## 站点级陷阱
 

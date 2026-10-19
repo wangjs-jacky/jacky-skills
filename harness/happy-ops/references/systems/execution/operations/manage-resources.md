@@ -2,10 +2,10 @@
 
 - system: execution
 - operation: manage-resources
-- status: historical
-- last_verified: none
-- risk: low
-- scope: 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。
+- status: verified
+- last_verified: 2026-10-19
+- risk: medium
+- scope: 已授权的闲置 worker 正常退出、目标后代退出、保留进程身份和本地 daemon 控制 API 验证；不覆盖逐会话新模型响应、恢复、容器替换或全部性能问题修复。
 
 ## 目标
 
@@ -35,6 +35,8 @@ PPID=1 或 daemon 无登记不证明闲置；RSS 相加不等于实际释放。C
 
 ## 验证证据
 
-历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/execution/operations/manage-resources.md)。last_verified 为 none；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
+2026-10-19 已再次验证授权闲置进程回收、保留身份及控制 API，详见[本机记录](../../../../local/records/idle-cleanup-20261019.md)。持续文件事件高占用未解决。
+
+2026-10-16 已完成授权候选的正常退出及进程/API/资源核验，详见[私有证据](../../../../local/systems/execution/operations/manage-resources.md)。仅覆盖上述 scope；历史容器与防休眠操作未重验，未测逐会话新模型响应与恢复。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。

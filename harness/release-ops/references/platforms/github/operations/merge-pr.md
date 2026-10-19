@@ -2,7 +2,7 @@
 platform: github
 operation: merge-pr
 status: verified
-last_verified: 2026-10-15
+last_verified: 2026-10-19
 ---
 
 # 合并指定 PR
@@ -35,4 +35,8 @@ head 变化后重新检查新增差异。冲突按已授权任务处理，不能
 
 2026-10-15：真实 PR 的 8 项现有 CI 检查全部成功后，使用 `--squash --match-head-commit` 合入用户指定的主分支；读回 PR 为 MERGED，并通过远端 fetch 确认主分支包含合并提交。本例没有额外 base 变化，合并后的文件树也与核对过的 head 一致。
 
+2026-10-17：维护者确认具体标题与正文、所有测试检查完成后，绑定已核对head执行普通squash合并。读回MERGED及合并提交，根工作区仅以fast-forward同步干净main；合并结果的文件树与原head完全一致。没有管理员绕过、强推、auto-merge或工作区清理；Web与OTA的后续发布结果单独核验。
+
 验证范围为本次普通 squash 合并；未使用管理员绕过，不覆盖 merge queue 或其他合并策略。具体 PR、原 head、合并 SHA 和检查记录保存在私有实例，按[写回协议](../../../knowledge-schema.md)维护。
+
+2026-10-18：在共享脏工作区之外仅整理授权 Skill 与索引条目，八项 CI 通过后绑定已审阅 head 执行 squash；读回 MERGED 并 fetch 核对主分支文件一致。原共享工作区保留，未强行切换或覆盖其未提交内容。

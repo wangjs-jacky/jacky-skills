@@ -2,10 +2,10 @@
 
 - system: android
 - operation: build-apk
-- status: historical
-- last_verified: none
+- status: verified
+- last_verified: 2026-10-17
 - risk: high
-- scope: 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。
+- scope: 本地双变体 release 构建与包内静态契约核验；不覆盖真机安装、启动、通知送达或 OTA 加载。
 
 ## 目标
 
@@ -24,6 +24,7 @@
 1. 读取工程当前原生构建约定与机器可读运行时契约。
 2. 原生依赖、权限、包名/runtime 变化需匹配二进制，按项目规定 clean prebuild 与缓存边界构建。
 3. 检查包内身份、签名、原生配置和匹配更新通道；安装验收需对应目标设备。
+4. 从最终 APK 解析实际资源表、内嵌配置与源码提交；优化后的资源文件名、资源引用 ID 及内嵌 manifest 格式不能靠源码文件名猜测。
 
 ## 成功标准
 
@@ -33,8 +34,12 @@
 
 修改配置里的包名不等于重新注册平台应用。已安装新包不证明通知注册或 OTA 已闭环；无法访问设备时不刷新安装验证。
 
+构建的 KSP／Lint 明确报 Metaspace 时，先区分 JVM 元空间与 heap、核实机器余量，再通过本次命令调整对应上限并重跑失败目标。不要为了发布静默改全局 JVM 配置、启用项目禁止的 build cache 或跳过检查。两变体均需保留独立 clean prebuild 与最终 APK 断言；依赖缓存与共享构建输出缓存不是同一回事。
+
+工具输出可能将 runtime 表示为资源 ID、将 JSON 属性引号原样打印；资源优化也会重命名打包文件。读取器断言失败时先核对真实工具输出，不能把格式适配当作 APK 兼容门禁豁免。
+
 ## 验证证据
 
-历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/android/operations/build-apk.md)。last_verified 为 none；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
+2026-10-17：双变体分别 clean prebuild，限定单一真机 ABI、禁用共享 build cache，构建成功；逐包身份／频道／runtime、内嵌源码提交、签名、权限与 ZIP 完整性检查通过。命令级元空间调整后的 KSP／Lint 恢复也已实际验证。具体运行证据与历史来源见[私有证据](../../../../local/systems/android/operations/build-apk.md)。没有连接设备，日期不覆盖安装或手机运行。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
