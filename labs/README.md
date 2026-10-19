@@ -25,7 +25,7 @@ j-skills link ./harness/goal-first-ops
 j-skills install goal-first-ops -g --env claude-code,codex
 ```
 
-`goal-first-ops` 默认把长期知识保存在其自身目录，以 project → operations 组织，项目知识及动态索引不提交 Git；首次实际写回时从随附空索引模板初始化本机索引。目标与任务原始记录继续保留在工作区。安装 Agent 按其全局提示词处理可选的前置规则，不因链接成功自动修改全局配置。
+`goal-first-ops` 默认按 `projects/<project>/features/<feature>/` 组织目标，每个 feature 就是目标工作区，报告、需求、过程、产物、证据和方法集中保存；整个 projects/ 及动态索引不提交 Git，首次实际记录时从随附空索引模板初始化导航。不另设 workspace、本机经验或实例索引。安装 Agent 按其全局提示词处理可选的前置规则，不因链接成功自动修改全局配置。
 
 要预览项目回放器，可在新会话中使用它分析任意项目：
 

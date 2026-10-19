@@ -1,8 +1,8 @@
 ---
 platform: github
 operation: publish-repository
-status: documented
-last_verified: null
+status: verified
+last_verified: 2026-10-20
 ---
 
 # 首次发布仓库
@@ -33,4 +33,6 @@ last_verified: null
 
 ## 证据与边界
 
-基于 2026-10-15 官方 CLI 文档与迁移后的设计规则，尚未执行真实场景。完成后按[写回协议](../../../knowledge-schema.md)更新本操作及平台索引。
+基于 2026-10-15 官方 CLI 文档与迁移后的设计规则。
+
+2026-10-20补充：跨项目制作档案在独立目录初始化，显式创建私有仓库并推送 main；API 读回 PRIVATE、默认分支及远端提交与本地一致。归档文件摘要和 HTML 相对链接单独核对。仓库上传与临时网页发布分别记录，未将预览名额不足写成已上线。

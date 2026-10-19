@@ -1,7 +1,8 @@
-# Runtime knowledge, including the mutable project index, stays local.
-/references/projects/
+# Project goals, reports, process records and evidence stay on this machine.
+/projects/
 
-# Local instance mappings and evidence.
+# Legacy compatibility entries remain private during migration.
+/references/projects
+local/
 experience.local.md
 *.local.*
-local/

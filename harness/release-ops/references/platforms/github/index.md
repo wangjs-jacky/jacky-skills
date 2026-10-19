@@ -1,6 +1,6 @@
 ---
 platform: github
-updated: 2026-10-15
+updated: 2026-10-20
 docs_checked: 2026-10-15
 ---
 
@@ -21,7 +21,7 @@ docs_checked: 2026-10-15
 
 | operation | status | last_verified | 文档 |
 | --- | --- | --- | --- |
-| publish-repository | documented | — | [首次发布仓库](operations/publish-repository.md) |
+| publish-repository | verified | 2026-10-20 | [首次发布仓库](operations/publish-repository.md) |
 | push-changes | verified | 2026-10-15 | [推送改动](operations/push-changes.md) |
 | merge-pr | verified | 2026-10-15 | [合并 PR](operations/merge-pr.md) |
 | publish-release | documented | — | [发布 Release](operations/publish-release.md) |

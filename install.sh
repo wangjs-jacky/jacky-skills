@@ -216,9 +216,31 @@ link_skill_dir() {
 }
 
 find_all_skill_files() {
-    find "$REPO_DIR/plugins" "$REPO_DIR/skills" "$REPO_DIR/harness" \
-        -type d -name archived -prune -o \
-        -type f -name SKILL.md -print | sort
+    node - "$REPO_DIR" <<'NODE'
+const fs = require("node:fs");
+const path = require("node:path");
+const repo = process.argv[2];
+const skills = [];
+function visit(directory, stopAtSkill) {
+    if (!fs.existsSync(directory)) return;
+    const metadata = fs.lstatSync(directory);
+    if (metadata.isSymbolicLink() || !metadata.isDirectory()) return;
+    const skill = path.join(directory, "SKILL.md");
+    if (fs.existsSync(skill) && fs.statSync(skill).isFile()) {
+        skills.push(skill);
+        // Goal records and source snapshots belong to their enclosing Skill.
+        if (stopAtSkill) return;
+    }
+    for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
+        if (entry.name === "archived" || !entry.isDirectory()) continue;
+        visit(path.join(directory, entry.name), stopAtSkill);
+    }
+}
+visit(path.join(repo, "plugins"), false);
+visit(path.join(repo, "skills"), true);
+visit(path.join(repo, "harness"), true);
+for (const skill of skills.sort()) process.stdout.write(skill + "\n");
+NODE
 }
 
 find_declared_plugin_skills() {

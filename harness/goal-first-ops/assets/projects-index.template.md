@@ -1,7 +1,7 @@
 # 项目索引
 
-本文件是本机运行时索引，归属 `goal-first-ops/references/projects/index.md`，与项目档案、operations 一起由 Git 忽略。首次写回时从模板创建；已有索引不可覆盖。
+本文件是 `goal-first-ops/projects/index.md` 的初始模板。整个 projects/ 连同目标、报告、过程和证据由 Git 忽略，首次实际记录时建立，已有索引不得覆盖。
 
-当前尚无项目条目。首次真实工作时按 `references/ops-model.md` 中的分类标准，补充项目 key、中文名或别名、适用目标，以及相对于本索引的 `<project>/index.md` 链接；不为示例预建空档案。
+当前尚无项目条目。用户目标明确后，按 references/ops-model.md 的 project → features 模型补充项目名、别名和 `<project>/index.md` 链接；不为示例创建空档案。
 
-项目档案保存跨操作共用的事实和 operation 链接；步骤、可信度与验证日期只在对应 operation 维护。机器及工作区位置从 ignored 的本机实例索引定位。
+项目入口指向 `features/<feature>/index.md`。feature 是目标文件夹，全部内容和过程归该目录；不经由本机实例索引。

@@ -182,11 +182,21 @@ class InstallContractTests(unittest.TestCase):
         self.assertNotIn("j-skills link --all", INSTALL_SCRIPT)
 
     def test_discovers_plugin_and_standalone_skills(self) -> None:
-        self.assertIn('"$REPO_DIR/plugins"', INSTALL_SCRIPT)
-        self.assertIn('"$REPO_DIR/skills"', INSTALL_SCRIPT)
-        self.assertIn('"$REPO_DIR/harness"', INSTALL_SCRIPT)
-        self.assertRegex(INSTALL_SCRIPT, r"find[\s\S]+SKILL\.md")
-        self.assertRegex(INSTALL_SCRIPT, r"archived")
+        with tempfile.TemporaryDirectory() as tempdir:
+            root = Path(tempdir)
+            repo, env = self.make_install_fixture(root)
+
+            completed = self.run_fixture(repo, env, "--all")
+
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            command_log = self.command_log(root)
+            for relative in (
+                "plugins/dev-tools/plugin-one",
+                "plugins/dev-tools/plugin-two",
+                "skills/standalone",
+                "harness/sample-ops",
+            ):
+                self.assertIn(f"link:{repo.resolve()}/{relative}", command_log)
 
     def test_install_failures_are_not_swallowed(self) -> None:
         self.assertNotRegex(
@@ -267,6 +277,27 @@ class InstallContractTests(unittest.TestCase):
             self.assertIn("install:standalone:", command_log)
             self.assertNotIn("plugin-one", command_log)
             self.assertNotIn("sample-ops", command_log)
+
+    def test_all_install_excludes_skill_sources_inside_goal_archives(self) -> None:
+        with tempfile.TemporaryDirectory() as tempdir:
+            root = Path(tempdir)
+            repo, env = self.make_install_fixture(root)
+            snapshot = (
+                repo / "harness/sample-ops/projects/demo/features/research/original-skill"
+            )
+            snapshot.mkdir(parents=True)
+            (snapshot / "SKILL.md").write_text(
+                '---\nname: do-not-install-ops\ndescription: "历史实验副本"\n---\n',
+                encoding="utf-8",
+            )
+
+            completed = self.run_fixture(repo, env, "--all")
+
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            command_log = self.command_log(root)
+            self.assertIn(f"link:{repo.resolve()}/harness/sample-ops", command_log)
+            self.assertNotIn("do-not-install-ops", command_log)
+            self.assertNotIn("original-skill", command_log)
 
     def test_plugin_selector_limits_installation_to_that_plugin(self) -> None:
         with tempfile.TemporaryDirectory() as tempdir:

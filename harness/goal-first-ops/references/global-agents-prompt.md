@@ -1,4 +1,4 @@
-# 安装 Agent 提示词：Goal First 项目知识前置
+# 安装 Agent 提示词：Goal First 项目目标前置
 
 此提示词随 `goal-first-ops` 分发。正常安装后建议启用以下全局规则；创建 Skill 或保存本文件不等于授权修改全局指令。
 
@@ -14,9 +14,9 @@
 ```markdown
 ## Goal First 项目任务：先读取 goal-first-ops
 
-无论当前使用哪个技能，只要使用 goal-first、维护其目标工作区、接续其中的任务或复盘项目知识，都必须先从技能目录或安装注册表读取 goal-first-ops，按 project 及 operation 渐进复核经验；本轮适用内容可复用。
+无论当前使用哪个技能，只要使用 goal-first、维护其目标工作区、接续其中的任务或复盘项目知识，都必须先从技能目录或安装注册表读取 goal-first-ops，按 project 及 feature 读取目标的报告、过程和已有经验；本轮适用内容可复用。
 
-完成、失败或中断后，按证据自动写回 goal-first-ops 实际目录并同步索引，采用 project + operations，不虚构成功。任务原始记录与授权仍归工作区；知识维护不扩大执行权限。
+完成、失败或中断后，按证据自动更新 goal-first-ops 实际目录下 projects/<project>/features/<feature>/ 的目标内容并同步导航。feature 是目标文件夹，需求、报告、过程、产物、证据与方法集中保存在此；不建立 experience.local.md 或独立实例经验层，不虚构成功。任务状态和授权保持唯一来源；记录维护不扩大执行权限。
 
 没有经验时按既定分类从真实任务补充；Skill 缺失或不可写时说明缺口并继续不受影响的工作，不静默另建知识副本。
 ```
