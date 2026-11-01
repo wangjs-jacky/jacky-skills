@@ -46,7 +46,9 @@
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
 | [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
-| [story-ui](./skills/story-ui) | [video-to-cards](./skills/video-to-cards) | |
+| [story-ui](./skills/story-ui) | [answer-my-question](./skills/answer-my-question) | [video-to-cards](./skills/video-to-cards) |
+
+`answer-my-question` 围绕疑惑、新闻和比较选择核实事实，建立判断框架，用证据与对比解释原因，帮助读者形成有依据的认识。
 
 `story-ui` 用于技术组件库的全状态交互展台：集中展示相关用户状态，支持示例输入、状态推进与重播，并复用实际组件。
 
