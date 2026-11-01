@@ -46,7 +46,7 @@
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) |  |
 | [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
-| [story-ui](./skills/story-ui) | [answer-my-question](./skills/answer-my-question) | |
+| [story-ui](./skills/story-ui) | [answer-my-question](./skills/answer-my-question) | [video-to-cards](./skills/video-to-cards) |
 
 `answer-my-question` 围绕疑惑、新闻和比较选择核实事实，建立判断框架，用证据与对比解释原因，帮助读者形成有依据的认识。
 
