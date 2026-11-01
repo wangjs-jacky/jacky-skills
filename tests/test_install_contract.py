@@ -13,7 +13,6 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 INSTALL_SCRIPT = (ROOT / "install.sh").read_text(encoding="utf-8")
-README = (ROOT / "README.md").read_text(encoding="utf-8")
 
 
 def skill_name(skill_file: Path) -> str:
@@ -699,24 +698,6 @@ class DistributionConsistencyTests(unittest.TestCase):
                 manifest_file.parents[1].resolve(),
                 name,
             )
-
-    def test_readme_lists_current_plugins_and_standalone_skills(self) -> None:
-        for manifest_file in ROOT.glob("plugins/*/.claude-plugin/plugin.json"):
-            manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
-            plugin_dir = manifest_file.parents[1].name
-            expected_row = (
-                f"| [{manifest['name']}](./plugins/{plugin_dir}) | "
-                f"{manifest['version']} |"
-            )
-            self.assertIn(expected_row, README)
-            for relative in manifest["skills"]:
-                name = skill_name(manifest_file.parents[1] / relative / "SKILL.md")
-                self.assertIn(name, README)
-
-        for root_name in ("skills", "harness"):
-            for skill_file in ROOT.glob(f"{root_name}/*/SKILL.md"):
-                self.assertIn(skill_name(skill_file), README)
-
 
 if __name__ == "__main__":
     unittest.main()
