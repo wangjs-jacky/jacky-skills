@@ -45,7 +45,7 @@ description: "从动效视频/截图反推出可直接喂给 LLM 还原动效的
 |---------|---------|
 | 视频文件（.mp4/.mov/.webm） | ffmpeg 抽帧（见 Phase 2） |
 | 截图目录 | 直接读 PNG/JPG |
-| 页面 / CodePen / 本地 HTML | 通过 `browser-control → ego-ops → ego-browser` 打开并截图（关键时刻各截一张），同时读源码（源码能直接看到机制，优先级最高） |
+| 页面 / CodePen / 本地 HTML | 通过 `ego-ops → ego-browser` 打开并截图（关键时刻各截一张），同时读源码（源码能直接看到机制，优先级最高） |
 
 > 如果输入是页面或 CodePen，**源码 > 截图**。能读到 CSS/JS 就别只靠肉眼反推。
 
@@ -186,7 +186,7 @@ ffmpeg -v error -i video.mp4 -vf "select=gt(scene\,0.1)" -vsync vfr -frames:v 12
 这是质量上限所在，不是默认步骤：
 
 1. 取选定的 Prompt，喂给 LLM 生成 `index.html`（单文件）
-2. 经 `browser-control → ego-ops → ego-browser` 打开，在与源视频相同的关键时刻截图
+2. 经 `ego-ops → ego-browser` 打开，在与源视频相同的关键时刻截图
 3. 把生成截图和源帧并排比对：运动方向 / 缓动手感 / 锚点 / 时序对不对
 4. 不一致 → 回到 Prompt，补上缺失的细节（通常是缓动、锚点、易错点），再跑一轮
 

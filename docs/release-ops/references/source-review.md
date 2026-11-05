@@ -6,7 +6,7 @@
 
 | 来源 | 观察 | 对设计的影响 |
 | --- | --- | --- |
-| [github-repo-publish](../../../plugins/dev-tools/github-repo-publish/SKILL.md) | 同时覆盖仓库推送、Release、npm 与扩展；npm 路由用固定 workflow 文件名和 NPM_TOKEN 判断配置是否齐全 | 按目标平台拆知识，先读项目实际发布机制，不以一种认证模式代表全部配置 |
+| `github-repo-publish`（历史入口，已移除；现用 [release-ops](../../../harness/release-ops/SKILL.md)） | 同时覆盖仓库推送、Release、npm 与扩展；npm 路由用固定 workflow 文件名和 NPM_TOKEN 判断配置是否齐全 | 按目标平台拆知识，先读项目实际发布机制，不以一种认证模式代表全部配置 |
 | [npm-publish](../../../plugins/knowledge-base/skills/npm-publish/SKILL.md) | 主要介绍本机登录、Token 与本机发布；有将查询 Token 的值直接打印的命令示例 | 迁移时区分认证模式与本机状态；经验只保存凭据来源名称与有效性结论 |
 | [vsix-publish](../../../plugins/knowledge-base/skills/vsix-publish/SKILL.md) | 同时覆盖两个市场；建议将 PAT 保存到全局 CLAUDE.md，并含“永久使用”等描述 | 两个平台分别核实结果；不将凭据值作为经验或全局提示词内容，时效规则需查官方来源 |
 | [j-skills](../../../plugins/skills-management/skills/j-skills/SKILL.md) | 记录该 CLI 使用特定 workflow、tag 触发和 Actions/OIDC 发布；原文验证日期为 2026-07-12 | 项目流程需要唯一归属；导入时保留历史日期，不能宣称本次重新验证 |

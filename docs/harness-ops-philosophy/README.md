@@ -57,9 +57,9 @@ Ops Skill 放在独立的 `jacky-skills/harness/` 中，不随被维护工程的
 | 配套 Ops Skill | 最佳实践、能力组合、兼容差异和已验证绕法 | 复制上游全部内容或长期维护私有分叉 |
 | 本地经验文件 | 当前机器事实和带日期的复盘证据 | 未经验证就推广为通用规则 |
 
-## 第三方适配层：HyperFrames 例子
+## 第三方适配层：HyperFrames 历史例子
 
-HyperFrames 官方 Skills 负责视频创作、动画、渲染和工作流能力。`hyperframes-ops` 不替代这些能力，而是记录它们在本机怎样组合最稳、哪些环境条件不可缺、出现异常时应该先检查哪里：
+HyperFrames 官方 Skills 负责视频创作、动画、渲染和工作流能力。现已移除的 `hyperframes-ops` 曾用于积累以下本机适配知识；当前创作与排障直接按官方 Skills 和运行证据处理，本节仅保留设计背景：
 
 - **最佳实践**：官方多个 Skills 应按什么顺序组合，什么时候使用哪一层能力。
 - **水土不服**：Node、FFmpeg、浏览器、字体下载、代理和 OAuth 登录态造成的本机错误。
@@ -111,8 +111,8 @@ harness/<target>-ops/
 | 原位置 | 新位置 | 定位 |
 |--------|--------|------|
 | `skills/happy-ops` | `harness/happy-ops` | 自有工程运行与拓扑经验 |
-| `skills/opencli-harness` | `harness/opencli-ops` | 工具使用配方与 adapter 缺口经验 |
-| `skills/hyperframes-harness` | `harness/hyperframes-ops` | 第三方 Skills 最佳实践与本机适配 |
+| `skills/opencli-harness` | `harness/opencli-ops`（已移除） | 历史：工具使用配方与 adapter 缺口经验 |
+| `skills/hyperframes-harness` | `harness/hyperframes-ops`（已移除） | 历史：第三方 Skills 最佳实践与本机适配 |
 
 名称中包含 `harness` 但职责是评测、打分或基准测试的 Skill 不迁入本目录。例如 `harness-benchmark` 属于评测工具，而不是某个目标对象的 Ops 经验层。
 

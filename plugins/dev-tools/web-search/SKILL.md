@@ -283,9 +283,9 @@ python3 -c "from ddgs import DDGS; [print(r['title'], r['date']) for r in DDGS()
 
 进入条件：Layer 1/3 已证明需要真实浏览器交互，例如必须复用登录会话、反爬阻断或需要点击操作。
 
-只委派 `browser-control`，同时传递搜索目标、已尝试工具、失败事实，以及是否已知需要复用已有登录态。由它固定委派 Ego Ops 与 Ego Lite，并记录证据；本 Skill 不自行比较或选择 browser provider。
+先加载 `ego-ops`，按站点和 operation 读取经验，再加载 `ego-browser` 执行。传递搜索目标、已尝试工具、失败事实和登录态需求，遵守其授权、任务空间及证据规则。
 
-若公开页面已能在 Layer 3 读取，就留在 Layer 3；SPA、JS 渲染或任何交互需求都由 `browser-control` 的 Ego Lite 链路处理。
+若公开页面已能在 Layer 3 读取，就留在 Layer 3；SPA、JS 渲染或任何交互需求都由 `ego-ops → ego-browser` 链路处理。
 
 ## 6. /web-search setup 命令（一次性配置）
 
@@ -447,5 +447,5 @@ fi
 | Tavily 在编程问答比 WebSearch 命中率高 | 2026-05-11 | 编程概念解释 |
 
 ## 失败模式
-| web_reader 读取动态页面返回空 | 2026-05-11 | 先换 Layer 3 读取器；确需交互则委派 Layer 4 browser-control |
+| web_reader 读取动态页面返回空 | 2026-05-11 | 先换 Layer 3 读取器；确需交互则委派 Layer 4 ego-ops → ego-browser |
 ```

@@ -1,7 +1,7 @@
 {
   "name": "dev-tools",
-  "version": "2.8.10",
-  "description": "核心开发工具集 - 发布、任务管理、Durable 长任务、联网、浏览器操控、效率审计",
+  "version": "2.8.11",
+  "description": "开发工具集：Durable 长任务、联网搜索、动效分析、效率审计与远端开发",
   "author": {
     "name": "Jacky Wang",
     "email": "wangjs.jacky@gmail.com",
@@ -17,12 +17,9 @@
     "development"
   ],
   "skills": [
-    "./github-repo-publish/",
     "./efficiency-audit/",
-    "./todo/",
     "./durable/",
     "./web-search/",
-    "./browser-control/",
     "./animate-prompt/",
     "./remote-dev-sync/",
     "./ssh-connect/"

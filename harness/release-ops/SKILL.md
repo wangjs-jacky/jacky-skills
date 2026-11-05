@@ -11,7 +11,7 @@ description: "软件发布经验库：按发布平台与常用 operations 维护
 
 安装或配置本 Skill 的 Agent 先读[全局触发提示词](references/global-agents-prompt.md)，展示规则、实际目标文件与生效范围，获得明确授权后合并；已有同范围授权直接复用。普通发布任务不重复询问。文件复制或链接不会自动执行该交互。
 
-`github-repo-publish`、`npm-publish`、`vsix-publish` 是兼容入口，使用本 Skill 的同一份知识。独立安装这些入口时需要同时安装 `release-ops`；本 Skill 可直接使用，不依赖旧入口。
+`npm-publish`、`vsix-publish` 是兼容入口，使用本 Skill 的同一份知识。独立安装这些入口时需要同时安装 `release-ops`；本 Skill 可直接使用，不依赖旧入口。
 
 ## 开始前：渐进读取
 

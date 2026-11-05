@@ -54,7 +54,7 @@ description: "快速生成带 GitHub Actions Workflow 的自动化采集项目�
 1. **检查状态文件是否存在**
    - 如果存在 `.gh-workflow-state.json`，执行恢复流程
    - 向用户展示当前进度，询问是否继续
-2. 检查 `github-repo-publish` skill 是否安装
+2. 检查 `release-ops` skill 是否安装
 3. 未安装则自动安装（不询问用户）
 4. 创建初始状态文件（如果不存在）
 
@@ -66,7 +66,7 @@ if [ -f ".gh-workflow-state.json" ]; then
 fi
 
 # 检查 skill 是否存在
-j-skills list -g | grep github-repo-publish || j-skills install github-repo-publish -g
+j-skills list -g | grep release-ops || j-skills install release-ops -g
 ```
 
 **状态文件初始化**：
@@ -336,7 +336,7 @@ echo "${用户确认的Prompt}" > .ai-prompt.txt
 
 **步骤**：
 1. Git init + commit（自动化，不询问）
-2. 调用 `github-repo-publish` skill 创建仓库
+2. 调用 `release-ops` skill 创建仓库
 3. 配置 GitHub Secrets（自动化，不询问）
 4. 推送到 GitHub（自动化，不询问）
 
@@ -348,7 +348,7 @@ git init
 git add .
 git commit -m "Initial commit: setup automated collection project"
 
-# 调用 github-repo-publish
+# 调用 release-ops
 # （自动创建仓库并推送）
 
 # 配置 Secrets

@@ -16,7 +16,7 @@
     <requires>Read, Write, Edit, Glob, Bash, AskUserQuestion, Skill</requires>
     <stateFile>.gh-workflow-state.json</stateFile>
     <checkpoints>
-      <checkpoint order="1">已检查 github-repo-publish skill</checkpoint>
+      <checkpoint order="1">已检查 release-ops skill</checkpoint>
       <checkpoint order="2">已收集数据源需求</checkpoint>
       <checkpoint order="3">API Key 验证通过</checkpoint>
       <checkpoint order="4">用户确认生成的 AI Prompt</checkpoint>
@@ -88,7 +88,7 @@
 
   <gsd:phase name="preflight" order="0">
     <gsd:step>检查状态文件是否存在，存在则执行恢复流程</gsd:step>
-    <gsd:step>检查 github-repo-publish skill 是否安装</gsd:step>
+    <gsd:step>检查 release-ops skill 是否安装</gsd:step>
     <gsd:step>未安装则自动安装</gsd:step>
     <gsd:step>创建初始状态文件（如果不存在）</gsd:step>
     <gsd:checkpoint>环境预检完成</gsd:checkpoint>
@@ -165,7 +165,7 @@
 
   <gsd:phase name="publish" order="5">
     <gsd:step>Git init + commit</gsd:step>
-    <gsd:step>调用 github-repo-publish 创建仓库</gsd:step>
+    <gsd:step>调用 release-ops 创建仓库</gsd:step>
     <gsd:step>配置 GitHub Secrets</gsd:step>
     <gsd:checkpoint>仓库创建并推送成功</gsd:checkpoint>
     <gsd:stateUpdate>

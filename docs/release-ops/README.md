@@ -99,7 +99,7 @@
 
 | 现有内容 | 改造方向 |
 | --- | --- |
-| `github-repo-publish` | 保留用户入口；通用发布经验归 GitHub operations，npm/扩展内容归相应平台 |
+| `release-ops` | 直接承接 GitHub 发布；旧 `github-repo-publish` 入口已移除，npm/扩展仍可使用兼容入口 |
 | `npm-publish` | 保留用户入口；发布方式由项目配置决定，认证与平台经验集中维护 |
 | `vsix-publish` | 保留用户入口；按实际平台区分发布与证据，通用打包实现继续复用工具和项目脚本 |
 | `j-skills` 中的 CLI 发布说明 | 归属该 CLI 项目发布档案或已有工程 OPS，引用 npm operation；Skill 安装管理职责继续保留 |

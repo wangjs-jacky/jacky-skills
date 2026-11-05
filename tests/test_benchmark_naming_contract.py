@@ -9,8 +9,6 @@ BENCHMARK_MIGRATIONS = {
     "plugins/evaluators/harness-evaluator": "plugins/evaluators/harness-benchmark",
     "plugins/obsidian-tools/ob-rate": "plugins/obsidian-tools/ob-benchmark",
     "labs/web-flow/web-flow-review": "labs/web-flow/web-flow-benchmark",
-    "archived/tw-scorer": "archived/tw-benchmark",
-    "archived/agent-pipeline-score": "archived/agent-pipeline-benchmark",
 }
 
 

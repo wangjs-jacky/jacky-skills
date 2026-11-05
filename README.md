@@ -1,270 +1,128 @@
 # Jacky's Agent Skills
 
-[![Stars](https://img.shields.io/github/stars/wangjs-jacky/jacky-skills?style=flat)](https://github.com/wangjs-jacky/jacky-skills/stargazers)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Claude Code](https://img.shields.io/badge/-Claude%20Code-8A2BE2?logo=claude&logoColor=white)
-![Codex](https://img.shields.io/badge/-Codex-111111)
+面向 Claude Code、Codex 等 Agent 的 Skills 仓库，包含 19 个 Plugin、25 个独立 Skill 和 9 个长期经验 Ops Skill。清单按当前有效的 SKILL.md 与 Plugin manifest 整理；实验内容单独维护。
 
-模块化的 Agent Skills 集合。仓库同时包含可由 Claude Code Plugin Marketplace 安装的 Plugin、位于 `skills/` 下的独立或共享 Skill，以及位于 `harness/` 下的长期经验 Ops Skills。
+## 安装
 
-## Plugin 清单
-
-每个 Plugin 的版本与 Skill 列表以对应的 `.claude-plugin/plugin.json` 为准。根目录的 `.claude-plugin/marketplace.json` 收录全部 Plugin。
-
-| Plugin | 版本 | 说明 | Skills |
-|--------|------|------|--------|
-| [claude-config](./plugins/claude-config) | 0.3.0 | Claude Code 配置 | statusline-setup |
-| [dev-tools](./plugins/dev-tools) | 2.8.10 | 发布、任务管理、Durable 长任务、联网、浏览器操控与效率审计 | github-repo-publish, efficiency-audit, todo, durable, web-search, browser-control, animate-prompt, remote-dev-sync, ssh-connect |
-| [distiller-tools](./plugins/distiller-tools) | 1.2.0 | 资源蒸馏与知识提炼 | distiller, math-curve-loading-reference |
-| [evaluators](./plugins/evaluators) | 1.1.0 | 任务目标与 Skill 设计质量评估 | harness-benchmark, skill-design-benchmark |
-| [image-effects](./plugins/image-effects) | 1.0.0 | 可版本化图像效果、参考图生成与静态画廊 | image-effects |
-| [knowledge-base](./plugins/knowledge-base) | 1.3.3 | 开发教程、经验与参考方案 | npm-publish, vsix-publish, vscode-extension-dev, gh-workflow-generator, github-profile-coolify, chrome-ext-ai-script, web-to-tauri-migration-loop, llm-wiki, codex-env-config |
-| [language-skills](./plugins/language-skills) | 1.0.1 | 语言学习与表达训练 | spoken-english-coach |
-| [learning-tools](./plugins/learning-tools) | 2.4.2 | 仓库学习、文档教程与技术调研 | learn-repo, repo-study, doc-to-tutorial, youtube-study-note |
-| [media-toolkit](./plugins/media-toolkit) | 1.1.0 | 媒体文件修复 | fix-neat-video |
-| [monitoring](./plugins/monitoring) | 2.5.5 | Claude Code 运行监控与历史查询 | claude-monitor, cc-history |
-| [obsidian-tools](./plugins/obsidian-tools) | 2.13.2 | Obsidian 同步、采集、编译与知识库管理 | config-obsidian, ob-collect, ob-index, ob-chat, ob-tidy, ob-project-log, ob-benchmark, ob-topic, ob-bridge, ob-compile, ob-router |
-| [skill-stats](./plugins/skill-stats) | 0.1.2 | Skill 调用统计与使用分析 | skill-stats |
-| [skill-tooling](./plugins/skill-tooling) | 1.1.1 | Skill 优化与调研 | skill-optimizer, skill-researcher |
-| [skills-management](./plugins/skills-management) | 1.0.2 | Skills 链接、安装与批量管理 | j-skills, link-all-skills |
-| [thinking-tools](./plugins/thinking-tools) | 0.1.0 | 结构化对话与思考 | sounding-board |
-| [ticktick-manager](./plugins/ticktick-manager) | 1.2.2 | 滴答清单任务与日程管理 | tt, tt-defer, tt-worker |
-| [translation-tools](./plugins/translation-tools) | 1.0.1 | 单文件与多文件并行翻译 | parallel-translation |
-| [troubleshooting](./plugins/troubleshooting) | 1.1.2 | CLI 与 Tauri 故障排查 | tauri-troubleshooting, cli-tool-troubleshooting |
-| [video-processing](./plugins/video-processing) | 3.0.2 | 音视频 ASR 转录 | audio-to-subtitle |
-
-## 独立 Skills
-
-下列 Skill 位于 `skills/`，不属于任何 Plugin，因此不会通过 Plugin Marketplace 安装：
-
-| Skill | Skill | Skill |
-|-------|-------|-------|
-| codex-harness | crafted-web | spec-debate |
-| topic-debate | [happy-app-experience](./skills/happy-app-experience) | grilling |
-| [skill-usage-audit](./skills/skill-usage-audit) | [web-e2e](./skills/web-e2e) | [pc-web-interaction-reviewer](./skills/pc-web-interaction-reviewer) |
-| [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
-| [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
-| [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) | [steelman](./skills/steelman) |
-| [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
-| [story-ui](./skills/story-ui) | [static-publish](./skills/static-publish) | [answer-my-question](./skills/answer-my-question) |
-| [video-to-cards](./skills/video-to-cards) | | |
-
-`story-ui` 用于技术组件库的全状态交互展台：集中展示相关用户状态，支持示例输入、状态推进与重播，并复用实际组件。
-
-`static-publish` 用于带资源的静态网页发布：使用自己的云账号，复用已有 OSS 桶或同站资源，支持接入诊断、图片派生、内容寻址清单与精确页面快照；通过官方 Wrangler 完成 Cloudflare 发布、核验与回退。
-
-`answer-my-question` 围绕疑惑、新闻和比较选择核实事实，建立判断框架，用证据与对比解释原因，帮助读者形成有依据的认识。
-
-`existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
-
-`create-ops` 用于新建 OPS，或把已有 Skill、功能和经验改造成 OPS：先由用户确认分类主键与常用 operations，再生成自动沉淀协议和安装时的全局前置提示词。
-
-`image-effects` 的事实源同样位于 [`skills/image-effects`](./skills/image-effects)，并通过目录软链接共享给同名 Plugin，避免维护两份内容。
-
-## Harness Ops Skills
-
-`harness/` 保存工程、工具和第三方 Skills 的长期经验层。具体 Skill 统一使用 `<target>-ops` 命名：`harness` 表示稳定的读取、验证和写回框架，`ops`（Operations）表示目标对象的运行、维护、适配和持续改进。
-
-| Skill | 对象 | 主要职责 |
-|-------|------|----------|
-| [happy-ops](./harness/happy-ops) | Happy/Paws 自托管工程 | 拓扑理解、运行维护、故障路由和复盘经验 |
-| [hyperframes-ops](./harness/hyperframes-ops) | HyperFrames 官方 Skills | 最佳实践、复杂能力组合、本机水土不服和环境兼容性 |
-| [ego-ops](./harness/ego-ops) | 浏览器自动化经验 | 最小授权执行、可观察验证与已验证操作知识沉淀 |
-| [cloudflare-ops](./harness/cloudflare-ops) | Cloudflare 能力与场景 | Workers/DO 设计边界、额度、常见坑、事件驱动约束与操作经验 |
-| [aliyun-ops](./harness/aliyun-ops) | 阿里云能力与场景 | 百炼模型、Embedding、地域、应用 Key 与接入验证经验 |
-| [release-ops](./harness/release-ops) | 软件分发平台 | GitHub/npm/扩展发布的适用流程、限制、验证及自动沉淀 |
-| [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
-| [goal-first-ops](./harness/goal-first-ops) | Goal First 项目目标档案 | 按 project 与 features 集中保存每个目标的报告、过程、产物、证据与方法 |
-| [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | 场景交互复用 | 按场景选择已实现效果、适配现有页面、实际验证并沉淀方法 |
-| [experiment-selection-ops](./harness/experiment-selection-ops) | 技术选型与对比实验 | 按任务类型设计真实比较，形成可追溯报告，并持续积累场景方法 |
-
-安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
-
-安装 `aliyun-ops` 的 Agent 请读取其[全局前置提示词](./harness/aliyun-ops/references/global-agents-prompt.md)，核对授权后再配置全局规则；普通使用从能力与操作进入。
-
-安装 `ego-ops` 的 Agent 同样读取其[全局前置提示词](./harness/ego-ops/references/global-agents-prompt.md)，建议在网页操作前先加载站点经验；纯复制或链接安装不会自动执行这项交互。
-
-`github-repo-publish`、`npm-publish`、`vsix-publish` 保留为兼容入口，共享 `release-ops`。单独通过 Plugin 安装这些入口时，需同时安装仓库中的 `harness/release-ops`（可用 `j-skills link` 后安装；全量安装脚本已扫描 harness）。安装 Agent 读取其[全局前置提示词](./harness/release-ops/references/global-agents-prompt.md)，经用户确认后才加入全局规则。[分类与设计](./docs/release-ops/README.md)记录知识归属。
-
-一般 Ops Skill 的 `SKILL.md` 保存可分享协议，gitignored 的 `experience.local.md` 保存本机路径、代理、版本、拓扑和验证记录；`goal-first-ops` 按下述目标档案模型保存这些内容。使用 [`create-ops`](./skills/create-ops) 创建或改造 OPS，配合官方 `skill-creator`；本仓库产物默认放到 `harness/<target>-ops/`，详细规范见 [`harness/CLAUDE.md`](./harness/CLAUDE.md)。
-
-`goal-first` 负责目标确认、任务安排与执行选择，`goal-first-ops` 按 `projects/<project>/features/<feature>/` 管理目标档案。每个 feature 就是一个目标文件夹，报告、需求、过程、产物、证据和复用方法集中保存；整个 projects/ 只保留本机、不提交 Git，空索引模板随 Skill 分发并在首次实际记录时初始化。新项目和目标随真实工作补充。安装 Agent 读取其[全局前置提示词](./harness/goal-first-ops/references/global-agents-prompt.md)，按已有授权或用户选择处理全局规则。
-
-`codex-env-config` 保留为 `codex-ops` 兼容入口；单独安装 knowledge-base Plugin 时需同时安装独立 `harness/codex-ops`，额度查询另需 `skills/codex-quota`。`codex-harness` 继续维护通用工作习惯，Codex 自身运维按新库路由。安装 Agent 读取[全局前置提示词](./harness/codex-ops/references/global-agents-prompt.md)，经用户确认后加入全局规则；[分类与迁移说明](./docs/codex-ops/README.md)记录知识归属。
-
-`archived/` 下的内容是历史归档，不参与批量链接和安装。
-
-## Skill Labs（预览版）
-
-`labs/` 用于验证尚未稳定的新型 Skill 和轻量 Workflow，不计入正式独立 Skill。当前实验包括：
-
-- [web-flow](./labs/web-flow)：渐进串联网站调研、原型、设计、实现、评审与部署。
-- [app-flow](./labs/app-flow/app-flow)：不固定技术栈、阶段或交付形式的长任务 App Workflow，按任务证据动态组织工作。
-- [self-learning](./labs/self-learning)：让 AI 从视频、文章或主题自主学习、扩展调研并生成可验证产物。
-- [goal-first](./labs/goal-first)：澄清目标、安排可审阅任务并按明确选择执行；项目知识由 `goal-first-ops` 沉淀。
-
-## 兼容性边界
-
-- 遵循通用 `SKILL.md` 结构的内容可由 skills.sh、Codex 等兼容 Agent 或技能管理器读取。
-- `.claude-plugin/plugin.json`、Plugin hooks，以及 `AskUserQuestion`、`Skill`、`Agent` 等工具语义属于 Claude Code 能力；包含这些依赖的 Skill 不能视为在其他 Agent 中完整兼容。
-- 在非 Claude Code 环境使用前，应检查目标 Skill 的工具调用和运行时依赖。`j-skills` 只负责本地链接与分发，不是跨 Agent 兼容层。
-
-## 快速开始
-
-### 一键安装全部活跃 Skills
-
-安装脚本会扫描 `plugins/`、`skills/` 和 `harness/`，排除 `archived/`，逐个链接并安装。默认目标环境为 `claude-code,codex`。
+从仓库根目录安装全部活跃 Skills，或只选择需要的内容：
 
 ```bash
 git clone https://github.com/wangjs-jacky/jacky-skills.git
 cd jacky-skills
 ./install.sh --all
-```
-
-通过环境变量覆盖安装目标：
-
-```bash
-J_SKILLS_ENVS=claude-code,codex,cursor ./install.sh --all
-```
-
-也可以只安装单个 Skill 或一个 Plugin：
-
-```bash
 ./install.sh --skill youtube-study-note
-./install.sh --skill happy-app-experience
 ./install.sh --plugin dev-tools
 ```
 
-从仓库 checkout 执行时，脚本直接使用当前目录且不会自动 `git pull`。只有通过 `curl | bash` 或显式设置 `JACKY_SKILLS_REPO_DIR` 时，才会克隆或更新目标目录。
+脚本扫描 plugins/、skills/ 与 harness/，默认安装到 claude-code,codex；labs/ 不参与批量安装。通过 J_SKILLS_ENVS 可调整目标环境。从当前 checkout 执行不会自动 git pull；已指向其他来源的同名链接会报错，不会覆盖。
 
-脚本需要 Node.js 18+，并默认锁定 `j-skills 0.1.0`；若未安装会自动安装该版本，版本不匹配时会停止并给出错误。Apple Silicon Mac 会拒绝 Rosetta/x86_64 Node.js；Intel Mac 可正常使用 x64 Node.js。
+安装脚本要求 Node.js 18+，目前锁定 j-skills 0.1.0；与本机可能单独安装的其他版本不同，版本不匹配时会停止。Apple Silicon Mac 要求原生 arm64 Node.js。手动使用其他版本前先检查 j-skills --version 和子命令 --help。
 
-脚本可重复执行：已经正确链接到当前目录的 Skill 会跳过；同名 Skill 若已链接到其他目录，会明确报错并停止，不会覆盖现有链接或吞掉安装错误。
-
-`j-skills 0.1.0` 在 Linux 等大小写敏感文件系统上会检查小写 `skill.md`。脚本会在链接期间临时建立 `skill.md → SKILL.md`，完成后立即移除，不会污染 Skill 目录。
-
-### 通过 Claude Code Plugin Marketplace 安装
+Claude Code Plugin Marketplace 只安装下表 Plugin：
 
 ```text
 /plugin marketplace add wangjs-jacky/jacky-skills
 /plugin install dev-tools@jacky-skills
-/plugin install image-effects@jacky-skills
-/plugin install obsidian-tools@jacky-skills
 ```
 
-Marketplace 只覆盖上面的 Plugin。独立 Skill 请使用 `j-skills` 或一键安装脚本。
-
-### 手动链接单个 Skill
-
-当前 `j-skills 0.1.0` 不支持 `j-skills link --all`。链接时必须传入具体 Skill 目录：
+独立 Skill 与 Ops 可手动链接安装：
 
 ```bash
-npm install -g j-skills
-
-# Plugin 内的 Skill
-j-skills link ./plugins/dev-tools/todo
-j-skills install todo -g --env claude-code,codex
-
-# Durable 长任务
-j-skills link ./plugins/dev-tools/durable
-j-skills install durable -g --env claude-code,codex
-
-# Harness Ops Skill
-j-skills link ./harness/happy-ops
-j-skills install happy-ops -g --env claude-code,codex
-
-# 图像效果 Skill（Plugin 与独立安装共用这一份源码）
-j-skills link ./skills/image-effects
-j-skills install image-effects -g --env claude-code,codex
+j-skills link ./skills/essay-polish
+j-skills install essay-polish -g --env claude-code,codex
+j-skills link ./harness/release-ops
+j-skills install release-ops -g --env claude-code,codex
 ```
 
-常用管理命令：
+删除源码目录不会自动卸载 Agent 中的安装。通过 `j-skills uninstall <skill-name> -g --yes` 卸载，再核对注册项及安装软链接；不要通过跟随链接删除共享源目录。
 
-```bash
-j-skills link --list
-j-skills list --all
-j-skills uninstall <skill-name> -g
-```
+## Plugins
 
-## 目录结构
+版本与内容的事实源是各 Plugin 的 .claude-plugin/plugin.json，根 marketplace.json 保持同步。
+
+| Plugin | 版本 | Skills |
+| --- | --- | --- |
+| [claude-config](./plugins/claude-config) | 0.3.0 | statusline-setup |
+| [dev-tools](./plugins/dev-tools) | 2.8.11 | efficiency-audit, durable, web-search, animate-prompt, remote-dev-sync, ssh-connect |
+| [distiller-tools](./plugins/distiller-tools) | 1.2.0 | distiller, math-curve-loading-reference |
+| [evaluators](./plugins/evaluators) | 1.1.0 | harness-benchmark, skill-design-benchmark |
+| [image-effects](./plugins/image-effects) | 1.0.0 | image-effects |
+| [knowledge-base](./plugins/knowledge-base) | 1.3.4 | npm-publish, vsix-publish, vscode-extension-dev, gh-workflow-generator, github-profile-coolify, chrome-ext-ai-script, web-to-tauri-migration-loop, llm-wiki, codex-env-config |
+| [language-skills](./plugins/language-skills) | 1.0.1 | spoken-english-coach |
+| [learning-tools](./plugins/learning-tools) | 2.4.2 | learn-repo, repo-study, doc-to-tutorial, youtube-study-note |
+| [media-toolkit](./plugins/media-toolkit) | 1.1.0 | fix-neat-video |
+| [monitoring](./plugins/monitoring) | 2.5.5 | claude-monitor, cc-history |
+| [obsidian-tools](./plugins/obsidian-tools) | 2.13.2 | config-obsidian, ob-collect, ob-index, ob-chat, ob-tidy, ob-project-log, ob-benchmark, ob-topic, ob-bridge, ob-compile, ob-router |
+| [skill-stats](./plugins/skill-stats) | 0.1.2 | skill-stats |
+| [skill-tooling](./plugins/skill-tooling) | 1.1.1 | skill-optimizer, skill-researcher |
+| [skills-management](./plugins/skills-management) | 1.0.2 | j-skills, link-all-skills |
+| [thinking-tools](./plugins/thinking-tools) | 0.1.0 | sounding-board |
+| [ticktick-manager](./plugins/ticktick-manager) | 1.2.2 | tt, tt-defer, tt-worker |
+| [translation-tools](./plugins/translation-tools) | 1.0.1 | parallel-translation |
+| [troubleshooting](./plugins/troubleshooting) | 1.1.2 | tauri-troubleshooting, cli-tool-troubleshooting |
+| [video-processing](./plugins/video-processing) | 3.0.2 | audio-to-subtitle |
+
+## 独立 Skills
+
+以下内容位于 skills/，不随 Plugin Marketplace 安装。
+
+| Skill | Skill | Skill |
+| --- | --- | --- |
+| [android-live-photo](./skills/android-live-photo) | [answer-my-question](./skills/answer-my-question) | [clear-and-brief-output](./skills/clear-and-brief-output) |
+| [codex-harness](./skills/codex-harness) | [codex-quota](./skills/codex-quota) | [crafted-web](./skills/crafted-web) |
+| [create-ops](./skills/create-ops) | [essay-polish](./skills/essay-polish) | [existing-ui-design](./skills/existing-ui-design) |
+| [grilling](./skills/grilling) | [happy-app-experience](./skills/happy-app-experience) | [happy-visual-workflow](./skills/happy-visual-workflow) |
+| [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) | [pc-web-interaction-reviewer](./skills/pc-web-interaction-reviewer) | [photo-to-styled-motion](./skills/photo-to-styled-motion) |
+| [show-me](./skills/show-me) | [skill-usage-audit](./skills/skill-usage-audit) | [spec-debate](./skills/spec-debate) |
+| [static-publish](./skills/static-publish) | [steelman](./skills/steelman) | [story-ui](./skills/story-ui) |
+| [teach-me](./skills/teach-me) | [topic-debate](./skills/topic-debate) | [video-to-cards](./skills/video-to-cards) |
+| [web-e2e](./skills/web-e2e) |  |  |
+
+[image-effects](./skills/image-effects) 的源码也在 skills/，通过软链接与同名 Plugin 共享，不维护两份副本。
+
+## Harness Ops Skills
+
+harness/ 中的 Skill 按目标组织运行、排障、验证及经验写回。具体 Skill 使用 `<target>-ops` 命名；创建规范见 [harness/CLAUDE.md](./harness/CLAUDE.md)，分类与操作设计使用 [create-ops](./skills/create-ops)。
+
+| Skill | Skill | Skill |
+| --- | --- | --- |
+| [aliyun-ops](./harness/aliyun-ops) | [cloudflare-ops](./harness/cloudflare-ops) | [codex-ops](./harness/codex-ops) |
+| [ego-ops](./harness/ego-ops) | [experiment-selection-ops](./harness/experiment-selection-ops) | [goal-first-ops](./harness/goal-first-ops) |
+| [happy-ops](./harness/happy-ops) | [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | [release-ops](./harness/release-ops) |
+
+可分享协议保存在 SKILL.md 与 references/；机器路径、私有上下文和运行证据保存在被 Git 忽略的本机记录。goal-first-ops 的项目目标按 projects/<project>/features/<feature>/ 集中保存，不进入 Git。安装不会自动授权修改全局 AGENTS 规则。
+
+GitHub 推送与发布直接使用 release-ops；npm-publish、vsix-publish 为相应平台的兼容入口，独立安装时仍需要 release-ops。codex-env-config 依赖 codex-ops，额度查询另需 codex-quota。
+
+## Skill Labs（预览版）
+
+[labs/README.md](./labs/README.md) 是实验 Skills 的统一说明。以下内容按需手动链接，不计入正式安装清单：
+
+- [web-flow](./labs/web-flow)：网站交付流程。
+- [app-flow](./labs/app-flow/app-flow)：按任务证据组织 App 开发与交付。
+- [self-learning](./labs/self-learning)：自主学习与可验证产物。
+- [goal-first](./labs/goal-first)：目标澄清与任务工作区。
+- [codex-project-replay](./labs/codex-project-replay)：本地 Codex 项目会话回放。
+
+## 仓库结构
 
 ```text
-jacky-skills/
-├── .claude-plugin/
-│   └── marketplace.json       # 覆盖全部 Plugin 的市场清单
-├── plugins/
-│   ├── claude-config/
-│   ├── dev-tools/
-│   ├── distiller-tools/
-│   ├── evaluators/
-│   ├── image-effects/
-│   ├── knowledge-base/
-│   ├── language-skills/
-│   ├── learning-tools/
-│   ├── media-toolkit/
-│   ├── monitoring/
-│   ├── obsidian-tools/
-│   ├── skill-stats/
-│   ├── skill-tooling/
-│   ├── skills-management/
-│   ├── thinking-tools/
-│   ├── ticktick-manager/
-│   ├── translation-tools/
-│   ├── troubleshooting/
-│   └── video-processing/
-├── skills/                    # 独立 Skills 或 Plugin 的共享事实源
-│   ├── happy-app-experience/
-│   ├── happy-visual-workflow/
-│   ├── image-effects/
-│   ├── photo-to-styled-motion/
-│   └── web-e2e/
-├── harness/                   # 工程/工具的长期经验 Ops Skills（统一以 -ops 结尾）
-│   ├── CLAUDE.md
-│   ├── happy-ops/
-│   ├── hyperframes-ops/
-│   ├── ego-ops/
-│   ├── cloudflare-ops/
-│   ├── release-ops/
-│   └── codex-ops/
-├── labs/                      # 实验性 Skill 与轻量 Workflow（预览版）
-│   ├── app-flow/
-│   │   └── app-flow/
-│   ├── self-learning/
-│   └── web-flow/
-├── archived/                  # 不参与安装的历史归档
-├── .github/workflows/validate.yml
-├── scripts/audit_skills.py   # 统一审计入口
-├── tests/                    # 审计、分发和触发契约测试
-├── requirements-dev.txt
-├── install.sh
-├── CLAUDE.md
-└── README.md
+.claude-plugin/marketplace.json   Plugin 市场清单
+plugins/<plugin>/               Plugin manifest 与 Skills
+skills/<skill>/                 独立或共享 Skills
+harness/<target>-ops/            长期经验 Skills
+labs/                           手动试用的实验内容
+docs/                           主题说明与历史材料
+scripts/audit_skills.py          仓库统一审计
+tests/                          分发、元数据与行为契约测试
+install.sh                      批量或定向安装
 ```
 
-每个 Plugin 的基本结构：
+部分 Plugin 使用 skills/<skill>/ 的嵌套目录，以 manifest 声明为准。遵循通用 SKILL.md 结构不等于跨 Agent 完整兼容；使用前核对目标 Skill 的工具与运行时依赖。
 
-```text
-plugins/<plugin-name>/
-├── .claude-plugin/
-│   └── plugin.json
-└── <skill-name>/
-    └── SKILL.md
-```
+## 维护与校验
 
-部分 Plugin 额外使用 `skills/<skill-name>/SKILL.md` 这一层级；`plugin.json` 必须声明真实存在的 Skill 目录。
-
-## 版本规则
-
-修改 Plugin 时同步更新 `plugin.json`：
-
-| 变更类型 | 版本变化 |
-|----------|----------|
-| 新增 Skill | MINOR，例如 `1.0.0 → 1.1.0` |
-| 修复 manifest、文档或现有 Skill | PATCH，例如 `1.0.0 → 1.0.1` |
-
-版本更新后还需同步根 `.claude-plugin/marketplace.json` 和本 README 的 Plugin 表。
-
-## 校验
+新增 Skill 升级 Plugin MINOR；修复已有内容或 manifest 升级 PATCH。同步 Plugin manifest、marketplace 与本文清单；移除 Skill 时也要清理安装、失效测试和调用入口。
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
@@ -274,14 +132,8 @@ bash -n install.sh
 claude plugin validate --strict .
 ```
 
-## 相关链接
+目前新版 Claude CLI 的严格检查会拒绝现有 claude-config Plugin 名称；这是待处理的命名兼容问题。
 
-- [GitHub 仓库](https://github.com/wangjs-jacky/jacky-skills)
-- [skills.sh](https://skills.sh)
-- [npm Organization](https://www.npmjs.com/org/wangjs-jacky)
+## 许可
 
-## 许可证
-
-[MIT](LICENSE)
-
-`experiment-selection-ops` 包含采用单独许可的第三方文档及改编内容，包括 CC BY 4.0；具体范围、署名和许可见其 [第三方说明](./harness/experiment-selection-ops/THIRD_PARTY_NOTICES.md)，不能将整个 Skill 概称为 MIT。
+[MIT](./LICENSE)。experiment-selection-ops 包含采用独立许可的第三方文档与改编内容，详见其 [第三方说明](./harness/experiment-selection-ops/THIRD_PARTY_NOTICES.md)。

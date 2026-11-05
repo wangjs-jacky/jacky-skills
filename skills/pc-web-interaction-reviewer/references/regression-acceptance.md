@@ -13,7 +13,7 @@
 
 如果只有“帮我看看这个站点是否正常”而没有既定 Case，应使用 [full-site-e2e-walkthrough.md](full-site-e2e-walkthrough.md)。
 
-读取 [desktop-review-rubric.md](desktop-review-rubric.md) 中与 Case 相关的条目，并委派 `dev-tools:browser-control` 处理 provider、登录态、安全门、账本和浏览器证据；已有自动化 Case 可委派 `web-e2e` 执行。
+读取 [desktop-review-rubric.md](desktop-review-rubric.md) 中与 Case 相关的条目，先加载 `ego-ops` 读取站点与 operation，再加载 `ego-browser` 处理登录态、授权、任务空间和浏览器证据；已有自动化 Case 可委派 `web-e2e` 执行。
 
 ## 一、冻结回归范围
 

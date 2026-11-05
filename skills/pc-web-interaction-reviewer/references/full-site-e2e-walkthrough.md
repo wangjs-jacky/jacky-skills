@@ -8,7 +8,7 @@
 - 指定流程任务：只覆盖该用户路径，以及必要的打开、关闭、返回、异常和边界状态。
 - 已有固定问题 ID 或验收 Case 时，应改用 [regression-acceptance.md](regression-acceptance.md)，避免把回归变成无边界探索。
 
-开始前读取 [desktop-review-rubric.md](desktop-review-rubric.md)，并委派 `dev-tools:browser-control` 处理 provider、登录态、安全门、账本和浏览器证据。需要自动化脚本时再委派 `web-e2e`。
+开始前读取 [desktop-review-rubric.md](desktop-review-rubric.md)，先加载 `ego-ops` 读取站点与 operation，再加载 `ego-browser` 处理登录态、授权、任务空间和浏览器证据。需要自动化脚本时再委派 `web-e2e`。
 
 ## 一、建立环境与基线
 

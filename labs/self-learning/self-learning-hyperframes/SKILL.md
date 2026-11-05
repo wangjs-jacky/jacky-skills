@@ -12,7 +12,7 @@ description: 作为 self-learning 的 HyperFrames 产出能力，自主学习本
 - 用于完成“摄取教程 → 提取方法与动效 → 构建 Demo → 真实渲染评审 → 沉淀经验”的完整任务。
 - 若用户只要下载、字幕、素材整理或通用视频剪辑，直接路由对应能力，不建立完整学习 run。
 - 不复制 ASR、抽帧、素材管理或 HyperFrames 实现能力；探测并调用当前环境已有的 Skills 与工具。
-- HyperFrames 创作先走官方路由；只有最佳实践、环境故障或本机适配问题才调用 `hyperframes-ops`，且不把机器经验写回共享工作流。
+- HyperFrames 创作、环境故障与兼容性诊断按官方 Skills 和当前运行证据处理；机器专属经验保存在 ignored 本机记录，不写回共享工作流。
 
 ## Reference 地图
 

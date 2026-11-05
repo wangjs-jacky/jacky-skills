@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI 浏览器操控"
-  short_description: "统一通过 Ego Ops 与 Ego Lite 完成网页自动化"
-  default_prompt: "使用 $browser-control 完成这个网页任务；只允许 Browser Control → Ego Ops → Ego Lite 的执行链，并沉淀有证据的经验。"
