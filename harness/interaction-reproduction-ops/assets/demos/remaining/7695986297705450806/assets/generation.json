@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-10-20",
+  "generator": "image_gen内置工具",
+  "model": null,
+  "modelEvidence": "调用实际成功；工具返回image_url与output_hint，未返回可独立核验的模型名，不补写为已确认GPT Image 2。",
+  "scope": "仅生成必要植物与产品照片，无整张界面图；原始PNG保留，接入样式使用object-fit。",
+  "images": [
+    {
+      "file": "snake-plant.png",
+      "prompt": "Use case: product-mockup. Asset type: a square botanical product photograph for a small dashboard plant card, 1024 by 1024. A single healthy snake plant (Sansevieria) with narrow upright dark green sword-shaped leaves, subtle pale green variegation, planted in a simple matte warm tan cylindrical terracotta pot. Full plant visible with tips intact, centered and taking most of the square, pot in the lower quarter. Warm off-white plaster studio wall and pale tabletop, very soft natural daylight from the left, delicate realistic contact shadow. Natural botanical texture, restrained contemporary interiors catalog photography. No people, no additional plants, no logo, no lettering, no frame, no interface, no dashboard. This is only a photographic asset, not a whole interface.",
+      "transparentBackground": false,
+      "source": "本任务自写生成输入，不是作者原图",
+      "delivery": "已通过Happy send_image逐项发送"
+    },
+    {
+      "file": "fiddle-leaf.png",
+      "prompt": "Use case: product-mockup. Asset type: one square botanical product photograph for a dashboard card. A single small young fiddle-leaf fig (Ficus lyrata) plant, several lush broad rounded deep green leaves on a compact upright stem, in a simple matte pale ivory cylindrical pot. Entire plant visible centered, pot near lower quarter, generous clean pale gray/off-white studio background. Soft diffuse daylight, natural leaf veins, realistic elegant interiors catalog photograph, no harsh contrast. Square image. No people, no other plant, no lettering, logo, decorative border, interface or dashboard.",
+      "transparentBackground": false,
+      "source": "本任务自写生成输入，不是作者原图",
+      "delivery": "已通过Happy send_image逐项发送"
+    },
+    {
+      "file": "anthurium.png",
+      "prompt": "Use case: product-mockup. Asset type: a square photographic plant asset for a dashboard card. One elegant small Anthurium plant with five to seven dark emerald green heart-shaped leaves, long delicate stems, clearly visible pale leaf veins, no red flowers. A low round matte white ceramic pot. Full plant centered with space around leaf edges. Clean pale cool-gray wall and tabletop, soft diffused daylight, refined natural interiors catalog photo, realistic texture. No person, extra plants, labels, text, logo, frame, interface or dashboard.",
+      "transparentBackground": false,
+      "source": "本任务自写生成输入，不是作者原图",
+      "delivery": "已通过Happy send_image逐项发送"
+    },
+    {
+      "file": "black-stool.png",
+      "prompt": "Use case: product-mockup. Asset type: square furniture catalog product photograph for a small dashboard product card. One minimalist black stained wooden high stool: slim round slightly concave seat, four slender splayed legs, simple horizontal footrest crossbars, elegant industrial Scandinavian silhouette. Entire stool visible, centered, three-quarter view, camera slightly above the seat. Matte black wood with subtle realistic grain. Neutral light-gray seamless studio wall and floor, soft diffuse illumination, realistic soft contact shadow. Clear simple isolated product composition with modest margins. No people, no extra furniture, no typography, no logos, no frame, no interface or dashboard.",
+      "transparentBackground": false,
+      "source": "本任务自写生成输入，不是作者原图",
+      "delivery": "已通过Happy send_image逐项发送"
+    }
+  ]
+}

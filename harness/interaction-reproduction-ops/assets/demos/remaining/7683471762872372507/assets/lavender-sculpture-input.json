@@ -1,0 +1,14 @@
+{
+  "asset": "lavender-sculpture.png",
+  "source": "本轮独立文字生图，不含界面/文字",
+  "prompt": "Use case: stylized-concept. Asset type: isolated 3D sculpture PNG with a genuinely transparent background, for composition inside a real coded landing page. Primary request: one large sculptural continuous inflated ribbon knot made from semi-translucent pale lavender glass and soft violet rubber, a wide flowing loop sweeping diagonally from the upper left toward a bulbous loop in the lower right, with interlocking rounded tubular folds and soft cavities. Editorial experimental digital art, organic, tactile and softly luminous, with subtle pale pink light at the right, broad pearly highlights and lavender self-shadow, no hard chrome. Composition wide 3:2 canvas, sculpture fills most of the canvas, retain the entire object with a small clear margin, soft realistic material details, isolated floating form. No environment, no floor, no cast shadow outside the object, no UI, no screen, no lettering, no words, no logo, no moon, no circular backdrop, no border. All page text and other shapes will be HTML/CSS. Transparent background is required.",
+  "tool": "image_gen.imagegen",
+  "model": "工具未返回具体模型名",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 1976986,
+  "sha256": "49565b1898586ff1850732a7cfd9256a3458fbba9ec6ee217d3c37b95aa9d523",
+  "transparentBackgroundRequested": true,
+  "pngAlphaChannel": true,
+  "use": "紫色首屏的独立物体；页面、字体、圆形与交互由HTML/CSS/JS实现"
+}

@@ -1,0 +1,9 @@
+{
+  "purpose": "雨天天气页独立背景；温度/文字/卡片由代码实现",
+  "tool": "image_gen.imagegen",
+  "model": "工具未暴露具体模型标识，未核验GPT Image 2",
+  "prompt": "Create a portrait 3:4 digital matte illustration to serve only as a weather app background, no UI, no text, no letters, no numbers, no phone, no frame, no controls. Spacious upper 65 percent a calm grey blue overcast sky with faint soft cloud layers and silvery haze; smooth and restrained enough for white temperature text to be overlaid later by code at top left. Lower 35 percent rolling rural Tuscan hills in cool mint green, muted teal, grey lavender and deep desaturated navy, a few tiny cypress silhouettes. Pale mist between layers. A few distant tiny birds in the sky. Slight soft texture, serene premium painterly stylization, gentle diffuse lighting. Landscape fills entire rectangle. No buildings, no heavy raindrop closeups, no dramatic storm, no gradients in a panel, no cards. This is one standalone original landscape asset.",
+  "source": "独立文字生成，不包含作者截图或整张界面",
+  "sha256": "493028ee9be9c12a1943ef1ccfd2032d957116c3f66606419199649d61b25dba",
+  "bytes": 1912383
+}

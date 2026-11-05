@@ -1,0 +1,9 @@
+{
+  "file": "santorini.png",
+  "tool": "image_gen",
+  "model": "not returned; not verified GPT Image 2",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original landscape travel photograph for a separately coded destination card. Wide 3:2 photograph of whitewashed cubic houses, small blue domes and warm cream terraces cascading down a Santorini cliff at the left and bottom of frame, with a broad deep cobalt Aegean sea on the right, a hazy low island across the horizon, clear pale-blue summer sky. Crisp natural afternoon sunlight, realistic plaster and stone texture, cinematic travel editorial photograph. No people in close-up, text, logos, watermark, frame, collage, map or interface. This is a standalone photograph only.",
+  "nativeOriginalPreserved": true,
+  "sha256": "43121e277887eea3deb7e15b1fa34187e7f54e3c2f1befe71cb58a9754170f26",
+  "difference": "independently generated replacement, not the author photo or a verified documentary photograph"
+}

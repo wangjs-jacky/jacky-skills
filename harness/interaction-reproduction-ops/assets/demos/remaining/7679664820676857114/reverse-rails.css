@@ -1,0 +1,41 @@
+*{box-sizing:border-box}
+:root{font-family:Arial,"PingFang SC",sans-serif;color:#161915;background:#e9ece6}
+body{margin:0}main{max-width:1240px;margin:auto;padding:24px 24px 32px}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,#quorum-window:focus-visible{outline:2px solid #f06a2f;outline-offset:5px}
+.heading{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12px;margin:0 0 15px;color:#62695f}
+.heading p{font-size:10px;letter-spacing:.17em;margin:0}
+#quorum-window{height:740px;max-height:82vh;overflow:auto;overscroll-behavior:contain;border-radius:13px;background:#fafbf7;scrollbar-width:thin;scrollbar-color:#c0c9b7 transparent}
+.gallery-paper{position:relative;min-height:1440px;padding:24px 0 0;background:radial-gradient(ellipse at 54% 58%,#e6eadd77,transparent 57%),#fafbf8;overflow:hidden}
+.brand-bar{display:flex;align-items:center;justify-content:space-between;max-width:350px;margin:0 auto;padding:12px 14px;font-size:8px;letter-spacing:.14em;background:linear-gradient(90deg,transparent,#e5ecdfaa,transparent);border-radius:6px}
+.brand{display:flex;align-items:center;gap:8px;letter-spacing:0;font-weight:700}
+.brand i{width:13px;height:13px;background:radial-gradient(circle at 3px 3px,#222 2px,transparent 2.5px),radial-gradient(circle at 10px 3px,#222 2px,transparent 2.5px),radial-gradient(circle at 3px 10px,#222 2px,transparent 2.5px),radial-gradient(circle at 10px 10px,#222 2px,transparent 2.5px)}
+.hero-title{text-align:center;font-size:clamp(36px,5.3vw,65px);font-weight:600;letter-spacing:-.065em;margin:74px 0 62px;line-height:1.06}
+.hero-title em{font-family:Georgia,"Times New Roman",serif;font-weight:400}.hero-title p{font-size:9px;letter-spacing:.15em;font-weight:400;color:#798070;margin:24px 0 0;text-transform:uppercase}
+.rail-window{width:100%;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);height:143px}
+.rail{display:flex;gap:12px;width:max-content;will-change:transform}
+.rail img{width:172px;height:126px;object-fit:cover;border-radius:7px;display:block;flex-shrink:0;user-select:none}
+.second{margin-top:3px}.second img{object-position:50% 70%}
+.stack-section{margin:60px 0 78px;text-align:center}
+#art-stack{display:block;position:relative;width:100%;height:300px;border:0;background:transparent;--card-w:clamp(112px,17.6vw,212px);-webkit-tap-highlight-color:transparent}
+#art-stack img{position:absolute;left:50%;top:25px;width:var(--card-w);height:calc(var(--card-w)*1.17);object-fit:cover;border-radius:9px;box-shadow:0 8px 15px #53664716;transform-origin:50% 90%;transition:transform 520ms cubic-bezier(.18,.78,.2,1),box-shadow 620ms;pointer-events:none;user-select:none}
+.stack-left{z-index:1;transform:translate(calc(-50% - var(--card-w)*.18),12px) rotate(-3deg)}
+.stack-right{z-index:2;transform:translate(calc(-50% + var(--card-w)*.18),12px) rotate(3deg)}
+.stack-center{z-index:3;transform:translate(-50%,0)}
+#art-stack.spread .stack-left{transform:translate(calc(-50% - var(--card-w)*.82),16px) rotate(-8deg)}
+#art-stack.spread .stack-right{transform:translate(calc(-50% + var(--card-w)*.82),16px) rotate(8deg)}
+#art-stack.spread .stack-center{transform:translate(-50%,-10px);box-shadow:0 14px 24px #53664724}
+.collection-stats{display:flex;justify-content:center;gap:48px;margin-top:-6px}.collection-stats div{display:flex;flex-direction:column;gap:7px;min-width:40px}
+.collection-stats strong{font:400 36px/1 Didot,"Bodoni 72",Georgia,serif;letter-spacing:-.07em;transform:scaleX(.73)}
+.collection-stats span{font:6px/1.5 Arial;letter-spacing:.22em;color:#9ba28e}
+.lower{height:220px}.lower img{width:190px;height:205px;object-fit:cover}
+.paper-end{display:flex;justify-content:space-between;align-items:center;font-size:8px;letter-spacing:.15em;margin:120px 36px 0;padding:26px 0 32px;border-top:1px solid #e0e4d7;color:#6c765e}
+.paper-end button{background:none;border:0;color:inherit;font-size:9px;letter-spacing:.1em;padding:10px}
+.tools{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:12px;padding:18px 0 6px;color:#56634c}.tools button{background:#f9fbf5;border:1px solid #c3cfb9;border-radius:7px;padding:8px 14px;color:inherit}.tools label{display:flex;align-items:center;gap:5px}.tools output{font-size:11px}
+.provenance{font-size:10px;line-height:1.8;color:#7d8873;margin:12px 0 0}
+.reduced #art-stack img{transition:none}.reduced .rail{will-change:auto}
+@media(max-width:600px){main{padding:16px 12px 24px}.heading{align-items:flex-start;flex-direction:column;gap:8px;font-size:11px}#quorum-window{height:630px;max-height:76vh;border-radius:10px}.gallery-paper{min-height:1230px;padding-top:17px}.brand-bar{margin:0 15px;font-size:6px;padding:9px}.hero-title{margin:58px 0 40px;font-size:42px}.hero-title p{font-size:7px;letter-spacing:.08em}.rail-window{height:111px}.rail{gap:8px}.rail img{width:142px;height:98px;border-radius:5px}.stack-section{margin:42px 0 55px}#art-stack{height:185px;--card-w:112px}#art-stack img{top:20px;border-radius:6px}.collection-stats{gap:24px;margin-top:-10px}.collection-stats strong{font-size:29px}.collection-stats span{font-size:5px}.lower{height:165px}.lower img{width:150px;height:155px}.paper-end{margin:90px 18px 0;font-size:6px}.paper-end button{font-size:7px}}
+@media(prefers-reduced-motion:reduce){#art-stack img{transition:none}.rail{will-change:auto}}
+
+/* 原片侧卡接近方形，小于高主卡；尺寸按完整帧拟合。 */
+#art-stack .stack-left,#art-stack .stack-right{width:calc(var(--card-w)*.84);height:calc(var(--card-w)*.84);top:calc(25px + var(--card-w)*.1)}
+@media(max-width:600px){#art-stack .stack-left,#art-stack .stack-right{top:calc(20px + var(--card-w)*.1)}}

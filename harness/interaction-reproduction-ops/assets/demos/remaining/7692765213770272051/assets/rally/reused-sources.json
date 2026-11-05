@@ -1,0 +1,56 @@
+[
+  {
+    "file": "alpine-glacier.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-glacier.jpg",
+    "sha256": "ce8182892ee719510ee0e9af195dd6f53becd77afafdde3f2487451734c614af",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-rose.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-rose.jpg",
+    "sha256": "a18ac8641f62dc657f9f36ac3a4d4914196db87fb86cc117f3193c628436a08d",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-granite.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-granite.jpg",
+    "sha256": "09546e314298d02c9ef282ce4838ddbe3f3edc3fb05d7f40dd3721dd2e67cfef",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-forest.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-forest.jpg",
+    "sha256": "e361d4c343adfc91c48fa2459fcc01bc9e729ed60e0e3b182774b86420f9e5f2",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-rock.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-rock.jpg",
+    "sha256": "a680a118546f9b35c7054617e584e297caa37f8e74131740dd5baf60ae4b5767",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-blue.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-blue.jpg",
+    "sha256": "8d423e7271f0269299a7864e6f9a2d56a361c1634c1d86e6ef2c28f14d42a75b",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-dusk.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-dusk.jpg",
+    "sha256": "5bb6d87c21cac89313288ce13022a999945b0181d60c23c70f3ff3a4b31e5d0e",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "alpine-sunrise.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/alpine-sunrise.jpg",
+    "sha256": "6ba6633482b0cbc56df8301fc9ee1b06e09be647d3b9344f7a08643db247023b",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  },
+  {
+    "file": "nordkette.jpg",
+    "sourceProjectRelative": "../../../../../02-首条视频复现/artifacts/assets/nordkette.jpg",
+    "sha256": "bf4450ee76bb34537d713f0b8b1feba884c29e2e138f3afac1a83a4f48500ab6",
+    "kind": "前批已生成自制替代风景；非对应山峰实拍出处"
+  }
+]

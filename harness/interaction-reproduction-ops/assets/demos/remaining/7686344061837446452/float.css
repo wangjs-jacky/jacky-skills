@@ -1,0 +1,1 @@
+.sidebar{left:16px;top:16px;width:240px;height:698px;border-radius:20px;box-shadow:0 8px 24px #222a2112;transition:left .24s ease-out,top .24s ease-out,height .24s ease-out,border-radius .24s ease-out,box-shadow .24s ease-out}.plain .sidebar{left:0;top:0;height:730px;border-radius:0;box-shadow:none}.reduced .sidebar{transition:none}

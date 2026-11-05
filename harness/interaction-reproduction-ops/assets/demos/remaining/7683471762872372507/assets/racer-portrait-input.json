@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: independently generated transparent portrait cutout for a coded racing portfolio study. An original photorealistic studio portrait of Formula One driver Lando Norris, front-facing, head upright, neutral confident expression, recognisable dark curly hair and face, brown eyes, no helmet, no glasses, no cap. Chest-up portrait wearing a dark zip jacket with soft abstract charcoal and light-grey organic pattern, no sponsors and no logos. The entire head and shoulders are visible, with a little clear margin above the hair. Soft even diffuse frontal lighting, realistic skin and curly hair detail, fashion editorial quality. Portrait 3:4 framing. Isolated against true transparent alpha background, no floor, no halo, no text, no letters, no watermark, no interface or border. The helmet will be a separate asset layered in code. This is an original generated depiction, not a claim to be a real photograph.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "独立新生成肖像/头盔替代素材，非原照片/原模型；头盔分层由CSS实现"
+}

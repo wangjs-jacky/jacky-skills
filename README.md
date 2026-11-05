@@ -45,7 +45,14 @@
 | [clear-and-brief-output](./skills/clear-and-brief-output) | [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) |
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) | [steelman](./skills/steelman) |
-| [create-ops](./skills/create-ops) | | |
+| [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
+| [story-ui](./skills/story-ui) | [static-publish](./skills/static-publish) | |
+
+`story-ui` 用于技术组件库的全状态交互展台：集中展示相关用户状态，支持示例输入、状态推进与重播，并复用实际组件。
+
+`static-publish` 用于带资源的静态网页发布：使用自己的云账号，复用已有 OSS 桶或同站资源，支持接入诊断、图片派生、内容寻址清单与精确页面快照；通过官方 Wrangler 完成 Cloudflare 发布、核验与回退。
+
+`existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
 
 `create-ops` 用于新建 OPS，或把已有 Skill、功能和经验改造成 OPS：先由用户确认分类主键与常用 operations，再生成自动沉淀协议和安装时的全局前置提示词。
 
@@ -61,11 +68,15 @@
 | [hyperframes-ops](./harness/hyperframes-ops) | HyperFrames 官方 Skills | 最佳实践、复杂能力组合、本机水土不服和环境兼容性 |
 | [ego-ops](./harness/ego-ops) | 浏览器自动化经验 | 最小授权执行、可观察验证与已验证操作知识沉淀 |
 | [cloudflare-ops](./harness/cloudflare-ops) | Cloudflare 能力与场景 | Workers/DO 设计边界、额度、常见坑、事件驱动约束与操作经验 |
+| [aliyun-ops](./harness/aliyun-ops) | 阿里云能力与场景 | 百炼模型、Embedding、地域、应用 Key 与接入验证经验 |
 | [release-ops](./harness/release-ops) | 软件分发平台 | GitHub/npm/扩展发布的适用流程、限制、验证及自动沉淀 |
 | [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
 | [goal-first-ops](./harness/goal-first-ops) | Goal First 项目目标档案 | 按 project 与 features 集中保存每个目标的报告、过程、产物、证据与方法 |
+| [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | 场景交互复用 | 按场景选择已实现效果、适配现有页面、实际验证并沉淀方法 |
 
 安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
+
+安装 `aliyun-ops` 的 Agent 请读取其[全局前置提示词](./harness/aliyun-ops/references/global-agents-prompt.md)，核对授权后再配置全局规则；普通使用从能力与操作进入。
 
 安装 `ego-ops` 的 Agent 同样读取其[全局前置提示词](./harness/ego-ops/references/global-agents-prompt.md)，建议在网页操作前先加载站点经验；纯复制或链接安装不会自动执行这项交互。
 

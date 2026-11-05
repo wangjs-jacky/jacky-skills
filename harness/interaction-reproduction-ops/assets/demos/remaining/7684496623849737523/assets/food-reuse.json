@@ -1,0 +1,16 @@
+{
+  "sourceVideo": "7684983023888092467",
+  "purpose": "同一饮食页构图自编底稿与实际生成食物素材复用，非作者截图",
+  "files": [
+    {
+      "file": "salmon-bowl.png",
+      "sha256": "f7e343a65a1dcb2b2862ae91598a32eab6fe3501978d94b62929e9eca162e4ab"
+    },
+    {
+      "file": "berry-bowl.png",
+      "sha256": "7ef4db91ad4289a05b93d819a9faa49198f77f7deff0afa9ca976d98dead3726"
+    }
+  ],
+  "avatar": "同批徒步页实际生成虚构头像复用于此页的示例档案",
+  "sourceBoundary": "输入JSON保留各原生图prompt；两个工具均未暴露具体模型标识，没有补称已核验GPT Image 2"
+}

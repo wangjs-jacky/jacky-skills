@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aliyun OPS"
+  short_description: "按能力维护阿里云百炼、Embedding 与模型凭据的接入和排障经验"
+  default_prompt: "使用 $aliyun-ops 复核百炼地域与凭据来源，配置并验证文本 Embedding，再按证据更新经验。"

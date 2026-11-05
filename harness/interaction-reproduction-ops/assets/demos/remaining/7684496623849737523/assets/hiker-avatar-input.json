@@ -1,0 +1,12 @@
+{
+  "prompt": "Use case: photorealistic-natural\nAsset type: small circular profile-photo asset for a self-coded hiking app reference reproduction.\nPrimary request: A square black-and-white head-and-shoulders editorial portrait of a fictional young adult East Asian woman with long straight dark hair, relaxed neutral expression, looking toward the camera, wearing a simple light outdoor shirt.\nScene/backdrop: softly blurred pale woodland background, natural daylight.\nComposition/framing: centered face, forehead and shoulders comfortably inside a central circle; recognizable even when cropped into a 44px circle. Full square photo without a drawn circle or frame.\nStyle/medium: natural grayscale photography, modest contrast and realistic skin texture, no glamorous retouching.\nConstraints: only a standalone portrait photo, not an app screenshot or UI. No text, letters, logos, watermarks, borders, or other people. The subject is fictional and should not imitate any identifiable person.\nOutput: square image.",
+  "tool": "built-in image_gen",
+  "requestedAt": "2026-10-20T09:56:04.342888+00:00",
+  "modelIdentity": "内置image_gen成功，工具没有暴露具体模型标识；不宣称已核验GPT Image 2",
+  "status": "generated",
+  "sha256": "dbd15c9915bc3bba035727e65bb4e8f2f83ab35054e335a8e3a7efa7a902ac7a",
+  "bytes": 2360483,
+  "width": 1254,
+  "height": 1254,
+  "originalRetained": true
+}

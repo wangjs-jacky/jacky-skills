@@ -1,0 +1,9 @@
+{
+  "file": "alfama.png",
+  "tool": "image_gen",
+  "model": "not returned; not verified GPT Image 2",
+  "prompt": "Use case: photorealistic-natural. Asset type: original portrait travel photograph for a coded story viewer; photo only. Primary request: a narrow steep cobbled lane in Lisbon's Alfama, pale weathered cream and ochre plaster buildings closely framing the lane, blue-and-white azulejo tiles, thin overhead wires and laundry lines, a little green foliage near doorways, one small anonymous pedestrian receding far downhill. Vertical 4:5 composition looking down the alley with natural perspective, softly sunlit cream walls and deep shade in the foreground, subtle warm desaturated editorial travel photography. No text, logos, watermark, UI, frames, collage or illustrations. An independently made replacement image, not a copy of another photograph.",
+  "nativeOriginalPreserved": true,
+  "difference": "independently generated replacement, not the author photo or a documentary source",
+  "sha256": "fbcf7e62ceea0742e4324ffaacfbbaff3689c7d7c358b08c165970c69e92d4b2"
+}

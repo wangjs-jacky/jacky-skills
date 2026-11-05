@@ -1,0 +1,9 @@
+{
+  "file": "belem.png",
+  "tool": "image_gen",
+  "model": "not returned; not verified GPT Image 2",
+  "prompt": "Use case: photorealistic-natural. Asset type: original portrait travel photograph used as a photo only in a coded story viewer. Primary request: Bel\u00e9m Tower in Lisbon by the Tagus river, seen from the waterfront plaza, warm weathered pale limestone square tower with carved battlements dominating the right two-thirds, a small turret and river to the left, clear muted turquoise-blue sky, a few tiny anonymous visitors at the foot to establish scale. Composition: portrait 4:5, natural documentary-style travel photography, daylight with gentle warm highlights and realistic stone texture, tower fully recognizable. No text, logos, watermark, UI, frames or collage. This is a replacement illustration photograph, not an exact copy of any source photograph.",
+  "nativeOriginalPreserved": true,
+  "difference": "independently generated replacement; not the author photograph or a documentary source",
+  "sha256": "56fc746a5cb5ae43433eb8d5a6fae0989c200ba41428ac70e3695258d6933636"
+}

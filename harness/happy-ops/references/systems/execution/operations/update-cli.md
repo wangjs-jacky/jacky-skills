@@ -3,9 +3,9 @@
 - system: execution
 - operation: update-cli
 - status: verified
-- last_verified: 2026-10-14
+- last_verified: 2026-11-05
 - risk: high
-- scope: 最近验证为 Resume 同轮终态时间戳落后修复，保留实际运行补丁构建激活；真实 API/socket 旧版复现、新版消除假 running，新 worker 启动通过，既有 worker 保留；未提交模型请求、未热替换旧 worker、未发布 npm。此前原生目录/准备/只读工具/取消事件证据保留。
+- scope: 本次验证后台CLI外盘读取EPERM与继承provider认证冲突；完整恢复内置运行包并移除冲突字段后，真实页面新会话读取文件、模型回复和已完成通过；旧worker保留，不代表旧进程热迁移或任意外盘可访问。
 
 ## 目标
 
@@ -40,6 +40,9 @@
 
 受限原生环境需保留已明确配置的专用代理，同时保留账号隔离。JSONB 中对象键序可以变化，目标身份应按字段比较。daemon 未登记旧 worker，不代表旧进程可以清理。
 
+
+macOS后台CLI、运行时及启动依赖遵循内置盘例外，普通工程的外盘默认位置不适用于这些目录。更新前解析current与依赖最终路径；外盘候选即使构建及终端读取通过，仍须真实daemon派生worker、模型回复和完成状态验收。恢复时完整复制活动release并校验普通文件、权限、链接及ignored资料，保留live补丁和可回退原件。
+
 ## 验证证据
 
 2026-10-07 验证覆盖上述本次 scope，来源与历史限制见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
@@ -51,3 +54,9 @@
 2026-10-11：原生目录与真实服务执行、材料读取、显式恢复和事件取消已验证，具体范围及旧问题限制见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
 
 2026-10-14：Resume 假 running 修复已通过候选构建、目标回归、真实 API/socket 新旧对照及激活后新 worker 启动检查；旧 worker 未中断，未提交模型任务。证据及生效边界见[私有证据](../../../../local/systems/execution/operations/update-cli.md)。
+
+2026-10-22：本次独立会话功能对应目标成功；具体结果与限制见私有操作证据链接的新发布记录。Web覆盖正式版本/资源及首页渲染；执行端覆盖保留live补丁、新daemon注册和新worker启动，不代表旧worker热更新或新模型任务。
+
+2026-11-03：本机独立会话账号选择修复已实际激活，真实新子会话回复并执行工具，旧 worker 保留；详见[私有证据](../../../../local/records/independent-task1-account-rejection-20261103.md)。
+
+2026-11-05：上述本次scope真实通过；底层系统授权变化的原因未确定。见[本机证据](../../../../local/systems/execution/operations/update-cli.md)。

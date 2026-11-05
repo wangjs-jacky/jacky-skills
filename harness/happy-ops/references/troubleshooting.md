@@ -9,6 +9,7 @@
 | 图片打不开、模型读不到 | [附件](systems/web/operations/diagnose-attachments.md) |
 | 队列或插话行为错乱 | [输入框](systems/web/operations/diagnose-composer.md)，仅涉及 worker 协议时进入[原生插话](systems/execution/operations/diagnose-steer.md) |
 | 手机不更新、安装包检查失败 | [更新诊断](systems/android/operations/diagnose-update.md) |
+| 正文正常但手机流程图空白 | [原生流程图](systems/android/operations/diagnose-diagram-rendering.md) |
 | 通知转圈或不提醒 | [推送](systems/android/operations/diagnose-notifications.md) |
 | 扫码绑定失败 | [账号绑定](systems/android/operations/diagnose-account-link.md) |
 | 后端/Socket 连接、RPC 超时 | [连接诊断](systems/server/operations/diagnose-connection.md) |

@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: product-mockup. Asset type: independent transparent product cutout for a live HTML product landing page. One round warm honey-brown cork coaster, seen almost directly from above, with a very shallow gently recessed round centre and a softly raised rounded outer lip. Clearly a small flat cork coaster for a mug, not a deep bowl, not wood, not ceramic. Dense finely speckled natural cork granules with tactile texture, subtle darker compressed inner edge, soft side light from upper left. Slight depth along the bottom rim, near overhead camera with only a very subtle three-quarter perspective. Isolate the entire coaster centred in the image with clear transparent margin all around. Real alpha transparency. No floor, no tabletop, no mat, no cup, no shadow background, no text, no engraving, no brand, no UI, no frame. Only one shallow round cork object.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "ORYZO自制独立场景/杯垫素材，不含界面，标题/导航/正文另由代码实现"
+}

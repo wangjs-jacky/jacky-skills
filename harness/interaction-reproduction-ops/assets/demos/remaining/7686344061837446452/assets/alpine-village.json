@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: muted snowy alpine village photo used underneath a coded frosted glass sidebar, photo only. Primary request: compact European Alpine ski resort with pale chalet roofs and a few dark timber buildings covered in snow, distant steep mountain slopes faintly visible in winter haze. Cold blue-gray and off-white palette, slightly overcast diffused light. Wide horizontal 3:2 framing, village clustered in lower half, hazy snow mountains and pale sky in upper half, realistic outdoor editorial photography. No people in foreground, no text, no signs, no logos, no border, no UI or overlays.",
+  "tool": "built-in image_gen",
+  "model": "not exposed",
+  "transparent_background": false,
+  "sha256": "507bc85571375d24ec256f8d834e03c062439cae1da588fb63a04f39b607f81e"
+}

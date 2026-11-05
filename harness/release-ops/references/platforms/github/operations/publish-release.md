@@ -1,8 +1,8 @@
 ---
 platform: github
 operation: publish-release
-status: documented
-last_verified: null
+status: verified
+last_verified: 2026-10-17
 ---
 
 # 发布 GitHub Release
@@ -19,7 +19,7 @@ last_verified: null
 
 1. 核对现有远端 tag 指向的提交和已有 Release；产物与该版本对应，复用有效构建输出，避免通配符误选旧产物。
 2. 已准备 tag 时使用 `--verify-tag`，不能让 CLI 从默认分支隐式建错 tag。确需新建时只创建/推送精确 tag，并确认它是否触发其他发布 workflow。
-3. 按项目选择 CI 或 gh 执行发布，避免同目标双路径同时上传。Release notes 用文件传入。
+3. 按项目选择 CI 或 gh 执行发布，避免同目标双路径同时上传。Release notes 用文件传入。需要多附件完整性门禁时可先建草稿，核对全部附件后再公开并按项目设置 latest。
 4. 读回 tag、Release 状态、附件名称/大小及可用校验信息；需要下载能力时取得相称的访问证据。
 5. 部分附件失败时记录已完成部分；先检查 immutable releases 与当前状态，再决定补传或其他恢复，不默认覆盖。
 
@@ -31,6 +31,8 @@ tag 对应预期源码，Release 状态满足本次目标，指定附件完整�
 
 tag 错误、附件身份不明或已发布不可变版本时停止相关写入并说明具体差异，不能删 tag 重推当作通用修复。不能用“撤销 Release”推断包 registry 也会回滚。
 
+草稿返回临时 untagged 网页／下载路径不代表实际 tag 丢失；先读回 tag_name、tag 指向与附件状态，不以临时 URL 当公开交付。正式发布后重新核对公开 URL 和下载响应，不能沿用草稿链接。
+
 ## 证据与边界
 
-2026-10-15 已核对 gh release create 官方规则；未创建 Release 或上传附件。按[写回协议](../../../knowledge-schema.md)维护实例与操作证据。
+2026-10-17：已实际核验精确源码 tag、草稿多附件上传、逐附件 size／SHA-256、正式发布及 latest 读回，公开下载最终 HTTP 200。此日期覆盖 GitHub 制品分发，不代表安装包在用户设备运行、商店发布或 OTA 已完成；项目证据留私有实例。官方规则文档核对日期仍为 2026-10-15。按[写回协议](../../../knowledge-schema.md)维护实例与操作证据。

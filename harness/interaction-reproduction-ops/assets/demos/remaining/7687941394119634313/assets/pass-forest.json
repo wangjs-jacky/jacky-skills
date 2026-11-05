@@ -1,0 +1,10 @@
+{
+  "file": "pass-forest.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 outdoor sports photograph for a separately coded season-pass card. An anonymous adult climber in a charcoal olive short-sleeve top reaches one bare arm high up a tall rough cool-grey rock wall, body and face seen from the side in the lower right, looking upward. Moss and thin green forest trees behind the wall create dappled yellow-green light, the rock face dominates the left half. Quiet intense candid climbing moment, natural filtered woodland sunlight, realistic fine rock and skin texture, muted cinematic green-grey outdoor editorial palette. One uninterrupted photograph, no text, no numbers, no card, no labels, no logo, no watermark, no border, no UI, no collage. Leave clean darker space at bottom for separately coded labels.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "0d3c0351444cf0ec99f6dbdf86c1498b299709c2a22f99931aac11b66a872473"
+}

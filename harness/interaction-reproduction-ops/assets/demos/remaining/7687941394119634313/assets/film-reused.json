@@ -1,0 +1,62 @@
+[
+  {
+    "file": "film-glacier.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-glacier.jpg",
+    "sha256": "ce8182892ee719510ee0e9af195dd6f53becd77afafdde3f2487451734c614af",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-rose.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-rose.jpg",
+    "sha256": "a18ac8641f62dc657f9f36ac3a4d4914196db87fb86cc117f3193c628436a08d",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-granite.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-granite.jpg",
+    "sha256": "09546e314298d02c9ef282ce4838ddbe3f3edc3fb05d7f40dd3721dd2e67cfef",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-forest.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-forest.jpg",
+    "sha256": "e361d4c343adfc91c48fa2459fcc01bc9e729ed60e0e3b182774b86420f9e5f2",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-blue.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-blue.jpg",
+    "sha256": "8d423e7271f0269299a7864e6f9a2d56a361c1634c1d86e6ef2c28f14d42a75b",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-dusk.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-dusk.jpg",
+    "sha256": "5bb6d87c21cac89313288ce13022a999945b0181d60c23c70f3ff3a4b31e5d0e",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-sunrise.jpg",
+    "source": "7692765213770272051/artifacts/assets/rally/alpine-sunrise.jpg",
+    "sha256": "6ba6633482b0cbc56df8301fc9ee1b06e09be647d3b9344f7a08643db247023b",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-street.png",
+    "source": "7690439130081655474/artifacts/assets/lisbon-street.png",
+    "sha256": "4f22ec20e85ee48999c7217344f77aa3d5de163362465c4431665368fe415fb7",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-candle.png",
+    "source": "7690439130081655474/artifacts/assets/candle-room.png",
+    "sha256": "23caa2eeb76ac0ec2b365f27dfcc48a31af77fb8411f85963541a29edb963550",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  },
+  {
+    "file": "film-van.png",
+    "source": "7690439130081655474/artifacts/assets/forest-van.png",
+    "sha256": "ae75cff776ab4c624246d39305cd33474fbae8a5a304f2ea4ea4d21c96879d34",
+    "scope": "same bytes of previously generated independent substitute; not author photo"
+  }
+]

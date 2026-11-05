@@ -1,0 +1,9 @@
+{
+  "file": "buddy-orbit.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: stylized-concept. Asset type: one original transparent cutout character, for placement inside a separately coded colorful collectible card. A lovable small lavender and ice-blue pearlescent planet creature, round soft 3D body with two enormous glossy black oval eyes close together, tiny friendly expression, a thick translucent periwinkle Saturn ring looping diagonally around its belly from lower left to upper right, one small puffy golden four-point star floating above the upper left shoulder, one tiny pale blue sparkle at lower right. Premium playful 3D vinyl-toy render, polished translucent jelly and soft iridescent material, gentle studio key light from upper left, delicate surface highlights and volume. Front three-quarter view, full subject centered with 12 percent transparent padding, square composition, all accessories completely visible. Actual transparent alpha background; no floor, no backdrop, no cast rectangle, no text, no letters, no card, no logo, no watermark, no border, no interface. This is one isolated piece of original character art, not a screenshot or UI.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的珠光行星角色，未使用作者原图，形状与材质有差异",
+  "sha256": "dd15b053b87208dfffa0d1185c0c453cf361e48fcd598888f68a8130e71c85e5"
+}

@@ -1,0 +1,76 @@
+{
+  "photos": [
+    {
+      "file": "azure-coast.png",
+      "sha256": "615c9053ad77911aff23b6e9f74a081753dfe3d31adc9db34406c4412b3a6013",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "本轮独立生图，精确输入保留private notes",
+      "model": "not disclosed"
+    },
+    {
+      "file": "barcelona.png",
+      "sha256": "f9add3a86cf571e523e6738c0738393e53c25f987588b9fc5e5fb6e02e97731f",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "本轮独立生图，精确输入保留private notes",
+      "model": "not disclosed"
+    },
+    {
+      "file": "cinque-terre.png",
+      "sha256": "c0c4f38bf97667fe22a667c2638c78714b3add6468385c2aecd85e663ff10d7a",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "本轮独立生图，精确输入保留private notes",
+      "model": "not disclosed"
+    },
+    {
+      "file": "lake.png",
+      "sha256": "b218c626099f4ee8dfee0424d63e00ad3577dd0afa3ec206b17d63b51706ac91",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source": "既有自制素材，来源与当前差异在reuse.json/原案例中保留",
+      "model": "not disclosed"
+    },
+    {
+      "file": "paris.png",
+      "sha256": "9497a478cbb94781fcd103c8cde4d8c6e105c685412c50bd37bb6ec735b94dfa",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "本轮独立生图，精确输入保留private notes",
+      "model": "not disclosed"
+    },
+    {
+      "file": "rome.png",
+      "sha256": "ca7536d3416cbc04244d09a9fd1b440dc5060de677495d2b95437ddb56b7328f",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "source": "本轮独立生图，精确输入保留private notes",
+      "model": "not disclosed"
+    },
+    {
+      "file": "santorini.png",
+      "sha256": "43121e277887eea3deb7e15b1fa34187e7f54e3c2f1befe71cb58a9754170f26",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source": "既有自制素材，来源与当前差异在reuse.json/原案例中保留",
+      "model": "not disclosed"
+    }
+  ],
+  "ui": "界面为自编HTML/CSS/JS/SVG；没有作者截图、整图UI或原视频。",
+  "sourceDifference": "圣托里尼照片替代原片石质背景，系统字体/图标与照片裁切不同；图片不能证明交互。"
+}

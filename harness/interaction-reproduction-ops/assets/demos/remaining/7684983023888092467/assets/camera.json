@@ -1,0 +1,10 @@
+{
+  "tool": "built-in imagegen",
+  "model": "工具未暴露具体模型名",
+  "prompt": "Use case: product-mockup. Asset type: one isolated inventory equipment photo, not a UI. A compact premium black digital camera with a large round glass lens, tactile top control dials and a subtle pebbled rubber grip, viewed from the front at a slight three-quarter angle. Entire camera fully visible, centered, with generous empty margin in a square composition. Deep black graphite metal, restrained glossy reflections, small warm amber edge highlights, soft dramatic studio lighting suitable for placement on a near-black product card. Photorealistic high-end catalog product photography. Genuine transparent background. No branding, readable lettering, text, numbers, logos, watermark, extra products, table or interface.",
+  "transparentBackground": true,
+  "sourceRole": "自制替代设备照片，非作者原素材",
+  "generatedFrom": "text-only",
+  "file": "camera.png",
+  "sha256": "7041d3fbf5a24087fdef01867b8a24581e09bbbd6498e3fe98dee9f63d129886"
+}

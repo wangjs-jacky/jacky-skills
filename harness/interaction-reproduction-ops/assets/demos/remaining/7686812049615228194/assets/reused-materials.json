@@ -1,0 +1,14 @@
+[
+  {
+    "file": "snowboard-jump.png",
+    "source": "7687076173093129138/artifacts/assets/snowboard-jump.png",
+    "sha256": "620bf95b120838f61b7c140579d9d2183d0f36985ea7f4486fbae986adf5b8ca",
+    "kind": "existing self-created image"
+  },
+  {
+    "file": "ridge.jpg",
+    "source": "7687076173093129138/artifacts/assets/ridge.jpg",
+    "sha256": "ce8182892ee719510ee0e9af195dd6f53becd77afafdde3f2487451734c614af",
+    "kind": "existing self-created image"
+  }
+]

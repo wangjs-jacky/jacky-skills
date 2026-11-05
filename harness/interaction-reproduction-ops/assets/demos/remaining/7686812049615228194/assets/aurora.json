@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: portrait mountain cover photo for a coded snow-sports interaction study, pure photograph only. Primary request: one snow-covered steep Alpine mountain summit, strongly saturated clear cyan-blue sky filling the upper 55 percent, white snow face with crisp dark rock ridges filling lower half, a fine thin natural cloud across the upper sky. Composition: vertical 2:3 crop, distant peak approximately centered low, no buildings or people. Bright cool midday light, realistic outdoor editorial photography. No text, no logos, no border, no interface, no graphic overlay.",
+  "tool": "built-in image_gen",
+  "model": "tool did not expose model identity",
+  "transparent_background": false,
+  "sha256": "a5d14658107d5ea176274c27158410b147e30f1ecb679d91f9595c28fbe105e1"
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: original background environment photograph for a coded product landing page, no interface. A near top-down still life of a warm honey-brown wooden craft desk. A large dark forest-green self-healing cutting mat covers the right 75 percent of the image and extends beyond the top and right edges, rotated slightly counterclockwise, with a fine pale cream square grid and subtle scuffs. The left 20 percent and bottom 12 percent reveal the wooden desk. One long natural wood pencil lies diagonally from upper middle toward the upper-right quadrant, its graphite tip pointing down-right. At the lower right edge a vintage wooden-handle utility craft knife lies diagonally, partly cropped by the frame. At the bottom left a dark graphite pencil tip peeks into view. Leave the middle-left of the cutting mat completely clear for a separately rendered round coaster object. Soft warm light from upper left, realistic material grain, delicate natural shadows, slightly filmic product-photography palette. Wide landscape 16:10 composition. No coaster, no bowl, no cups, no central object, no letters, no text, no logos, no UI, no buttons, no webpage or screenshot. Only the workspace photograph.",
+  "transparent_background": false,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "ORYZO自制独立场景/杯垫素材，不含界面，标题/导航/正文另由代码实现"
+}

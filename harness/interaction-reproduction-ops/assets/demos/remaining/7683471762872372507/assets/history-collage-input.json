@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: independent landscape collage art background for live HTML typography, not a poster screenshot. A joyful surreal editorial paper collage in warm yellow, peach orange, hot pink and pale sky blue. At upper left a very large pink five-petaled flower with yellow centre and a little dark butterfly. At upper right a sculptural vintage golden Olympic-style flaming torch pointing upward, warm terracotta ornamental pedestal below it. Along the bottom edge, purple iris flowers, tiny red blooms, black-and-white cut-out hands reaching up, pale torn-paper triangles and a stylized sun. Scattered tiny fluffy white clouds along upper and lower margins. A few black-and-white photographic fragments behind the edge flowers. Dense collage motifs around all four edges with a relatively calm warm pastel centre for separately coded three lines of typography. Mixed vintage photographic clippings, torn paper, halftone grain and textured colour fields. Bold, celebratory, artisanal editorial visual style. No text, no words, no letters, no typography, no logos, no UI, no frame or website. The result must be only artwork, with no readable text anywhere.",
+  "transparent_background": false,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "原片后段奥运/花卉拼贴独立背景，白条文字另由代码实现"
+}

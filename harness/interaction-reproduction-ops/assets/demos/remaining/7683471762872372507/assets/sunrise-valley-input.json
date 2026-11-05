@@ -1,0 +1,9 @@
+{
+  "asset": "sunrise-valley.png",
+  "source": "本轮独立文字生图，非作者照片",
+  "prompt": "Use case: photorealistic-natural. Asset type: standalone vertical travel photograph for a portrait image card, no UI. Primary request: a serene granite mountain valley at sunrise, a deep pine-covered canyon with monumental pale cliffs on both sides, distant rugged peaks, low golden sunlight glowing through a hazy notch near the horizon. Composition: portrait 4:5, left granite wall large and cropped, darker conifer forest in the lower foreground, the valley recedes into a warm luminous opening in the middle distance. Natural editorial landscape photography, subdued earth tones, dark pine green, pale stone and honey light, gentle atmospheric haze, very fine film grain. No people, no vehicle, no buildings, no lettering, no text, no logo, no watermark, no screen, no UI, no border, no frame.",
+  "tool": "image_gen.imagegen",
+  "model": "工具未返回具体模型名",
+  "bytes": 2789373,
+  "sha256": "36464f417cc4285d3975f039d50eb329b75c16752b3110aa6589ff3a63f91d1e"
+}

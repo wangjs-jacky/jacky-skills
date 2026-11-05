@@ -1,6 +1,6 @@
 ---
 capability: durable-objects
-updated: 2026-10-14
+updated: 2026-10-24
 docs_checked: 2026-10-14
 ---
 
@@ -31,9 +31,11 @@ SQLite 内 `get/put/delete/list` 使用隐藏表，也按读取/写入行数计�
 
 ## 操作目录
 
+2026-10-24专项补核（不刷新上方其他限额日期）：SQLite API支持FTS5和JSON扩展，transactionSync回调同步执行，外部I/O不能纳入SQL事务。Paid SQL包含25B读行/月、50M写行/月与5GB-month；超额分别US$0.001/M读、US$1/M写、US$0.20/GB-month，索引和删除计写入。来源为下方SQLite API与pricing；本轮未重核DO请求/活跃GB-s单价，未验证应用实际查询性能。
+
 | operation | 适用场景 | status | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| design-stateful-service | 设计状态、通知与断线恢复 | documented | — | [说明](operations/design-stateful-service.md) |
+| design-stateful-service | 设计状态、通知与断线恢复 | partial | — | [说明](operations/design-stateful-service.md) |
 | diagnose-read-quota | 从账户告警定位读取来源 | verified | 2026-10-14 | [说明](operations/diagnose-read-quota.md) |
 | reduce-read-amplification | 消除轮询与 schema/历史扫描放大 | partial | — | [说明](operations/reduce-read-amplification.md) |
 

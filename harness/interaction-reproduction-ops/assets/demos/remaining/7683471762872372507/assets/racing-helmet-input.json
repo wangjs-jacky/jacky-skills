@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: product-mockup. Asset type: one independent transparent helmet cutout for a live HTML layered interaction, no interface. A front-facing modern full-face Formula One style racing helmet, symmetrical, upright, camera directly in front at eye height. Fluorescent yellow-green shell decorated with bold irregular black hand-drawn loops and organic abstract shapes. A wide glossy nearly black mirrored visor with two narrow bright vertical reflections; a simple clean white strip just above the visor. Solid yellow-green chin guard with black ventilation slots, black padding glimpsed inside. Crisp premium product render with convincing glossy shell and dark visor materials. Entire helmet visible with transparent space around it, no human, no neck, no floor or backdrop, no words, no sponsor names, no letters, no numbers, no real team marks, no logos, no watermark, no UI. Actual alpha transparency. This image will supply material for a limited curved cutaway mesh in code; do not show any exploded or detached parts.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "独立头盔材质贴图，拟合不规则曲面与有限转动；非作者完整模型"
+}

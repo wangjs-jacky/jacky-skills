@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>纸上发布 · 动态信息设计</title>
+<link rel="stylesheet" href="story.css"><script defer src="controls.js"></script><script defer src="science-field.js"></script><script defer src="story.js"></script>
+<body><header class="toolbar"><div><small>48 / EDITORIAL MOTION</small><h1>纸上发布</h1></div><label class="preference"><input id="reduce" type="checkbox">减少动态</label><button id="reset">复位</button></header>
+<main><section class="transport" aria-label="播放控制"><label>段落 <select id="scene"><option value="opening">01 · 数字与素材窗</option><option value="released">02 · 发布清单与层级</option><option value="scale">03 · 深蓝参数面板</option><option value="benchmarks">04 · 双条比较与数字</option><option value="ranking">05 · 五行排名交错</option><option value="closing">06 · 科学场与圆章结尾</option></select></label><button id="play">播放</button><button id="pause">暂停</button><button id="play-all">连播六段</button><label class="timeline">进度 <input id="timeline" type="range" min="0" max="6" step=".01" value="4" aria-label="段落时间"></label><output id="time">4.00 / 6.00 s</output></section>
+<div class="stage-shell"><div id="paper" aria-label="数字首屏动态设计">
+<section id="opening" class="scene">
+<div class="masthead"><span><i></i>昨晚 23:00 · 月之暗面</span><b><em>K</em> KIMI</b></div>
+<div class="hero-number"><strong>2.8T</strong><span>TOTAL PARAMETERS</span></div>
+<div class="media-window"><img id="hero-image" src="assets/geometry-hand.png" alt="独立生成的手绘几何草图照片"></div>
+<i class="hero-rule"></i><p class="hero-english">Meet the open weights.</p><h2 class="hero-title">国产 AI，<span>又放大招</span></h2>
+</section>
+<section id="released" class="scene" hidden>
+<header class="section-heading"><p>WHAT'S RELEASED</p><h2>开源了什么</h2><i></i></header><div class="release-spine"><i></i></div>
+<button class="release-card weights" data-detail="weights"><span class="release-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m7 15 17-9 17 9-17 9zm0 10 17 9 17-9M7 35l17 9 17-9"/></svg></span><span class="release-copy"><small>OPEN WEIGHTS</small><strong>模型权重</strong><span>2.8T MoE 全量权重</span></span><span class="mini-document" aria-hidden="true"><b>LOCAL NOTE</b><i></i><i></i><i></i><i></i><i></i><i></i></span></button>
+<button class="release-card report" data-detail="report"><span class="release-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 4h18l9 9v31H11zM28 4v11h10M17 23h15M17 30h15M17 37h10"/></svg></span><span class="release-copy"><small>TECH REPORT</small><strong>技术报告</strong><span>训练细节完整公开</span></span><span class="mini-document report-note" aria-hidden="true"><b>LOCAL NOTE</b><i></i><i></i><i></i><i></i><i></i><i></i></span></button>
+<section class="infra-panel"><header><small>INFRASTRUCTURE</small><h3>三项基础设施同步开源</h3></header><div class="infra-list"><button data-detail="moon"><i></i><b>Moon EP</b><span>解决 MoE 训练负载不均</span></button><button data-detail="flash"><i></i><b>Flash KDA</b><span>提升算子性能</span></button><button data-detail="agent"><i></i><b>Agent Env</b><span>强化学习隔离试错环境</span></button></div></section>
+</section>
+<section id="scale" class="scene" hidden>
+<header class="section-heading"><p>THE SCALE</p><h2>规模有多大</h2><i></i></header><div class="traits"><span>MoE 架构</span><span>原生多模态</span><span>混合注意力</span></div>
+<div class="ledger"><div class="ledger-texture" aria-hidden="true"><b>Local visual study</b><p>Labels and values are separate layers. A quiet surface holds four distinct rows. Keep units attached to their own values. This texture is self-written for a composition study.</p><b>Structured information</b><p>Each value enters with its label. The same row stays in place when the timeline returns. The source code contains no model request or benchmark execution.</p><b>Scale and rhythm</b><p>Blue ink, small cyan captions, generous numerical weight and fine horizontal divisions. The text is decorative, not an original technical report.</p></div>
+<dl class="ledger-data"><div class="ledger-row"><dt><small>TOTAL PARAMETERS</small><span>总参数</span></dt><dd>2.8T</dd></div><div class="ledger-row"><dt><small>ACTIVE PARAMETERS</small><span>激活参数</span></dt><dd>104B</dd></div><div class="ledger-row"><dt><small>CONTEXT TOKENS</small><span>上下文</span></dt><dd>1.04M</dd></div><div class="ledger-row"><dt><small>SCALING EFFICIENCY</small><span>效率 vs K2</span></dt><dd>2.5×</dd></div></dl></div>
+<footer class="ledger-footer"><span>SOURCE · MODEL INTRODUCTION</span><b>DEPLOY · 64+ ACCELERATORS</b></footer>
+</section>
+<section id="benchmarks" class="scene" hidden>
+<header class="section-heading"><p>CODING BENCHMARKS</p><h2>Coding 多榜，<span>登顶</span></h2><i></i></header>
+<div class="benchmark-list">
+<section class="benchmark-group"><header><h3>SWE-BENCH VERIFIED <span>真实仓库修 bug</span></h3><small>LEAD</small></header><div class="comparison-row"><span>KIMI K3</span><i class="bar-track"><b data-width=".61" data-value="74.2"></b></i><strong>74.2</strong></div><div class="comparison-row secondary"><span>GPT-5.6 SOL</span><i class="bar-track"><b data-width=".588" data-value="73.1"></b></i><strong>73.1</strong></div></section>
+<section class="benchmark-group"><header><h3>LIVECODEBENCH V6 <span>算法编程</span></h3><small>LEAD</small></header><div class="comparison-row"><span>KIMI K3</span><i class="bar-track"><b data-width=".795" data-value="82.6"></b></i><strong>82.6</strong></div><div class="comparison-row secondary"><span>FABLE 5</span><i class="bar-track"><b data-width=".76" data-value="80.4"></b></i><strong>80.4</strong></div></section>
+<section class="benchmark-group"><header><h3>TERMINAL-BENCH <span>终端任务</span></h3><small class="close">CLOSE</small></header><div class="comparison-row"><span>KIMI K3</span><i class="bar-track"><b data-width=".275" data-value="58.9"></b></i><strong>58.9</strong></div><div class="comparison-row secondary"><span>OPUS-4.8</span><i class="bar-track"><b data-width=".293" data-value="59.7"></b></i><strong>59.7</strong></div></section>
+</div>
+<button class="comparison-document" data-detail="benchmark" aria-label="查看对比图表的本地来源说明"><span class="mini-charts" aria-hidden="true"></span><small>LOCAL COMPOSITION STUDY</small></button>
+</section>
+<section id="ranking" class="scene" hidden>
+<canvas class="scientific-field" width="720" height="900" aria-hidden="true"></canvas>
+<header class="section-heading"><p>CODING · OVERALL</p><h2>开源模型，进入新阶段</h2></header>
+<div class="ranking-columns"><span>#</span><span>MODEL</span><span>SCORE</span></div>
+<ol class="ranking-list">
+<li class="top"><i></i><b>1</b><span><strong>Kimi K3</strong><small>OPEN</small><em>TOP</em></span><output data-value="71.4">71.4</output></li>
+<li><i data-width=".775"></i><b>2</b><span><strong>GPT-5.6 Sol</strong><small>CLOSED</small></span><output data-value="69.8">69.8</output></li>
+<li><i data-width=".7"></i><b>3</b><span><strong>Fable 5</strong><small>CLOSED</small></span><output data-value="68.2">68.2</output></li>
+<li><i data-width=".63"></i><b>4</b><span><strong>Opus-4.8</strong><small>CLOSED</small></span><output data-value="66.5">66.5</output></li>
+<li><i data-width=".405"></i><b>5</b><span><strong>GLM-5.2</strong><small class="open">OPEN</small></span><output data-value="61.3">61.3</output></li>
+</ol>
+<p class="ranking-footnote">RELATIVE ILLUSTRATION · OFFICIAL NUMBERS PREVAIL</p><div class="ranking-band" aria-hidden="true">OPEN WEIGHTS · TECH REPORT · 1.04M CONTEXT · KIMI K3 · OPEN WEIGHTS · TECH REPORT</div>
+</section>
+<section id="closing" class="scene" hidden>
+<canvas class="scientific-field" width="720" height="900" aria-hidden="true"></canvas>
+<div class="closing-badge"><div class="closing-brand"><b>K<sup>•</sup></b><strong>KIMI</strong></div></div>
+<p class="closing-english">Open weights. Open report.</p><h2 class="closing-question">你觉得 <span>Kimi K3</span> 能改变什么？</h2><i class="closing-rule"></i>
+</section>
+</div></div><p class="context">原片视觉学习样例 · 数据未独立核验 · 自制静态照片替代原实拍</p><p id="state" role="status" aria-live="polite">暂停于首屏完整构图</p></main>
+<dialog id="release-detail"><button id="close-detail">返回清单 ↗</button><small id="detail-label"></small><h2 id="detail-title"></h2><p id="detail-copy"></p><p class="detail-source">原片信息的本地阅读演练，未连接模型、权重或报告服务。</p></dialog>
+</body></html>

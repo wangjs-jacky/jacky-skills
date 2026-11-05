@@ -1,0 +1,10 @@
+{
+  "file": "pass-track.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 sports photograph for a separately coded season-pass card. Looking diagonally across a burnt-orange red rubber athletics running track, three crisp pale white lane lines recede from lower left to upper right. A fast anonymous adult runner in a white technical shirt, dark running shorts and white shoes is partially visible near the upper right edge, captured mid-stride; most of the frame is rich textured red-orange track. Bright natural afternoon sun, subtle grain and restrained editorial sports photography, realistic texture and body proportions. No stadium audience, no readable signs. One uninterrupted photograph. No card, no typography, no numbers, no logo, no watermark, no border, no UI, no collage. Keep lower third as track texture for separately coded labels.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "3a086f2151ccd94ea006ce195ab4dae511d8c5972721af4df4b9b93fedc3f7a6"
+}

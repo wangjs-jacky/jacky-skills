@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: original portfolio artwork for an interactive coded spatial image gallery, not a webpage screenshot. A playful surreal small 3D sculpture playground on a smooth cyan turquoise backdrop. A central lavender-purple flowing ribbon bridge loops around a rounded pastel island, with a black stylized palm tree leaning from the upper left, one floating dark-magenta six-petal abstract flower at upper right, pink rounded fins and a small soft teal rock. Glossy and matte clay materials together, soft pink and violet bounce light, clean studio 3D render, bold clear silhouette and lots of calm cyan negative space. Landscape 4:3 composition, cropped as an art print. No words, no logos, no UI, no text, no typography, no frames, no browser or website layout. Only an original self-contained piece of abstract 3D art.",
+  "transparent_background": false,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "空间螺旋中心作品图，自制替代艺术；其他作品复用本轮独立素材，非截图轮播"
+}

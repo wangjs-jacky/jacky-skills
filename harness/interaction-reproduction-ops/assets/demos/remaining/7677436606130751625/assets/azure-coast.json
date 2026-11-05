@@ -1,0 +1,10 @@
+{
+  "name": "azure-coast",
+  "modelName": "not disclosed",
+  "mode": "built-in image_gen",
+  "sha256": "615c9053ad77911aff23b6e9f74a081753dfe3d31adc9db34406c4412b3a6013",
+  "dimensions": [
+    1024,
+    1536
+  ]
+}

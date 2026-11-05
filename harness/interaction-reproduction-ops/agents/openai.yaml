@@ -1,0 +1,4 @@
+interface:
+  display_name: "交互复用 OPS"
+  short_description: "按界面场景检索已实现交互，适配页面、实际验证并持续沉淀经验。"
+  default_prompt: "使用 $interaction-reproduction-ops 按当前页面场景选择并复用合适的交互，适配后实际验证并更新经验。"

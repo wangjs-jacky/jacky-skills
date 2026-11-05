@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: original background environment painting for a coded space landing page. Create a wide 16:10 cinematic outer space vista: midnight navy void, scattered tiny stars, one huge deep cobalt planet cut by the upper right edge with a warm amber rim-lit crescent; a smaller dark planet at upper left; two tiny moons near the upper middle. A glowing orange planetary horizon sweeps along the lower left. Leave the middle of the image mostly empty dark navy negative space for separately coded text. A small streamlined spacecraft with a fiery trail points diagonally up-left from the lower-right quadrant. Along the very bottom edge a low band of angular blue and golden asteroids catches warm rim light. Rich painterly 3D rendered materials, deep blue shadows, warm gold highlights, sharp silhouette, editorial cinematic quality. No text, no letters, no numbers, no logo, no website, no buttons, no browser frame or interface elements. This is only scenery, all UI will be separate HTML.",
+  "transparent_background": false,
+  "purpose": "星空场景背景，不含UI；后续HTML文字/导航和有限视差独立",
+  "tool": "image_gen.imagegen",
+  "modelReported": false
+}

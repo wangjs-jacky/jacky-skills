@@ -1,0 +1,42 @@
+(()=>{
+ const $=s=>document.querySelector(s),canvas=$('#surface'),water=$('#water'),gl=canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});
+ const W=192,H=120,N=W*H,heights=new Float32Array(N),velocity=new Float32Array(N),next=new Float32Array(N),pixels=new Uint8Array(N*4);
+ let raf=0,last=0,clock=0,active=0,paused=false,energy=0,frames=0,drops=0,gesture=null,hover=null,openFrom=null,wasRunning=false,visibilityTimer=0;
+ const vertex='attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+ const fragment=`precision highp float;varying vec2 uv;uniform sampler2D field;uniform vec2 stepSize;uniform float aspect;
+ float h(vec2 p){vec2 q=texture2D(field,p).rg;return (q.x*255.*256.+q.y*255.)/65535.*2.-1.;}
+ void main(){float dx=h(uv+vec2(stepSize.x,0.))-h(uv-vec2(stepSize.x,0.));float dy=h(uv+vec2(0.,stepSize.y))-h(uv-vec2(0.,stepSize.y));
+ vec3 n=normalize(vec3(-dx*18.,-dy*18.,1.));vec3 l=normalize(vec3(-.4,.65,.7));vec3 v=vec3(0.,0.,1.);vec3 r=reflect(-v,n);
+ vec2 q=uv+n.xy*.10;float bands=sin(q.y*14.+sin(q.x*4.)*.7)*.018+sin(q.y*46.+q.x*7.)*.006;
+ vec3 base=mix(vec3(.028,.115,.129),vec3(.115,.274,.291),1.-q.y);base+=bands;
+ float fresnel=pow(1.-max(n.z,0.),2.);float sky=pow(max(dot(r,normalize(vec3(-.25,.6,1.))),0.),34.);
+ float spec=pow(max(dot(n,normalize(l+v)),0.),120.);float diffuse=max(dot(n,l),0.);
+ vec3 color=base*(.68+.35*diffuse)+vec3(.45,.64,.68)*sky*.55+vec3(.73,.88,.92)*spec*.9+vec3(.06,.14,.16)*fresnel;
+ float shade=clamp(1.+h(uv)*.18,.75,1.2);color*=shade;float vignette=smoothstep(.85,.12,length((uv-.5)*vec2(.9,1.)));color*=.83+.17*vignette;
+ gl_FragColor=vec4(color,1.);}`;
+ let program,texture;
+ function init(){if(!gl){$('#fallback').hidden=false;return}const shader=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s};program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vertex));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);const p=gl.getAttribLocation(program,'p');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);for(const k of[gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,k,gl.CLAMP_TO_EDGE);for(const k of[gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,k,gl.LINEAR);gl.uniform2f(gl.getUniformLocation(program,'stepSize'),1/W,1/H);resize()}
+ function draw(){if(!gl||!program)return;for(let i=0;i<N;i++){const q=Math.round((Math.max(-1,Math.min(1,heights[i]))*.5+.5)*65535);pixels[4*i]=q>>8;pixels[4*i+1]=q&255;pixels[4*i+2]=0;pixels[4*i+3]=255}gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,W,H,0,gl.RGBA,gl.UNSIGNED_BYTE,pixels);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);frames++}
+ function resize(){if(!gl||!program)return;const r=water.getBoundingClientRect(),d=Math.min(devicePixelRatio,1.5);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);gl.viewport(0,0,canvas.width,canvas.height);gl.uniform1f(gl.getUniformLocation(program,'aspect'),r.width/r.height);draw()}
+ function announce(s){room.announce(s)}
+ function buttons(){$('#pause').disabled=!raf;$('#resume').disabled=!paused||energy===0}
+ function stop(){cancelAnimationFrame(raf);raf=0;last=0;buttons()}
+ function integrate(){energy=0;for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){const i=y*W+x,lap=heights[i-1]+heights[i+1]+heights[i-W]+heights[i+W]-4*heights[i];velocity[i]=(velocity[i]+lap*.28)*.984;next[i]=(heights[i]+velocity[i])*.998;energy+=next[i]*next[i]+velocity[i]*velocity[i]}heights.set(next);energy/=N;clock+=1/60;active+=1/60}
+ function tick(now){raf=0;if(paused||room.reduced()||document.hidden){buttons();return}const dt=last?Math.min(4,Math.max(1,Math.round((now-last)/(1000/60)))):1;last=now;for(let i=0;i<dt;i++)integrate();draw();if(energy>0.00000006&&active<14)raf=requestAnimationFrame(tick);else{heights.fill(0);velocity.fill(0);next.fill(0);energy=0;draw();announce('静水 · 涟漪已回落')}buttons()}
+ function run(){if(!gl||room.reduced()||paused||document.hidden)return;if(!raf){last=0;raf=requestAnimationFrame(tick)}buttons()}
+ function disturb(x,y,amount=-.48){if(!gl||paused)return;if(room.reduced()){announce('减少动态 · 保持静水');return}const cx=x*(W-1),cy=(1-y)*(H-1);for(let j=Math.max(1,Math.floor(cy-8));j<Math.min(H-1,cy+8);j++)for(let i=Math.max(1,Math.floor(cx-8));i<Math.min(W-1,cx+8);i++){const d=((i-cx)**2+(j-cy)**2)/8;velocity[j*W+i]+=amount*Math.exp(-d)}energy=1;active=0;drops++;run();announce('水面扰动 · 高光随法线起伏')}
+ function point(e){const r=water.getBoundingClientRect();return{x:Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y:Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))}}
+ water.addEventListener('pointerdown',e=>{if(e.target.closest('button')||gesture)return;water.focus({preventScroll:true});gesture={id:e.pointerId,h:heights.slice(),v:velocity.slice(),energy,clock,active,running:!!raf,paused};water.setPointerCapture(e.pointerId);const p=point(e);disturb(p.x,p.y);hover=p});
+ water.addEventListener('pointermove',e=>{if(e.target.closest('button')||e.pointerType!=='mouse'&&!gesture)return;const p=point(e);if(!hover||Math.hypot(p.x-hover.x,p.y-hover.y)>.016){disturb(p.x,p.y,gesture?-.32:-.17);hover=p}});
+ function release(e){if(gesture?.id!==e.pointerId)return;gesture=null;if(water.hasPointerCapture(e.pointerId))water.releasePointerCapture(e.pointerId);hover=null}
+ function cancel(){if(!gesture)return;const saved=gesture;gesture=null;stop();heights.set(saved.h);velocity.set(saved.v);energy=saved.energy;clock=saved.clock;active=saved.active;paused=saved.paused;if(water.hasPointerCapture(saved.id))water.releasePointerCapture(saved.id);hover=null;draw();if(saved.running)run();announce('已取消本次触摸 · 恢复按下前水面')}
+ water.addEventListener('pointerup',release);water.addEventListener('pointercancel',cancel);water.addEventListener('lostpointercapture',()=>{if(gesture)cancel()});water.addEventListener('pointerleave',()=>{if(!gesture)hover=null});
+ water.addEventListener('keydown',e=>{if(e.target!==water)return;if(e.code==='Space'){e.preventDefault();disturb(.55,.45)}if(e.key==='Escape')cancel()});
+ function reset(){cancel();stop();heights.fill(0);velocity.fill(0);next.fill(0);energy=0;clock=0;active=0;paused=false;hover=null;drops=0;draw();buttons();if($('#info').open)$('#info').close();announce('静水 · 已清空')}
+ $('#drop').onclick=()=>disturb(.56,.42);$('#pause').onclick=()=>{paused=true;stop();announce('已暂停 · 高度、速度和高光冻结')};$('#resume').onclick=()=>{paused=false;run();announce('继续原水面回落')};
+ const notes={ritual:['一圈涟漪，一次呼吸。','原片开场可见深青水面、指针附近的亮暗褶皱和大字。这里用有限网格的高度与速度演算传播，屏幕法线生成高光；不是作者源码或普通圆圈叠层。'],source:['光线有形，文字可读。','图像由代码逐帧绘制，文字与导航保持独立 DOM。网格192×120、传播系数0.28、速度阻尼0.984为拟合；原作者的水体算法与精确参数未知。'],book:['把安静，留给下一次。','此入口为本地说明，没有预订、付款或外部请求。鼠标移动、按下拖动、触摸与空格均可轻触；取消恢复按下前状态，减少动态保持静水。']};
+ document.querySelectorAll('[data-info]').forEach(b=>b.onclick=()=>{openFrom=b;const [title,copy]=notes[b.dataset.info];$('#info-title').textContent=title;$('#info-copy').textContent=copy;wasRunning=!!raf;if(wasRunning){stop()}$('#info').showModal()});$('#close-info').onclick=()=>$('#info').close();$('#info').addEventListener('close',()=>{openFrom?.focus();if(wasRunning&&!paused)run();wasRunning=false});
+ room.onPreference(v=>{if(v)reset()});addEventListener('room-reset',reset);addEventListener('resize',resize);document.addEventListener('visibilitychange',()=>{clearTimeout(visibilityTimer);if(document.hidden)visibilityTimer=setTimeout(()=>{if(document.hidden){wasRunning=!!raf;stop()}},150);else if(wasRunning&&!$('#info').open){wasRunning=false;run()}});
+ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();stop();$('#fallback').hidden=false;announce('绘图上下文丢失 · 当前交互不可用')});
+ window.suiren={state:()=>({gl:!!gl,energy,clock,active,frames,drops,paused,running:!!raf,gesture:!!gesture,reduced:room.reduced(),opened:$('#info').open}),sample:()=>[...heights.filter((_,i)=>i%103===0)],reset};init();document.body.dataset.ready='true';
+})();

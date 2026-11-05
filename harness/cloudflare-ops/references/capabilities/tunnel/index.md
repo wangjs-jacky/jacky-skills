@@ -1,12 +1,12 @@
 ---
 capability: tunnel
-updated: 2026-10-15
+updated: 2026-11-03
 docs_checked: 2026-10-14
 ---
 
 # Cloudflare Tunnel
 
-元数据按 UTC 日期记录；本次核对时间为北京时间 2026-10-15。
+元数据按 UTC 日期记录；官方资料核对与各 operation 的实际执行日期分别维护。
 
 ## 能力与边界
 
@@ -25,7 +25,11 @@ Tunnel 提供转发，不能替代应用认证。公网可达不等于内容匿�
 
 | operation | status | last_verified | reference |
 | --- | --- | --- | --- |
+| publish-temporary-protected-http-service | verified | 2026-10-27 | [为受保护本机服务开通限时公网入口](operations/publish-temporary-protected-http-service.md) |
 | publish-local-http-service | verified | 2026-10-15 | [为本地服务发布固定公网入口](operations/publish-local-http-service.md) |
+| replace-local-http-origin | verified | 2026-10-16 | [保留既有隧道更新本地源站](operations/replace-local-http-origin.md) |
+| publish-managed-static-snapshot | verified | 2026-11-03 | [发布托管静态快照并核对公开读回](operations/publish-managed-static-snapshot.md) |
+| restore-local-backend | verified | 2026-10-25 | [恢复独立网关后的本机应用进程](operations/restore-local-backend.md) |
 
 ## 已知坑
 

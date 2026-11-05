@@ -1,0 +1,17 @@
+{
+  "scope": "已存在自制素材复用，不是作者原图或对应地点实拍凭证",
+  "files": [
+    {
+      "file": "forest-van.png",
+      "source": "batch/assets/van.png",
+      "type": "此前真实生成的自制替代照片",
+      "sha256": "ae75cff776ab4c624246d39305cd33474fbae8a5a304f2ea4ea4d21c96879d34"
+    },
+    {
+      "file": "lisbon-street.png",
+      "source": "batch/assets/lisbon.png",
+      "type": "此前真实生成的自制替代照片",
+      "sha256": "4f22ec20e85ee48999c7217344f77aa3d5de163362465c4431665368fe415fb7"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Analytics · 改版与样式漂移</title><link rel="stylesheet" href="drift-analytics.css">
+<body>
+<aside class="study-tools"><div><strong>同一个后台，三次变化。</strong><small>四态对照为本地自制演练，保留实际内容与操作。</small></div><div class="steps" aria-label="改版阶段"><button data-stage="0" aria-pressed="true">初态</button><button data-stage="1">加通知</button><button data-stage="2">加分析</button><button data-stage="3">换风格</button></div><button id="normalize">统一规范 · 补写</button><button id="reset">复位</button><label><input id="reduce" type="checkbox">减少动态</label></aside>
+<section class="workspace" id="analytics" aria-label="Analytics数据分析平台">
+ <aside class="sidebar"><a class="brand" href="#overview">Analytics</a><nav aria-label="平台导航"><button data-nav="overview" aria-current="page">总览</button><button data-nav="sources">数据源</button><button data-nav="reports">报告</button><button data-nav="notices">通知</button><button data-nav="settings">设置</button></nav></aside>
+ <div class="surface"><header><h1>数据分析平台</h1><button id="export">导出</button></header><div class="content" id="content">
+  <section class="notice" id="notice" hidden><div><h2>消息通知</h2><p id="unread">今天 3 条未读</p></div><button id="read-all">全部已读</button></section>
+  <section class="kpis" aria-label="核心指标"><article><h2>总访问</h2><strong>248,320</strong></article><article><h2>转化率</h2><strong>3.8%</strong></article><article><h2>活跃用户</h2><strong>12,840</strong></article><article><h2>平均时长</h2><strong>4.2m</strong></article></section>
+  <section class="line-card"><h2>访问趋势</h2><div id="graph" class="graph" tabindex="0" role="slider" aria-label="浏览访问样本，方向键选择，Escape取消" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><svg viewBox="0 0 800 210" preserveAspectRatio="none" aria-hidden="true"><path id="area"/><path id="line"/><line id="guide" y1="15" y2="185" hidden/><circle id="point" r="5" hidden/></svg><output id="reading" hidden></output></div></section>
+  <section class="analysis" id="analysis" hidden><h2>数据分析</h2><div class="bars" aria-label="本地拟合样本的柱形对照"></div></section>
+  <div class="placeholders" id="placeholders" aria-label="原片下方灰行示意"><div aria-hidden="true"><i></i><i></i><i></i></div><div aria-hidden="true"><i></i><i></i><i></i></div></div>
+ </div></div>
+</section>
+<p id="state" class="state" role="status" aria-live="polite">初态：白色侧栏、四张数据卡与蓝色折线。图中点值为拟合样本。</p>
+<dialog id="detail"><form method="dialog"><button id="close-detail" aria-label="返回平台">关闭 ×</button></form><p class="eyebrow">ANALYTICS / LOCAL STUDY</p><h2 id="detail-title"></h2><div id="detail-body"></div></dialog>
+<script src="controls.js"></script><script src="drift-analytics.js"></script></body></html>

@@ -1,0 +1,10 @@
+{
+  "asset": "ferris-wheel.png",
+  "source": "本轮独立文字生图；非作者照片",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone photograph for a portrait photo card. Primary request: minimalist black-and-white photograph looking upward at a giant Ferris wheel, white overcast sky. Composition: portrait 4:5; the wheel fills the lower two-thirds and is cropped at the bottom and both sides; a clean sweeping semicircle of the rim across the lower middle, precise thin dark steel spokes radiate from below the bottom edge, a row of small dark enclosed gondolas follows the rim. The top third is almost empty pale white sky. Elegant high-key editorial architectural photography, slightly softened silver-gray metal, delicate fine grain, no busy background. No lettering, no text, no logo, no watermark, no screen, no UI, no border, no frame, no buttons, no people.",
+  "tool": "image_gen.imagegen",
+  "model": "工具未返回具体模型名",
+  "bytes": 2217811,
+  "sha256": "c1e8c697ae579bca2bdcace0a28a87123033f4a238665fef8edf093f1793e067",
+  "use": "照片叠卡的前景独立图片，交互由HTML/CSS/JS实现"
+}

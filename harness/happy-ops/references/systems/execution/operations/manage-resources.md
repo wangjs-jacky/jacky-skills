@@ -3,7 +3,7 @@
 - system: execution
 - operation: manage-resources
 - status: verified
-- last_verified: 2026-10-16
+- last_verified: 2026-10-19
 - risk: medium
 - scope: 已授权的闲置 worker 正常退出、目标后代退出、保留进程身份和本地 daemon 控制 API 验证；不覆盖逐会话新模型响应、恢复、容器替换或全部性能问题修复。
 
@@ -37,6 +37,8 @@
 PPID=1 或 daemon 无登记不证明闲置；RSS 相加不等于实际释放。Compose init 配置不证明旧容器已重建，不能让两个活跃实例共用身份目录。
 
 ## 验证证据
+
+2026-10-19 已再次验证授权闲置进程回收、保留身份及控制 API，详见[本机记录](../../../../local/records/idle-cleanup-20261019.md)。持续文件事件高占用未解决。
 
 2026-10-16 已完成授权候选的正常退出及进程/API/资源核验，详见[私有证据](../../../../local/systems/execution/operations/manage-resources.md)。仅覆盖上述 scope；历史容器与防休眠操作未重验，未测逐会话新模型响应与恢复。
 

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Skill 与 MCP · 概念与连接</title><link rel="stylesheet" href="study.css"></head>
+<body>
+<header class="intro"><p class="eyebrow">LOCAL INTERACTION STUDY / 77</p><h1>能力与连接，各自解决什么问题</h1><p>先回看画面，再亲手选择和返回。本页是可操作的概念复现，不连接外部系统。</p></header>
+<main>
+<div class="transport"><button id="play">播放</button><button id="reverse">反向</button><button id="pause">暂停</button><input id="timeline" type="range" aria-label="完整过程进度" min="0" max="58.623991" step="any" value="0"><output id="clock"></output></div>
+<nav id="chapters" aria-label="画面章节"><button data-chapter="0" aria-current="true">01 · 词云与焦点</button><button data-chapter="1">02 · 两种失败原因</button><button data-chapter="2">03 · 能力与How</button><button data-chapter="3">04 · MCP与资源</button><button data-chapter="4">05 · 两种职责</button><button data-chapter="5">06 · 双卡总结</button></nav>
+<div class="workbench">
+<div id="portrait"><div id="scene">
+<div id="code-background" aria-hidden="true"><pre id="code-lines"></pre></div><div id="cloud" class="scene-part">
+<div class="cloud-aura" aria-hidden="true"></div>
+<div class="cloud-words">
+<button data-concept="Skill" style="--x:65;--y:222;--size:60;--turn:-9deg;--tone:#ad89f6">Skill</button>
+<button data-concept="MCP" style="--x:458;--y:184;--size:61;--turn:5deg;--tone:#31b5e4">MCP</button>
+<button data-concept="Agent" style="--x:263;--y:439;--size:52;--turn:-4deg;--tone:#ad89f6">Agent</button>
+<button data-concept="Workflow" style="--x:398;--y:638;--size:34;--turn:-4deg;--tone:#d3b04c">Workflow</button>
+<button data-concept="Tools" style="--x:43;--y:710;--size:38;--turn:2deg;--tone:#aeb0bc">Tools</button>
+<button data-concept="Context" style="--x:138;--y:889;--size:33;--turn:-8deg;--tone:#aeb0bc">Context</button>
+<button data-concept="Memory" style="--x:525;--y:872;--size:29;--turn:-6deg;--tone:#aeb0bc">Memory</button>
+<button data-concept="RAG" style="--x:358;--y:958;--size:40;--turn:7deg;--tone:#aeb0bc">RAG</button>
+</div>
+<div id="central-focus"><div class="equation"><button data-concept="Skill">Skill</button><span>≠</span><button data-concept="MCP">MCP</button></div><p>一个管做事，一个管连接</p></div>
+</div>
+<section id="diagnostic" class="scene-part">
+<div id="failure-banner"><i></i><strong>AI TASK DIAGNOSTIC — EXECUTION FAILED</strong><span>ANALYZING</span></div>
+<div id="task-failed"><b class="ai-mark">AI</b><div class="task-meta"><span>TASK EXECUTION</span><span>○ FAILED</span></div><div class="failure-track"><i></i></div><small>BLOCKING ERRORS DETECTED · 2 UNRESOLVED</small></div>
+<div id="cause-caption">—— ROOT CAUSE ANALYSIS ——</div>
+<button class="cause" data-cause="knowledge"><small>● CAUSE_01</small><em>KNOWLEDGE GAP</em><strong><b>?</b> 不知道怎么做</strong></button>
+<button class="cause" data-cause="accessGap"><small>● CAUSE_02</small><em>ACCESS DENIED</em><strong><b>⊗</b> 拿不到资料</strong></button>
+</section><section id="capability" class="scene-part"><div class="capability-back"><div id="capability-bokeh"></div><span style="left:8px;top:182px">流程</span><span style="left:318px;top:67px">输出</span><span style="left:560px;top:118px">规范</span><span style="left:622px;top:380px">HOW</span><span style="left:610px;top:611px">模板</span><span style="left:75px;top:663px">步骤</span><span style="left:476px;top:915px">任务</span><span style="left:178px;top:958px">标准</span></div>
+<div id="skill-book-block"><div id="skill-book"><h2>SKILL</h2><ul><li>流程规范</li><li>任务步骤</li><li>输出标准</li></ul></div><div id="skill-flow"><button data-topic="task" style="left:125px">任务</button><span class="flow-link" style="left:224px">→</span><button data-topic="steps" style="left:250px">步骤</button><span class="flow-link" style="left:349px">→</span><button data-topic="rules" style="left:375px">规则</button><span class="flow-link" style="left:474px">→</span><button data-topic="output" style="left:500px">输出</button></div><p id="skill-flow-caption">先明确任务，再给出步骤、规则与输出条件</p></div>
+<div id="skill-list"><button data-skill="writing"><small>01</small><strong>写作 Skill</strong><span>HOW →</span></button><button data-skill="design"><small>02</small><strong>设计 Skill</strong><span>HOW →</span></button><button data-skill="research"><small>03</small><strong>调研 Skill</strong><span>HOW →</span></button><button data-skill="product"><small>04</small><strong>产品分析 Skill</strong><span>HOW →</span></button><button data-skill="support"><small>05</small><strong>客服 Skill</strong><span>HOW →</span></button></div>
+<div id="skill-how"><p>Skill 解决的是</p><h2>How</h2><p>怎么做</p><strong id="how-pill">Skill = How</strong></div></section><section id="access-stage" class="scene-part"><canvas id="access-particles" width="720" height="1280" aria-hidden="true"></canvas><div id="access-orbit" aria-hidden="true"></div><div id="agent-core"><b>AI</b><em>Agent</em></div><button id="mcp-token">MCP</button><button class="resource" data-resource="github" style="left:90px;top:239px;width:107px;--resource-color:#7ce3be" aria-label="GitHub图示就绪标记"><b>✓</b><span>GitHub</span></button><button class="resource" data-resource="figma" style="left:526px;top:239px;width:100px;--resource-color:#f77b9d" aria-label="Figma图示就绪标记"><b>✓</b><span>Figma</span></button><button class="resource" data-resource="notion" style="left:-11px;top:597px;width:107px;--resource-color:#ba9af7" aria-label="Notion图示就绪标记"><b>✓</b><span>Notion</span></button><button class="resource" data-resource="database" style="left:626px;top:596px;width:107px;--resource-color:#50c4ef" aria-label="数据库图示就绪标记"><b>✓</b><span>数据库</span></button><button class="resource" data-resource="feishu" style="left:104px;top:954px;width:82px;--resource-color:#e3bc4e" aria-label="飞书图示就绪标记"><b>✓</b><span>飞书</span></button><button class="resource" data-resource="gdrive" style="left:522px;top:956px;width:108px;--resource-color:#7adba5" aria-label="G Drive图示就绪标记"><b>✓</b><span>G Drive</span></button><div id="access-pill">MCP = Access</div></section><section id="roles-stage" class="scene-part">
+<div id="closing-background" aria-hidden="true"></div>
+<p id="roles-heading"><span>SKILL vs MCP</span></p>
+<button class="role-card skill-role" data-role="Skill" aria-pressed="false"><span class="role-name"><b>Skill</b><small>HOW-TO</small></span><span class="role-text"><strong>工作方法</strong><em>告诉 AI：怎么做</em></span><span class="role-tag">流程 / 方法论</span></button>
+<div id="role-agent" aria-hidden="true"><i></i><span>▸ AI Agent</span><i></i></div>
+<button class="role-card mcp-role" data-role="MCP" aria-pressed="false"><span class="role-name"><b>MCP</b><small>ACCESS</small></span><span class="role-text"><strong>外部连接</strong><em>给 AI：数据与工具</em></span><span class="role-tag">资源 / 权限</span></button>
+<div id="role-summary"><p id="difference-copy">解决的是<strong>完全不同</strong>的问题</p><div id="closing-copy"><p><b>Skill</b> 决定它<strong>会不会</strong>做。</p><p><b>MCP</b> 决定它<strong>能不能</strong>做。</p></div></div>
+</section></div></div>
+<aside class="local-panel"><p class="eyebrow">亲手探索</p><h2 id="panel-title">词云与焦点</h2><p id="panel-copy">点击画面里的词，或从这里选择。回看与本地记录互相独立。</p>
+<label for="concept-pick">当前概念</label><select id="concept-pick"><option value="">未选择</option><option>Skill</option><option>MCP</option><option>Agent</option><option>Workflow</option><option>Tools</option><option>Context</option><option>Memory</option><option>RAG</option></select>
+<fieldset id="role-options" hidden><legend>双章共用的职责选择</legend><p>两章沿用同一对卡片。每份职责的观察独立保留；返回能力练习或资源图后也可再回来。</p><button id="follow-role">去对应章节操作</button><output id="role-status"></output></fieldset><fieldset id="resource-options" hidden><legend>本地资源标记</legend><label><input id="node-ready" type="checkbox">当前资源在图示中就绪</label><div class="actions"><button id="mark-all-ready">全部标记就绪</button><button id="mark-all-unready">全部标记未就绪</button><button id="restore-resource">恢复当前演示状态</button></div><output id="resource-summary" aria-live="polite"></output><p>只修改这幅图的本地状态，不认证、连接或调用外部系统。</p></fieldset><fieldset id="skill-options" hidden><legend>独立能力练习</legend><button id="edit-skill">编辑写作练习</button><button id="restore-skill">复位当前练习</button><p id="skill-summary"></p></fieldset><fieldset id="diagnostic-options" hidden><legend>本地判断</legend><label><input id="has-method" type="checkbox">我已明确怎么做</label><label><input id="has-access" type="checkbox">我已准备好资料</label><output id="diagnosis-copy" aria-live="polite"></output></fieldset><div class="actions"><button id="explain">查看说明</button><button id="clear-selection">清除选择</button><button id="jump">查看完整焦点</button><button id="replay">重播本章</button><button id="reset-current">复位本章</button></div>
+<form id="notes"><label for="note">这份概念的独立观察</label><textarea id="note" rows="4" placeholder="写下你准备如何使用它"></textarea><div class="actions"><button type="button" id="discard">恢复已存</button><button>保留观察</button></div><output id="note-status" aria-live="polite"></output></form>
+<p class="boundary">本地选择、说明与记录是补写；画面中的连接示意不代表实际 API、认证或工具执行。</p></aside>
+</div>
+</main>
+<footer class="controls"><button id="reset">复位过程</button><label><input id="reduce" type="checkbox">减少动态</label><span id="state" role="status"></span></footer>
+<dialog id="info"><h2 id="info-title"></h2><p id="info-copy"></p><button id="close-info">返回</button></dialog>
+<dialog id="skill-editor"><form id="skill-edit-form"><h2 id="skill-edit-title">编辑本地能力练习</h2><p>保存的是这页的本地记录，不创建或执行 Skill。</p><label for="skill-task">任务</label><textarea id="skill-task" name="task" rows="2" required></textarea><label for="skill-steps">步骤</label><textarea id="skill-steps" name="steps" rows="2" required></textarea><label for="skill-rules">规则</label><textarea id="skill-rules" name="rules" rows="2" required></textarea><label for="skill-output">输出</label><textarea id="skill-output" name="output" rows="2" required></textarea><div class="actions"><button type="button" id="cancel-skill">取消</button><button>保存当前练习</button></div></form></dialog><script src="../7670420512304123136/controls.js"></script><script src="story.js"></script>
+</body></html>

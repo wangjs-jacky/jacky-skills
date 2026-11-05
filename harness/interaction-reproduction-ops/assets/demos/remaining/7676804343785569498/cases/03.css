@@ -1,0 +1,1 @@
+.ripple{position:relative;overflow:hidden;isolation:isolate;width:58cqw;height:25cqw;border:1.4cqw solid #e7ebed;border-radius:10cqw;background:#f0f3f5;color:#0b1012;font-size:7cqw;font-weight:750}.ripple .label{position:relative;z-index:2;pointer-events:none}.wave{position:absolute;width:6cqw;height:6cqw;background:#bd91df;border-radius:50%;pointer-events:none;z-index:1}

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "lisbon.png",
+    "source": "04-三条视频验证/artifacts/assets/lisbon.png",
+    "sha256": "4f22ec20e85ee48999c7217344f77aa3d5de163362465c4431665368fe415fb7",
+    "scope": "same bytes of a previously generated replacement; Iceland and Ridge Run are visual substitutes"
+  },
+  {
+    "file": "iceland.png",
+    "source": "06-其余视频批量处理/7688568203442601098/artifacts/assets/hiker-back.png",
+    "sha256": "85536c5a8171e888563ac16f772a5bb53875b805c296cefd034871ef1a7a1940",
+    "scope": "same bytes of a previously generated replacement; Iceland and Ridge Run are visual substitutes"
+  },
+  {
+    "file": "ridge.jpg",
+    "source": "06-其余视频批量处理/7692765213770272051/artifacts/assets/rally/alpine-glacier.jpg",
+    "sha256": "ce8182892ee719510ee0e9af195dd6f53becd77afafdde3f2487451734c614af",
+    "scope": "same bytes of a previously generated replacement; Iceland and Ridge Run are visual substitutes"
+  }
+]

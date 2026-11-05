@@ -1,0 +1,6 @@
+{
+  "type": "原创代码生成SVG作品",
+  "count": 26,
+  "description": "几何拼贴、线条与原生矢量抽象图形，非作者原作；两张中心材质另用原生imagegen独立生成。所有卡片为活DOM，图片仅作品素材。",
+  "source": "完整SVG源码已交付；原始确定性生成脚本保存在private来源项目scripts/make-vitrine-art.py"
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: one independent transparent collage object for a coded portrait music poster. Front-on view of a perfectly circular black vinyl record with subtle concentric grooves. A small red and cream paper centre label with no readable text. Ten small cream-yellow daisy flowers are arranged as a ring across the black record around the centre. Behind the outer rim, a ring of large olive and sage green paper leaves makes a leafy wreath. One vintage black-and-white photographic human forearm enters from the lower left and reaches diagonally towards the central label, index fingertip resting near the centre. A single red poppy sits at the lower left edge of the leafy record. Surreal cut-and-paste editorial collage with printed halftone texture, warm slightly faded vintage paper, rich black vinyl and muted olive greens. Entire circular record and leaves visible, no background, no poster, no frame, no text, no readable letters, no logos, no UI, no buttons. Real transparent alpha background and enough margin around the silhouette. This is only the decorative object, all poster typography and coloured fields will be code.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "竖版唱片海报独立物体素材，背景和文字另用代码，后卡物体身份未知不猜测"
+}

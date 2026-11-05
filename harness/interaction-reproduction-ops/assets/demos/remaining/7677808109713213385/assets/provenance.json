@@ -1,0 +1,14 @@
+{
+  "stickerSheet": {
+    "file": "mood-stickers.png",
+    "sha256": "6b30ea0cd84f5327c880d42ca844806073be7059c7eeb55d9975c12a683665a6",
+    "source": "本轮host-native image_gen生成单张透明2×2贴纸图集，CSS分象限显示；没有作者界面截图。",
+    "model": "工具未返回具体型号，未核验GPT Image 2",
+    "input": "精确输入保留在private工程notes/sticker-generation-input.json"
+  },
+  "moods": {
+    "file": "../moods.js",
+    "source": "本项目已验证的7684983023888092467原方法自编柔和情绪SVG沿用；疲惫SVG在color-today.js按同一系统补写。"
+  },
+  "screens": "真实HTML/CSS/JS，不是整张界面图、视频播放或截图轮播。"
+}

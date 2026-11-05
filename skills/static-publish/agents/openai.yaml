@@ -1,0 +1,4 @@
+interface:
+  display_name: "Static Publish"
+  short_description: "用自己的账号发布静态页面，支持 Cloudflare、图片减重与可选 OSS"
+  default_prompt: "使用 $static-publish，检查这个静态项目并通过我自己的云账号发布资源与页面。"

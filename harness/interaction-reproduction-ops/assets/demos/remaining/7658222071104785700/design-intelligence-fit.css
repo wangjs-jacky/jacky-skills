@@ -1,0 +1,5 @@
+/* This source's viewport and typography; the original complete UI implementation remains unchanged. */
+@media(min-width:761px){
+ body:not(.light){background:radial-gradient(ellipse 55% 58% at 30% 63%,#1d4aa17a,transparent 75%),radial-gradient(ellipse 44% 60% at 78% 65%,#b16a327d,transparent 80%),#0b1326}
+ .site{max-width:1280px;padding:26px 34px 46px}.topbar{min-height:64px}.hero{padding-top:36px}.platforms button{font-size:13px;padding:6px 10px}.platforms i{font-size:15px}.hero h1{font-size:74px;margin-top:30px}.hero h1 strong{font-size:70px}.intro{font-size:19px;line-height:1.5}.command{min-width:410px}.command code{font-size:14px}.hero-actions{margin:40px 0 68px}.hero-actions button{font-size:17px;padding:20px 22px;min-width:184px}.stats{max-width:1130px}.stats button{padding:23px 10px;gap:12px}.stats .stat-icon{font-size:26px}.stats b{font-size:27px}.stats small{font-size:13px}
+}

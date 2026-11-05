@@ -1,0 +1,104 @@
+[
+  {
+    "name": "salad.png",
+    "source": "7680870950040426867/artifacts/assets/salad.png",
+    "sha256": "9e2b4e98499324d2340afeb5253624d8651f113c3069d20af85f185dde837d21",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "pancakes.png",
+    "source": "7680870950040426867/artifacts/assets/pancakes.png",
+    "sha256": "425c0a62b67164336294402fea3ef056c3e751b86c9ab16bd4ccbf2bf80d9631",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "chicken.png",
+    "source": "7680870950040426867/artifacts/assets/chicken.png",
+    "sha256": "edb83729c418c852066f3eb777ff3e2019e5f79de51a9b4797691b7b21df0359",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "pizza.png",
+    "source": "7680870950040426867/artifacts/assets/pizza.png",
+    "sha256": "a185e9638ddb3b18795a8c139233dd1580eadbd3c48fe1e51c486039a64877f1",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "meal.png",
+    "source": "7680870950040426867/artifacts/assets/meal.png",
+    "sha256": "6950a8d38fef3bcde9d208eee8b2b05dc2aa7e26d1f078bc2435eae644df6a94",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "lisbon-street.png",
+    "source": "7680870950040426867/artifacts/assets/lisbon-street.png",
+    "sha256": "4f22ec20e85ee48999c7217344f77aa3d5de163362465c4431665368fe415fb7",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "alpine-village.png",
+    "source": "7680870950040426867/artifacts/assets/alpine-village.png",
+    "sha256": "507bc85571375d24ec256f8d834e03c062439cae1da588fb63a04f39b607f81e",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "sunrise-valley.png",
+    "source": "7683471762872372507/artifacts/assets/sunrise-valley.png",
+    "sha256": "36464f417cc4285d3975f039d50eb329b75c16752b3110aa6589ff3a63f91d1e",
+    "origin": "既有实际生图素材复用，非原片图片或整张UI"
+  },
+  {
+    "name": "quorum-blue-orange.png",
+    "source": "7679664820676857114/artifacts/assets/quorum-blue-orange.png",
+    "sha256": "c7e2589106cfc23a23907514696230ab845d7b64c7afab177be32c4a954936cc",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "quorum-yellow-grid.png",
+    "source": "7679664820676857114/artifacts/assets/quorum-yellow-grid.png",
+    "sha256": "2319e927196e0c07dccd801b5e017a8b08e37fdd51cc471504defd6cb6f96ba4",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "quorum-deep-blue.png",
+    "source": "7679664820676857114/artifacts/assets/quorum-deep-blue.png",
+    "sha256": "1a71ae76930edf553b8e4d1a1010f5a105fea9b9181a53d3a374c931b9b48ba0",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "reused-twilight-forest.png",
+    "source": "7679664820676857114/artifacts/assets/reused-twilight-forest.png",
+    "sha256": "2e2dc7d4444d81b508790cf1405474179468b6ebfa472d5a3401e78586a36e86",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "reused-focus-sunset.png",
+    "source": "7679664820676857114/artifacts/assets/reused-focus-sunset.png",
+    "sha256": "789aca30d06b88d9f029ed6d73ca21302401ea1c0d9b62d785851a9a110476fb",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "city-roofs.png",
+    "source": "7683471762872372507/artifacts/assets/city-roofs.png",
+    "sha256": "27151673db1afa35ae095552743d89b7b45dbc27f058a3b41a7e3bf17e4d7bce",
+    "origin": "已有实际生图素材复用；不是原作者图片或整张界面。"
+  },
+  {
+    "name": "cream-dog.png",
+    "source": "7680870950040426867/artifacts/assets/cream-dog.png",
+    "sha256": "4e6e7417e99cd61876fd94085c3f3a2f5c6c6117b73abaeed623d61a9d77249a",
+    "origin": "Previously generated independent photo, not an author image or UI."
+  },
+  {
+    "name": "gray-cat.png",
+    "source": "7680870950040426867/artifacts/assets/gray-cat.png",
+    "sha256": "ce26539ae2cd737dade42bac46502cb4a0af4c1cc2d36af20f4de58c048ab995",
+    "origin": "Previously generated independent photo, not an author image or UI."
+  },
+  {
+    "name": "tabby-paw-v2.png",
+    "source": "7680870950040426867/artifacts/assets/tabby-paw-v2.png",
+    "sha256": "f17655f6a56540d0ef9467ebbd7b5714dc6a8cd94b367c80d61f8639478edb0f",
+    "origin": "Previously generated independent photo, not an author image or UI."
+  }
+]

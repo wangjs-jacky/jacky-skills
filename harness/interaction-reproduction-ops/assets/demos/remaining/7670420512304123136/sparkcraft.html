@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SPARKCRAFT · Creativity meets strategy</title><link rel="stylesheet" href="sparkcraft.css"></head>
+<body>
+<main>
+  <header class="site-header">
+    <button class="brand" data-section="home" aria-label="SPARKCRAFT home"><span class="brand-mark" aria-hidden="true"></span>SPARKCRAFT</button>
+    <nav aria-label="Main navigation"><button data-section="home" aria-current="page">Home</button><button data-section="services">Services</button><button data-section="work">Work</button><button data-section="testimonials">Testimonials</button><button data-contact="header">Contact</button></nav>
+    <button class="pill quote" data-contact="quote">Get Quote <span aria-hidden="true">↗</span></button>
+  </header>
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy"><p class="eyebrow"><i></i>WE'RE THE BEST CREATIVE STUDIO</p><h1 id="hero-title">Where<br>Creativity<br>Meets<br><em>Strategy</em></h1><p class="intro">We help ambitious brands turn bold ideas into products people love — through identity systems, interfaces, and campaigns built to last.</p><div class="hero-actions"><button class="pill" data-contact="start">Get Started <span aria-hidden="true">↗</span></button><button class="text-action" data-section="work">See Our Work <span aria-hidden="true">↗</span></button></div><p class="trust"><span aria-hidden="true">◌ ◌ ◌</span> Local studio study · Made with care</p></div>
+    <div class="art" aria-label="An arrangement of gold triangles, purple dots, a purple half circle and three circles">
+      <div class="dots dots-top" aria-hidden="true"></div><div class="dots dots-bottom" aria-hidden="true"></div>
+      <button class="shape triangle triangle-a" data-project="0" aria-label="View Golden Hour brand project"></button>
+      <button class="shape triangle triangle-b" data-project="0" aria-label="View Golden Hour identity project"></button>
+      <button class="shape triangle triangle-c" data-project="0" aria-label="View Golden Hour campaign project"></button>
+      <button class="shape triangle triangle-d" data-project="0" aria-label="View Golden Hour system project"></button>
+      <button class="shape half" data-project="1" aria-label="View Form and Field project"></button>
+      <button class="shape ring" data-project="1" aria-label="View Form and Field graphic system"></button>
+      <button class="shape circle coral" data-project="2" aria-label="View Common Ground project"></button>
+      <button class="shape circle teal" data-project="3" aria-label="View Evergreen project"></button>
+    </div>
+  </section>
+  <section id="services" class="content-section"><p class="eyebrow">01 / WHAT WE DO</p><h2>Make the idea<br><em>feel inevitable.</em></h2><div class="services"><button data-service="0" aria-pressed="true"><span>01</span><h3>Brand strategy</h3><p>Find the story that deserves to be told.</p></button><button data-service="1" aria-pressed="false"><span>02</span><h3>Visual identity</h3><p>Build a language people can recognise.</p></button><button data-service="2" aria-pressed="false"><span>03</span><h3>Digital experience</h3><p>Give every interaction a clear purpose.</p></button></div><div class="service-detail" id="service-detail" role="status"></div></section>
+  <section id="work" class="content-section"><div class="section-heading"><div><p class="eyebrow">02 / SELECTED WORK</p><h2>Good things<br>take <em>shape.</em></h2></div><div class="filters" role="group" aria-label="Filter projects"><button data-filter="all" aria-pressed="true">All</button><button data-filter="brand" aria-pressed="false">Brand</button><button data-filter="digital" aria-pressed="false">Digital</button></div></div><div id="projects" class="projects"></div><p class="scope">Four fictional local studies. Project stories, details and navigation are self-written additions to the visible reference hero.</p></section>
+  <section id="testimonials" class="content-section testimonial"><p class="eyebrow">03 / THE CONVERSATION</p><blockquote id="testimonial-quote"></blockquote><div class="quote-end"><p id="testimonial-person"></p><div><button id="previous-quote" aria-label="Previous testimonial">←</button><span id="quote-number"></span><button id="next-quote" aria-label="Next testimonial">→</button></div></div><p class="scope">Fictional testimonials for this local demonstration.</p></section>
+  <section class="contact-banner"><p class="eyebrow">LET'S MAKE SOMETHING MATTER</p><h2>Your next chapter.<br><em>Let's shape it.</em></h2><button class="pill" data-contact="bottom">Start a conversation <span aria-hidden="true">↗</span></button><p id="saved-draft" role="status">Drafts stay in this open page. No message is sent.</p><button id="download-brief" class="text-action" disabled>Download saved brief ↓</button></section>
+</main>
+<footer><span>SPARKCRAFT / SELF-CODED STUDY</span><button id="reset">Reset</button><label><input type="checkbox" id="reduce"> Reduce motion</label></footer><p id="state" class="state" role="status" aria-live="polite">原片几何品牌首屏的自编实现；下方内容、形状详情、导航与草稿均为本地补写。未连接外部服务。</p>
+<dialog id="project-dialog"><form method="dialog"><button id="close-project" class="close" aria-label="Return to projects">Close ×</button></form><p class="eyebrow" id="project-kind"></p><h2 id="project-title"></h2><div id="project-art" class="project-art" aria-hidden="true"><i></i><i></i><i></i></div><p id="project-copy"></p><div class="project-controls"><button id="previous-project">← Previous</button><button id="save-project" aria-pressed="false">Save project</button><button id="next-project">Next →</button></div><button class="pill" data-contact="project">Discuss a project ↗</button></dialog>
+<dialog id="contact-dialog"><button id="close-contact" class="close" aria-label="Cancel conversation">Close ×</button><p class="eyebrow">A GOOD PLACE TO BEGIN</p><h2>Tell us<br>what's <em>next.</em></h2><form id="contact-form"><label>Your name<input name="name" autocomplete="name" required maxlength="100"></label><label>Email address<input name="email" type="email" autocomplete="email" required maxlength="180"></label><label>Project type<select name="kind"><option value="brand">Brand & identity</option><option value="digital">Digital experience</option><option value="both">A little of both</option></select></label><label>Your idea<textarea name="message" required maxlength="3000" rows="4"></textarea></label><p>Save a draft here. This demonstration does not send email.</p><div class="form-actions"><button type="button" id="cancel-contact">Cancel</button><button type="submit" class="pill">Save draft ↗</button></div></form></dialog>
+<script src="controls.js"></script><script src="sparkcraft.js"></script>
+</body></html>

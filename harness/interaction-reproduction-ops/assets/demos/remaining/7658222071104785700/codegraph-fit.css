@@ -1,0 +1,4 @@
+/* Source62 first-screen fit; the existing graph controller and the old full product are preserved. */
+@media(min-width:761px){
+ .top{padding-inline:0}.hero{min-height:648px}.intro{padding:74px 12px 46px}.intro h1{font-size:80px;line-height:1;letter-spacing:-.05em;margin-bottom:20px}.intro>p{max-width:390px;font-size:18px;line-height:1.55}.actions{margin-top:40px;margin-bottom:26px}.actions button{font-size:15px;min-height:48px;padding:12px 20px}#explore{min-width:138px}#view-docs{min-width:212px}.command{font-size:14px;min-width:325px}.features>button{min-height:187px;padding:30px 22px}.features .icon{font-size:45px;width:65px;padding-right:18px}.features strong{font-size:21px}.features small{font-size:17px;line-height:1.5;max-width:330px}.graph-column{overflow:hidden}.graph{transform:translate(48px,-14px)}.node .node-name{font-size:10px}.graph-caption:has(#clear-selection[hidden]) #graph-caption{opacity:0}
+}

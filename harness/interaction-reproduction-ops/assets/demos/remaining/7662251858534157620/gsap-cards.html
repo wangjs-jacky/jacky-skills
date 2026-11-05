@@ -1,0 +1,19 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'"><title>三卡运动 · 进度、编排与交错</title><link rel="stylesheet" href="../7663097184316820745/study.css"><link rel="stylesheet" href="gsap-cards.css"><script defer src="../7670420512304123136/controls.js"></script><script defer src="../7663370761511521588/timeline.js"></script><script defer src="gsap-cards.js"></script></head>
+<body data-study="gsap-cards" data-duration="18.9" data-boundary="第58条76.54–95.5秒的三卡教学：横条、顺序三点、交错四柱，随后双卡与分工句。构图、背景及时间为拟合。26K仅是作者画面读数，未核实。本页原生JS自编，不运行GSAP库、作者Skill、模型或生成链。下方真实滚动、独立编排/重复/取消为本地补写，不当作原片产品交互。">
+<main class="viewport"><div class="stage">
+<header class="chapter" data-at=".05"><b class="chapter-number">02</b><div><h1>GSAP Skills</h1><p>动效引擎 · 高级动画</p></div><span class="chapter-tag"><i>★</i>26K</span></header>
+<section class="motion-cards" aria-label="三种运动示意">
+<button class="motion-card" data-card="scroll" data-at="2.8"><strong>ScrollTrigger</strong><div class="scroll-track"><i id="progress-bar"></i></div><small>滚动进度驱动动画</small></button>
+<button class="motion-card" data-card="sequence" data-at="3.6"><strong>Timeline</strong><div class="dots"><i></i><i></i><i></i></div><small>时间轴精确编排</small></button>
+<button class="motion-card" data-card="stagger" data-at="4.55"><strong>Stagger</strong><div class="bars"><i></i><i></i><i></i><i></i></div><small>多元素错峰入场</small></button>
+</section>
+<p class="explainer" data-at="6.15">什么时候出现、什么时候结束、快慢怎么给——<em>它全管。</em></p>
+<div class="partners" data-at="12.8"><div><i>◆</i><strong>视觉规则</strong><small>先确定页面的表达</small></div><b>+</b><div><i>◆</i><strong>运动编排</strong><small>再让变化有次序</small></div></div>
+<h2 class="division" data-at="14.5">一个定美感，<em>一个让它动起来</em></h2>
+<p class="caption" data-at="17">页面的结构与节奏，<em>一起考虑。</em></p>
+</div></main>
+<section class="lab"><div class="actions"><button id="play">播放 / 继续 ↗</button><button id="pause" disabled>暂停</button><button id="back" disabled>反向返回 ↖</button><button id="reset">全部复位</button></div><label class="range">过程回看<input id="timeline" type="range" min="0" max="1000" value="0" aria-label="过程回看"><output id="percent">0%</output></label><div class="bottom"><label><input id="reduce" type="checkbox">减少动态</label><button id="about">来源与边界</button></div><p id="state" role="status">等待播放</p></section>
+<section class="product-lab" aria-label="分别操作三种运动"><h2>分别试一次</h2><div class="picks" role="group" aria-label="选择运动"><button data-pick="scroll" aria-pressed="true">滚动进度</button><button data-pick="sequence" aria-pressed="false">三点编排</button><button data-pick="stagger" aria-pressed="false">四柱交错</button></div>
+<div id="scroll-demo"><label for="scroll-region">滚动这个小窗口，观察上方横条</label><div id="scroll-region" tabindex="0" role="region" aria-label="滚动进度演练"><div class="scroll-content"><p>01 · 起点</p><p>02 · 中段</p><p>03 · 终点</p></div></div><output id="scroll-percent">0%</output></div>
+<div class="independent-actions"><button id="run-current">重播所选运动</button><button id="cancel-current">取消并归零</button><button id="return-source">回到教学时间轴</button></div><p id="exercise-state" role="status">演练输入与上方教学时钟分别保留。</p></section>
+<dialog id="info"><button id="close-info">返回画面 ↗</button><h2 id="info-title"></h2><p id="info-copy"></p></dialog></body></html>

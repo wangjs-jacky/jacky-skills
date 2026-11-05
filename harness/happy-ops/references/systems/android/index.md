@@ -13,9 +13,11 @@ package、channel、runtime 是同一发布契约，从工程机器可读配置�
 
 | 目标／症状 | 操作 | 状态 | 最近验证 |
 | --- | --- | --- | --- |
-| 发布并核对 OTA | [publish-ota](operations/publish-ota.md) | verified | 2026-10-15 |
-| 核对原生包构建与安装契约 | [build-apk](operations/build-apk.md) | historical | none |
+| 验证 Android 原生交互 | [verify-native-interaction](operations/verify-native-interaction.md) | verified | 2026-10-22 |
+| 发布并核对 OTA | [publish-ota](operations/publish-ota.md) | verified | 2026-11-04 |
+| 核对原生包构建与安装契约 | [build-apk](operations/build-apk.md) | verified | 2026-10-17 |
 | 排查 OTA 与 APK 更新 | [diagnose-update](operations/diagnose-update.md) | historical | none |
+| 排查 Mermaid / WebView 流程图空白 | [diagnose-diagram-rendering](operations/diagnose-diagram-rendering.md) | pending | none |
 | 排查推送注册与提醒 | [diagnose-notifications](operations/diagnose-notifications.md) | pending | none |
 | 排查扫码与账号绑定 | [diagnose-account-link](operations/diagnose-account-link.md) | historical | none |
 | 排查 App 历史与重连 | [diagnose-history-sync](operations/diagnose-history-sync.md) | historical | none |

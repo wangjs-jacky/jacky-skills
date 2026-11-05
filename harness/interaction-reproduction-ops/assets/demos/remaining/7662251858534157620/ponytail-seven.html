@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'"><title>七问先行 · 独立计数与本地记录</title><link rel="stylesheet" href="../7663097184316820745/study.css"><link rel="stylesheet" href="ponytail-seven.css"><script defer src="../7670420512304123136/controls.js"></script><script defer src="../7663370761511521588/timeline.js"></script><script defer src="ponytail-seven.js"></script></head>
+<body data-study="ponytail-seven" data-duration="22.2" data-boundary="第58条95.5–117.78秒的七行教学、末行强调、下降计数与后半双卡。原帧最先清晰计数192，随后下降到30；200来自作者口述，80K是屏显，均非本机测量。时序与代码背景为本地拟合，记录与逐问选择为自编操作。未运行Ponytail、作者Skill、模型或代码压缩。">
+<main class="viewport"><div class="stage"><pre class="code-backdrop" aria-hidden="true">const view = createLocalView();
+const motion = makeTimeline();
+function update(nextState) {
+  return render({ ...nextState });
+}
+function returnToStart() {
+  motion.cancel();
+  view.restore();
+}
+const questions = localQuestions;
+questions.forEach(showOneAtATime);
+await inspectVisibleResult();
+// Self-written decorative code.</pre>
+<header class="chapter" data-at=".05"><b class="chapter-number">03</b><div><h1>Ponytail</h1><p>工程克制 · 代码质量</p></div><span class="chapter-tag"><i>★</i>80K</span></header>
+<ol class="questions" aria-label="七个独立思考方向" data-at="2.4" data-until="13.5">
+<li data-at="2.5"><button data-question="0"><i>1</i><span>这个功能真的需要吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="3.35"><button data-question="1"><i>2</i><span>已有代码能复用吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="4.2"><button data-question="2"><i>3</i><span>标准库能解决吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="5.05"><button data-question="3"><i>4</i><span>平台原生能做吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="5.9"><button data-question="4"><i>5</i><span>已装依赖能覆盖吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="6.75"><button data-question="5"><i>6</i><span>能用简单一行完成吗</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+<li data-at="7.6"><button data-question="6"><i>7</i><span>最后才考虑自己写</span><b class="record-dot" aria-label="已有本地记录" hidden>•</b></button></li>
+</ol>
+<div class="count-row" data-at="6.55"><span>同一示例，演示起点</span><strong id="before-count">200</strong><span>行 → 收到</span><strong id="after-count">30</strong><small>屏显示意 · 非实测</small></div>
+<p class="ladder" data-at="13.9">THINK BEFORE ADDING</p><h2 class="restraint" data-at="14.2">能不写，<em>就别写</em></h2>
+<div class="partners" data-at="15.7"><div><i>◆</i><strong>视觉规则</strong><small>保持页面的表达</small></div><b>+</b><div><i>◆</i><strong>工程克制</strong><small>避免额外的负担</small></div></div>
+<h2 class="division" data-at="17.2">页面照样好看，<em>实现保持轻巧</em></h2><p class="caption" data-at="19.4">先逐个想清楚，<em>再决定是否添加。</em></p>
+</div></main>
+<section class="lab"><div class="actions"><button id="play">播放 / 继续 ↗</button><button id="pause" disabled>暂停</button><button id="back" disabled>反向返回 ↖</button><button id="reset">全部复位</button></div><label class="range">过程回看<input id="timeline" type="range" min="0" max="1000" value="0" aria-label="过程回看"><output id="percent">0%</output></label><div class="bottom"><label><input id="reduce" type="checkbox">减少动态</label><button id="about">来源与边界</button></div><p id="state" role="status">等待播放</p></section>
+<section class="product-lab" aria-label="七问本地记录"><h2>留下一点具体依据</h2><p>七条可独立记录、修改和撤销草稿；不自动判定通过，不发送内容。</p><label class="plan-label">当前问题的上下文<input id="plan-title" maxlength="100" value="给页面增加一个新交互" autocomplete="off"></label><ol id="answer-list"></ol><p id="answer-summary" role="status">已记录0 / 7</p><button id="clear-answers">清除七条记录</button></section>
+<dialog id="answer-dialog" aria-labelledby="answer-heading"><form id="answer-form"><small id="answer-number"></small><h2 id="answer-heading"></h2><p id="answer-context"></p><label>自己的依据<textarea id="answer-value" rows="5" maxlength="500" autocomplete="off"></textarea></label><div class="answer-actions"><button type="submit">保存这条记录</button><button id="cancel-answer" type="button">取消草稿</button><button id="delete-answer" type="button">清除这条记录</button></div><p>记录由你填写，与上方教学显露和屏显数字无关。</p></form></dialog>
+<dialog id="info"><button id="close-info">返回画面 ↗</button><h2 id="info-title"></h2><p id="info-copy"></p></dialog></body></html>

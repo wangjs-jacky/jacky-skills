@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "modelVerified": false,
+  "transparent_background": false,
+  "prompt": "Use case: photorealistic-natural. Asset type: one independent travel photograph for a self-coded travel card, not a webpage. A richly coloured Kyoto-inspired hillside view at dusk, a dark wooden five-storey pagoda on the right third, many crimson autumn trees filling the foreground, a low old city stretching to distant blue mountains at left. Beautiful soft cyan-to-pink sunset sky and warm rose light, saturated red foliage balanced with deep blue twilight, fine natural texture. Elevated wide 4:3 composition with horizon in the top half, a credible travel editorial photograph. No close-up people, text, caption, logo, watermark, frame, collage, interface or map. Do not reproduce an existing photograph.",
+  "purpose": "独立照片素材；非作者图片或整张界面",
+  "file": "kyoto.png",
+  "generated": true,
+  "sha256": "7ce953775b67922e03fd981569bcec73b29b8f447bb461062b5fae9bcc0acf61",
+  "width": 1448,
+  "height": 1086,
+  "nativeOriginalPreserved": true
+}

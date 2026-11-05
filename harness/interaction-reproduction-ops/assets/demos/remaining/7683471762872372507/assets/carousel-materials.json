@@ -1,0 +1,20 @@
+{
+  "scope": "自制照片；前三张独立文字生图，雪山同字节复用已生成素材；不是作者原图",
+  "images": [
+    {
+      "path": "city-roofs.png",
+      "bytes": 2923653,
+      "sha256": "27151673db1afa35ae095552743d89b7b45dbc27f058a3b41a7e3bf17e4d7bce"
+    },
+    {
+      "path": "alpine-forest.jpg",
+      "bytes": 756146,
+      "sha256": "e361d4c343adfc91c48fa2459fcc01bc9e729ed60e0e3b182774b86420f9e5f2"
+    }
+  ],
+  "reusedSnowSource": {
+    "videoId": "7692765213770272051",
+    "asset": "assets/rally/alpine-forest.jpg",
+    "byteIdentical": true
+  }
+}

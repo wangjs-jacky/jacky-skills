@@ -1,0 +1,10 @@
+{
+  "file": "pass-rock.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 outdoor sports photograph for a separately coded collectible season-pass card. Close editorial photograph of an anonymous adult male rock climber in a matte orange climbing helmet and dark teal short-sleeve shirt, short dark facial hair, seen in three-quarter profile looking intently upward. His forearms brace on a giant textured warm rust-pink sandstone boulder filling almost the whole background. Face in lower middle, powerful diagonal rock geometry, natural hard afternoon sunlight with deep warm shadows, real skin and rock texture, muted cinematic outdoor magazine colors. Full uninterrupted photograph, no card, no typography, no numbers, no logo, no watermark, no border, no UI, no collage. Leave some uncluttered rock near top and bottom for separately coded labels.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "bb0d1262f73f6909edb20f797550d8cd4c360086e55e241c35acc10fcadad081"
+}

@@ -3,9 +3,9 @@
 - system: execution
 - operation: diagnose-session-start
 - status: verified
-- last_verified: 2026-10-13
+- last_verified: 2026-11-05
 - risk: low
-- scope: 已验证旧Codex模型拒绝恢复，以及macOS后台调度导致本地加载迟延、改为Standard后真实新worker启动和两轮模型回复；不覆盖旧worker迁移或近期恶化的具体触发因素。
+- scope: 本次验证后台CLI外盘读取EPERM与继承provider认证冲突；完整恢复内置运行包并移除冲突字段后，真实页面新会话读取文件、模型回复和已完成通过；旧worker保留，不代表旧进程热迁移或任意外盘可访问。
 
 ## 目标
 
@@ -41,8 +41,17 @@ Background限制可使本地依赖加载和事件循环显著变慢，表面凭�
 
 真实回复读取须兼容role=session、content.role=agent的协议封装，同时核对文本事件和completed状态；仅识别旧role=agent会产生观察器假超时。计时区分本地启动、首个可见文本与整轮完成，不用受限观察器的轮询延迟替代原事件时间。
 
+
+正式daemon丢弃worker stderr时，可为单次诊断请求加临时错误记录，核对实际后台子进程的文件读取及异常；独立launchd可读不代表原daemon子进程可读。入口读取EPERM与后续账号配置校验可能连续出现，应分别定位和验证。专用provider被全局网关配置污染时，逐项核对有效配置，不能只确认命令行已覆盖URL，或放宽账号隔离校验。
+
 ## 验证证据
 
 2026-10-03：三个原会话的旧版模型请求失败，经升级与正常账号授权恢复，全部在原会话内返回验证回复并完成。详见[私有证据](../../../../local/systems/execution/operations/diagnose-session-start.md)。验证仅覆盖此案例，不将其他历史条目自动视为已验证。
 
 2026-10-13：后台调度限制经隔离对照定位；授权改为Standard后，正式daemon创建的新worker实际正常优先级，启动和两轮真实模型回复通过。测试worker停止、旧worker保留；具体计时、观察器修正与限制见同一私有证据入口。
+
+2026-10-22：真实独立双会话联调通过。HTTP工具可用不等于Codex STDIO桥接可发现；native只读/never下需核对精确工具策略而非放宽文件沙箱。source-session grant用于恢复同一会话，当时 fresh child 使用新 grant 并显式约束父账号，该策略仅验证默认绑定与父账号相同的情况；默认绑定变化场景由下述新规则覆盖。随机文件回复、执行重叠、账号/模型/权限一致及完整本地Web卡片跳转均通过；未发布或验证真机。详见[私有验收记录](../../../../local/records/independent-sessions-live-20261022.md)。
+
+2026-11-03：独立会话的父子来源关系与 provider 历史恢复须区分。已确认采用机器默认账号时，fresh child 使用新 machine grant，不继承父账号约束或历史；真正恢复旧会话继续原身份校验。不得为启动独立任务临时重绑整台机器，也不能用固定原 session 的 resume grant 注册新孩子。账号选择按用户确认执行，grant 失败不得静默回退本地凭据。真实启动、模型回复和工具执行已验证；详见[私有证据](../../../../local/records/independent-task1-account-rejection-20261103.md)。
+
+2026-11-05：上述本次scope真实通过；底层系统授权变化的原因未确定。见[本机证据](../../../../local/systems/execution/operations/diagnose-session-start.md)。

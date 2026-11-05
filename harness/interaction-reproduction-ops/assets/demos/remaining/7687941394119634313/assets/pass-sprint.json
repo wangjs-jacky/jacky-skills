@@ -1,0 +1,10 @@
+{
+  "file": "pass-sprint.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 athletic fashion photograph for a separately coded season-pass card. An anonymous athletic adult woman with dark brown tied-back hair, wearing a plain white short-sleeve running shirt and deep plum leggings, is captured in a powerful high-knee running stride: body faces right, left knee lifted, one arm bent forward. Side profile, nearly full body in the middle of frame, no identifiable brand. Clean desaturated pale blue-grey cloudy sky fills most background; a subtle dark rocky ridge is low in the frame. Natural soft daylight, realistic skin and fabric texture, polished outdoor sports editorial photography, restrained cool colors. One uninterrupted photograph, no typography, no numbers, no card, no logo, no watermark, no border, no UI, no collage. Leave some sky near top and dark space near bottom for separately coded labels.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "02571cdb81b0faa8830325bfea44876260f6042c5153b5d782c2fc2359e719d9"
+}

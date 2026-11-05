@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: original editorial collage background artwork for a live HTML poster, no interface. Landscape 3:2 dense joyful Latin American arts-festival paper collage. Warm pink, sunflower yellow and turquoise torn-paper fields. Around the edges: an angled strip of black-and-white piano keys at upper left, a large orange daisy at upper right, vintage black-and-white marble statue fragments near the top and left, a beetle and a dark butterfly, cut-out green leaves near lower left, small red poppies at lower right, a vintage photographic hand stretched diagonally across the lower middle gently offering a little daisy. Mix photoreal printed paper clippings, ink halftone, flower cutouts, torn edges and painted paper texture. Keep a calm partly empty warm coral patch in the exact central third so separately coded headline typography can sit there. Rich layered asymmetry, bold saturated colours, playful surreal botanical print design. The art should extend to all edges. No words, no text, no letters, no symbols or logos, no typography, no UI, no border, no website or screenshot. Only a decorative illustration; all poster words will be live HTML.",
+  "transparent_background": false,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "HERA拼贴独立背景，中心文字另用HTML；非作者原图/整页界面"
+}

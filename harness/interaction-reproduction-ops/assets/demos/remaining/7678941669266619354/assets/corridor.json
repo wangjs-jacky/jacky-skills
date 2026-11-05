@@ -1,0 +1,9 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: one portrait art photograph for a curved gallery card, NOT a web UI. A quiet brutalist concrete colonnade interior with repeating rectangular columns, beams and portals receding deeply toward a central vanishing point slightly left of center. Camera at eye level, wide angle, long dark gray stone floor. Harsh sunlight from tall narrow openings on the right creates a repeated rhythm of bright white vertical strips, pale stone and black shadows. Near-monochrome charcoal and soft warm gray palette. Strong architectural depth, precise clean edges, restrained fine photographic grain. Portrait 3:4 composition, no people, furniture, text, logos, frame, phone or interface. Only the architectural photo.",
+  "transparent_background": false,
+  "generated": true,
+  "tool": "image_gen.imagegen",
+  "model": "内置工具未返回具体模型标识，未补称GPT Image 2已核验",
+  "output": "artifacts/assets/corridor.png",
+  "outputSha256": "f946978ac9c19e85eb24f66b197cabfe08262bda43b0e4a813ab60eb50d4c78b"
+}

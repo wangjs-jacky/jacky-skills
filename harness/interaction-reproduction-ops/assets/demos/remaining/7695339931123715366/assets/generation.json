@@ -1,0 +1,13 @@
+{
+  "generator": "原生image_gen",
+  "model": null,
+  "modelEvidence": "实际调用成功，工具未返回可核验模型名",
+  "images": [
+    {
+      "file": "books.png",
+      "prompt": "Use case: stylized-concept. Asset type: one isolated transparent PNG illustration for a compact focus-timer app. A charming stack of four small hardcover books, isometric three-quarter view seen from above, slightly staggered and rotated. Rich midnight indigo and violet covers, warm cream pages with fine page-edge lines, coral orange and pink cover edges, a single narrow blue ribbon bookmark hanging from the upper book. Small plain gold four-point star on the top indigo cover, no lettering. Soft tactile painterly 3D illustration, polished but warm, crisp silhouette and gentle soft shading, like a crafted editorial sticker. Entire stack visible, centered in a square with clear margin. Actual transparent background. No phone, no interface, no timer, no buttons, no text, no logo, no watermark, no additional objects.",
+      "transparentBackground": true,
+      "source": "自写替代素材，不是作者原图"
+    }
+  ]
+}

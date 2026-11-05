@@ -1,0 +1,9 @@
+{
+  "asset": "city-roofs.png",
+  "source": "本轮独立文字生图，非作者照片",
+  "prompt": "Use case: photorealistic-natural. Asset type: one standalone portrait travel photograph for an image card. Primary request: quiet European city rooftops viewed from a high terrace, layered cream and warm-gray stone buildings with red-brown tiled roofs, chimneys, distant skyline in cool hazy daylight. Composition portrait 4:5, rooftop details in the lower two thirds, a pale lightly overcast blue-gray sky in upper third; a slightly taller pale building to the left, layers receding to the right, no dominant landmark. Understated contemporary editorial photography, natural realistic masonry and roof tiles, restrained warm neutrals, gentle film grain. No people, no text, no signage, no logo, no watermark, no frame, no UI, no border, no screenshot.",
+  "tool": "image_gen.imagegen",
+  "model": "工具未返回具体模型名",
+  "bytes": 2923653,
+  "sha256": "27151673db1afa35ae095552743d89b7b45dbc27f058a3b41a7e3bf17e4d7bce"
+}

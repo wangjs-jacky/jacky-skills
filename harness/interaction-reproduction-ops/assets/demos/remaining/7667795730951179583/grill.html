@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self' data:; object-src 'none'"><title>grill-me · 校准与逐问需求</title><link rel="stylesheet" href="workflow.css">
+<header class="toolbar"><span class="tool-name">01 / REQUIREMENTS</span><div><label><input id="reduce" type="checkbox">减少动态</label><button id="reset">重新开始</button></div></header>
+<main><pre class="code-ghost" aria-hidden="true">const brief = {
+  audience: user.choice,
+  access: user.choice,
+  scope: user.choice
+};
+function clarify(question) {
+  return { question,
+    recommendation,
+    evidence: localExample
+  };
+}
+const plan = decision;
+</pre><div class="content"><div class="eyebrow">① 需求分析 <span class="dots"><i></i><i></i><i></i><i></i></span></div><h1>grill-me</h1><p class="subtitle">先校准，再把问题问清楚。</p><div class="rule"></div><p class="kicker" id="chapter">STEP 0 · CALIBRATION</p>
+<nav class="steps" aria-label="需求阶段"><button data-step="0">校准</button><button data-step="1" disabled>使用者</button><button data-step="2" disabled>权限</button><button data-step="3" disabled>核心任务</button><button data-step="4" disabled>计划</button></nav>
+<div class="split"><section id="stage" class="glass" aria-live="polite"></section><aside class="evidence" aria-label="本地示例资料"><button data-evidence="code">◇ 代码摘要</button><button data-evidence="docs">◇ 需求记录</button><button data-evidence="logs">◇ 示例日志</button><p>点击只读本页示例材料；不访问真实工程，不调用 AI。</p><p id="evidence-detail"></p></aside></div>
+<p class="notice">依据视频中的校准、逐问、推荐与计划图示自编的本地演练。补写了回答编辑、校验、返回和 JSON 导出；未安装或运行作者 Skill。</p><output class="footer-status" id="state" aria-live="polite">等待校准</output></div></main><script src="controls.js"></script><script src="grill.js"></script></html>

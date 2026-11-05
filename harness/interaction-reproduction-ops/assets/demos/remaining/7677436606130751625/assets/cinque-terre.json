@@ -1,0 +1,10 @@
+{
+  "file": "cinque-terre.png",
+  "source": "built-in image_gen; exact input in private notes/cover-generation-input.json",
+  "sha256": "c0c4f38bf97667fe22a667c2638c78714b3add6468385c2aecd85e663ff10d7a",
+  "modelName": "not disclosed",
+  "dimensions": [
+    1024,
+    1536
+  ]
+}

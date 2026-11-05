@@ -1,0 +1,10 @@
+{
+  "name": "paris",
+  "modelName": "not disclosed",
+  "mode": "built-in image_gen",
+  "sha256": "9497a478cbb94781fcd103c8cde4d8c6e105c685412c50bd37bb6ec735b94dfa",
+  "dimensions": [
+    1024,
+    1536
+  ]
+}

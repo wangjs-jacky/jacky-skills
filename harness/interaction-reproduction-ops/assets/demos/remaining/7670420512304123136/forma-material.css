@@ -1,0 +1,3 @@
+/* 同景软装变体沿既有裁切/返回代码，原示例保持原字节。 */
+#base-photo,#reveal-photo{object-position:center center}
+@media(max-width:700px){#base-photo,#reveal-photo{object-position:55% center}}

@@ -3,7 +3,7 @@
 - system: web
 - operation: verify-deployment
 - status: verified
-- last_verified: 2026-10-15
+- last_verified: 2026-10-22
 - risk: low
 - scope: Merged main CI 上传、原子切换、边缘路由、live verify 与发布摘要实际通过，正式 HTML revision 和入口 CSS/JS 核对一致；未做浏览器视觉或手机加载验收。
 
@@ -43,3 +43,11 @@
 2026-10-10 最新执行范围见上方 scope；中断发布经同一 CI run 重跑后完成，证据收录于私有操作入口。
 
 2026-10-15：正式HTML、入口资源、SPA路由revision及浏览器设置页运行版本行均与目标merge一致；页面缓存禁用并旁路Service Worker后重新加载。仅为最小上线核验，不替代完整会话或真机交互验收。
+
+2026-10-17：真实部署摘要与精确合并提交一致；首页及设置SPA路由的公开HTML revision匹配，四个入口资源经受限origin的正常重定向后最终HTTP200。GitHub摘要截图已上报；未新增生产聊天行为或手机加载验证。
+
+2026-10-17后续：通过完成的summary写入日志与run headSha核对发布目标；正式首页／设置路由revision和四个入口资源的最终HTTP200、MIME一致，CI live verify成功。此轮仅CLI/API/HTTP核验，未采集浏览器截图或手机交互证据。
+
+2026-10-19：授权精确merged-main的Web CI实际完成不可变上传、预激活、原子切换、live verify与summary；真实Actions摘要Commit/Origin与目标一致，公开首页和设置HTML revision及1CSS/3JS最终HTTP200、MIME核对通过，线上JS中本次新增批注标识可见。未向生产会话发测试消息或新增真机交互，具体版本与证据由所属Goal First目标唯一维护。
+
+2026-10-22：本次独立会话功能对应目标成功；具体结果与限制见私有操作证据链接的新发布记录。Web覆盖正式版本/资源及首页渲染；执行端覆盖保留live补丁、新daemon注册和新worker启动，不代表旧worker热更新或新模型任务。

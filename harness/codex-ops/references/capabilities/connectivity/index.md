@@ -20,3 +20,11 @@
 ## 来源
 
 2026-10-15 阅读 [CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli)、[Authentication](https://learn.chatgpt.com/docs/auth)、[Configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference) 与 [Advanced configuration](https://learn.chatgpt.com/docs/config-file/config-advanced)。旧 HTTP-only 个例的实际 endpoint、设备与版本留私有历史，不能推成永久官方接口承诺。
+
+## ChatGPT 订阅用于应用推理的文档边界（2026-10-24）
+
+- 证据为官方文档读取（documented），未操作账号、运行中转服务或发送模型请求。
+- [Authentication](https://learn.chatgpt.com/docs/auth) 区分 ChatGPT 订阅登录与按标准 API 价格计费的 API key 登录；不能把已有订阅描述为通用 API 余额。
+- [ChatGPT plan usage](https://developers.openai.com/siwc/token-sharing-open-source) 说明，符合条件的开源及本地托管应用可在获得独立授权后以 OAuth 发起 eligible Responses API 请求；该页对付费或远程托管应用另列 interest form，不能据此保证任意云端应用可直接使用。
+- Sub2API 等第三方转接是否可用，须按其具体实现、上游授权及真实请求核验；官方文档不证明第三方中转兼容性、额度、图片或文件输入成功。
+

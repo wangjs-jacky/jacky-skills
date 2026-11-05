@@ -1,0 +1,9 @@
+{
+  "file": "buddy-cloud.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: stylized-concept. Asset type: one original transparent 3D character cutout for a separately coded colorful collectible card. An adorable soft puffy white cloud creature with two oversized glossy black oval eyes, a tiny happy smile and two small rounded cloud feet. A puffy golden sunshine disc peeks from behind its upper left side, with six chunky rounded triangular rays. Premium playful vinyl-toy / soft clay 3D render, white marshmallow material with delicate cool blue shading, golden yellow sun, very gentle studio light from upper left, polished but soft forms, no hard outlines. Full character at a front three-quarter view centered, all sun rays and cloud feet visible with 14 percent transparent padding. Square composition, genuinely transparent alpha background, no floor, no backdrop or rectangle. No text, no letters, no UI, no card, no logo, no watermark, no border. One isolated original character, not a screenshot.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的云朵与太阳角色，非作者原图",
+  "sha256": "2607ed55f0416b81495902ba76ce3bf37dd9ce02dca6ebf8d47196cb24c3a98e"
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>atlas · Chart the systems your team ships</title>
+  <link rel="stylesheet" href="atlas.css">
+  <script defer src="../7670420512304123136/controls.js"></script>
+  <script defer src="atlas.js"></script>
+</head>
+<body>
+  <header class="top">
+    <button id="home" class="brand" aria-label="atlas, return to introduction">atlas</button>
+    <nav aria-label="Main navigation">
+      <button data-nav="directory">Systems</button>
+      <button data-nav="map">Reference map</button>
+      <button data-nav="notes">Field notes</button>
+      <button id="guide">Guide</button>
+    </nav>
+    <button id="open-atlas" class="brick small">Open atlas <span>↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="introduction">
+      <p class="eyebrow"><span>●</span> A MAP FOR WHAT YOUR TEAM KNOWS</p>
+      <h1>Chart the systems<br>your team ships.</h1>
+      <p class="hero-copy">Give every service an owner, a reference, and a route back to the decision.<br>
+        A small, considered place for a team that keeps shipping.<br>
+        A shared map, with a clear way back.</p>
+      <div class="hero-actions">
+        <button id="chart-systems" class="brick">Chart your systems <span>↗</span></button>
+        <button id="view-field" class="text-link">View the field <span>→</span></button>
+      </div>
+      <p class="edition">INDEPENDENT REFERENCE STUDY <span>—</span> NO. 001</p>
+    </section>
+
+    <section class="workbench" id="workbench" tabindex="-1">
+      <header class="section-head">
+        <div><p class="eyebrow">THE WORKING INDEX</p><h2>A little less searching.<br><em>A little more context.</em></h2></div>
+        <button id="new-reference" class="outline">Add a reference <span>+</span></button>
+      </header>
+      <div class="view-tabs" role="group" aria-label="Reference views">
+        <button data-view="directory" aria-pressed="true">Directory</button>
+        <button data-view="map" aria-pressed="false">Reference map</button>
+        <button data-view="notes" aria-pressed="false">Field notes</button>
+      </div>
+      <div class="filters" id="filters">
+        <label class="search"><span>FIND A REFERENCE</span><input id="search" type="search" placeholder="A system, an owner, a detail…" autocomplete="off"></label>
+        <label><span>TYPE</span><select id="filter"><option value="all">Every reference</option><option value="service">Services</option><option value="runbook">Runbooks</option><option value="decision">Decisions</option></select></label>
+        <output id="result-count" aria-live="polite"></output>
+      </div>
+      <section id="directory-view" aria-label="Reference directory"><div id="records" class="records"></div></section>
+      <section id="map-view" hidden aria-label="References grouped by type"><div id="reference-map" class="reference-map"></div><p class="quiet">A map of the current index, grouped by type. These columns do not infer service dependencies.</p></section>
+      <p id="empty" hidden>No references in this view. Try a different word or type.</p>
+      <section id="notes-view" hidden>
+        <form id="field-form" class="field-form">
+          <p class="eyebrow">A NOTE TO THE NEXT PERSON</p><h3>Leave a little context.</h3>
+          <label for="field-note">What should someone know before following these references?</label>
+          <textarea id="field-note" rows="5" maxlength="1200" placeholder="A decision, a loose end, a useful detail…"></textarea>
+          <div class="form-actions"><button id="cancel-field" type="button" class="text-link">Discard unsaved changes</button><button class="brick" type="submit">Keep this note ↗</button></div>
+          <output id="field-state" aria-live="polite">Nothing kept yet.</output>
+        </form>
+      </section>
+      <footer class="index-footer"><p>Three independent sample references to begin with. Your edits stay in this page.</p><button id="download" class="text-link">Download this index <span>↓</span></button></footer>
+    </section>
+  </main>
+
+  <footer class="lab"><div><button id="reset">Reset the study</button><label><input id="reduce" type="checkbox"> Reduce motion</label><button id="back-top">Back to the introduction ↑</button></div><output id="state" role="status">A local reference index. No service discovery, account or external request.</output></footer>
+
+  <dialog id="record-dialog" aria-labelledby="editor-title">
+    <header><div><p class="eyebrow">A REFERENCE, WITH CONTEXT</p><h2 id="editor-title">Chart a reference.</h2></div><button id="close-record" aria-label="Close reference editor">×</button></header>
+    <form id="record-form">
+      <label>Name<input id="record-name" required maxlength="80" autocomplete="off" placeholder="e.g. Checkout API"></label>
+      <div class="form-pair"><label>Owner<input id="record-owner" required maxlength="60" autocomplete="off" placeholder="A team or a person"></label><label>Type<select id="record-type"><option value="service">Service</option><option value="runbook">Runbook</option><option value="decision">Decision</option></select></label></div>
+      <label>Reference URL <small>optional, http or https</small><input id="record-url" type="url" maxlength="400" autocomplete="off" placeholder="https://example.com/reference"></label>
+      <label>The useful detail<textarea id="record-note" required rows="4" maxlength="1000" placeholder="What is this for, and where should the next person begin?"></textarea></label>
+      <p class="quiet">A saved URL is kept as text. This study does not fetch it or connect to a real catalogue.</p>
+      <div class="form-actions"><button id="cancel-record" type="button" class="text-link">Cancel</button><button id="save-record" type="submit" class="brick">Keep reference ↗</button></div>
+    </form>
+  </dialog>
+  <dialog id="guide-dialog" aria-labelledby="guide-title"><header><h2 id="guide-title">A small map. A clear way back.</h2><button id="close-guide" aria-label="Close guide">×</button></header><p>The opening composition comes from the reference video. This working index is independently written: search, filter, edit a reference, keep a field note, then export the actual local data.</p><p>No author Skill, model, account or service discovery is running here.</p></dialog>
+</body>
+</html>

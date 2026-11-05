@@ -1,0 +1,8 @@
+{
+  "mode": "built-in",
+  "asset": "coffee-beans.png",
+  "prompt": "Use case: product-mockup. Asset type: a single coffee bean photograph for a self-coded coffee product page, not a webpage image. Make a refined natural editorial close-up of dark roasted coffee beans heaped in an open coarse tan burlap sack. The curved frayed rim of the sack runs across the bottom quarter, a few beige jute fibres arc over the beans. Vertical 4:5 photograph, nearly full frame rich glossy but natural brown beans, deep charcoal background in the upper third, directional soft window light from upper left, rich textures and gentle depth of field. Palette warm cream, cocoa brown, near black. No cups, no hands, no packaging, no letters, no logos, no watermark, no UI. Image only; all website typography and controls will be real HTML.",
+  "modelVerified": false,
+  "purpose": "原片咖啡商品页右侧麻袋咖啡豆素材的独立替代照片，非作者图片或完整UI",
+  "sha256": "c9d1d566d52818a4c48b7f803576141212ff545156d51a23ca7dcbd88a0e482c"
+}

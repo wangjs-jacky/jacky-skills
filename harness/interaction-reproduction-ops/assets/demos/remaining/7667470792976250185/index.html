@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星沉入河 · 雨夜路灯</title><link rel="stylesheet" href="river.css"><script defer src="controls.js"></script><script defer src="river.js"></script>
+<body><header class="toolbar"><div><small>49 / A QUIET NIGHT</small><h1>星沉入河</h1></div><label class="preference"><input id="reduce" type="checkbox">减少动态</label><button id="reset">复位</button></header>
+<main><section class="transport" aria-label="动画控制"><button id="play">播放</button><button id="pause">暂停</button><label>时间 <input id="timeline" type="range" min="0" max="20.066667" step=".01" value="3.2" aria-label="场景时间"></label><output id="time"></output></section>
+<div class="scene-shell"><div id="scene"><canvas id="landscape" width="720" height="1146" aria-hidden="true"></canvas>
+<svg class="lamp" viewBox="0 0 720 1146" role="img" aria-label="雨夜中一盏暖黄色路灯"><defs><linearGradient id="pole" x1="0" x2="1"><stop stop-color="#152525"/><stop offset=".24" stop-color="#0a171b"/><stop offset=".8" stop-color="#08131d"/><stop offset="1" stop-color="#1c2e30"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5db72"/><stop offset=".5" stop-color="#e7e388"/><stop offset="1" stop-color="#bfc768"/></linearGradient><radialGradient id="lamp-glow"><stop stop-color="#ffe8a4" stop-opacity=".38"/><stop offset=".45" stop-color="#ffe8a4" stop-opacity=".08"/><stop offset="1" stop-color="#f2d07b" stop-opacity="0"/></radialGradient><filter id="blur-light"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<circle class="lamp-glow" cx="216" cy="292" r="190" fill="url(#lamp-glow)"/><circle cx="216" cy="292" r="45" fill="#eddf87" opacity=".15" filter="url(#blur-light)"/>
+<path d="M208 344h16l2 396h-20z" fill="url(#pole)"/><path d="m204 738-6 12v90q0 7 6 7h24q6 0 6-7v-90l-6-12z" fill="url(#pole)"/><path d="M202 750h28" stroke="#34505a" opacity=".36"/>
+<path d="M207 339h18l-3 10h-12zM205 330h22l-5 10h-12z" fill="#172829"/>
+<path d="m186 264 11 63h38l11-63z" fill="#1b2d2e"/><path d="m194 268 10 49h25l10-49z" fill="url(#glass)"/><path d="m196 270 9 43h6l-3-43z" fill="#fffac1" opacity=".23"/>
+<path d="M183 261v7h66v-7l-14-10-11-13v-7h-5v-9h-6v9h-5v7l-12 14z" fill="#1a292a"/><path d="M188 260h57" stroke="#3d4841" stroke-width="2" opacity=".8"/><circle cx="216" cy="291" r="7" fill="#fff9bb" opacity=".8"/>
+</svg>
+<canvas id="atmosphere" width="720" height="1146" aria-hidden="true"></canvas><button id="lamp-trigger" aria-label="从路灯放下一颗星" title="放下一颗星"></button><p class="scene-description">夜雨轻落，灯下的星光沉入河面。</p>
+</div></div>
+<section class="settings" aria-label="场景设置"><label>星光密度 <input id="density" type="range" min="20" max="100" step="1" value="70"><output id="density-value">70%</output></label><label><input id="rain" type="checkbox" checked>细雨</label><label><input id="loop" type="checkbox">循环</label></section>
+<p class="hint">点击路灯，放下一颗星。可以暂停后拖动时间回看。</p><p id="state" role="status" aria-live="polite">暂停于夜雨星光。</p><p class="source-note">自制代码场景 · 路灯点按与设置为复用补写</p></main></body></html>

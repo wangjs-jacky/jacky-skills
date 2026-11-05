@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "modelVerified": false,
+  "transparent_background": false,
+  "prompt": "Use case: photorealistic-natural. Asset type: one independent travel card photograph, not a full interface. A tranquil Moroccan courtyard fountain wall inspired by Marrakech craft traditions: a large round geometric blue-green and cream zellige mosaic medallion inside a deeply carved pale sandstone horseshoe arch, delicate floral relief borders, a small dark stone basin at the base, flanking carved niches, warm weathered beige stone. Close architectural view, symmetrical but naturally photographed, soft daylight, restrained teal and olive, intricate material detail. Wide 4:3 photograph framing the complete circular medallion and its carved arch, with a little surrounding wall. No people, readable writing, caption, logo, watermark, border, collage, graphic overlays or interface. Independent interpretation, not a reproduction of an existing photograph.",
+  "purpose": "独立照片素材；非作者图片或整张界面",
+  "file": "marrakech.png",
+  "generated": true,
+  "sha256": "4c7798cc56581906c9db6f260d2846b5e8d8f355b3f975d0b7ed6f91510777ec",
+  "width": 1448,
+  "height": 1086,
+  "nativeOriginalPreserved": true
+}

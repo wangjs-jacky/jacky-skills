@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen",
+  "mode": "generate",
+  "model": "工具未返回可核验模型名",
+  "prompt": "Use case: product-mockup. Asset type: original photograph used underneath live HTML dashboard panels, NOT a screenshot or UI mockup. Create a landscape 3:2 photorealistic studio product photograph of a premium black gravel bicycle with restrained burnt orange accents, shown full side-on facing right. Both wheels and complete frame visible, large bicycle mostly on the right two thirds, lower edge close to floor. Dark desaturated green brick wall behind it, green concrete studio floor, subtle warm directional light from upper right and green shadow at left. Leave uncluttered dark green negative space in upper left for an HTML title overlay and in the four corners for small live panels. Physically coherent real bicycle, detailed spokes, drivetrain, handlebars. No people, no brand logos, no words, no text, no charts, no cards, no UI, no watermark. This is only a photographic backdrop for a separately coded interactive dashboard.",
+  "output": "gravel-studio.png",
+  "transparent": false,
+  "scope": "独立自行车棚拍底图；非整张界面",
+  "sourceOriginalLeftInPlace": true
+}

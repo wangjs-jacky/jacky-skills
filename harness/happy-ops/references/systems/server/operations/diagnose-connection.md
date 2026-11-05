@@ -2,10 +2,10 @@
 
 - system: server
 - operation: diagnose-connection
-- status: historical
-- last_verified: none
+- status: verified
+- last_verified: 2026-11-04
 - risk: low
-- scope: 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。
+- scope: 历史数据库锁恢复及升级重启单样本复测；本次已验证浏览器扩展默认代理协议与SOCKS端口错配、修正后同入口WSS及Paws Socket恢复，原队列进入运行。未等待业务任务最终完成，不代表生产源码补丁已上线。
 
 ## 目标
 
@@ -31,6 +31,8 @@
 
 ## 失败模式与恢复
 
+PostgreSQL遗留PID锁可能与重启后的其他进程PID碰撞。须同时确认PID实际进程身份、无数据库进程及端口监听；暂停数据库启动项后备份失效锁，再恢复原启动项。不可仅依据pg_ctl status或直接删除锁。
+
 错误端点的 404 不算服务离线；目录 RPC 或 health 成功不证明 session-start 成功。不要只延长 UI 超时掩盖阻塞。
 
 ## 验证证据
@@ -38,3 +40,9 @@
 历史经验整理；执行前按当前源码与运行态复核，未在迁移中重新执行。 状态和日期只覆盖上面的 scope。来源、原记录状态及未覆盖项见[私有证据](../../../../local/systems/server/operations/diagnose-connection.md)。last_verified 为 none；原记录中的成功日期只作为历史证据，不自动提升整条操作状态。
 
 执行后按[维护协议](../../../knowledge-maintenance.md)更新本操作及系统索引；未成功不刷新 last_verified。
+
+2026-11-02：已验证失效锁恢复、API与真实网页会话列表恢复；详见[私有证据](../../../../local/systems/server/operations/diagnose-connection.md)。
+
+2026-11-04：浏览器旧运行态外部WSS握手空响应，CLI101；经用户批准升级并重启浏览器后，同入口握手及真实新会话回复/完成状态通过。不能区分升级与重启的贡献；未修改或重启后端。详见[私有证据](../../../../local/records/socket-send-recovery-20261104.md)。
+
+2026-11-04最终：只读有效代理规则与端口服务对照，确认扩展默认HTTP代理错误指向SOCKS监听端口；经设置UI修正为SOCKS5后，同一地址握手与应用连接恢复，原队列继续运行。见[唯一根因记录](../../../../local/records/socket-queue-recurrence-20261104.md)。普通HTTP正常不排除浏览器扩展对WS/WSS的独立错配；不凭系统代理配置替代浏览器当前生效规则。

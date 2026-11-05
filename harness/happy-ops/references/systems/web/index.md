@@ -13,15 +13,15 @@ Web 前端、静态存储、API 与执行端是不同部署目标。正式发布
 
 | 目标／症状 | 操作 | 状态 | 最近验证 |
 | --- | --- | --- | --- |
-| 发布 Web | [deploy](operations/deploy.md) | verified | 2026-10-15 |
-| 核验 Web 上线 | [verify-deployment](operations/verify-deployment.md) | verified | 2026-10-15 |
+| 发布 Web | [deploy](operations/deploy.md) | verified | 2026-10-22 |
+| 核验 Web 上线 | [verify-deployment](operations/verify-deployment.md) | verified | 2026-10-22 |
 | 定位 Web 发布耗时 | [diagnose-deploy-delay](operations/diagnose-deploy-delay.md) | verified | 2026-10-10 |
 | 排查页面加载与反向代理 | [diagnose-loading](operations/diagnose-loading.md) | verified | 2026-10-05 |
 | 排查 Web 历史分页与同步 | [diagnose-history-sync](operations/diagnose-history-sync.md) | historical | none |
 | 排查图片与附件传输 | [diagnose-attachments](operations/diagnose-attachments.md) | historical | none |
 | 排查输入框排队与插话 | [diagnose-composer](operations/diagnose-composer.md) | historical | none |
 | 核对浏览器步骤证据归属 | [verify-browser-evidence](operations/verify-browser-evidence.md) | historical | none |
-| 排查与交付临时预览 | [manage-previews](operations/manage-previews.md) | historical | none |
+| 排查与交付临时预览 | [manage-previews](operations/manage-previews.md) | verified | 2026-11-04 |
 
 ## 共性陷阱
 

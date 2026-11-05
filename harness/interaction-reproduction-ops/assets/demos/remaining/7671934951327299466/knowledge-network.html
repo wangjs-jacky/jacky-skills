@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>关联起来 · 四类笔记与知识网络</title>
+<link rel="stylesheet" href="knowledge-network.css">
+<body>
+<main>
+  <header><p class="eyebrow">LOCAL NOTES / CONNECTED THINKING</p><h1>留下来的，<br><em>会再次相遇。</em></h1><p class="intro">从一条笔记，找到它与其他经验的关系。</p></header>
+  <section class="network" aria-label="四类笔记组成的知识网络">
+    <div class="code-haze" aria-hidden="true">const knowledge = new Map();<br>notes.map(connect);<br>design.spacing = 4;<br>read → relate → remember<br>function keepWhatMatters() {<br>  return context + evidence;<br>}<br>notes.map(connect);<br>decisions.push(reason);</div>
+    <svg id="graph" viewBox="0 0 1000 700" aria-label="笔记之间的关联图"><defs><filter id="soft"><feGaussianBlur stdDeviation="5"/></filter></defs><g id="graph-plane"><g id="halos"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+    <div class="note-cards" aria-label="选择笔记">
+      <button class="note note-design" data-note="0" aria-pressed="false"><span class="file"><i></i>设计规范 · v2.md</span><strong>间距与圆角规范</strong><span class="meta">范围 全站　更新 08-06</span><span class="rule">间距使用 4 的倍数</span><span class="related">↗ 组件圆角对照</span><span class="skeleton" aria-hidden="true"></span></button>
+      <button class="note note-component" data-note="1" aria-pressed="false"><span class="file"><i></i>组件 · 虚拟列表.md</span><strong>虚拟列表怎么写</strong><span class="meta">栈 React　状态 已验证</span><span class="rule">关键点</span><span class="related">预估行高 · 稳定的标识</span><span class="skeleton" aria-hidden="true"></span></button>
+      <button class="note note-pitfalls" data-note="2" aria-pressed="false"><span class="file"><i></i>踩坑记录.md</span><strong>重复踩过的坑</strong><span class="meta">演示资料 · 6 个本地项目</span><span class="frequency">异步状态竞争 <b>5 次</b><br>移动端视口 <b>4 次</b><br>图片预留尺寸 <b>3 次</b></span></button>
+      <button class="note note-inbox" data-note="3" aria-pressed="false"><span class="file"><i></i>灵感 · 0806.md</span><strong>随手记 · 0806</strong><span class="meta">待整理</span><span class="rule">一屏只说一件事</span><span class="related">#排版 #留白</span><span class="skeleton" aria-hidden="true"></span></button>
+    </div>
+    <span class="graph-caption">四类资料，一张关系网。</span>
+  </section>
+  <section class="desk" aria-label="网络与笔记操作">
+    <div class="toolbar"><button id="replay">重播连接 ↗</button><button id="pause" disabled>暂停</button><button id="clear-selection">查看全部</button><label class="search-label">找笔记<input type="search" id="search" placeholder="标题、内容或关键词" maxlength="100"></label></div>
+    <output id="search-result" role="status">4 条笔记；选择一条，查看它的关联。</output>
+    <article id="detail" hidden><div><span class="eyebrow" id="detail-kind"></span><h2 id="detail-title"></h2></div><p id="detail-body"></p><div id="detail-links" aria-label="关联笔记"></div><button id="return-note">返回网络 ↑</button></article>
+  </section>
+  <p class="boundary">自编关系图与笔记内容。原片用于构图和节奏参考；搜索、关联选择与暂停为本地补写，不会读取真实知识库。</p>
+  <footer><span>INDEPENDENT HTML / SVG STUDY</span><button id="reset">复位全部</button><label><input type="checkbox" id="reduce"> 减少动态</label><output id="state" aria-live="polite"></output></footer>
+</main>
+<script src="controls.js"></script><script src="knowledge-network.js"></script>
+</body></html>

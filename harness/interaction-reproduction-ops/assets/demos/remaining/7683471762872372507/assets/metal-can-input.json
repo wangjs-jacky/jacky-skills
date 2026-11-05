@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: product-mockup. Asset type: a single original transparent cutout object for a coded collage poster. A small worn cylindrical metal tin can in a three-quarter front view, slightly tilted clockwise. Silver body with subtle horizontal ridges, cream paper label with broad black horizontal bands and one simple black circular abstract graphic, absolutely no readable words or letters. A flat olive-yellow metal lid with a little silver rim. Photographic black-and-white vintage print quality on the body, tactile dents and metallic reflections. The tin rests visually on a small jagged piece of vivid magenta textured torn paper, with a dark charcoal paper strip underneath, all forming one self-contained collage cutout. Entire object and paper visible with clear margin. Transparent alpha background, no floor or backdrop, no green rectangle, no frame, no full poster, no text, no typography, no logos, no UI. The coloured card behind it will be created separately in CSS.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "更晚局部连续帧可见金属圆柱罐状物，具体品牌/内容未知；独立替代素材，不复刻未知品牌文字"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "saved",
+  "tool": "built-in image_gen",
+  "model": "not returned",
+  "prompt": "Use case: photorealistic-natural\nAsset type: individual landscape photograph for a coded interactive film gallery, 3:2 landscape composition.\nPrimary request: a vivid macro photograph of clouds of cyan and vermilion-orange pigment billowing into deep cobalt water, a little warm yellow, crisp organic turbulent folds and silky suspended wisps against a near black background. Rich photographic material and cinematic depth. This is the photograph only; no film frame, no UI, no borders, no collage, no letters, no watermark.\nSave the final image in the runtime generated image directory.",
+  "sha256": "dcde76cfd32cbfd0e28d04059a3c31880b2da717ddaa55f1751c06d40a74fcc8",
+  "nativeOriginalPreserved": true
+}

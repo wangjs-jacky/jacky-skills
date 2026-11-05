@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Splay · 从筒内看卡带</title><link rel="stylesheet" href="cylinder-reel.css"><script defer src="controls.js"></script><script defer src="cylinder-reel.js"></script></head>
+<body><main><div class="page-heading"><span>SPLAY / CYLINDRICAL REEL</span><span>横向拖动，图带和标题回应同一次输入。</span></div>
+<section class="splay-stage" id="splay-stage"><header><b>◈ SPLAY</b><span>CYLINDER REEL / DRAG / CLICK</span></header><div class="reel-title"><p>001 — CYLINDRICAL REEL</p><h1 id="reel-title" aria-label="All of it, in one turn"></h1></div>
+<div id="reel-camera" tabindex="0" aria-label="筒内卡带，横向拖动，左右键转动"><div id="reel-core"></div></div><div class="floor-shadow" aria-hidden="true"></div>
+<div class="splay-modes" role="group" aria-label="图片顺序与排布"><button id="order" aria-pressed="true">Order</button><button id="shuffle" aria-pressed="false">Shuffle</button><button id="close-layout" disabled>Close</button><button id="spread" aria-pressed="false">Spread</button></div><p class="deck-footnote">18 FRAMES · DRAG TO SPIN · CLICK TO OPEN</p>
+</section>
+<div class="tools"><button id="reset">复位</button><label><input id="reduce" type="checkbox">减少动态</label><output id="state" role="status" aria-live="polite"></output></div><p class="provenance">内弧透视和速度双响应沿画面；18帧、视场/半径、衰减、字符曲线为拟合。Order/Shuffle可见，Spread/Close与大图返回的未展示过程为本地补写。</p>
+<dialog id="art-viewer"><button id="close-image" aria-label="关闭大图">×</button><div id="viewer-image"></div><p id="viewer-label"></p></dialog>
+</main></body></html>

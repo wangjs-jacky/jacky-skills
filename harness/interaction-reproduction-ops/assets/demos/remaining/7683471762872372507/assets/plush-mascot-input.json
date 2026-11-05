@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: a single independent transparent PNG mascot for a coded creative-studio landing page. One original soft pear-shaped lavender plush creature sitting front-facing, large rounded lavender body, tiny ears or gentle rounded shoulders, two simple oval black eyes with ivory fabric eye whites, small raised apricot embroidered eyebrows, tiny friendly apricot curved mouth. Long oversized plush arms wrap around and lovingly hug a plump pink fabric heart in front of its belly, visible pale lavender mitten-like hands around the heart. Make the character feel handmade and tactile with dense short fuzzy lavender pile, pink terry cloth heart, subtle fabric seams. A little asymmetry, charming and calm, high quality 3D product render, diffuse soft studio light, front view at a very slight downward camera angle. The whole creature and its arms are visible, tightly framed with clear edges and generous transparent margin. Absolutely transparent background with no floor, no backdrop, no frame, no text, no letters, no logos, no website UI, no props other than the heart. Preserve real alpha transparency.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "原片浅色Logoipsum页的独立毛绒角色替代素材，非作者原图"
+}

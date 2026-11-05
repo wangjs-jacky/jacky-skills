@@ -1,0 +1,2 @@
+.lab .applied{position:static;transform:none;border-radius:5px;padding:12px 15px;font-size:11px;box-shadow:none;gap:8px;white-space:normal}.lab .applied span{width:20px;height:20px}.lab .explore{font-size:11px;padding:12px 15px}.lab{align-items:center}html:has(body.reduced){scroll-behavior:auto}
+@media(min-width:701px){.showcase{padding:206px 9% 60px;min-height:900px}.taste-card{min-height:680px}.copy{padding-top:78px}.brand{font-size:32px}.copy h1{font-family:'Times New Roman',Georgia,serif;font-size:116px;margin-top:110px;margin-bottom:35px}}

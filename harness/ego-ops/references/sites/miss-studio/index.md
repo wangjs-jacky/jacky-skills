@@ -2,9 +2,10 @@
 site: miss-studio
 domains:
   - miss.jacky-openbird.workers.dev
+  - insight.paws.rodeo
 aliases:
   - MISS Studio
-updated: 2026-10-03
+updated: 2026-10-19
 ---
 
 # miss-studio
@@ -17,12 +18,14 @@ updated: 2026-10-03
 
 | 操作 | 标题 | 风险 | 最近验证 | 参考文档 |
 |---|---|---|---|---|
+| [verify-brand-deployment](operations/verify-brand-deployment.md) | 核验品牌部署与已有资料 | low | 2026-10-18 | [操作](operations/verify-brand-deployment.md) |
 | [reprocess-completed-video](operations/reprocess-completed-video.md) | 对同一条自有已完成资料重新转录并确认新结果持久化 | high | 2026-10-03 | [操作](operations/reprocess-completed-video.md) |
 | [verify-delayed-upload-persistence](operations/verify-delayed-upload-persistence.md) | 核验迟到上传恢复及刷新持久化 | low | 2026-10-02 | [操作](operations/verify-delayed-upload-persistence.md) |
 | [inspect-incomplete-caption-task](operations/inspect-incomplete-caption-task.md) | 检查尚未归档但已有字幕的资料是否同时呈现真实采集状态、失败原因、重试入口和可阅读字幕。 | low | 2026-10-01 | [操作](operations/inspect-incomplete-caption-task.md) |
 | [repair-captions-and-cover](operations/repair-captions-and-cover.md) | 在保留原资料与学习笔记的前提下补录经过来源核验的字幕和封面。 | high | 2026-10-01 | [操作](operations/repair-captions-and-cover.md) |
 | [collect-video-and-verify](operations/collect-video-and-verify.md) | 提交公开视频后，核对各阶段进度、字幕与最终归档状态。 | medium | 2026-10-03 | [操作](operations/collect-video-and-verify.md) |
 | [collect-article-and-verify](operations/collect-article-and-verify.md) | 提交公开图文链接后核对正文、笔记、产物和刷新持久化。 | medium | 2026-10-03 | [操作](operations/collect-article-and-verify.md) |
+| [verify-native-chatbox-ui](operations/verify-native-chatbox-ui.md) | 核验原生共学界面与草稿恢复 | medium | 2026-10-19 | [操作](operations/verify-native-chatbox-ui.md) |
 
 ## 站点级陷阱
 

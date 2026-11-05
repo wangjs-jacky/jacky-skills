@@ -1,0 +1,52 @@
+[
+  {
+    "file": "alpine-blue.jpg",
+    "reuseSourceVideo": "7685690273317309702",
+    "reuseSourceTask": "02-首条视频复现",
+    "sha256": "8d423e7271f0269299a7864e6f9a2d56a361c1634c1d86e6ef2c28f14d42a75b",
+    "tool": "宿主内置 image_gen__imagegen",
+    "modelDisclosure": "工具成功生成位图，但未返回确切模型标识；无法单独验证后端为 GPT Image 2。未改用 CLI 或指定其他模型。",
+    "originalPrompt": "Use case: photorealistic-natural. Asset type: one original alpine photograph for a narrow portrait gallery tile. A sharp triangular snow covered Alpine peak rising from bottom foreground, brilliant deep turquoise-blue clear sky occupying the upper half, small wisps of thin cirrus high above, crisp ridges and true granular white snow, slightly faded editorial film photography, no people, no buildings, natural mid day sunlight, cool white and cyan color palette, vertical 2:3 framing. No text, watermark, border, UI or collage. A single uninterrupted real-looking photograph.",
+    "scope": "既有自制生图同字节复用，非作者原图"
+  },
+  {
+    "file": "alpine-glacier.jpg",
+    "reuseSourceVideo": "7685690273317309702",
+    "reuseSourceTask": "02-首条视频复现",
+    "sha256": "ce8182892ee719510ee0e9af195dd6f53becd77afafdde3f2487451734c614af",
+    "tool": "宿主内置 image_gen__imagegen",
+    "modelDisclosure": "工具成功生成位图，但未返回确切模型标识；无法单独验证后端为 GPT Image 2。未改用 CLI 或指定其他模型。",
+    "originalPrompt": "Use case: photorealistic-natural. ONE original vertical 2:3 photograph for an alpine gallery. An immense pale cyan-blue glacier with a rugged snowy ridge above it, crisp icy crevasses and white powder snow, luminous blue-grey sky, soft diffused natural sunlight, high altitude fine-art travel photography. No text, border, watermark, people, UI or collage. Natural colors and realistic detail.",
+    "scope": "既有自制生图同字节复用，非作者原图"
+  },
+  {
+    "file": "alpine-granite.jpg",
+    "reuseSourceVideo": "7685690273317309702",
+    "reuseSourceTask": "02-首条视频复现",
+    "sha256": "09546e314298d02c9ef282ce4838ddbe3f3edc3fb05d7f40dd3721dd2e67cfef",
+    "tool": "宿主内置 image_gen__imagegen",
+    "modelDisclosure": "工具成功生成位图，但未返回确切模型标识；无法单独验证后端为 GPT Image 2。未改用 CLI 或指定其他模型。",
+    "originalPrompt": "Use case: photorealistic-natural. ONE original vertical 2:3 landscape photograph for a ski photo gallery. A monumental warm beige limestone Alpine tower on the left, steep diagonal white ski slope from lower left to upper right, distant blue mountain valley, clear pale blue sky, hard winter sunshine, classic Dolomites ski holiday photograph, weathered ochre rock and real snow textures. No people, text, watermark, border, UI or collage. One continuous photographic scene.",
+    "scope": "既有自制生图同字节复用，非作者原图"
+  },
+  {
+    "file": "alpine-rose.jpg",
+    "reuseSourceVideo": "7685690273317309702",
+    "reuseSourceTask": "02-首条视频复现",
+    "sha256": "a18ac8641f62dc657f9f36ac3a4d4914196db87fb86cc117f3193c628436a08d",
+    "tool": "宿主内置 image_gen__imagegen",
+    "modelDisclosure": "工具成功生成位图，但未返回确切模型标识；无法单独验证后端为 GPT Image 2。未改用 CLI 或指定其他模型。",
+    "originalPrompt": "Use case: photorealistic-natural. Asset type: ONE original vertical 2:3 Alpine landscape photograph for a photo gallery. A jagged grey and white snow-covered mountain summit in the lower half, a beautiful pale blush-pink dusk sky in the upper half, dark blue creases in the snow and a small elegant white ridgeline. Quiet, soft alpenglow, pastel pink and cool indigo palette, editorial medium format mountain photograph. No people, no text, no border, no watermark, no collage, no UI. Photorealistic natural landscape with fine snow detail and calm composition.",
+    "scope": "既有自制生图同字节复用，非作者原图"
+  },
+  {
+    "file": "aurora-bowl.jpg",
+    "reuseSourceVideo": "7685690273317309702",
+    "reuseSourceTask": "02-首条视频复现",
+    "sha256": "9a4ddb379b5f4ef17b258f536bb1b7f6b3bc2bdc394bfe00d54ce6da46ddccbf",
+    "tool": "宿主内置 image_gen__imagegen",
+    "modelDisclosure": "工具成功生成位图，但未返回确切模型标识；无法单独验证后端为 GPT Image 2。未改用 CLI 或指定其他模型。",
+    "originalPrompt": "Use case: photorealistic-natural. One original vertical 2:3 editorial ski photograph, not a UI. View looking steeply down an expansive pale white snowy alpine bowl. A single tiny dark snowboarder makes one curved track near the center. Snow fills nearly all the composition, softly shaded contours in cool grey, very distant dark rocks only in upper left edge. Muted cream-white and light grey palette, gentle overcast daylight, grainy analog sports photograph, open spacious composition, realistic rather than stylized. No text, watermark, border, collage or graphics.",
+    "scope": "既有自制生图同字节复用，非作者原图"
+  }
+]

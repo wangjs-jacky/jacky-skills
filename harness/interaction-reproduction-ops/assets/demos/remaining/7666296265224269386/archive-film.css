@@ -1,0 +1,18 @@
+.gallery{background:radial-gradient(ellipse at 51% 48%,#35201980,transparent 57%),#050505}
+.gallery>header{transition:opacity .2s}.signature{font:11px Arial,sans-serif;letter-spacing:.5px}
+#opening{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;transform-origin:50% 50%;will-change:transform,opacity}
+#opening p{font:7px/2 Arial,sans-serif;letter-spacing:3px;color:#c4a492;margin:0 0 15px}
+#opening h2{font:700 clamp(52px,9vw,160px)/1 Georgia,serif;letter-spacing:-.065em;margin:0;color:#f5f2ec}
+#opening span{font:9px/2 Arial,sans-serif;color:#b69d89;margin-top:18px}
+.intro{left:5.4%;top:32%;width:49%}.intro h1{font-size:clamp(50px,10.8vw,176px);font-weight:600;letter-spacing:-.065em;white-space:nowrap;perspective:700px;line-height:1.17}
+.intro>p{color:#dc9f89;letter-spacing:3px}.intro>span{font:13px/1.7 Arial,sans-serif;display:block;max-width:360px}
+.intro::after{content:'ARCHIVE';position:absolute;top:66%;left:8%;font:300 clamp(100px,18vw,290px)/1 Arial,sans-serif;-webkit-text-stroke:1px #a7856e13;color:transparent;z-index:-1;pointer-events:none}
+.letter{display:inline-block;position:relative;transform-style:preserve-3d;transform-origin:50% 60%;color:#f6f4ee}
+.letter::after{content:attr(data-letter);position:absolute;inset:0;background-image:var(--photograph);background-size:220px 160px;background-position:50% 45%;background-clip:text;-webkit-background-clip:text;color:transparent;opacity:var(--photo-opacity,0);pointer-events:none}
+.gallery[data-phase="title"]>header,.gallery[data-phase="title"] .site-footer{opacity:0;pointer-events:none}
+#stage[inert]{cursor:default}.frame{border-radius:5px;overflow:hidden}
+.lab .timeline input{width:min(450px,63vw)}.lab #state{max-width:1000px}
+.reduced #opening{will-change:auto}.reduced .gallery>header{transition:none}
+@media(max-width:720px){.intro{left:6%;top:33%;width:52%}.intro h1{font-size:clamp(29px,9.5vw,55px);letter-spacing:-.065em}.intro>p{font-size:6px;letter-spacing:1px}.intro>span{font-size:10px;max-width:155px}#opening h2{font-size:15vw}#opening span{font-size:7px}.gallery>header p{display:none}.signature{font-size:9px}.letter::after{background-size:110px 90px}.lab{min-height:184px}.lab>div{gap:7px}.lab button{font-size:9px}.frame{border-radius:3px}}
+
+#title .letter{color:#f6f4ee;font:inherit;line-height:inherit;letter-spacing:inherit;display:inline-block}

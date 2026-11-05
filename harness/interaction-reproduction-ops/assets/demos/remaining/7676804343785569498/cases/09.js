@@ -1,0 +1,1 @@
+import{setup,announce}from'../runtime.js';const b=document.querySelector('#action'),card=document.querySelector('.flipper');let open=false;function render(){card.classList.toggle('open',open);b.setAttribute('aria-pressed',String(open));announce(open?'卡片背面':'卡片正面')}function play(){open=!open;render()}b.onclick=play;setup({play,reset:()=>{open=false;render()},settle:render});

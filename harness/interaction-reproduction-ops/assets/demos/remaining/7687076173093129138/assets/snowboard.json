@@ -1,0 +1,9 @@
+{
+  "file": "snowboard.png",
+  "tool": "image_gen",
+  "model": "not returned; not verified GPT Image 2",
+  "prompt": "Use case: product-mockup. Asset type: one isolated product cutout to be rendered by HTML on a pale grey snowboard product card. Primary request: a single long slender matte black snowboard, without bindings, seen from an elevated three-quarter angle so its upper face and very thin dark edge are visible. Rounded nose and tail, slender roughly 8:1 board silhouette, two subtle dark graphite rectangular mounting pads and very fine light-grey longitudinal graphic lines, tiny amber mark at the left nose. Board runs diagonally from lower left to upper right at about 22 degrees, fills 90 percent of a wide 3:2 canvas, and is fully in frame. Realistic understated product photography, dark charcoal top with restrained soft highlights and clean edges. Transparent background with alpha. No floor, no cast shadow, no text, logos, watermark, human, hands, bindings, UI or frame. Create only the snowboard object; its shadow and layout will be coded separately.",
+  "nativeOriginalPreserved": true,
+  "difference": "independently generated replacement, not the author photo",
+  "sha256": "adc8f897ad89822c7440e9712b41935d0bd6afb335798564f199ef84a2922888"
+}

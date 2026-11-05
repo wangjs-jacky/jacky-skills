@@ -1,0 +1,6 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: portrait snow mountain cover, photo only for a coded alpine interaction. Primary request: a jagged gray alpine peak lightly covered with snow, seen across a quiet distant snowy ridge, lower 45 percent of the frame. Upper 55 percent is a soft pale blush-pink winter twilight sky fading to almost white at the horizon. Real natural mountain photography, detailed rock, cool subtle lavender shadow, restrained soft light. Vertical 2:3 framing, no people, no trees, no buildings. No text, no logo, no border or interface.",
+  "tool": "built-in image_gen",
+  "model": "not exposed",
+  "sha256": "2929a5a89a2c51b2a421f47da731424234756d2078799d9be193e10c3b45f0c8"
+}

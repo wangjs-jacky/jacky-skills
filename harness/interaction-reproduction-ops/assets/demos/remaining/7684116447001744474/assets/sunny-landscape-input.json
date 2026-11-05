@@ -1,0 +1,9 @@
+{
+  "purpose": "仅天气页独立风景背景；文字/温度/卡片/导航均由代码实现",
+  "tool": "image_gen.imagegen",
+  "model": "工具未暴露具体模型标识，未核验GPT Image 2",
+  "prompt": "Create a portrait 3:4 editorial digital landscape illustration, a background asset for a refined weather app. Absolutely no text, letters, numbers, labels, phone, frame, controls, UI, panels, charts or icons. Upper 65 percent a spacious soft cyan blue sky smoothly fading into pale creamy peach near the horizon. A large diffuse peach pink sun at far right around 56 percent down, lightly veiled by haze. Lower 35 percent layers of soft rolling Tuscan hills, lavender in distance, muted violet middle ground, blush pink and warm apricot grassy hill in the foreground sweeping from left to right. Dreamlike painterly smooth gradients, fine subtle texture and tiny restrained grass details, calm afternoon lighting. A few very small dark lavender birds far away around the lower sky, plenty of completely clear sky in upper left for typography to be overlaid by code. Premium quiet illustration, elegant restrained pastel palette, no photorealistic buildings, no hard outlined shapes. Fill entire rectangular image edge to edge.",
+  "source": "独立文字生成，不包含作者截图或整张界面",
+  "sha256": "11def4c5c7ba95452c7926dcd20e37c2c1347e7576324e2e172092a28c303ac0",
+  "bytes": 1931348
+}

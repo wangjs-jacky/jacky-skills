@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: a magazine reading-app cover photograph, not a UI. A quiet cinematic landscape of many softly layered distant mountain ridges at sunrise. Wide horizontal ridges receding into warm mist, deep muted olive and charcoal ridges in the lower half, soft golden ochre sky and pale yellow sunlight across the top. Camera far away, no close cliffs or steep rock wall, no valley foreground or waterfall. Refined photographic grain, subtle haze, calm understated editorial photography. Landscape composition 4:3. No people, buildings, letters, logos, frame, phone, or interface. The entire image is ONLY the landscape; real HTML will supply its title and controls.",
+  "mode": "built-in imagegen",
+  "transparent_background": false,
+  "model": "内置工具返回未提供具体模型标识，不补称已核验GPT Image 2。",
+  "generated": true,
+  "tool": "image_gen.imagegen",
+  "outputSha256": "32c80866598d423913dc0f66c452cecec3dde620be8807a8814fe46249dc2e4c",
+  "output": "artifacts/assets/golden-ridges.png"
+}

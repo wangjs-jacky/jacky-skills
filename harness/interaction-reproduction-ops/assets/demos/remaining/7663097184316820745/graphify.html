@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'"><title>六节点关系图与影响路径</title><link rel="stylesheet" href="study.css"><link rel="stylesheet" href="graphify.css"><script defer src="../7670420512304123136/controls.js"></script><script defer src="../7663370761511521588/timeline.js"></script><script defer src="graphify.js"></script></head>
+<body data-study="graphify" data-duration="10" data-boundary="来自第57条108.34–133.7秒的六节点关系示意。先节点、再连线、再高亮三条影响路径，最后转为双卡说明。时间与字体为本地拟合；选择、改名与影响计算为自编演练，仅作用于明示的六条关系。不扫描仓库，不运行Graphify或作者Skill。">
+<main class="viewport"><div class="stage">
+<header class="chapter" data-at=".05"><b class="chapter-number">03</b><div><h1>graphify</h1><p>关系记忆 · 整站知识图谱</p></div><span class="chapter-tag">关系示意</span></header>
+<p class="graph-intro" data-at=".5" data-until="8.6">把页面、组件与样式，放在同一张图里。</p>
+<section class="network" data-at=".8" data-until="8.7" aria-label="六节点六条关系">
+<svg viewBox="0 0 880 500" aria-hidden="true"><g id="relations">
+<path data-edge="0" d="M178 80 L440 132"/><path data-edge="1" d="M440 132 L716 100"/><path data-edge="2" d="M440 132 L722 317"/>
+<path data-edge="3" d="M171 320 L178 80"/><path data-edge="4" d="M171 320 L722 317"/><path data-edge="5" d="M437 398 L716 100"/>
+</g></svg>
+<button class="node page" data-node="home" data-at="1.5" style="--x:178;--y:80"><strong>首页</strong><small>页面</small></button>
+<button class="node component" data-node="hero" data-at="1" style="--x:440;--y:132"><strong id="hero-name">HeroCard</strong><small>组件</small></button>
+<button class="node page" data-node="detail" data-at="2.1" style="--x:716;--y:100"><strong>作品详情</strong><small>页面</small></button>
+<button class="node" data-node="tokens" data-at="3.5" style="--x:171;--y:320"><strong>样式令牌</strong><small>样式</small></button>
+<button class="node" data-node="data" data-at="4.2" style="--x:437;--y:398"><strong>作品数据</strong><small>数据</small></button>
+<button class="node page" data-node="about" data-at="3" style="--x:722;--y:317"><strong>关于页</strong><small>页面</small></button>
+</section>
+<div class="answer-row" data-at="5.95" data-until="8.7"><span id="question">改动 HeroCard，影响哪些页面？</span><b>→</b><output id="impact-answer">首页 · 作品详情 · 关于页</output></div>
+<div class="partner-row" data-at="8.6"><div><i>◆</i><strong>设计规则</strong><small>页面的视觉依据</small></div><b>+</b><div><i>◆</i><strong>关系记忆</strong><small>明确修改的影响范围</small></div></div>
+<h2 class="partner-line" data-at="9">让页面有秩序，<em>让改动有依据。</em></h2>
+<p class="caption" data-at="5.5" data-until="8.4">关系来自明示数据，<em>高亮只回答当前问题。</em></p>
+</div></main>
+<section class="lab"><div class="actions"><button id="play">播放 / 继续 ↗</button><button id="pause" disabled>暂停</button><button id="back" disabled>反向返回 ↖</button><button id="reset">全部复位</button></div><label class="range">过程回看<input id="timeline" type="range" min="0" max="1000" value="0" aria-label="过程回看"><output id="percent">0%</output></label><div class="bottom"><label><input id="reduce" type="checkbox">减少动态</label><button id="about">来源与边界</button></div><p id="state" role="status">等待播放</p><p>自编关系演练 · 只计算下列固定关系，不分析真实仓库</p></section>
+<section class="product-lab" aria-label="实际关系选择与编辑"><h2>试着改一个节点</h2><div class="component-picks"><button data-pick="hero" aria-pressed="true">HeroCard</button><button data-pick="tokens" aria-pressed="false">样式令牌</button><button data-pick="data" aria-pressed="false">作品数据</button></div><form id="rename-form"><label>组件显示名称<input id="graph-label" maxlength="32" value="HeroCard" autocomplete="off"></label><button type="submit">更新图内名称</button></form><p id="graph-result" role="status">HeroCard → 首页、作品详情、关于页</p><details><summary>查看固定关系</summary><ul><li>首页使用 HeroCard 与样式令牌</li><li>作品详情使用 HeroCard 与作品数据</li><li>关于页使用 HeroCard 与样式令牌</li></ul></details></section>
+<dialog id="info"><button id="close-info">返回画面 ↗</button><h2 id="info-title"></h2><p id="info-copy"></p></dialog>
+</body></html>

@@ -1,0 +1,9 @@
+{
+  "file": "snowboard-jump.png",
+  "tool": "image_gen",
+  "model": "not returned",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original outdoor sports photograph used as the common image in a coded before/after editing slider. Landscape 4:3. A single adult snowboarder wearing a vivid burnt-orange jacket, black snow pants, dark helmet and gloves is caught jumping in mid-air above a snowy lip, slightly to the right of center, arms extended loosely sideways, knees bent and a white snowboard visible under both feet. Pale light-grey overcast sky fills the upper two thirds. A dark distant conifer tree line stretches across the lower quarter. Low viewpoint, documentary sports photography with realistic powder snow and fabric detail. Keep the complete figure and board within frame. No lettering, logos, UI, divider, labels, borders, before/after split, collage or watermark. This is one full-color uninterrupted photograph only.",
+  "nativeOriginalPreserved": true,
+  "sha256": "620bf95b120838f61b7c140579d9d2183d0f36985ea7f4486fbae986adf5b8ca",
+  "difference": "independent replacement photograph; pose, terrain and framing differ from source"
+}

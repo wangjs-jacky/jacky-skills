@@ -1,0 +1,10 @@
+{
+  "file": "pass-wall.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 dramatic outdoor climbing photograph for a separately coded season-pass card. A huge sheer ochre sandstone cliff fills the composition, textured warm pale-gold rock and long vertical cracks. A tiny anonymous climber in a red technical jacket and black trousers is attached to a thin climbing rope near the lower right third, seen from a great distance, emphasizing the enormous scale of the wall. Soft dry desert daylight, muted tan and warm yellow palette with one small red accent, fine detailed documentary outdoor sports photography. One uninterrupted photograph, no typography, no numbers, no card, no logos, no watermark, no border, no UI, no collage.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "a17ec8c91ddf47302ba5aa4db0ed9924127e96dfc78d3f32e98c357e88d99fef"
+}

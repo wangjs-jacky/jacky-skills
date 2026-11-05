@@ -1,0 +1,9 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: an editorial portrait photograph for the center of a warm orange creative studio landing page, NOT an interface. Anonymous adult woman, around 28, extreme close-up left-facing side profile, eyes softly closed, nose toward the left edge, face nearly filling the frame, a few loose dark blonde hair strands crossing her forehead and cheek. Warm sunlight grazes the upper left of her face, gentle orange-gold lens haze and very shallow depth of field, soft natural skin texture and muted beige background. Thoughtful, calm, cinematic analogue editorial feeling. Portrait 4:5 composition. No hands, jewellery, garments that dominate, text, logo, watermark, typography, browser, phone, card or UI. Only the portrait photo. Do not depict a known person.",
+  "transparent_background": false,
+  "generated": true,
+  "tool": "image_gen.imagegen",
+  "model": "内置工具未返回具体模型标识，未补称GPT Image 2已核验",
+  "output": "artifacts/assets/nexor-portrait.png",
+  "outputSha256": "55c2048802c29f8670fade432a9a5e383e99bf720042eff6cca5d3fc4bb2346d"
+}

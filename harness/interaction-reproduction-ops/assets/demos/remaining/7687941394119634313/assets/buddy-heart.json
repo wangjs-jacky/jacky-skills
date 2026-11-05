@@ -1,0 +1,9 @@
+{
+  "file": "buddy-heart.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: stylized-concept. Asset type: one original transparent 3D character cutout for a separately coded colorful collectible card. An adorable pair of soft bubblegum-pink heart creatures nestled close together, the larger puffy heart in front facing slightly left and the smaller pink heart peeking over its right shoulder. Two oversized glossy black oval eyes with bright white catchlights on the larger heart and tiny matching eyes on the smaller companion, friendly tiny smiles. A smooth translucent pastel-pink and lavender Saturn ring wraps diagonally around the lower part of the two heart bodies. One tiny puffy pink heart floats above the right shoulder. Premium playful 3D vinyl-toy / jelly render, smooth sculpted rounded forms, soft glossy highlights, subtle blush-pink and lavender shading, studio key light from upper left, no outlines. Full subject centered with all hearts and ring visible, 14 percent transparent padding, square composition. Real transparent alpha background, no floor, no backdrop or rectangle, no text, no lettering, no interface, no card, no watermark, no logo or border. One isolated original character artwork, not a screenshot.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的双心角色，非作者原图",
+  "sha256": "e8210e7f5d5a26965697afd9ffca4ccafdf7520bb553baf5c0b2925928ef74c5"
+}

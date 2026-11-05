@@ -1,0 +1,4 @@
+interface:
+  display_name: "Story UI · 组件全状态展台"
+  short_description: "设计技术组件库时，集中展示全部相关用户状态并支持直接操作、推进与重播"
+  default_prompt: "用 $story-ui 为这个技术组件库制作全状态交互展台，让我一次查看并操作全部相关用户状态。"

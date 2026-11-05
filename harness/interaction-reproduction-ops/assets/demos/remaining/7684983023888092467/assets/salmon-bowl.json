@@ -1,0 +1,10 @@
+{
+  "tool": "built-in imagegen",
+  "model": "工具未暴露具体模型名",
+  "prompt": "Use case: product-mockup. Asset type: one isolated food photograph for a meal nutrition card, not a UI. A single round matte white ceramic bowl viewed exactly overhead, containing a colorful salmon grain bowl: golden seared salmon cubes, quinoa, edamame, thin avocado slices, leafy greens, diced purple cabbage, cherry tomato halves, tiny radish circles, a little dill. Entire circular bowl and rim fully visible, centered in a square composition, occupying 82% of image, natural soft studio light and a subtle soft shadow. High-end realistic food photography, appetizing fresh muted natural colors. Genuine transparent background outside bowl and shadow; no table, cutlery, extra bowls, text, logos, interface or watermark. Produce one complete bowl only.",
+  "transparentBackground": true,
+  "sourceRole": "自制替代食物照片，非作者原素材",
+  "generatedFrom": "text-only",
+  "sha256": "f7e343a65a1dcb2b2862ae91598a32eab6fe3501978d94b62929e9eca162e4ab",
+  "file": "salmon-bowl.png"
+}

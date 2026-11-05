@@ -1,0 +1,10 @@
+{
+  "asset": "twilight-forest.png",
+  "source": "本轮独立文字生图；非原片截图或界面",
+  "prompt": "Use case: photorealistic-natural. Asset type: standalone landscape texture for a quiet focus landing page, not a screenshot or web design. Primary request: a wide, calm cinematic forest lake at twilight viewed from an unobstructed camera, soft mist between tall pine trees, distant rocky mountain ridge and warm pink mauve clouds at sunset, still water catching a little copper light. Composition: 16:9 panoramic landscape, trees and shore on both sides, distant horizon around the upper half, center with soft low-detail sky and mist so code-rendered white text will remain legible. Color palette: muted forest olive green, charcoal, dusty pink and warm copper; atmospheric and tactile, subtle analog grain. No people, no buildings, no vehicle. No window, frame, screen, interface, text, typography, lettering, logo, watermark, button or border. The UI and bronze rounded window will be built as real HTML and CSS separately.",
+  "tool": "image_gen.imagegen",
+  "model": "工具未返回具体模型名，未核验 GPT Image 2",
+  "sha256": "2e2dc7d4444d81b508790cf1405474179468b6ebfa472d5a3401e78586a36e86",
+  "bytes": 2304208,
+  "use": "Lumora 风景背景；窗框、文字、表单、情境切换均由独立代码实现"
+}

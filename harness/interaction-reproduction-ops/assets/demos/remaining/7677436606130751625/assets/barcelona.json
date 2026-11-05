@@ -1,0 +1,10 @@
+{
+  "name": "barcelona",
+  "modelName": "not disclosed",
+  "mode": "built-in image_gen",
+  "sha256": "f9add3a86cf571e523e6738c0738393e53c25f987588b9fc5e5fb6e02e97731f",
+  "dimensions": [
+    1024,
+    1536
+  ]
+}

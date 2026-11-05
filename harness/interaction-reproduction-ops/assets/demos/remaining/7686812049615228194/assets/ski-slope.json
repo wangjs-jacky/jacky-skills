@@ -1,0 +1,6 @@
+{
+  "prompt": "Use case: photorealistic-natural. Asset type: wide header photo of an alpine ski slope for a coded app. A candid slightly elevated high-angle view down a broad white groomed snow slope, six tiny skiers spaced apart in dark black and red jackets, one mid-distance skier crossing lower right, ski tracks and long thin shadows on pale gray-white snow. Snow fills the whole image, no horizon, no sky, no mountain backdrop, no buildings. Authentic outdoor editorial ski photography, diffuse winter afternoon light, crisp snow grain. Landscape 3:2 composition. No words, numbers, logos, interface, borders or watermark.",
+  "tool": "built-in image_gen",
+  "model": "not exposed",
+  "sha256": "7a03878c5cdae3c7c564d9d516b81cdcef5474c1162c8d9a61294e7255e1e9b3"
+}

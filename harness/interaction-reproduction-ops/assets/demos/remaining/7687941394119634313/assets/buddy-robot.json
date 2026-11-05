@@ -1,0 +1,9 @@
+{
+  "file": "buddy-robot.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: stylized-concept. Asset type: one original transparent 3D character cutout for a separately coded collectible character card. A small adorable retro robot: cream-ivory rounded square television-like head with a glossy black face screen and two large shiny round black eyes with clear white catchlights, tiny friendly smile; three tiny red yellow green indicator dots along its upper left forehead; one short periwinkle antenna with a round blue tip. Tiny cream body, stubby white arms and feet, a thick translucent blue-lavender Saturn ring circling diagonally around the waist. One small pale blue four-point sparkle to the upper right. Premium playful 3D vinyl-toy render with smooth ceramic / soft clay surfaces, subtle warm blush and cool blue shading, studio light upper left, no hard outlines. Full subject centered at a slight three-quarter angle with 14 percent transparent padding, square composition. Actual transparent alpha background, no floor or backdrop or colored rectangle, no text, no letters, no UI, no card, no logo, no watermark or border. One isolated piece of original character artwork, not a screenshot.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的复古机器人，非作者原图",
+  "sha256": "11fa895eb10f4ce6d0bc0d307faa84064da4f3e52886aa15eb60de914af66c38"
+}

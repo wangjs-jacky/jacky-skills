@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen",
+  "mode": "generate",
+  "model": "工具未返回可核验具体模型名",
+  "prompt": "Use case: photorealistic-natural. Asset type: a single original landscape photograph for the image area of a separately coded cycling challenge website, NOT a web page or mockup. Scene: a solitary adult road cyclist in a forest-green cycling jersey and black helmet rides toward the camera on a narrow unmarked mountain road in the European highlands. Cyclist in the right-center of the composition, small enough to show sweeping layered blue mountains and a green valley behind, spring grass and low shrubs at road edges. Natural morning daylight, lightly overcast blue sky, realistic documentary outdoor sports photography, fine details and believable bicycle geometry. Framing landscape 3:2, cyclist and bicycle completely visible, no text, no logos, no signs, no cards, no interface, no watermark. Original replacement visual for a private reference reproduction.",
+  "file": "cyclist.png",
+  "nativeOriginalPreserved": true,
+  "difference": "原片首屏图片区域是骑行视频；本版先用独立生成照片替代，不能宣称视频素材完全还原"
+}

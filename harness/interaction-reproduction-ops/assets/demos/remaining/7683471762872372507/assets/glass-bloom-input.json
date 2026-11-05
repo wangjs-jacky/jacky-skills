@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: stylized-concept. Asset type: independent transparent decorative object for a live HTML dark landing page. An abstract open lotus-like bloom made of many overlapping broad thin translucent glass and sheer organza petals. Viewed at three-quarter angle, not a flat flower icon. 24 irregular gracefully curved petals fan around a small luminous warm-white core, some curled inward and some dramatically flared outward. Cool pearl white, silver lavender, pale blue spectral highlights, subtle warm champagne transmitted glow at the centre. Extremely delicate thin edges, semi-transparent layered surfaces, physically plausible refraction, soft iridescent sheen, premium 3D art render. The entire rounded flower silhouette isolated in the centre with a transparent background, with enough clear margin on every side. No stem, no leaves, no pot, no floor, no pedestal, no stars, no dark rectangle, no page layout, no text, no logos, no buttons, no screenshot. Actual alpha transparency, preserve the translucent petals.",
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "原片黑底玻璃花中心物的独立替代素材；非整页截图或作者模型"
+}

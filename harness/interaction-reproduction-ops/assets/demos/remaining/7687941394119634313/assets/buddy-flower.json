@@ -1,0 +1,9 @@
+{
+  "file": "buddy-flower.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: stylized-concept. Asset type: one original transparent 3D flower character cutout for a separately coded collectible card. A cute friendly sunflower with eight fat rounded golden-yellow petals around a smooth dark caramel-brown round center, two huge shiny black oval eyes with bright white catchlights close together on the center and a tiny smiling mouth. A short curved green stem, two large soft glossy lime-green leaves extending left and right, small rounded leaf feet. Front three-quarter view. Premium playful 3D vinyl-toy / soft clay render, warm yellow petals with subtle orange shading, fresh green leaves, sculpted rounded volumes, delicate glossy highlights, gentle studio lighting upper left, no hard outlines. Full flower centered, all petals and both leaves visible with 14 percent transparent padding, square composition. Actual transparent alpha background; no floor, no backdrop or colored rectangle, no text, no letters, no interface, no card, no watermark, no logo or border. One isolated piece of original character artwork, not a screenshot.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的向日葵角色，非作者原图",
+  "sha256": "42d80457c58cc2e7307b7d3077f45d258bb4a4373f7da22525cf4a859733199d"
+}

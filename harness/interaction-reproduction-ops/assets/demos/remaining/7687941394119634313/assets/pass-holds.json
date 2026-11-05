@@ -1,0 +1,10 @@
+{
+  "file": "pass-holds.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 photograph for a separately coded climbing season-pass card. A tall pale warm-grey indoor bouldering wall seen from a slightly low angle, densely scattered chunky climbing holds in bright cyan, teal, mustard yellow and a few orange accents. Abstract irregular hold shapes cast small realistic shadows; one small anonymous adult climber in a dark top and mustard trousers is near the upper right, seen from behind and not posing. Soft even overhead gym lighting, editorial documentary sports photography, crisp tactile wall texture and a calm light neutral ground. One uninterrupted photograph. No typography, route labels, numbers, logos, card, watermark, border, UI or collage.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "6da6de6bbe1c05093cd54d7143a08ef46cde3fc220ec9bd55b57c2a3f1936bdb"
+}

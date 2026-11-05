@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "modelVerified": false,
+  "transparent_background": false,
+  "prompt": "Use case: photorealistic-natural. Asset type: one independent editorial travel photograph for a separately coded destination card, not an interface. A classic small yellow Lisbon-style streetcar seen from the front approaching on curved tram rails in a narrow sunlit street. Cream and pale ochre five-storey buildings with many tall white windows rise on both sides, a few overhead tram wires, worn pale stone pavement, intimate street depth, clear soft afternoon daylight. The yellow streetcar is the main subject in the lower central third, full streetcar visible with room around it; photograph wide 4:3. Warm whites, muted yellow, small olive accents, realistic architecture and transport textures. No readable signs, brand names, numbers, people in close-up, caption, logo, watermark, border, collage or UI.",
+  "purpose": "独立照片素材；非作者图片或整张界面",
+  "file": "lisbon.png",
+  "generated": true,
+  "sha256": "b1451f77e53e16d2c9762ea055c1254b0a3bccfc38931c61cbc1f442678b53f6",
+  "width": 1448,
+  "height": 1086,
+  "nativeOriginalPreserved": true
+}

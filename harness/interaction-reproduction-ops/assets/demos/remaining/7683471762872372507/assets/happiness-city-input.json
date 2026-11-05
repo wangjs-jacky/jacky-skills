@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: illustration-story. Asset type: original architectural comic artwork for a coded curved portfolio panel, not a website screenshot. A whimsical isometric cutaway city of tiny everyday stories: an airy pale mint and sky-blue hospital-like public building in one corner, a courtyard with small people, a little café, staircases, windows, plants, bicycles, a red-orange hot air balloon floating above. A friendly slice-of-life illustration with thin charcoal technical linework on a mostly white and pale turquoise paper field, soft pastel fills, many small architectural details, playful editorial quality. Small human figures in colourful clothes, no close-up faces. Landscape 3:2 art print, airy composition, mixed building cross-sections and street vignettes, not a map legend. Absolutely no readable text, no words, no labels or letters, no logos, no UI, no buttons, no browser or interface. Only standalone illustrated art; titles and controls will be coded separately.",
+  "transparent_background": false,
+  "tool": "image_gen.imagegen",
+  "modelReported": false,
+  "purpose": "弯曲作品带中的漫画建筑作品图，非网页截图；实标题与网格地面另由代码绘制"
+}

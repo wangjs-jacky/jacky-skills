@@ -1,0 +1,10 @@
+{
+  "tool": "built-in imagegen",
+  "model": "工具未暴露具体模型名",
+  "prompt": "Use case: product-mockup. Asset type: isolated top-down food photo for a small meal card, not a UI. One round matte white ceramic bowl of creamy overnight oats topped with a neat mix of blueberries, raspberries, sliced strawberries, small banana slices, pumpkin seeds and toasted granola. Exact overhead view, complete circular bowl fully visible, centered, occupying about 82% of a square frame with room around the rim. Fresh, realistic premium editorial food photography; soft natural studio light, subtle soft contact shadow. Genuine transparent background outside bowl and shadow. No table, utensils, extra bowls, text, labels, logos, watermark or interface.",
+  "transparentBackground": true,
+  "sourceRole": "自制替代食物照片，非作者原素材",
+  "generatedFrom": "text-only",
+  "file": "berry-bowl.png",
+  "sha256": "7ef4db91ad4289a05b93d819a9faa49198f77f7deff0afa9ca976d98dead3726"
+}

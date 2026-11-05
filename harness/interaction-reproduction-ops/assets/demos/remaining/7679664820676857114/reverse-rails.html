@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quorum · 反向图带与三图回应</title>
+  <link rel="stylesheet" href="reverse-rails.css">
+  <script defer src="controls.js"></script>
+  <script defer src="reverse-rails.js"></script>
+</head>
+<body>
+  <main>
+    <div class="heading"><p>QUORUM / REVERSE RAILS</p><span>滚动看图带；靠近中间三张，或轻点展开。</span></div>
+    <section id="quorum-window" tabindex="0" aria-label="Quorum可滚动画廊，方向键和PageDown可滚动">
+      <div class="gallery-paper">
+        <header class="brand-bar"><span class="brand"><i aria-hidden="true"></i> QUORUM</span><span>003 — PLEASE RETURN</span></header>
+        <div class="hero-title"><span>Kept in</span> <em>order.</em><p>Ten plates. One small collection.</p></div>
+        <div class="rail-window"><div class="rail" id="rail-top" aria-label="向左移动的图带"></div></div>
+        <div class="rail-window second"><div class="rail" id="rail-bottom" aria-label="向右移动的图带"></div></div>
+        <section class="stack-section" aria-label="三张图的回应">
+          <button id="art-stack" aria-expanded="false" aria-label="展开或收回三张画">
+            <img class="stack-left" src="assets/quorum-yellow-grid.png" alt="金黄色与深青块状画" draggable="false">
+            <img class="stack-right" src="assets/quorum-deep-blue.png" alt="深蓝与橙色笔触画" draggable="false">
+            <img class="stack-center" src="assets/quorum-blue-orange.png" alt="蓝白底橙色矩形画" draggable="false">
+          </button>
+          <div class="collection-stats"><div><strong>10</strong><span>PLATES</span></div><div><strong>03</strong><span>STACKED</span></div><div><strong>0</strong><span>COLLECTIONS</span></div></div>
+        </section>
+        <div class="rail-window lower"><div class="rail" id="rail-lower" aria-label="下方归档图带"></div></div>
+        <footer class="paper-end"><span>ALL IN GOOD ORDER.</span><button id="back-top">BACK TO TOP ↗</button></footer>
+      </div>
+    </section>
+    <div class="tools"><button id="reset">复位</button><label><input id="reduce" type="checkbox">减少动态</label><output id="state" role="status" aria-live="polite"></output></div>
+    <p class="provenance">自编复现：产品图带和三图叠组保留。0.3× / 1× 与 ±8°沿旁注；尺寸、缓动、触摸锁定与键盘补写。画作独立生成，原字库和画面仍有差异。</p>
+  </main>
+</body>
+</html>

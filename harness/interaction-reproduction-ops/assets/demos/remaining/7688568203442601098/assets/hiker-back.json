@@ -1,0 +1,8 @@
+{
+  "file": "hiker-back.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. One original alpine hiking photograph for a small gallery tile inside a separately coded interaction demo, not a UI mockup. Vertical 2:3 framing. A lone anonymous hiker seen from behind and slightly below, wearing a very dark charcoal hooded winter jacket and black backpack, climbing toward the right with one arm bent outward. Their upper body is a small dark silhouette in the lower central third. Bright deep desaturated blue winter sky occupies the upper two thirds; a very small strip of sunlit white alpine snow at the bottom. No face visible. Calm realistic editorial outdoor sports photography, subtle film grain, natural daylight and fabric texture. Keep composition simple and readable when cropped to a wide 16:10 tile. No text, logo, watermark, border, graphic or interface. A fresh standalone photograph, no collage.",
+  "nativeOriginalPreserved": true,
+  "difference": "独立生成的登山者背影，构图和人物姿态不是作者原照"
+}

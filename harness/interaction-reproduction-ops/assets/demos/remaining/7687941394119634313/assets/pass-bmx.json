@@ -1,0 +1,10 @@
+{
+  "file": "pass-bmx.png",
+  "tool": "image_gen",
+  "model": "工具未返回可核验具体模型标识",
+  "prompt": "Use case: photorealistic-natural. Asset type: one original vertical 2:3 outdoor sports photograph for a separately coded season-pass card. An anonymous adult BMX / dirt-jump cyclist in a black-and-white jersey, dark shorts and a full-face black helmet is airborne at the top of a compact dirt jump, bicycle tilted almost vertically, rider seen mostly from behind. The rider and bicycle occupy the central middle third. Dry warm beige scrub hills and tan dirt trails fill the background, hazy high desert daylight, restrained golden sand palette, authentic action sports editorial photograph with realistic bicycle geometry. No audience or large buildings. One uninterrupted photograph. No typography, no numbers, no logos, no card, no watermark, no border, no UI, no collage; enough clear beige background for coded labels.",
+  "nativeOriginalPreserved": true,
+  "status": "saved",
+  "difference": "独立生成的运动照片，非作者原照；人物、姿态、纹理有差异",
+  "sha256": "1a189170d39d878fe07d409b3d3e892d8a26fd0713e75d5df826b87cf10ecaf3"
+}

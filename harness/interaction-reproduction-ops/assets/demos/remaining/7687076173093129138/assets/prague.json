@@ -1,0 +1,9 @@
+{
+  "file": "prague.png",
+  "tool": "image_gen",
+  "model": "not returned; not verified GPT Image 2",
+  "prompt": "Use case: photorealistic-natural. Asset type: an original landscape travel photograph for a coded Prague destination card. Wide 3:2 composition. View across central Prague rooftops and pale cream neoclassical facades, layered red-brown tiled roofs, a distant dark cathedral spire, soft blue sky with small pale clouds filling the upper half. Quiet daytime light, gently desaturated sage/cream and sky-blue palette, realistic architecture, fine photographic detail. One uninterrupted photo. No typography, UI, frame, collage, logos or watermark. It will be cropped into a small rounded destination card and reused at the top of its detail card; do not render either card.",
+  "nativeOriginalPreserved": true,
+  "sha256": "5db6c2bde0f596e519a7f84df812398da3ad4bc09e9993702ca4b261df64a5b4",
+  "difference": "independently generated replacement, not the author photo or a verified documentary photograph"
+}

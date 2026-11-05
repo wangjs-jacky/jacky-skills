@@ -1,0 +1,10 @@
+{
+  "name": "rome",
+  "modelName": "not disclosed",
+  "mode": "built-in image_gen",
+  "sha256": "ca7536d3416cbc04244d09a9fd1b440dc5060de677495d2b95437ddb56b7328f",
+  "dimensions": [
+    1448,
+    1086
+  ]
+}
