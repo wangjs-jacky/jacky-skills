@@ -35,6 +35,7 @@
 
 ## 本机环境
 
-需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/execution/index.md)，共享安装可无此文件。只读核实命令解析、符号链接、runner、Node/cwd、代理来源、daemon 注册及目标 worker；关联具体会话，不打印凭据或完整环境。
 
 跨系统目标回到[发布路由](../../release-routing.md)；只继续受影响系统。
+
+需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/execution/index.md)，共享安装可无此文件。只读核实命令解析、符号链接、runner、Node/cwd、代理来源、daemon 注册及目标 worker；关联具体会话，不打印凭据或完整环境。

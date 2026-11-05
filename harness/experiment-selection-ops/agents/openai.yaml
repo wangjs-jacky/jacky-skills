@@ -1,0 +1,4 @@
+interface:
+  display_name: "选型实验 OPS"
+  short_description: "按任务类型比较技术方案，以真实案例、清晰报告和证据维护选型方法"
+  default_prompt: "用 $experiment-selection-ops 比较本次技术候选，按任务类型设计、真实执行、报告并沉淀适用方法。"

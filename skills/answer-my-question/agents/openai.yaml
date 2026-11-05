@@ -1,0 +1,4 @@
+interface:
+  display_name: "解答我的疑问"
+  short_description: "核实事实、建立判断框架，用对比和证据解释原因，形成有依据的收获"
+  default_prompt: "使用 $answer-my-question 帮我查清这个疑惑，用对比和证据讲明白原因，让我获得判断类似问题的方法。"

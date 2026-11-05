@@ -1,0 +1,18 @@
+## Research Question Card
+
+Use this card when a vague idea becomes a research direction.
+
+```md
+## Research Question Card
+
+Question:
+Type: exploratory | confirmatory | applied
+Hypothesis:
+Why it matters:
+Current evidence:
+Missing evidence:
+What would support it:
+What would falsify it:
+Minimal next action:
+Decision: explore | read more | run experiment | stop
+```

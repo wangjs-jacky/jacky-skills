@@ -1,0 +1,82 @@
+### Feasibility
+
+- Are required data, samples, methods, expertise, time, and resources available?
+- Is the unit of analysis attainable without pseudoreplication?
+- Can the needed precision or information be achieved?
+- Are approvals and governance pathways realistically available?
+- Would a pilot answer feasibility rather than the scientific hypothesis?
+
+### Interest and relevance
+
+- Which scientific, stakeholder, policy, or practical decision could the answer inform?
+- Were affected groups or domain experts involved where appropriate?
+- Is the burden of the work proportionate to its expected informational value?
+
+
+[... omitted ...]
+
+### Testability
+
+- Are observables and measurements available?
+- Does the candidate generate at least one prospective prediction?
+- Can a feasible design bear on the prediction?
+- Are assumptions needed to connect result to candidate stated?
+
+### Falsifiability and vulnerability
+
+- What result would be incompatible under the stated assumptions?
+- Could the candidate explain every possible outcome after the fact?
+- Are indeterminate outcomes acknowledged?
+- Does the proposed test risk only “confirming” the preferred candidate?
+
+A null result can be uninformative because of low precision, failed manipulation, insensitive measurement, missingness, or assumption failure. Record these possibilities before calling a result falsifying.
+
+### Discriminability
+
+- Which rival predicts a different observable pattern?
+- Is the difference larger than expected measurement uncertainty?
+- Can the test distinguish mixed mechanisms?
+- Are positive, procedural, and negative controls informative?
+- What result supports neither candidate?
+
+
+[... omitted ...]
+
+### Boundary conditions and transport
+
+- Where, when, and for whom should the candidate apply?
+- What exposure/intervention versions matter?
+- What effect modifiers or contextual dependencies are plausible?
+- Which populations, species, platforms, or scales are outside scope?
+- What independent replication or external-validation test is planned?
+
+### Assumption transparency
+
+Separate:
+
+- scientific assumptions;
+- measurement assumptions;
+- design/identification assumptions;
+- statistical/model assumptions;
+- implementation assumptions.
+
+State which assumptions are testable, partially diagnosable, or fundamentally untestable with available data.
+
+
+[... omitted ...]
+
+## Prediction-level review
+
+A prediction should identify:
+
+- prediction ID and parent candidate;
+- conditions and boundary conditions;
+- observable and measurement ID;
+- expected pattern, direction, magnitude/range if justified, and timing;
+- rival and rival-expected pattern;
+- falsifier/incompatible result;
+- indeterminate outcome;
+- linked analysis ID;
+- assumptions and uncertainty.
+
+Do not invent numerical effect sizes merely to appear specific. If magnitude is unknown, prespecify the direction, smallest effect of scientific interest, precision target, or a range of plausible values with rationale.

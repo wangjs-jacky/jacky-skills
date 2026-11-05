@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频字幕拼图"
+  short_description: "选取同一观点的原字幕与对应视频画面，叠加字幕并纵向拼成长图"
+  default_prompt: "使用 $video-to-cards 选取这个视频中的完整观点，叠加原字幕并拼成长图。"

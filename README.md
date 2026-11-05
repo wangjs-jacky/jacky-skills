@@ -46,11 +46,14 @@
 | [android-live-photo](./skills/android-live-photo) | [show-me](./skills/show-me) | [codex-quota](./skills/codex-quota) |
 | [photo-to-styled-motion](./skills/photo-to-styled-motion) | [teach-me](./skills/teach-me) | [steelman](./skills/steelman) |
 | [create-ops](./skills/create-ops) | [existing-ui-design](./skills/existing-ui-design) | [essay-polish](./skills/essay-polish) |
-| [story-ui](./skills/story-ui) | [static-publish](./skills/static-publish) | |
+| [story-ui](./skills/story-ui) | [static-publish](./skills/static-publish) | [answer-my-question](./skills/answer-my-question) |
+| [video-to-cards](./skills/video-to-cards) | | |
 
 `story-ui` 用于技术组件库的全状态交互展台：集中展示相关用户状态，支持示例输入、状态推进与重播，并复用实际组件。
 
 `static-publish` 用于带资源的静态网页发布：使用自己的云账号，复用已有 OSS 桶或同站资源，支持接入诊断、图片派生、内容寻址清单与精确页面快照；通过官方 Wrangler 完成 Cloudflare 发布、核验与回退。
+
+`answer-my-question` 围绕疑惑、新闻和比较选择核实事实，建立判断框架，用证据与对比解释原因，帮助读者形成有依据的认识。
 
 `existing-ui-design` 用于基于原界面或设计稿复原底稿，在现有产品中制作可交互方案、比较多版并持续迭代；方向认可与最终定稿分别记录。
 
@@ -73,6 +76,7 @@
 | [codex-ops](./harness/codex-ops) | Codex 使用与运维 | 按能力维护安装、配置、技能、认证连接与额度经验并自动沉淀 |
 | [goal-first-ops](./harness/goal-first-ops) | Goal First 项目目标档案 | 按 project 与 features 集中保存每个目标的报告、过程、产物、证据与方法 |
 | [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | 场景交互复用 | 按场景选择已实现效果、适配现有页面、实际验证并沉淀方法 |
+| [experiment-selection-ops](./harness/experiment-selection-ops) | 技术选型与对比实验 | 按任务类型设计真实比较，形成可追溯报告，并持续积累场景方法 |
 
 安装 `cloudflare-ops` 的 Agent 请读取[全局触发配置提示词](./harness/cloudflare-ops/references/global-agents-prompt.md)，向用户建议加入全局 `AGENTS.md`，展示规则与实际目标文件，获得明确同意后再写入。
 
@@ -279,3 +283,5 @@ claude plugin validate --strict .
 ## 许可证
 
 [MIT](LICENSE)
+
+`experiment-selection-ops` 包含采用单独许可的第三方文档及改编内容，包括 CC BY 4.0；具体范围、署名和许可见其 [第三方说明](./harness/experiment-selection-ops/THIRD_PARTY_NOTICES.md)，不能将整个 Skill 概称为 MIT。

@@ -1,0 +1,70 @@
+### 1. Inventory and validate artifacts
+
+Start by identifying:
+- metric tables (`csv`, `json`, `tsv`, logs),
+- training curves and checkpoints,
+- seeds / repeated runs,
+- baselines, ablations, and comparison families,
+- evaluation protocol metadata.
+
+Validate:
+- metric direction (higher/lower is better),
+- unit of analysis (run, subject, fold, dataset, seed),
+- number of runs / seeds,
+- missing values or silent failures,
+- comparability across methods.
+
+If the comparison is not statistically valid, say so before continuing. Do not treat repeated `subject × task` rows, folds, windows, trials, or seeds as independent units unless the design justifies it.
+Common blocker: a `subject × task` summary table is usually a repeated-measure summary, not an independent subject-level sample. If subjects have multiple task rows or missing task cells, state that before any significance or winner claim.
+
+### 2. Lock the comparison questions
+
+Before running statistics, define the exact comparison questions:
+- Which method is compared to which baseline?
+- What is the primary metric?
+- What is the repeated-measure unit?
+- Which ablation or robustness questions matter?
+- Which findings are decision-changing?
+
+Do not mix unrelated comparisons into one undifferentiated table.
+
+
+
+[... omitted ...]
+
+#### `analysis-report.md`
+Summarize:
+- the analysis question,
+- key findings,
+- strongest supported comparisons,
+- main caveats,
+- what changed in the experimental understanding,
+- claim candidates that may later be used in reports or manuscript writing.
+
+Each claim candidate should use this shape:
+
+```md
+## Claim Candidates
+
+- Claim:
+  - Source evidence:
+  - Allowed wording:
+  - Forbidden stronger wording:
+  - Uncertainty:
+  - Next check:
+  - Decision: keep | weaken | revise | discard
+```
+
+
+
+[... omitted ...]
+
+## Figure interpretation rule
+
+For every major figure, answer all three questions:
+1. **Why does this figure exist?**
+2. **What exactly should the reader notice?**
+3. **What does that observation change in our belief or next decision?**
+
+If a figure cannot answer question 3, it is probably decorative rather than scientific.
+

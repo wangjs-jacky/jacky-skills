@@ -28,6 +28,7 @@ manifest 可达不等于设备加载；通知中继接受请求不等于手机�
 
 ## 本机环境
 
-需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/android/index.md)，共享安装可无此文件。核实当前 OTA 契约文件、设备 package/channel/runtime/Update ID；设备不可达时明确缺少真机证据。
 
 跨系统目标回到[发布路由](../../release-routing.md)；只继续受影响系统。
+
+需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/android/index.md)，共享安装可无此文件。核实当前 OTA 契约文件、设备 package/channel/runtime/Update ID；设备不可达时明确缺少真机证据。

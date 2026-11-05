@@ -1,0 +1,57 @@
+Use a **seeded, reproducible** schedule (see `scripts/randomization.py`) and follow
+it exactly. Record the seed. "I randomized somehow" is neither auditable nor
+reproducible.
+
+
+[... omitted ...]
+
+## Blocking — removing known nuisance variation
+
+A **block** is a group of units expected to be similar (same day, batch, litter,
+plate, instrument run). You randomize treatments *within* each block. The nuisance
+variation between blocks is then removed from the error term, so the treatment
+comparison is more precise — often dramatically so.
+
+Block on anything that (a) you can identify before the experiment and (b) you
+expect to affect the response but isn't of interest itself:
+- **Time:** day, week, session, processing batch.
+- **Space:** plate, plate position/edge, shelf, cage rack, field plot.
+- **Material:** reagent lot, animal litter, cell passage, donor.
+- **People/instruments:** technician, machine, sequencing run.
+
+Rule of thumb: *"Block what you can, randomize what you cannot."* If you suspect a
+factor matters but can't block it, at least randomize across it and record it as a
+covariate.
+
+**Randomized complete block design (RCBD):** every treatment appears once in every
+block. This is the workhorse design — analyze with treatment + block in the model.
+
+
+[... omitted ...]
+
+## Batch effects and plate layout (especially omics / HTS)
+
+Batch effects are systematic technical differences between processing groups and are
+a leading cause of irreproducible high-throughput results.
+- **Never let batch align with the biological condition.** If all cases are in batch
+  1 and all controls in batch 2, condition and batch are perfectly confounded and
+  no normalization can separate them.
+- **Randomize or block sample-to-batch and position-within-plate.** Spread each
+  condition across all batches and across plate positions.
+- **Avoid edge effects:** evaporation and thermal gradients make outer wells differ;
+  don't load all controls into edge columns. Randomize positions, or include
+  replicates spanning edge and interior.
+- **Include anchor/reference samples** in every batch to estimate and correct batch
+  shifts.
+- `assign_factorial_runs()` shuffles an existing table; it does not design a plate
+  map or preserve blocks automatically. Build and validate the plate/block/position
+  columns first, then apply randomization only within permitted groups. A whole-table
+  shuffle is unsuitable for a split-plot or other restricted randomization.
+
+## Documentation
+
+Record, and ideally pre-register: the randomization method, the seed, block sizes,
+stratification factors, package/script versions, the schedule itself, and the planned analysis (which must
+include block/stratum/cluster terms). This is what makes the study auditable and the
+primary analysis confirmatory rather than exploratory.
+

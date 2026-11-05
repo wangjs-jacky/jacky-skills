@@ -1,0 +1,48 @@
+2. **Record every experiment, failures most of all.** Negative results are the most
+   reusable output of a campaign — they stop the next agent re-running a dead end.
+   In fdu’s record, 28 of 64 artifacts are rejections, and that is why its queue is
+   trustworthy.
+
+
+[... omitted ...]
+
+8. **Ids are stable and never reused.** Experiments (`exp-NNN`), hypotheses (`H-NNN`)
+   and exploration reports (`X-NNN`) each number independently and monotonically, so no
+   id ever means two things.
+
+
+[... omitted ...]
+
+9. **Provenance is captured at the source, never retyped.** Commit, dirty flag, binary
+   hash, command line, environment — filled by the recording step, not by whoever
+   remembers.
+
+
+[... omitted ...]
+
+10. **An independent check that the result is real, before it may be good.** Identical
+    output before timing; a validity oracle; a solution checker; a proof kernel.
+    A run failing it is *invalid*, not merely rejected — refuse it at record time.
+
+
+[... omitted ...]
+
+11. **The record is corrected, not rewritten.** A defective artifact gets an annotation
+    explaining what stands and what does not.
+
+
+[... omitted ...]
+
+12. **The instrument must prove it was measuring something.** Six metabrowser runs were
+    taken in a 0×0 browser pane and produced plausible timings measured against nothing.
+    Guard the instrument, and refuse runs the guard rejects.
+
+
+[... omitted ...]
+
+13. **A check that did not run is not a check that passed.** Gates degrade to skips — a
+    missing optional dependency, an absent toolchain, an unreachable store — and a
+    summary line that says everything passed while its strongest check was skipped is
+    worse than no gate, because it is trusted.
+    Count the skips, name them in the summary, print the unqualified pass only at zero,
+    and give the gate a strict mode that unattended runs use.

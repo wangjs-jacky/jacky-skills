@@ -29,6 +29,7 @@ Web 前端、静态存储、API 与执行端是不同部署目标。正式发布
 
 ## 本机环境
 
-需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/web/index.md)，共享安装可无此文件。从当前工程 Web 发布契约、workflow、部署 summary、线上 HTML revision 与资源响应核实环境；只在需要实际页面交互时使用 Ego。
 
 跨系统目标回到[发布路由](../../release-routing.md)；只继续受影响系统。
+
+需要真实入口、版本或机器时读取[私有系统索引](../../../local/systems/web/index.md)，共享安装可无此文件。从当前工程 Web 发布契约、workflow、部署 summary、线上 HTML revision 与资源响应核实环境；只在需要实际页面交互时使用 Ego。

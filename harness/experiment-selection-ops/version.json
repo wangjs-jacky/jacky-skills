@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "skill": "experiment-selection-ops",
+  "implementation_version": "0.3.0",
+  "knowledge_version": "0.3.1-final-evidence",
+  "business_validation": "task08 used 0.1.0 with partial observations; task09 merged its accepted scope and added 0.2.0 methods. task10 CSV business actually used 0.2.0 / 0.2.0-methods. 0.3.0 added CSV operation/routing and affected guidance; fresh independent affected-item reviews completed 2026-10-17 with limited retrieval/application, portable offline calls and failure controls. No whole 0.3 business rerun, causal superiority or human-understanding validation. Final update is evidence/date/stage facts only.",
+  "repair01": {
+    "basis": "task08 F-L3-01: negative elapsed time and unproven cross-process clock comparison domain",
+    "behavior_change": "Shared design-and-execution timing guidance only; record clock identity and domain, invalidate unusable elapsed times, preserve originals and distinguish UTC observation",
+    "shared_rule_owner": "references/methods/design-and-execution.md",
+    "business_method_actually_used_in_task08": "0.1.0 / 0.1.0-initial",
+    "validation_scope": "source structure, preserved-byte identity, deterministic derived timing export and its normal/negative/unknown/different-domain controls; no business rerun",
+    "unmerged_material": "Historical repair01 freeze excluded full task08 patches and task09 material; task09 later merged task08 final accepted scope without changing clock rules.",
+    "new_scenario_validation": "pending later task; no claim of whole-Skill success"
+  },
+  "identity_note": "Versions identify bytes; the invoking workspace determines the single current source. Historical test snapshots are never current authority.",
+  "file_roles": {
+    "implementation_rule": "Shared files other than pure source catalog/excerpts/licenses/notices and version identity; includes task-type and operation guidance.",
+    "knowledge_prefixes": [
+      "references/task-types/",
+      "references/sources/",
+      "licenses/"
+    ],
+    "knowledge_files": [
+      "THIRD_PARTY_NOTICES.md",
+      "references/methods/index.md",
+      "references/methods/question-to-contrast.md",
+      "references/methods/blocking-and-interactions.md",
+      "references/methods/diagnostic-figures.md"
+    ],
+    "identity_files": [
+      "version.json"
+    ],
+    "overlap_note": "Type/operation guidance, source index and task09 shared method knowledge carry behavior and knowledge. New shared method bodies/routes are explicitly listed as knowledge_files and remain implementation rules; no guidance is hidden as facts-only."
+  },
+  "behavior_change_rule": "A behavioral change in any file, including an operation, increments implementation_version as well as the affected knowledge_version.",
+  "task09_patch_merge": {
+    "from_implementation": "0.1.1",
+    "from_knowledge": "0.1.1-repair",
+    "implementation": "0.1.2",
+    "knowledge": "0.1.2-evidence",
+    "behavior_changes": [
+      "operation-level explicit UTF-16/codepoint/grapheme choice, native/adapted diagnostic coverage and actual callback boundary guidance from C-library patch"
+    ],
+    "evidence_changes": [
+      "task08 final partial observations, invalid historical time, revised frame/navigation boundaries, preserved deviations and unknowns"
+    ],
+    "clock_rule_unchanged": true,
+    "business_rerun": false
+  },
+  "task09_methods": {
+    "from_implementation": "0.1.2",
+    "from_knowledge": "0.1.2-evidence",
+    "implementation": "0.2.0",
+    "knowledge": "0.2.0-methods",
+    "behavior_changes": [
+      {
+        "owner": "references/methods/question-to-contrast.md",
+        "change": "turn the selection decision into prospectively distinguishable rival predictions and inconclusive/stop branches",
+        "source_ids": [
+          "kd-hypothesis-quality",
+          "kd-discriminating-tests",
+          "scholar-question-card"
+        ]
+      },
+      {
+        "owner": "references/methods/blocking-and-interactions.md",
+        "change": "assign variable roles, construct within-block schedules and crossed conditions, retain interaction/aliasing limits",
+        "source_ids": [
+          "kd-randomization-blocking",
+          "kd-factorial-doe"
+        ]
+      },
+      {
+        "owner": "references/methods/diagnostic-figures.md",
+        "change": "choose diagnostic views from evidence-unit/condition/time structure, preserve counterexamples and separate new measurement from reanalysis",
+        "source_ids": [
+          "scholar-figure-catalog",
+          "scholar-analysis-pitfalls"
+        ]
+      },
+      {
+        "owner": "references/methods/index.md",
+        "change": "thin problem-to-method routing reached through task-type index, type profiles and existing operations",
+        "source_ids": [
+          "kd-hypothesis-quality",
+          "kd-discriminating-tests",
+          "scholar-question-card",
+          "kd-randomization-blocking",
+          "kd-factorial-doe",
+          "scholar-figure-catalog",
+          "scholar-analysis-pitfalls"
+        ],
+        "adaptation_note": "Routing is a project adaptation of these documented methods; not an upstream requirement."
+      }
+    ],
+    "new_methods_evidence_level": "documented",
+    "last_verified": null,
+    "new_business_execution": false,
+    "sealed_new_scenario_read": false,
+    "existing_shared_execution_loop_changed": false,
+    "clock_rule_changed": false,
+    "validation_scope": "saved source SHA256/git blob and exact excerpt checks; relative links, ownership/conflicts/privacy/version and frozen-byte checks only",
+    "unverified": [
+      "new guidance and routing used by an independent executor",
+      "new-scenario transfer",
+      "new visualization output and human understanding",
+      "whole-Skill success, install and host discovery"
+    ],
+    "historical_scope_note": "This object records the task09 frozen-stage checks and unknowns. task10_merge adds only local CSV method-application evidence; all broader claims remain unverified."
+  },
+  "task10_merge": {
+    "evidence_id": "task10-csv-import-local",
+    "actually_used_implementation": "0.2.0",
+    "actually_used_knowledge": "0.2.0-methods",
+    "implementation": "0.3.0",
+    "knowledge": "0.3.0-csv-local",
+    "new_operation": "function-library/compare-csv-import",
+    "methods_evidence": "partial; local CSV application only; last_verified remains null",
+    "initial_reviews": "data, logic, readability all frozen before coordination",
+    "behavior_changes": [
+      "new CSV operation and type routing",
+      "semantic oracle versus diagnostic-property boundary",
+      "concurrent activity check and non-isolated performance limits"
+    ],
+    "implementation_checks": "portable project fileURLToPath and parent failure propagation; explicit two-candidate small smoke, no full benchmark rerun",
+    "independent_affected_review": "completed with limited data/logic/readability scope; see final_evidence_update; not whole business forward validation",
+    "not_claimed": [
+      "new operation read by original 0.2 executor",
+      "whole 0.3 business validation",
+      "cross-task-type or causal method superiority",
+      "human understanding",
+      "production upload",
+      "global install or public-source authorization"
+    ]
+  },
+  "final_evidence_update": {
+    "from_implementation": "0.3.0",
+    "from_knowledge": "0.3.0-csv-local",
+    "implementation": "0.3.0",
+    "knowledge": "0.3.1-final-evidence",
+    "local_check_date": "2026-10-17",
+    "evidence_id": "task10-csv-recheck-final",
+    "change_class": "facts/date/stage only; no behavior, route, step or branch changes",
+    "affected_review": "fresh data/logic/readability frozen before coordination; same-model bias remains",
+    "confirmed_scope": [
+      "CSV route actually retrieved and used for limited replay plan and gate controls",
+      "independent moved offline package install; normal/missing-worker same entry",
+      "original 32 valid cost observations and 32 pre-library failures preserved",
+      "43 shared source files match affected-review snapshot before evidence-only edits",
+      "official minimal validator passed by data role using read-only PyYAML cache"
+    ],
+    "unchanged_unknowns": [
+      "whole 0.3 business forward run",
+      "full diagnostic-property oracle",
+      "non-isolated performance causal effect",
+      "all failure branches",
+      "F15 inaccurate fixture description",
+      "human policy/understanding/taste",
+      "animation/model/Token tasks",
+      "global Skill installation or host discovery"
+    ],
+    "task08_note": "task09 already merged final accepted task08 evidence; no duplicate patch or success-date update",
+    "success_date_added": false
+  }
+}
