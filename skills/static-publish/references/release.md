@@ -31,7 +31,9 @@
 }
 ```
 
-日期使用项目实际兼容日期；可选 accountId 指定用户自己账号，不是密钥。files 必须包含全部页面和依赖（包括深层派生图），不是 glob；immutable 必须在 files 内，文件名中至少12位摘要与完整文件 SHA 前缀匹配。没有内容地址时删除 immutable 项，不给固定入口设置长期缓存。
+首次无配置可先 `project.mjs init NEW_DIR --public-dir DIR --name WORKER --file index.html ...`，按help为每个文件重复--file；它生成公开根外的项目入口/site.json，不建云资源。日期使用项目实际兼容日期；可选 accountId 指定用户自己账号，不是密钥。files 必须包含全部页面和依赖（包括深层派生图），不是 glob；immutable 必须在 files 内，文件名中至少12位摘要与完整文件 SHA 前缀匹配。没有内容地址时删除 immutable 项，不给固定入口设置长期缓存。
+
+plan默认按免费档20000文件（包含生成的_headers）检查；只有已确认Workers付费档才设worker.plan=paid，对应100000文件，不自动更改套餐。单文件均不得超过25 MiB。限制来源见[官方限额](https://developers.cloudflare.com/workers/platform/limits/#static-assets)，规则变化时核对并更新实现；不能用同站分支绕过文件限制。
 
 ```bash
 node "$SKILL_DIR/scripts/doctor.mjs" site.json --auth --wrangler ./node_modules/.bin/wrangler
@@ -40,7 +42,7 @@ node "$SKILL_DIR/scripts/site.mjs" prepare site.json release-001
 node "$SKILL_DIR/scripts/site.mjs" check release-001
 ```
 
-新 release 目录不能已存在；保留旧快照。只将 release/public 上传；wrangler.json 和 release-manifest.json 留在外面。check 拒绝快照新增/缺失/变化文件、符号链接及配置变化。生成器不继承 .assetsignore，因此不受旧通配符漏深层图片影响；也不分析 HTML/CSS/JS 中全部运行时依赖，显式列表仍须由构建清单和浏览器实际请求核对。
+新 release 目录不能已存在；保留旧快照。只将 release/public 上传；wrangler.json 和 release-manifest.json 留在外面。check 拒绝快照新增/缺失/变化文件、符号链接及配置变化。生成器不继承 .assetsignore，因此不受旧通配符漏深层图片影响。plan/check核对字面HTML src/href/poster、普通srcset、内联/独立CSS url/@import及规范HTML别名，存在于磁盘但没列files也会停止；输出externalOrigins/manualReview，动态JS路径与外站功能仍由构建清单和浏览器实际请求核对。它不是完整HTML/JS运行时解析器，不替代浏览器，也不自动增加公开文件。
 
 生成的 _headers 为入口及未版本化资源再验证，只给内容地址长期 immutable；HTML 的规范路径和带扩展名路径保留 no-transform。重叠规则先 `! Cache-Control` 再设置，避免同名头拼接。不要全局移除 no-transform：平台自动插入脚本可能影响 iframe load；数据/脚本等可压缩，实际响应另验。默认超过100条规则停止生成，大站需在工程内设计受限目录规则并保留原安全头。
 
@@ -74,6 +76,8 @@ node "$SKILL_DIR/scripts/site.mjs" verify RELEASE https://site.example.org
 
 核验中途失败时 stdout 的 JSON 保留 verified、failed（精确 key 与错误）及 notAttempted，exit1；尚未尝试的文件不算通过。网络失败保留原失败记录；不要因响应不完整就重新发布。资源补验可复制原非敏感配置、仅保留失败/未试 source；页面补验按 release-manifest 精确 URL/摘要作单次 GET，原快照不修改。全部缺口补齐后才更新整批验收结论。
 
+OSS publish中途失败也保留verified/failed/notAttempted和complete=false、pagePublished=false，失败条目含安全分类/下一步。已有成功上传可能保留在云端，不自动删除来“回滚”；停止切页面，修复后明确重跑会核验复用正确对象。重新发布不是网络失败的默认修复。
+
 当前 Node 的默认 fetch 网络路径可能与官方 CLI 不同。若本机本就使用代理，按 Node 版本启用其受支持的环境代理方式（Node24可单次设置 NODE_USE_ENV_PROXY=1）；不改全局网络，不把传输失败解释为云发布失败。HTTP byte verification 输出明确 browserVerified=false、activeVersionVerified=false，它不替代上面的版本读回或下面的浏览器验收。
 
 ## 浏览器、性能和回退
@@ -93,5 +97,31 @@ node "$SKILL_DIR/scripts/site.mjs" verify OLD_RELEASE https://site.example.org
 读回旧 UUID、完整旧文件并复验关键交互。旧版本必须仍可用；平台回退不可用时用保存的旧完整快照重新上传/激活，不能重新构建“相似版本”冒充同字节回退。没有旧版本的首次发布不承诺回退；保留首版快照供后续使用。不用 sync --delete、删共享桶或清理其他前缀回退。
 
 交付精确 URL、活动版本、清单、已验证项及回退版本。跨项目复用、跨账号成功、跨地区速度分别取证；单账号 fixture 通过不能代表其他使用者已经完成配置。
+
+## 保存项目发布回执
+
+项目入口由project init生成。把本轮真实活动部署读回JSON及site verify成功JSON保存在项目的evidence目录，命令失败留下的文件不能当成功证据。每次使用新名称，例如 `evidence/deployment-001.json`、`evidence/bytes-001.json`；官方CLI命令与参数沿上文执行。保留原Cloudflare目标授权，不因保存回执再次要求确认。
+
+在公开根外新建一个本地说明文件（字段路径均相对项目目录）：
+
+```json
+{
+  "version": 1,
+  "release": "releases/release-001",
+  "deployment": "evidence/deployment-001.json",
+  "verification": "evidence/bytes-001.json"
+}
+```
+
+```bash
+node "$SKILL_DIR/scripts/project.mjs" record .publish receipt-input.json release-001
+node "$SKILL_DIR/scripts/project.mjs" status .publish
+```
+
+有资源分流时，可把此版实际消费清单另存到项目evidence下的新文件，说明中增加resourcesManifest路径。它只记录清单摘要，resources.cloudVerified=false，不能从一个清单推断OSS已经上传；资源核验结果及浏览器报告仍保留原证据。后续发布可增加previousReceipt，例如 `receipts/release-001.json`，仅允许相同Worker/Origin，关联旧UUID与旧完整快照。
+
+record先check快照，再核对所提供deployment为一个UUID且100%、字节结果覆盖全部文件且无失败/未尝试；当前site verify输出releaseManifestSHA256及每文件sha256，record必须与该快照匹配，避免同长度旧文件证据误绑新版。历史无绑定字段的字节JSON需重新verify，不能手填摘要来冒充验收。保存证据摘要与不可覆盖回执。**它校验并归档操作者提供的证据，不连接云，也无法替操作者证明证据来自正确账号/实时目标。**status只展示本地历史，cloudQueried/currentCloudStateVerified为false；上线/回退前仍须官方单次读回真实基线。浏览器状态默认false，单独报告实际验收，不用本地回执制造云/浏览器成功。
+
+回退时从旧回执找到UUID与release，按上文执行官方rollback与旧完整字节/交互核验；把此次回退结果存成新证据，再record新名称，并用previousReceipt关联被替换的本地记录。没有回执不等于云端未部署，旧UUID也可能已不可回退，须核对实际平台状态；首次发布没有旧版，不写虚构回退入口。
 
 官方依据：[Static Assets](https://developers.cloudflare.com/workers/static-assets/)、[Headers](https://developers.cloudflare.com/workers/static-assets/headers/)、[Versions & Deployments](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/)。CLI 参数以当前项目版本帮助为准。

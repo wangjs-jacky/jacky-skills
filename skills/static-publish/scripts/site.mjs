@@ -5,6 +5,8 @@ import { constants } from 'node:fs';
 import { dirname, extname, join, resolve, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { hashFile, keys, resourcePath, sourceFile, types, verifyEntry } from './resources.mjs';
+import { diagnostic, problem, readJSON } from './diagnostics.mjs';
+import { checkReferences } from './references.mjs';
 
 const fail = message => { throw new Error(message); };
 const pageTypes = { ...types, '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript', '.mjs': 'application/javascript', '.json': 'application/json', '.txt': 'text/plain', '.wasm': 'application/wasm', '.ico': 'image/x-icon' };
@@ -12,15 +14,18 @@ const urlPath = path => '/' + path.split('/').map(encodeURIComponent).join('/');
 const canonical = path => path === 'index.html' ? '/' : path.endsWith('/index.html') ? urlPath(path.slice(0, -10)) : path.endsWith('.html') ? urlPath(path.slice(0, -5)) : urlPath(path);
 
 export async function planSite(configPath) {
-  const config = JSON.parse(await readFile(configPath, 'utf8'));
+  const config = await readJSON(configPath, '页面配置');
   keys(config, ['version', 'publicDir', 'files', 'immutable', 'worker'], '页面配置');
-  keys(config.worker, ['name', 'accountId', 'compatibilityDate'], 'Worker 配置');
+  keys(config.worker, ['name', 'accountId', 'compatibilityDate', 'plan'], 'Worker 配置');
   const w = config.worker;
   if (config.version !== 1 || typeof config.publicDir !== 'string' || !config.publicDir ||
       !/^[a-z][a-z0-9-]{0,62}$/.test(w.name) || !/^\d{4}-\d{2}-\d{2}$/.test(w.compatibilityDate) ||
       !Number.isFinite(Date.parse(w.compatibilityDate)) ||
-      (w.accountId !== undefined && !/^[a-f0-9]{32}$/.test(w.accountId))) fail('页面配置需要 version=1、publicDir、有效 Worker 名称/日期；accountId 可选。');
+      (w.accountId !== undefined && !/^[a-f0-9]{32}$/.test(w.accountId)) ||
+      (w.plan !== undefined && !['free', 'paid'].includes(w.plan))) fail('页面配置需要 version=1、publicDir、有效 Worker 名称/日期；accountId、plan 可选。');
   if (!Array.isArray(config.files) || !config.files.length || new Set(config.files).size !== config.files.length) fail('files 需要无重复的显式公开页面及依赖列表。');
+  const maxFiles = w.plan === 'paid' ? 100000 : 20000;
+  if (config.files.length + 1 > maxFiles) throw problem('STATIC_FILE_LIMIT', `公开文件数连同生成的 _headers 超过 ${maxFiles}。`, '减少选定文件或分流重资源；只有已核对 Workers 付费账号时才设置 worker.plan=paid，此设置不会购买套餐。');
   if (config.immutable !== undefined && (!Array.isArray(config.immutable) || new Set(config.immutable).size !== config.immutable.length)) fail('immutable 必须为无重复的文件列表。');
   const immutable = new Set(config.immutable || []);
   if ([...immutable].some(path => !config.files.includes(path))) fail('immutable 必须属于公开文件集合。');
@@ -32,13 +37,15 @@ export async function planSite(configPath) {
     if (!contentType || /[*:\r\n]/.test(source) || /(?:^|\/)(?:AGENTS|CLAUDE)\.md$/i.test(source) || basename(source).startsWith('_')) fail('文件类型或控制路径不受支持；_headers 由快照工具生成，现有规则须人工合并。');
     const path = await sourceFile(root, source);
     const digest = await hashFile(path);
+    if (digest.bytes > 25 * 1024 * 1024) throw problem('STATIC_SIZE_LIMIT', `文件 ${source} 超过 Static Assets 的 25 MiB 单文件限制。`, '将该重资源分流至自己可用的 OSS/其他已支持存储，接入公开 URL；不能直接降级为同站上传。');
     if (immutable.has(source) && !basename(source).match(/[a-f0-9]{12,64}/g)?.some(token => digest.sha256.startsWith(token))) fail('immutable 文件名必须包含与实际字节匹配的内容摘要（12–64 位）。');
     const url = canonical(source);
     if (urls.has(url)) fail('公开文件的规范 URL 冲突；先消除 HTML 别名冲突。');
     urls.add(url);
     files.push({ source, ...digest, contentType, immutable: immutable.has(source), url });
   }
-  return { config, root, files };
+  const references = await checkReferences(files, source => sourceFile(root, source).then(path => readFile(path, 'utf8')));
+  return { config, root, files, references };
 }
 
 export async function prepareSite(plan, output) {
@@ -95,6 +102,7 @@ export async function checkSite(output) {
   if (expected.size) fail('快照缺少文件，停止发布。');
   const w = await hashFile(join(output, 'wrangler.json'));
   if (w.sha256 !== manifest.controls.wrangler.sha256) fail('Wrangler 配置变化，重新生成并审阅快照。');
+  await checkReferences(manifest.files, source => sourceFile(root, source).then(path => readFile(path, 'utf8')));
   return manifest;
 }
 
@@ -103,6 +111,7 @@ export async function verifySite(output, origin) {
   if (url.username || url.password || url.search || url.hash || url.pathname !== '/' ||
       (url.protocol !== 'https:' && !(url.protocol === 'http:' && url.hostname === '127.0.0.1'))) fail('核验需要无凭据的 HTTPS origin；仅本地测试允许 127.0.0.1 HTTP。');
   const manifest = await checkSite(output);
+  const releaseManifestSHA256 = (await hashFile(join(output, 'release-manifest.json'))).sha256;
   const results = [];
   for (const [index, entry] of manifest.files.entries()) {
     try {
@@ -118,7 +127,8 @@ export async function verifySite(output, origin) {
       throw error;
     }
   }
-  return { origin: url.origin, files: results, bytesVerified: true, browserVerified: false, activeVersionVerified: false };
+  if ((await hashFile(join(output, 'release-manifest.json'))).sha256 !== releaseManifestSHA256) throw problem('SNAPSHOT_CHANGED', '核验期间发布清单发生变化。', '保留失败记录，重新检查冻结快照后显式核验。');
+  return { origin: url.origin, releaseManifestSHA256, files: results, bytesVerified: true, browserVerified: false, activeVersionVerified: false };
 }
 
 const usage = '用法：node site.mjs plan CONFIG | prepare CONFIG NEW_OUTPUT | check OUTPUT | verify OUTPUT https://site.example.org';
@@ -128,12 +138,12 @@ export async function main(args) {
   if (!path || extra.length || !['plan', 'prepare', 'check', 'verify'].includes(cmd) ||
       (['prepare', 'verify'].includes(cmd) ? !value : value !== undefined)) fail(usage);
   let result;
-  if (cmd === 'plan') { const p = await planSite(resolve(path)); result = { worker: p.config.worker, files: p.files }; }
+  if (cmd === 'plan') { const p = await planSite(resolve(path)); result = { worker: p.config.worker, files: p.files, references: p.references }; }
   if (cmd === 'prepare') result = await prepareSite(await planSite(resolve(path)), resolve(value));
   if (cmd === 'check') { const m = await checkSite(resolve(path)); result = { checked: true, files: m.files.length, worker: m.worker.name }; }
   if (cmd === 'verify') result = await verifySite(resolve(path), value);
   console.log(JSON.stringify(result, null, 2));
 }
 if (process.argv[1] && await realpath(resolve(process.argv[1])).catch(() => '') === fileURLToPath(import.meta.url)) {
-  main(process.argv.slice(2)).catch(error => { if (error.progress) console.log(JSON.stringify(error.progress, null, 2)); console.error(`失败：${error.code || error instanceof SyntaxError ? '页面配置、路径或网络读取失败。' : error.message} 未执行云端发布。`); process.exitCode = 1; });
+  main(process.argv.slice(2)).catch(error => { if (error.progress) console.log(JSON.stringify(error.progress, null, 2)); const d = diagnostic(error); console.error(`失败 [${d.code}]：${d.message} 下一步：${d.nextStep} 未执行云端发布。`); process.exitCode = 1; });
 }

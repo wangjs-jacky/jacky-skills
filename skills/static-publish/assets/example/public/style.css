@@ -1,0 +1,4 @@
+body { margin: 0; padding: 48px 20px; background: #f5f7fb; color: #203047; font: 18px/1.6 system-ui, sans-serif; }
+main { max-width: 640px; margin: auto; }
+img { display: block; max-width: 100%; height: auto; border-radius: 16px; }
+a { color: #175bc7; }

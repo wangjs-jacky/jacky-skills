@@ -2,6 +2,8 @@
 
 需要 OSS、没有可用配置、准备创建桶或遇到云端访问失败时读取。普通同站资源准备只需下方配置说明，无需云账号。
 
+用户如何安装和首次使用见[使用说明](../README.md)。没有配置先运行 `doctor.mjs --preflight`；Agent 审阅公开文件后用 `project.mjs init` 生成项目入口，而不是要求用户先理解配置 schema。预检与初始化不安装工具、不登录、不建桶；创建目录应在公开根外。普通网页只需要 site.json，资源配置按需增加。
+
 ## 按已有条件继续
 
 | 当前条件 | 操作 | 继续的依据 |
@@ -30,9 +32,17 @@
 
 脚本 `publish` 只上传明确的新对象并核验旧对象，不自动进行上述管理动作。发生既有对象公开访问或内容冲突时停止，不用覆盖/改 ACL 掩盖失败。
 
+无桶的一次性接入按以下顺序，由 Agent 指出当前唯一缺项；账号/组织交互由用户或管理员完成：
+
+1. 先确认同站是否适用；若超过25 MiB或明确要求独立资源分发，再继续OSS方案。检查用户账号内已知可复用桶，不要求日常身份能列举整个账号。
+2. 必须新建时，向用户列出具体桶名、地域、存储/冗余选择、私有默认ACL、选定公开对象/前缀及存储/请求/外网流量费用责任。获得此目标授权后，Agent查当前官方创建接口，或用户在OSS控制台创建；不发散为自动购买套餐。
+3. 管理员核对账号级/桶级阻断和组织策略，仅配置此次授权的新桶公开路线。日常身份只获得此项目前缀所需对象读写/公开ACL动作；最小策略按当前官方RAM规则核对，不向用户分发作者凭据。不能用关闭账号级防护替代这一步。
+4. Agent填写 bucket/region/prefix/publicBaseURL，先doctor --auth，再对一个选定非敏感对象publish并核验匿名GET和浏览器实际用法。NoSuchKey不证明有写权限，403也不自动表示密钥失效。
+5. 若默认数据Endpoint不可用、组织不允许公开ACL、缺域名/备案或管理员授权，明确停在哪一步；只有同站满足限制才可切同站。其他公开分发方案先设计和授权，不能假装当前适配器已经覆盖。
+
 ## 域名、备案与不同账号
 
-不要承诺所有用户都能照搬老账号的默认域名方式。OSS 官方资料说明，自 2025-03-20 起新开通服务账号的中国内地默认公网数据 API 有限制；这是账号条件，与单纯 Bucket 创建时间不同。新账号、地域与具体 API 能力须当前核验。
+不要承诺所有用户都能照搬老账号的默认域名方式。新开通服务账号、地域及具体数据API的条件应查当前官方公告和账号实际返回，不能只按Bucket创建时间判断。下面的通用域名文档不能单独证明某条历史日期政策今天仍适用于该账号；缺少具体依据时保留“未确认”，不写死未经复核的日期。
 
 内地 Bucket 自定义域名与内地 CDN 有各自备案条件，存储开通本身不等于所有分发路线均可使用。不具备所选路线条件时，可采用同站资源、满足条件的域名路线或境外资源候选，分别测试，不承诺换地域必然更快。
 
@@ -77,9 +87,26 @@ Node.js 22+ 用于资源 helper；OSS publish 增加已认证的阿里云 CLI。
 
 `prepare CONFIG dist/assets` 将写出 `dist/assets/my-project/objects/...` 及同前缀清单；页面部署根为 dist 时，URL 即 `/assets/my-project/objects/...`。输出根目录和 URL 映射要一致。
 
+## 把清单接入网页
+
+已有构建直接消费清单的 `files[].source → publicURL`。没有构建时，Agent可只把选定HTML的URL属性改成 `{{asset:cover.svg}}`，用下面命令生成新HTML：
+
+```bash
+node "$SKILL_DIR/scripts/resources.mjs" prepare resources.json dist/assets
+node "$SKILL_DIR/scripts/resources.mjs" render dist/assets/my-project/assets-manifest.json index.template.html dist/index.html
+```
+
+上面假设prefix为my-project、模板source为cover.svg；实际使用真实清单，不手写示意哈希。render接受明确模板和清单，只替换显式标记并HTML转义，拒绝未知source或覆盖输出；它不理解任意JS/CSS模板，不替换无标记的旧URL。样例见[完整构建](../assets/example/build.mjs)，可对新目录离线执行。
+
+同站构建还应把实际同站依赖加入site.json：清单的key前加实际资源根（上例为assets/），另列HTML/CSS/详情页。OSS分支的内容URL是外站地址，不把OSS对象再列作同站文件。site plan会拦住明显未选引用，但动态JS、内嵌数据srcset、外站资源和嵌套SVG需浏览器核对。
+
+跨域字体、fetch或canvas需要时，管理员在具体授权桶配置必要CORS：匹配真实页面Origin、必要GET/HEAD及实际请求头；再在该Origin验证。普通img解码不自动要求相同CORS设置。不要把全域允许或允许携带凭据作为通用修复；已有业务桶的CORS变更需确认影响。
+
 ## 用诊断命令定位下一步
 
 `doctor.mjs` 接受资源配置或页面配置；默认仅检查本地。`--auth` 才会各执行一次官方身份或精确对象请求，结果只输出结论，不回显账号列表、认证日志或凭据。缺 Wrangler 可用 `--wrangler` 指向项目现有官方入口（包含 .js/.mjs 入口时用当前 Node 启动），不改全局 PATH。
+
+无配置预检为 `doctor.mjs --preflight [--oss] [--images] [--wrangler CLI]`，只读取本地工具版本，configChecked/authenticationChecked/cloudWriteChecked均为false；不允许同时--auth。缺配置返回CONFIG_NOT_FOUND及初始化下一步。OSS错误只保留NoSuchBucket、AccessDenied、公开阻断等安全分类，不回显官方原始日志；先按nextStep定位，不自动重试。
 
 - 本地 ready=true 仅表示选定检查通过，不表示登录已查、对象可公开写或页面已部署；同时读取 authenticationChecked/cloudWriteChecked。
 - Cloudflare whoami 只验证身份及可选 accountId 匹配，上传 dry-run/实际上传再验证权限。需要登录时在本机执行官方 wrangler login。

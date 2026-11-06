@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { diagnostic, problem, readJSON, ossFailure } from './diagnostics.mjs';
 
 export const types = {
   '.webp': 'image/webp', '.avif': 'image/avif', '.png': 'image/png',
@@ -45,8 +46,7 @@ export async function hashFile(path) {
 }
 
 export async function loadConfig(path) {
-  let config;
-  try { config = JSON.parse(await readFile(path, 'utf8')); } catch { fail('无法读取配置或配置不是有效 JSON。'); }
+  const config = await readJSON(path, '资源配置');
   keys(config, ['version', 'publicDir', 'files', 'storage'], '项目配置');
   if (config.version !== 1 || typeof config.publicDir !== 'string' || !config.publicDir) fail('配置需要 version=1 和明确的 publicDir。');
   if (!Array.isArray(config.files) || !config.files.length || new Set(config.files).size !== config.files.length) fail('files 必须是非空、无重复的显式公开资源列表。');
@@ -149,43 +149,74 @@ async function readEntry(entry, { origin } = {}) {
     if (bytes > entry.bytes) fail('资源字节超过预期，内容校验失败。');
     digest.update(chunk);
   }
-  if (bytes !== entry.bytes || digest.digest('hex') !== entry.sha256) fail('资源字节或哈希不一致，内容校验失败。');
-  return { key: entry.key, verified: true, bytes, contentType,
+  const sha256 = digest.digest('hex');
+  if (bytes !== entry.bytes || sha256 !== entry.sha256) fail('资源字节或哈希不一致，内容校验失败。');
+  return { key: entry.key, verified: true, bytes, sha256, contentType,
     cacheControl: response.headers.get('cache-control'),
     contentDisposition: response.headers.get('content-disposition'),
     forceDownload: response.headers.get('x-oss-force-download') };
 }
 
-function ossCommand(storage, command, args) {
+export function ossCommand(storage, command, args) {
   const options = ['-e', `https://oss-${storage.region}.aliyuncs.com`, '--region', storage.region];
   if (storage.profile) options.push('--profile', storage.profile);
   const result = spawnSync('aliyun', ['oss', command, ...args, ...options], { encoding: 'utf8', timeout: 60_000, maxBuffer: 2 * 1024 * 1024 });
-  if (result.error) fail(result.error.code === 'ENOENT' ? '未找到 aliyun；OSS 适配器需要已安装并登录的阿里云 CLI。' : '官方 CLI 超时或启动失败；没有继续查询或重试。');
   const message = `${result.stdout}\n${result.stderr}`;
-  return { ok: result.status === 0, missing: /ErrorCode=NoSuchKey\b/.test(message),
-    publicBlocked: /0016-00000901|Put public object acl is not allowed/.test(message) };
+  const failure = ossFailure(message, result.error);
+  return { ok: !result.error && result.status === 0, missing: !result.error && failure.code === 'NoSuchKey', failure };
 }
 
 export async function publishPlan(plan) {
   if (plan.config.storage.provider !== 'oss') fail('同站模式使用 prepare，然后随页面构建发布。');
   const temp = await mkdtemp(join(tmpdir(), 'static-publish-'));
   const results = [];
+  let index = -1;
   try {
     await preparePlan(plan, temp);
-    for (const entry of plan.manifest.files) {
+    for (const [i, entry] of plan.manifest.files.entries()) {
+      index = i;
       const target = `oss://${plan.config.storage.bucket}/${entry.key}`;
       const existing = ossCommand(plan.config.storage, 'stat', [target]);
       if (existing.ok) {
         results.push({ ...await verifyEntry(entry), action: 'reused' });
         continue;
       }
-      if (!existing.missing) fail('无法核对目标对象；请检查当前 CLI 身份、地域及此前缀的读写权限。未修改桶或账号设置。');
+      if (!existing.missing) throw problem(existing.failure.code, existing.failure.message, existing.failure.nextStep);
       const upload = ossCommand(plan.config.storage, 'cp', [join(temp, entry.key), target, '--acl', 'public-read', '--meta', `Content-Type:${entry.contentType}#Cache-Control:public,max-age=31536000,immutable`]);
-      if (!upload.ok) fail(upload.publicBlocked ? '新对象的公开只读 ACL 被阻止；按 onboarding 检查授权范围内的 BlockPublicAccess，工具没有自动改桶或账号设置。' : '资源上传失败；请通过官方 CLI 检查身份、地域、域名及对象权限。未继续发布页面。');
+      if (!upload.ok) throw problem(upload.failure.code, upload.failure.message, upload.failure.nextStep);
       results.push({ ...await verifyEntry(entry), action: 'uploaded' });
     }
+  } catch (error) {
+    const d = diagnostic(error);
+    error.progress = { complete: false, pagePublished: false, verified: results,
+      failed: [{ key: index < 0 ? null : plan.manifest.files[index].key, stage: index < 0 ? 'prepare' : 'publish', ...d }],
+      notAttempted: plan.manifest.files.slice(index + 1).map(e => e.key) };
+    throw error;
   } finally { await rm(temp, { recursive: true, force: true }); }
-  return { manifest: plan.manifest, results, pagePublished: false };
+  return { manifest: plan.manifest, results, complete: true, pagePublished: false };
+}
+
+export async function renderHTML(manifestPath, input, output) {
+  const manifest = await readJSON(manifestPath, '资源清单');
+  keys(manifest, ['version', 'files'], '资源清单');
+  if (manifest.version !== 1 || !Array.isArray(manifest.files)) fail('资源清单需要 version=1 和 files。');
+  const urls = new Map();
+  for (const entry of manifest.files) {
+    keys(entry, ['source', 'key', 'publicURL', 'bytes', 'sha256', 'contentType'], '资源清单条目');
+    resourcePath(entry.source, '资源清单 source');
+    if (urls.has(entry.source)) fail('资源清单有重复 source。');
+    urls.set(entry.source, baseURL(entry.publicURL, true));
+  }
+  if (extname(input).toLowerCase() !== '.html' || extname(output).toLowerCase() !== '.html' || resolve(input) === resolve(output)) fail('render 需要独立的 HTML 模板和新 HTML 输出。');
+  const original = await readFile(input, 'utf8'); let replaced = 0;
+  const escaped = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const html = original.replace(/\{\{asset:([^{}]+)\}\}/g, (_, source) => {
+    if (!urls.has(source)) throw problem('UNKNOWN_ASSET', 'HTML 占位符在资源清单中不存在。', '核对占位符 source 和实际清单，不要手拼哈希 URL。');
+    replaced++; return escaped(urls.get(source));
+  });
+  if (!replaced) fail('模板没有 {{asset:source}} 占位符；普通网页无需 render。');
+  await writeFile(output, html, { flag: 'wx' });
+  return { output, replaced, pagePublished: false };
 }
 
 const usage = `用法（配置路径相对当前目录，资源路径相对配置文件）：
@@ -193,11 +224,16 @@ const usage = `用法（配置路径相对当前目录，资源路径相对配�
   node resources.mjs prepare CONFIG OUTPUT
   node resources.mjs publish CONFIG --apply
   node resources.mjs verify CONFIG [--origin https://site.example.org]
+  node resources.mjs render MANIFEST TEMPLATE.html NEW_OUTPUT.html
 仅 publish --apply 写入云端；不建桶，不修改已有权限，不发布页面。`;
 
 export async function main(args) {
   const [command, configPath, ...rest] = args;
   if (command === '--help' || command === 'help' || !command) { console.log(usage); return; }
+  if (command === 'render') {
+    if (!configPath || rest.length !== 2) fail(usage);
+    console.log(JSON.stringify(await renderHTML(resolve(configPath), resolve(rest[0]), resolve(rest[1])), null, 2)); return;
+  }
   if (!['plan', 'prepare', 'publish', 'verify'].includes(command) || !configPath) fail(usage);
   if (command === 'publish' && (rest.length !== 1 || rest[0] !== '--apply')) fail('云写入需要明确 --apply；先运行 plan 审阅精确文件与目标。');
   if ((command === 'plan' && rest.length) || (command === 'prepare' && rest.length !== 1) || (command === 'verify' && rest.length && (rest.length !== 2 || rest[0] !== '--origin'))) fail(usage);
@@ -225,9 +261,8 @@ export async function main(args) {
 if (process.argv[1] && await realpath(resolve(process.argv[1])).catch(() => '') === fileURLToPath(import.meta.url)) {
   main(process.argv.slice(2)).catch(error => {
     if (error.progress) console.log(JSON.stringify(error.progress, null, 2));
-    const systemCode = error.code && /^[A-Z_]+$/.test(error.code) ? error.code : null;
-    const message = systemCode ? `本地资源或网络操作失败（${systemCode}）；请检查所选目录及访问条件。` : error.message;
-    console.error(`失败：${message}`);
+    const d = diagnostic(error);
+    console.error(`失败 [${d.code}]：${d.message} 下一步：${d.nextStep}`);
     process.exitCode = 1;
   });
 }
