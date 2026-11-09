@@ -1,0 +1,3 @@
+interface:
+  display_name: "Remote Web Ops"
+  short_description: "远端Web服务的部署接入、鉴权、资源性能与实时连接经验库"

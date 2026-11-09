@@ -89,6 +89,7 @@ harness/ 中的 Skill 按目标组织运行、排障、验证及经验写回。�
 | [aliyun-ops](./harness/aliyun-ops) | [cloudflare-ops](./harness/cloudflare-ops) | [codex-ops](./harness/codex-ops) |
 | [ego-ops](./harness/ego-ops) | [experiment-selection-ops](./harness/experiment-selection-ops) | [goal-first-ops](./harness/goal-first-ops) |
 | [happy-ops](./harness/happy-ops) | [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | [release-ops](./harness/release-ops) |
+| [remote-web-ops](./harness/remote-web-ops) |  |  |
 
 可分享协议保存在 SKILL.md 与 references/；机器路径、私有上下文和运行证据保存在被 Git 忽略的本机记录。goal-first-ops 的项目目标按 projects/<project>/features/<feature>/ 集中保存，不进入 Git。安装不会自动授权修改全局 AGENTS 规则。
 
