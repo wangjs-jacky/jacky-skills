@@ -138,3 +138,8 @@ claude plugin validate --strict .
 ## 许可
 
 [MIT](./LICENSE)。experiment-selection-ops 包含采用独立许可的第三方文档与改编内容，详见其 [第三方说明](./harness/experiment-selection-ops/THIRD_PARTY_NOTICES.md)。
+
+## Harness 集成
+
+[Goal First 任务工作台](./packages/dsh-goal-first/README_CN.md)通过 DeepSeek Harness 插件管理器安装，提供目标对齐、原生任务对话、文件阅读和具体交付版本的用户认可。可维护源码、测试与构建入口位于该包目录。
+

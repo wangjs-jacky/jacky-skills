@@ -1,0 +1,17 @@
+Goal First for DeepSeek Harness
+
+lib/records.js is maintained JavaScript adapted from the original catalog,
+parser, taskPrompt and read-only authorizedFiles implementation in wangjs-jacky/happy (Paws), commit
+1e95af6dc70d60e191f818eb3a1db9c419f369ce, under the MIT license.
+Original project: https://github.com/slopus/happy
+Copyright (c) 2026 Happy Coder Contributors
+See LICENSE for the MIT license text.
+
+Harness extension interfaces were consulted from deepseek-ai/deepseek-harness,
+version 0.2.2-rc.1. This is an independent third-party plugin.
+
+The Goal First integration and its geometric SVG icon are project contributions.
+The three cover illustrations were generated on 2026-11-07 with the built-in
+image_gen capability; their prompts are recorded in assets/covers/prompts.json.
+No precise provider or selectable model version was recorded. This provenance
+record does not assert ownership of a model or third-party licensing terms.

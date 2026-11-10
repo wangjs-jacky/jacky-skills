@@ -1,0 +1,65 @@
+{
+  "name": "@jacky/dsh-goal-first",
+  "version": "0.9.2",
+  "description": "Goal First task workbench with aligned delivery agreements, native files and versioned approvals",
+  "type": "module",
+  "main": "runtime/0.9.2/index.js",
+  "exports": {
+    ".": "./runtime/0.9.2/index.js",
+    "./client": "./runtime/0.9.2/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "NOTICE",
+    "LICENSE",
+    "sources.js",
+    "assets",
+    "project-store.js",
+    "dialogue-tools.js",
+    "dialogue-runtime.js",
+    "task-files.js",
+    "task-sessions.js",
+    "task-workflow.js",
+    "client-state.js",
+    "scripts/build.mjs",
+    "runtime/0.9.2",
+    "README_CN.md",
+    "DEVELOPMENT.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-ui-sidebar-files",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check index.js && node --check client.js && node --check sources.js && node --check project-store.js && node --check dialogue-tools.js && node --check dialogue-runtime.js && node --check task-files.js && node --check task-sessions.js && node --check task-workflow.js && node --check client-state.js && node --check lib/records.js && node --check scripts/build.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

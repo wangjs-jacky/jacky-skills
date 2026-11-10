@@ -1,0 +1,5 @@
+# The legacy file-based entry is disabled through Plugin Manager before activation.
+- insert:
+    - id: goal-first-workbench
+      name: '@jacky/dsh-goal-first'
+      config: {}
