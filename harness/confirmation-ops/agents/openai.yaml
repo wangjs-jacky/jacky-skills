@@ -1,0 +1,4 @@
+interface:
+  display_name: "确认 OPS"
+  short_description: "复用同场景下的用户选择与持续授权，减少跨技能的重复确认和中断"
+  default_prompt: "使用 $confirmation-ops 检查这次确认能否复用已有决定；未命中时只问必要问题，并自动沉淀选择。"
