@@ -4,7 +4,7 @@
 
 - 用户于 2026-10-18 明确纠正：`experience.local.md` 这个经验层不要；原本想要的是 **project → features**，feature 就是一个目标文件夹，全部内容和过程都放在该目标中。该指令取代此前 project → operations 与独立本机实例的存储约定。
 - `project` 是持续维护的项目、产品或研究对象；设备、分支、版本和会话不另建项目。
-- `feature` 是用户要完成的一个目标，可包含多个 task。它承载核心报告、目标确认、过程、产物、证据及可复用方法，不是单纯的经验摘要。
+- `feature` 是用户要完成的一个目标，可包含多个 task。它承载核心报告、目标确认、过程、必要资料、交付快照、证据及可复用方法，不是开发工程仓库，也不是单纯的经验摘要。
 - 唯一默认位置是本 Skill 实际目录下 `projects/<project>/features/<feature>/`。feature 目录本身就是目标工作区，不再增加 workspace 层。
 - 项目与目标沿用明确名称或稳定 key；旧名称不为统一格式而强制改写。所有本机项目内容都由 Git 忽略。
 
@@ -22,7 +22,8 @@
 | --- | --- |
 | 项目导航 | projects/index.md |
 | 项目共用背景、约束、目标导航 | projects/<project>/index.md |
-| 一个目标的所有内容和过程 | projects/<project>/features/<feature>/ |
+| 一个目标的档案、必要资料和过程 | projects/<project>/features/<feature>/ |
+| 持续开发的源码、依赖、构建与 Git 仓库 | 目标档案之外的独立工程目录，由项目/目标 index.md 引用 |
 | 核心报告及成果入口 | 目标 index.md 直接链接实际报告与产物 |
 | 该目标的机器路径、环境、来源和失败记录 | 同一 feature 的相关文档 |
 
