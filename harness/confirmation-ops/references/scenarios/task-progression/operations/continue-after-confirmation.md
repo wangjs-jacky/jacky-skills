@@ -1,8 +1,8 @@
 ---
 scenario: task-progression
 operation: continue-after-confirmation
-status: documented
-last_verified: null
+status: verified
+last_verified: 2026-11-11
 ---
 
 # 确认后继续执行
@@ -28,4 +28,4 @@ last_verified: null
 
 ## 证据
 
-已有历史第三方设计流程与“后续按推荐”样本可定位；本 Skill 尚未在新任务完整验收。
+已有历史第三方设计流程与“后续按推荐”样本可定位。2026-11-11：真实同项目、同范围已授权合并发布任务复用明确持续委托，不重复文案确认，必要检查、普通合并和目标部署核验完成；没有代填逐字批准或人工业务验收。具体用户规则与证据由本机私有索引维护。
