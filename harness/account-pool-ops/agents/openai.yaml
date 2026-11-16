@@ -1,0 +1,4 @@
+interface:
+  display_name: "账号密钥池"
+  short_description: "按平台安全保存多把API密钥，复用系统钥匙串并维护鉴权与轮换记录"
+  default_prompt: "使用 $account-pool-ops 管理平台API密钥，先检索已有条目并进行只读鉴权检查。"
