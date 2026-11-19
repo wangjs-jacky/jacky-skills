@@ -27,6 +27,8 @@ j-skills install goal-first-ops -g --env claude-code,codex
 
 `goal-first-ops` 默认按 `projects/<project>/features/<feature>/` 组织目标，每个 feature 就是目标工作区，报告、需求、过程、产物、证据和方法集中保存；整个 projects/ 及动态索引不提交 Git，首次实际记录时从随附空索引模板初始化导航。不另设 workspace、本机经验或实例索引。安装 Agent 按其全局提示词处理可选的前置规则，不因链接成功自动修改全局配置。
 
+已有工作区需要检查或整理交付产物、命名和渐进式索引时，由 Goal First 按需读取[归档整理流程](./goal-first/references/archive-review.md)，随 Goal First 一次安装。
+
 要预览项目回放器，可在新会话中使用它分析任意项目：
 
 ```bash
