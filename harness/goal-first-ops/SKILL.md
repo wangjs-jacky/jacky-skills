@@ -1,6 +1,6 @@
 ---
 name: goal-first-ops
-description: "按 project → features 管理 Goal First 项目目标：将每个目标的需求、报告、过程、产物、证据和复用经验集中保存。用于目标归档、接续、复盘及维护项目记录。"
+description: "按 project → features 管理 Goal First 目标档案，接续并沉淀任务上下文；用户消息包含 GFT-{8位小写字母或数字} 任务标识时自动定位对应 task，无需显式调用。"
 ---
 
 # Goal First OPS
@@ -10,13 +10,13 @@ description: "按 project → features 管理 Goal First 项目目标：将每�
 ## 开始前
 
 1. 从技能目录或注册表解析本 Skill 的真实目录，作为唯一默认资料根。
-2. 读 `projects/index.md`，按项目名或别名命中 project，再读 `projects/<project>/index.md` 找到 feature。新安装无索引时按空库处理，首次真实记录从[空索引模板](assets/projects-index.template.md)建立，不覆盖已有内容。
+2. 用户消息包含完整 GFT 任务标识时，优先按[任务标识与跨会话沉淀](references/task-identity.md)运行只读定位，直接进入原 task 和必要上级上下文。普通提及只读，不自动补 ID、写回或执行。没有 ID 时读 `projects/index.md`，按项目名或别名命中 project，再读 `projects/<project>/index.md` 找到 feature。新安装无索引时按空库处理，首次真实记录从[空索引模板](assets/projects-index.template.md)建立，不覆盖已有内容。
 3. 读 feature 的 `index.md` 和本次必要的报告、需求及过程。feature 可包含分任务；其目录本身就是 Goal First 的目标工作区，不再外套 `workspace/`。
 4. 以当前用户指令、来源、版本、授权和实际证据复核记录。已有明确目标与执行授权继续有效；存储位置和记录维护不扩大业务权限。
 
 ## 目标内怎样保存
 
-- `index.md`：简短目标入口，优先指向核心报告、当前产物与接续依据；涉及开发时说明工程实际路径、当前源码入口及 Git 仓库或实际状态。简单目标可以直接在本页记录内容。
+- `index.md`：简短目标入口，优先指向核心报告、当前产物与接续依据；涉及开发时说明工程实际路径、当前源码入口及 Git 仓库或实际状态。简单目标可在本页记录共用背景。具体任务必须归入 feature 的 `tasks/`，单任务同样适用。按[任务归档与排序](references/ops-model.md#任务归档与排序)统一目录、标题和导航。
 - 核心报告：把问题、实际过程、发现、判断及适用条件讲清楚，是读者的主要阅读材料。
 - 需求、重要过程、设计、必要输入、交付快照与验收证据：按实际用途保存在同一 feature，文件存在后再建立导航。可持续开发的工程源码、依赖和构建工作目录必须置于独立工程目录，默认使用 Git 管理，不放入 `projects/`；目标只引用工程，不维护另一份开发副本。位置遵循用户的工程存储约定。
   普通业务工程默认与 Skill 仓库分开；维护对象本身就是 Skill 仓库时沿用其既有工程位置，仍不把源码放进目标档案目录。
@@ -33,6 +33,8 @@ description: "按 project → features 管理 Goal First 项目目标：将每�
 浏览器、发布和平台等领域能力继续遵循其对应 Skill/OPS；当前 feature 引用权威规则，保存自己的实际输入、结果与证据，不复制整套工具手册。
 
 ## 每轮收尾
+
+仅凭 GFT 引用展开的跨会话问答默认只读；用户明确要求沉淀时，只把相关结论、方法或实际过程合入原 task 的适当文档，并维护导航。已获执行授权的任务继续按下方规则自动记录。ID、知识补充和讨论均不构成状态变更或新增执行授权。
 
 复核本轮证据，按[写回协议](references/knowledge-schema.md)更新同一 feature 的报告、重要过程或方法，修正过时结论，并同步目标及项目导航。只记录影响目标、结论、接续或复用的重要真实变化；无新增时说明无需写回，不为每句对话增加文件。
 

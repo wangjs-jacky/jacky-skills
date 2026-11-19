@@ -1,6 +1,9 @@
 # Project goals, reports, process records and evidence stay on this machine.
 /projects/
 
+# A short-lived exclusive lock used only by explicit single-task ID writes.
+/.task-id.lock
+
 # Legacy compatibility entries remain private during migration.
 /references/projects
 local/

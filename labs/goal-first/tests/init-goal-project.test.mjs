@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
+import { randomInt } from 'node:crypto';
 import { cp, mkdir, mkdtemp, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
@@ -44,8 +45,14 @@ test('移除 Skill 源并移动工作区后，可从本地模板创建中文任�
   }
 
   const indexPath = join(taskDirectory, 'index.md');
-  const index = await readFile(indexPath, 'utf8');
-  assert.deepEqual(index.match(/^---\n([\s\S]*?)\n---/)[1].split('\n'), ['status: pending']);
+  const templateIndex = await readFile(indexPath, 'utf8');
+  assert.match(templateIndex, /^---\ntask_id: null\nstatus: pending\n---/);
+  // A standalone workspace can assign identity without the removed Skill source.
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const taskId = 'GFT-' + Array.from({ length: 8 }, () => alphabet[randomInt(alphabet.length)]).join('');
+  const index = templateIndex.replace('task_id: null', `task_id: ${taskId}`);
+  await writeFile(indexPath, index);
+  assert.equal(index.match(/^task_id: (.+)$/m)[1], taskId);
   const promptLink = localLinks(index).find(link => link === 'PROMPT.md');
   assert.ok(promptLink, '任务导航必须指向完整任务说明，而不是在 index 另存一份契约');
   const executionDirectory = join(temporary, '代码目录');

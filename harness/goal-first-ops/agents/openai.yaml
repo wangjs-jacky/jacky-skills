@@ -1,4 +1,4 @@
 interface:
   display_name: "Goal First OPS"
-  short_description: "按项目与目标集中保存报告、过程、产物和证据，支持接续执行与持续更新"
-  default_prompt: "使用 $goal-first-ops，按 project 和 feature 找到目标，读取核心报告与过程，并将本次真实结果更新回同一目标目录。"
+  short_description: "按项目与目标维护档案，支持 GFT 任务标识定位及跨会话讨论沉淀"
+  default_prompt: "使用 $goal-first-ops，按 GFT 标识或项目目标定位任务，读取必要上下文，并按本次意图讨论、沉淀或接续。"
