@@ -1,0 +1,4 @@
+interface:
+  display_name: "抖音视频发布"
+  short_description: "制作视频文案和双版封面，并用 Ego 操作抖音创作者中心"
+  default_prompt: "用 $douyin-video-publish 为我提供的视频制作抖音标题、简介和双版封面，并在 Ego 中填写发布页。"

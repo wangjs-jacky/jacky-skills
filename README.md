@@ -70,13 +70,13 @@ j-skills install release-ops -g --env claude-code,codex
 | --- | --- | --- |
 | [android-live-photo](./skills/android-live-photo) | [answer-my-question](./skills/answer-my-question) | [clear-and-brief-output](./skills/clear-and-brief-output) |
 | [codex-harness](./skills/codex-harness) | [codex-quota](./skills/codex-quota) | [crafted-web](./skills/crafted-web) |
-| [create-ops](./skills/create-ops) | [essay-polish](./skills/essay-polish) | [existing-ui-design](./skills/existing-ui-design) |
-| [grilling](./skills/grilling) | [happy-app-experience](./skills/happy-app-experience) | [happy-visual-workflow](./skills/happy-visual-workflow) |
-| [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) | [pc-web-interaction-reviewer](./skills/pc-web-interaction-reviewer) | [photo-to-styled-motion](./skills/photo-to-styled-motion) |
-| [show-me](./skills/show-me) | [skill-usage-audit](./skills/skill-usage-audit) | [spec-debate](./skills/spec-debate) |
-| [static-publish](./skills/static-publish) | [steelman](./skills/steelman) | [story-ui](./skills/story-ui) |
-| [teach-me](./skills/teach-me) | [topic-debate](./skills/topic-debate) | [video-to-cards](./skills/video-to-cards) |
-| [web-e2e](./skills/web-e2e) |  |  |
+| [create-ops](./skills/create-ops) | [douyin-video-publish](./skills/douyin-video-publish) | [essay-polish](./skills/essay-polish) |
+| [existing-ui-design](./skills/existing-ui-design) | [grilling](./skills/grilling) | [happy-app-experience](./skills/happy-app-experience) |
+| [happy-visual-workflow](./skills/happy-visual-workflow) | [mobile-app-interaction-reviewer](./skills/mobile-app-interaction-reviewer) | [pc-web-interaction-reviewer](./skills/pc-web-interaction-reviewer) |
+| [photo-to-styled-motion](./skills/photo-to-styled-motion) | [show-me](./skills/show-me) | [skill-usage-audit](./skills/skill-usage-audit) |
+| [spec-debate](./skills/spec-debate) | [static-publish](./skills/static-publish) | [steelman](./skills/steelman) |
+| [story-ui](./skills/story-ui) | [teach-me](./skills/teach-me) | [topic-debate](./skills/topic-debate) |
+| [video-to-cards](./skills/video-to-cards) | [web-e2e](./skills/web-e2e) |  |
 
 [image-effects](./skills/image-effects) 的源码也在 skills/，通过软链接与同名 Plugin 共享，不维护两份副本。
 
