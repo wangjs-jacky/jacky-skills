@@ -1,0 +1,4 @@
+interface:
+  display_name: "README 视觉打磨"
+  short_description: "围绕真实项目打造吸睛、少字、有证据感与个人辨识度的 GitHub README"
+  default_prompt: "用 $readme-craft 先和我对齐这个仓库的核心动机与受众，再打造吸睛、少字、带真实素材视觉图或原生视频的 GitHub README。"
