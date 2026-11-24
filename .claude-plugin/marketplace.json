@@ -18,7 +18,7 @@
       "name": "dev-tools",
       "source": "./plugins/dev-tools",
       "description": "开发工具集：Durable 长任务、联网搜索、动效分析、效率审计与远端开发",
-      "version": "2.8.11"
+      "version": "2.8.14"
     },
     {
       "name": "distiller-tools",

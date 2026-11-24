@@ -43,7 +43,7 @@ j-skills install release-ops -g --env claude-code,codex
 | Plugin | 版本 | Skills |
 | --- | --- | --- |
 | [claude-config](./plugins/claude-config) | 0.3.0 | statusline-setup |
-| [dev-tools](./plugins/dev-tools) | 2.8.11 | efficiency-audit, durable, web-search, animate-prompt, remote-dev-sync, ssh-connect |
+| [dev-tools](./plugins/dev-tools) | 2.8.14 | efficiency-audit, durable, web-search, animate-prompt, remote-dev-sync, ssh-connect |
 | [distiller-tools](./plugins/distiller-tools) | 1.2.0 | distiller, math-curve-loading-reference |
 | [evaluators](./plugins/evaluators) | 1.1.0 | harness-benchmark, skill-design-benchmark |
 | [image-effects](./plugins/image-effects) | 1.0.0 | image-effects |
