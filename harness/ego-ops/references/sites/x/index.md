@@ -5,7 +5,7 @@ domains:
 aliases:
 - Twitter
 - X
-updated: 2026-09-16
+updated: 2026-11-23
 ---
 
 # X
@@ -21,7 +21,7 @@ updated: 2026-09-16
 
 | operation | intent | risk | last_verified | reference |
 | --- | --- | --- | --- | --- |
-| read-public-profile-latest-posts | 在已登录且仅获查看授权时读取指定公开账号的最新帖子并生成带原帖链接的摘要 | low | 2026-09-15 | [说明](operations/read-public-profile-latest-posts.md) |
+| read-public-profile-latest-posts | 在已登录且仅获查看授权时读取指定公开账号的最新帖子并生成带原帖链接的摘要 | low | 2026-11-23 | [说明](operations/read-public-profile-latest-posts.md) |
 | login-with-google | 在用户明确授权后通过 Google 登录 X，并用 X 首页及账号状态验证结果 | medium | 2026-09-15 | [说明](operations/login-with-google.md) |
 
 ## 站点级陷阱

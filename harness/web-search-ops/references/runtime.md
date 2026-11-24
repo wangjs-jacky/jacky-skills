@@ -18,14 +18,14 @@
 
 ## CLI
 
-将 `SKILL_DIR` 设置为本次真实加载的 Skill 目录，安装入口为符号链接也可运行：
+将 `OPS_DIR` 设置为本次真实加载的 Skill 目录，安装入口为符号链接也可运行：
 
 ```bash
-node "$SKILL_DIR/scripts/web-search.mjs" search '搜索关键词' --limit 5 --timeout 20
-node "$SKILL_DIR/scripts/web-search.mjs" read 'https://example.com' --timeout 20
-node "$SKILL_DIR/scripts/web-search.mjs" feed producthunt --limit 5 --timeout 20
-node "$SKILL_DIR/scripts/web-search.mjs" gh --timeout 20 -- api repos/owner/repo
-node "$SKILL_DIR/scripts/web-search.mjs" doctor
+node "$OPS_DIR/scripts/web-search.mjs" search '搜索关键词' --limit 5 --timeout 20
+node "$OPS_DIR/scripts/web-search.mjs" read 'https://example.com' --timeout 20
+node "$OPS_DIR/scripts/web-search.mjs" feed producthunt --limit 5 --timeout 20
+node "$OPS_DIR/scripts/web-search.mjs" gh --timeout 20 -- api repos/owner/repo
+node "$OPS_DIR/scripts/web-search.mjs" doctor
 ```
 
 `search` 为 Tavily → Exa，各最多一次；缺少 Key 不发送 Tavily 请求。`read` 为 Jina HTTP → 官方 Exa `web_fetch_exa`，接受官方 MCP 的可读 Markdown 返回。`feed` 只接受 `producthunt`，不支持臆造的分类/关键词查询参数。`gh` 的 `--` 后参数通过数组原样传给原生 gh，不经 shell。每个请求/子进程默认 20 秒，最高 60 秒；读取响应限制 2 MiB。
@@ -53,14 +53,14 @@ JSON 返回 `ok/backend/items/meta/error`；`meta.attempts` 含后端、结果�
 
 `systemCaCommands` 默认无值；只有证据确认当前 SSL_CERT_FILE/SSL_CERT_DIR 覆盖失效、命令正常信任库可用时才启用 `gh`。它只移除该 gh 子进程的这两个覆盖，TLS 校验继续开启。HTTP 服务沿 Node 正常 TLS 信任配置，不关闭验证、不硬编码代理、不改全局 shell/Codex 设置。
 
-`useEnvironmentProxy` 默认 false，仅在当前网络确需已有 HTTP(S)_PROXY 时显式配置 true。helper 在真实 HTTP 请求前检查 Node 的 `http.setGlobalProxyFromEnv`，只在**当前 helper 进程**启用已有环境代理；旧版本无此 API 会报告明确缺项。也可用 Node 24 参数 `node --use-env-proxy "$SKILL_DIR/scripts/web-search.mjs" read 'https://example.com'`。两种方式均不写入 OS/全局 shell 代理或改动 TLS；不要据某条 HTTP 传输失败判定服务不可用。诊断保留有限的底层 `cause.code`，不转储环境、请求头或代理凭据。
+`useEnvironmentProxy` 默认 false，仅在当前网络确需已有 HTTP(S)_PROXY 时显式配置 true。helper 在真实 HTTP 请求前检查 Node 的 `http.setGlobalProxyFromEnv`，只在**当前 helper 进程**启用已有环境代理；旧版本无此 API 会报告明确缺项。也可用 Node 24 参数 `node --use-env-proxy "$OPS_DIR/scripts/web-search.mjs" read 'https://example.com'`。两种方式均不写入 OS/全局 shell 代理或改动 TLS；不要据某条 HTTP 传输失败判定服务不可用。诊断保留有限的底层 `cause.code`，不转储环境、请求头或代理凭据。
 
 ## 验证
 
 给用户可直接发送的搜索条目、预期路径和判定边界见 [try-it.md](try-it.md)。账号池新增可用默认条目后，当前 helper 会在下一次查询内存取用，无需把 Key 写入配置；`doctor` 仅说明配置状态，真实使用仍以当次 `backend` 和 `meta.attempts` 为准。
 
 ```bash
-node --test "$SKILL_DIR/tests/web-search.test.mjs" "$SKILL_DIR/tests/ego-channels.test.mjs"
+node --test "$OPS_DIR/tests/web-search.test.mjs" "$OPS_DIR/tests/ego-channels.test.mjs"
 ```
 
 HTTP 测试使用注入 transport/安全凭据替身，无网络、无真实 Key；覆盖主次路由、未配置跳过、超时、脱敏、Atom 日期/顺序与符号链接入口。Ego 纯函数与调用边界可用替身测试，实际选择器和站点可用性须由当前真实 Ego 页面验证并归档至 ego-ops。不要把测试通过当作 Tavily 真实鉴权、浏览器登录或各站全文读取成功。

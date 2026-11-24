@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Search OPS"
+  short_description: "按站点与目标选择搜索、热榜、推荐、作者和正文评论等信息发现路径"
+  default_prompt: "使用 $web-search-ops，根据目标站点选择合适的信息发现入口并说明实际来源。"

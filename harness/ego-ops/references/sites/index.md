@@ -7,6 +7,13 @@ updated: 2026-11-06
 
 | 站点 | 域名 | 别名 | 最近验证 | 参考文档 |
 | --- | --- | --- | --- | --- |
+| [unsplash](unsplash/index.md) | unsplash.com | Unsplash | 2026-11-15 | [站点索引](unsplash/index.md) |
+| [xiaoyuzhou](xiaoyuzhou/index.md) | www.xiaoyuzhoufm.com | 小宇宙 | 2026-11-25 | [站点索引](xiaoyuzhou/index.md) |
+| [xueqiu](xueqiu/index.md) | www.xueqiu.com | 雪球 | 2026-11-24 | [站点索引](xueqiu/index.md) |
+| [awwwards](awwwards/index.md) | www.awwwards.com | Awwwards | 2026-11-22 | [站点索引](awwwards/index.md) |
+| [producthunt](producthunt/index.md) | www.producthunt.com | Product Hunt | 2026-11-25 | [站点索引](producthunt/index.md) |
+| [wechat-public-articles](wechat-public-articles/index.md) | mp.weixin.qq.com | 微信公众号 | 2026-11-23 | [站点索引](wechat-public-articles/index.md) |
+| [pexels](pexels/index.md) | www.pexels.com | Pexels | 2026-11-15 | [站点索引](pexels/index.md) |
 | [static-publish](static-publish/index.md) | workers.dev | 静态发布工具验证样例 | 2026-11-04 | [站点索引](static-publish/index.md) |
 | [zeroomega](zeroomega/index.md) | pfnededegaaopdmhkdmcofjmoldfiped | ZeroOmega | 2026-11-04 | [站点索引](zeroomega/index.md) |
 | [michael-damaige-gallery](michael-damaige-gallery/index.md) | michael-damaige-gallery.jacky-openbird.workers.dev | 大麦哥影像摘录 | 2026-11-04 | [站点索引](michael-damaige-gallery/index.md) |
@@ -34,12 +41,12 @@ updated: 2026-11-06
 | [ai-speed-lab](ai-speed-lab/index.md) | chatbox-demo.paws.rodeo | Chatbox 技术笔记 | 2026-10-25 | [站点索引](ai-speed-lab/index.md) |
 | [paws](paws/index.md) | 47.115.228.20、trycloudflare.com | Paws、Happy、Goal First 交互稿、Paws 功能地图 | 2026-11-05 | [站点索引](paws/index.md) |
 | [britannica](britannica/index.md) | www.britannica.com | Britannica | 2026-10-02 | [站点索引](britannica/index.md) |
-| [bilibili](bilibili/index.md) | www.bilibili.com | Bilibili | 2026-10-01 | [站点索引](bilibili/index.md) |
+| [bilibili](bilibili/index.md) | www.bilibili.com、search.bilibili.com、space.bilibili.com | Bilibili | 2026-11-25 | [站点索引](bilibili/index.md) |
 | [miss-studio](miss-studio/index.md) | miss.jacky-openbird.workers.dev、insight.paws.rodeo | MISS Studio、Insight | 2026-10-19 | [站点索引](miss-studio/index.md) |
-| [x](x/index.md) | x.com | Twitter、X | 2026-09-15 | [站点索引](x/index.md) |
+| [x](x/index.md) | x.com | Twitter、X | 2026-11-23 | [站点索引](x/index.md) |
 | [chatgpt](chatgpt/index.md) | chatgpt.com | ChatGPT、ChatGPT 图片 | 2026-10-26 | [站点索引](chatgpt/index.md) |
-| [xiaohongshu](xiaohongshu/index.md) | www.xiaohongshu.com | 无 | 2026-10-04 | [站点索引](xiaohongshu/index.md) |
+| [xiaohongshu](xiaohongshu/index.md) | www.xiaohongshu.com | 无 | 2026-11-25 | [站点索引](xiaohongshu/index.md) |
 | [namesilo](namesilo/index.md) | www.namesilo.com | 无 | 2026-09-07 | [站点索引](namesilo/index.md) |
 | [cloudflare](cloudflare/index.md) | dash.cloudflare.com | 无 | 2026-10-25 | [站点索引](cloudflare/index.md) |
 | [taobao](taobao/index.md) | taobao.com | 无 | 2026-09-01 | [站点索引](taobao/index.md) |
-| [douyin](douyin/index.md) | www.douyin.com | 抖音 | 2026-11-06 | [站点索引](douyin/index.md) |
+| [douyin](douyin/index.md) | www.douyin.com | 抖音 | 2026-11-25 | [站点索引](douyin/index.md) |

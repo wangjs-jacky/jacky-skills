@@ -1,11 +1,14 @@
 # Web Search 试用条目
 
-用户要亲自测试搜索时读取。以下是可直接发送到支持此 Skill 的会话中的文字指令；不用假设宿主注册了某个斜杠命令。一次选择一项，结果默认只取 3 条。
+用户要亲自测试搜索时读取。web-search 是兼容入口，主 Skill 为 web-search-ops。以下是可直接发送到支持此 Skill 的会话中的文字指令；不用假设宿主注册了某个斜杠命令。一次选择一项，结果默认只取 3 条。
 
 ## 可直接发送的指令
 
 | 想测试什么 | 指令 | 应命中的路径 |
 |------------|------|--------------|
+| B站当下热点 | 用 web-search-ops 看 B站当前热搜词，再看综合热门的 3 条视频，分别给来源。 | Ego read-hot-search 与 read-popular-videos |
+| 抖音无关键词发现 | 用 web-search-ops 看抖音当前热榜和搜索发现，给我 3 个适合继续研究的议题。 | Ego read-hot-ranking 与 read-search-discovery |
+| 小红书新近讨论 | 用 web-search-ops 找小红书最近发布的 AI 工作流笔记，读取 1 条正文和已加载评论。 | Ego 搜索、实际筛选、详情与评论 |
 | 通用搜索与官方资料 | 用 web-search 搜索 MCP 和 Function Calling 的区别，给我 3 条官方来源及简短解释。 | 账号池 Tavily；未配置或失败才有限回退 |
 | 小宇宙节目发现 | 用 web-search 搜索小宇宙里讨论 AI 创业的节目或单集，给我 3 个标题、简短介绍和链接。 | 通用搜索限定小宇宙域名；说明公开索引范围 |
 | Product Hunt 新品 | 用 web-search 读取 Product Hunt 官方 Feed 的前 5 条产品，列出名称、简介、日期和链接。 | 直接官方 Atom Feed |

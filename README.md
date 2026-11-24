@@ -1,6 +1,6 @@
 # Jacky's Agent Skills
 
-面向 Claude Code、Codex 等 Agent 的 Skills 仓库，包含 19 个 Plugin、25 个独立 Skill 和 12 个长期经验 Ops Skill。清单按当前有效的 SKILL.md 与 Plugin manifest 整理；实验内容单独维护。
+面向 Claude Code、Codex 等 Agent 的 Skills 仓库，包含 19 个 Plugin、25 个独立 Skill 和 13 个长期经验 Ops Skill。清单按当前有效的 SKILL.md 与 Plugin manifest 整理；实验内容单独维护。
 
 ## 安装
 
@@ -43,7 +43,7 @@ j-skills install release-ops -g --env claude-code,codex
 | Plugin | 版本 | Skills |
 | --- | --- | --- |
 | [claude-config](./plugins/claude-config) | 0.3.0 | statusline-setup |
-| [dev-tools](./plugins/dev-tools) | 2.8.14 | efficiency-audit, durable, web-search, animate-prompt, remote-dev-sync, ssh-connect |
+| [dev-tools](./plugins/dev-tools) | 2.8.15 | efficiency-audit, durable, web-search, animate-prompt, remote-dev-sync, ssh-connect |
 | [distiller-tools](./plugins/distiller-tools) | 1.2.0 | distiller, math-curve-loading-reference |
 | [evaluators](./plugins/evaluators) | 1.1.0 | harness-benchmark, skill-design-benchmark |
 | [image-effects](./plugins/image-effects) | 1.0.0 | image-effects |
@@ -90,8 +90,11 @@ harness/ 中的 Skill 按目标组织运行、排障、验证及经验写回。�
 | [ego-ops](./harness/ego-ops) | [experiment-selection-ops](./harness/experiment-selection-ops) | [goal-first-ops](./harness/goal-first-ops) |
 | [happy-ops](./harness/happy-ops) | [interaction-reproduction-ops](./harness/interaction-reproduction-ops) | [release-ops](./harness/release-ops) |
 | [remote-web-ops](./harness/remote-web-ops) | [confirmation-ops](./harness/confirmation-ops) | [knowhow-ops](./harness/knowhow-ops) |
+| [web-search-ops](./harness/web-search-ops) | | |
 
 可分享协议保存在 SKILL.md 与 references/；机器路径、私有上下文和运行证据保存在被 Git 忽略的本机记录。goal-first-ops 的项目目标按 projects/<project>/features/<feature>/ 集中保存，不进入 Git。安装不会自动授权修改全局 AGENTS 规则。
+
+网络搜索和站内热点、推荐、作者与讨论发现使用 web-search-ops，原 web-search 为兼容入口；浏览器操作正文沿用 ego-ops。
 
 GitHub 推送与发布直接使用 release-ops；npm-publish、vsix-publish 为相应平台的兼容入口，独立安装时仍需要 release-ops。codex-env-config 依赖 codex-ops，额度查询另需 codex-quota。
 
