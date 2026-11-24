@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowhow OPS"
+  short_description: "替你探索并用好复杂软件，记录操作、验证结果，按场景持续沉淀方法"
+  default_prompt: "用 $knowhow-ops 帮我研究并实际完成这个软件任务，录下关键过程并留下可复用步骤。"
