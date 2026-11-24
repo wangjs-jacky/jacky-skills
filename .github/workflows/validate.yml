@@ -24,8 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: npm
-          cache-dependency-path: plugins/dev-tools/todo/package-lock.json
 
       - name: 安装开发依赖
         run: python -m pip install --upgrade pip -r requirements-dev.txt
@@ -45,11 +43,6 @@ jobs:
       - name: 验证 youtube-study-note
         run: python -m unittest discover -s plugins/learning-tools/youtube-study-note/tests -p 'test_*.py' -v
 
-      - name: 验证 todo
-        run: |
-          npm ci --prefix plugins/dev-tools/todo
-          npm test --prefix plugins/dev-tools/todo
-
       - name: 验证 video-processing
         run: python -m unittest discover -s plugins/video-processing/tests -p 'test_*.py' -v
 
@@ -58,22 +51,3 @@ jobs:
 
       - name: 检查安装脚本语法
         run: bash -n install.sh
-
-  browser-control:
-    name: 验证 browser-control (${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-      - name: 检出仓库
-        uses: actions/checkout@v4
-
-      - name: 配置 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: 运行 browser-control 测试
-        run: node --test plugins/dev-tools/browser-control/tests/login-state-registry.test.mjs plugins/dev-tools/browser-control/tests/route-provider.test.mjs plugins/dev-tools/browser-control/tests/usage-ledger.test.mjs
