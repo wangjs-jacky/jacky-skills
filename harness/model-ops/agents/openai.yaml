@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model OPS"
+  short_description: "管理语音、音乐、视频及三维生成模型的接入、调用和验证经验"
+  default_prompt: "使用 $model-ops 检查当前模型部署，按对应操作完成调用并记录实际验证结果。"
