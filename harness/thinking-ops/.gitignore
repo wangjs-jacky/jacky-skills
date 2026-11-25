@@ -1,0 +1,4 @@
+experience.local.md
+*.local.*
+local/
+__pycache__/

@@ -103,7 +103,7 @@ cat <<'EOF'
   npm whoami                # 验证 .npmrc token 是否过期，过期则 npm login
   tt login                  # 滴答清单
   tailscale up              # 远程连接
-  /codex:setup              # Codex（multi-agent/topic-debate/spec-debate）
+  /codex:setup              # Codex（multi-agent/topic-debate）
   # aliyun（alibabacloud-find-skills）：
   curl -fsSL https://aliyuncli.alicdn.com/setup.sh | bash
   aliyun configure && aliyun plugin install --names agentexplorer

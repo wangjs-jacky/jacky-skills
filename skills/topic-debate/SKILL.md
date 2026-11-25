@@ -11,8 +11,6 @@ description: 让多个异构 AI（Claude 子 agent + Codex）对一个辩题做�
 
 本 SKILL.md 是**编排剧本**——你（Claude Code 主循环）作为**中立编排器**逐步执行。长提示词在 `references/`，按需读取并注入。**你自己绝不立论、不反驳、不补论点**，只调度子 agent / Codex、拆立场、匿名转译、判定收敛、写日志、调度裁判。
 
-> 这是 [spec-debate](../spec-debate/SKILL.md) 的姊妹篇：spec-debate 评审「文档」，topic-debate 辩论「立场」。架构同源（匿名、异构、自适应、第三方裁判），但语义不同。
-
 ---
 
 <yolo:config>

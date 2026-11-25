@@ -87,7 +87,7 @@ xcode-select --install              # 提供 swiftc(claude-monitor) + 基础编�
 | `npm login`（或 `~/.npmrc` authToken） | npm-publish / github-repo-publish 发包 | ❓ `.npmrc` 有 token 但 `npm whoami` 未过 → 可能过期，发布前复核 |
 | `tt login`（滴答清单） | tt / tt-worker / tt-defer | ✓ 已登录 |
 | `aliyun configure`（AK/SK） | alibabacloud-find-skills | ✗ |
-| Codex 登录（`/codex:setup`） | multi-agent / topic-debate / spec-debate | ✓ codex 1.0.4 已装登录 |
+| Codex 登录（`/codex:setup`） | multi-agent / topic-debate | ✓ codex 1.0.4 已装登录 |
 | Tailscale 登录 | ssh-connect / remote-dev-sync | ✓ |
 | 各站点浏览器 cookie 登录（抖音/小红书/B站…） | opencli-ops / agent-reach / web-connect | 按需，用到哪个登哪个 |
 
@@ -151,7 +151,7 @@ xcode-select --install              # 提供 swiftc(claude-monitor) + 基础编�
 - **OBSIDIAN_REPO + ob-router**：ob-collect, ob-compile, ob-summary, ob-index, ob-tidy, ob-bridge, ob-project-log, ob-topic, ob-chat, ob-benchmark, config-obsidian, article-with-images
 - **ffmpeg(+yt-dlp/mlx_whisper)**：audio-to-subtitle, m3u8-dl, fix-neat-video, animate-prompt, video-to-text, agent-reach, ob-collect
 - **opencli / CDP**：opencli-ops, web-connect, ob-collect
-- **Codex companion**：multi-agent, topic-debate, spec-debate
+- **Codex companion**：multi-agent, topic-debate
 - **vsce/ovsx + PAT**：vscode-extension-dev, vsix-publish
 - **tt CLI + 登录**：tt, tt-worker（tt-defer 仅需 tt 在）
 - **vercel + 登录**：deploy-to-vercel, vercel-cli

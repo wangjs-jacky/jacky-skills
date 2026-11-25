@@ -19,7 +19,7 @@
 ## Operations
 
 - [修改运行配置](operations/configure-runtime.md)
-- [维护全局 AGENTS](operations/maintain-global-instructions.md)：2026-10-18复核同范围段落替换、私有备份与本会话收到新规则的证据。
+- [维护全局 AGENTS](operations/maintain-global-instructions.md)，2026-11-25 复核思维 OPS 授权段落、私有备份、同源入口与当前 Happy 会话加载。
 - [诊断配置加载](operations/diagnose-config-loading.md)：独立fresh任务的单次覆盖、精确线程读回，以及resume显式策略的有限验证；不把局部成功升级为通用诊断闭环。
 
 ## 来源
